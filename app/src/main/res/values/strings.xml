@@ -7,7 +7,13 @@
 
     <string name="action_settings">Settings</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_not_logged">NotLogged</string>
+
+    <string name="description_app">App per gli studenti del\ndipartimento di Informatica di Bari.\nPer accedere inserisci la tua email accademica.</string>
+    <string name="button_login">Login</string>
+    <string name="check_login">Memorizza le credenziali</string>
+    <string name="skip_login">Salta l\'autentificazione</string>
+    <string name="playsholder_email_login">n.cognome@studenti.uniba.it</string>
+    <string name="playsholder_password_login">password</string>
 </resources>
