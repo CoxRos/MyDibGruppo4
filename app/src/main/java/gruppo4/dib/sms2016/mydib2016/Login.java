@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import gruppo4.dib.sms2016.mydib2016.homepage.NotLogged;
+import gruppo4.dib.sms2016.mydib2016.homepage.not_logged.NotLogged;
 
 public class Login extends AppCompatActivity {
 

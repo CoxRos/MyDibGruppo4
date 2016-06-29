@@ -1,4 +1,4 @@
-package gruppo4.dib.sms2016.mydib2016.homepage;
+package gruppo4.dib.sms2016.mydib2016.homepage.not_logged;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -80,23 +80,17 @@ public class NotLogged extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.informazioniNL) {
             InformazioniUni fragment = new InformazioniUni();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container,fragment);
             fragmentTransaction.commit();
-        } else if (id == R.id.nav_gallery) {
-            Contatti fragment = new Contatti();
+        } else if (id == R.id.ristoroNL) {
+            Ristoro fragment = new Ristoro();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container,fragment);
             fragmentTransaction.commit();
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.busNL) {
 
         }
 

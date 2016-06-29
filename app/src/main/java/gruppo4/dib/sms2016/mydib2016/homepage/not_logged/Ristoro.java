@@ -1,4 +1,4 @@
-package gruppo4.dib.sms2016.mydib2016.homepage;
+package gruppo4.dib.sms2016.mydib2016.homepage.not_logged;
 
 
 import android.os.Bundle;
@@ -12,10 +12,10 @@ import gruppo4.dib.sms2016.mydib2016.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Contatti extends Fragment {
+public class Ristoro extends Fragment {
 
 
-    public Contatti() {
+    public Ristoro() {
         // Required empty public constructor
     }
 
@@ -24,7 +24,7 @@ public class Contatti extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_contatti, container, false);
+        return inflater.inflate(R.layout.fragment_ristoro, container, false);
     }
 
 }

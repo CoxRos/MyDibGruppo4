@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="gruppo4.dib.sms2016.mydib2016.homepage.NotLogged">
+    tools:context=".homepage.not_logged.NotLogged">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

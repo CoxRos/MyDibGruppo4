@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".homepage.NotLogged"
+            android:name=".homepage.not_logged.NotLogged"
             android:label="@string/title_activity_not_logged"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
