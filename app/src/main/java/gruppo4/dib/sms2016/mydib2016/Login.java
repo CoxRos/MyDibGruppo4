@@ -1,5 +1,6 @@
 package gruppo4.dib.sms2016.mydib2016;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -12,9 +13,23 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Pattern;
 
+import gruppo4.dib.sms2016.mydib2016.network.Network;
 import gruppo4.dib.sms2016.mydib2016.homepage.NotLogged;
 
 public class Login extends AppCompatActivity {
@@ -23,6 +38,9 @@ public class Login extends AppCompatActivity {
     private EditText et_email, et_password;
     private CheckBox credenziali;
     private ImageView imageView;
+
+    private ProgressDialog progressDialog;
+    private RequestQueue queue;
 
     private static final Pattern EMAIL_ADDRESS = Pattern.compile("[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}\\@studenti.uniba.it");
 
@@ -33,6 +51,8 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        queue = Network.getInstance(getApplicationContext()).getRequestQueue();
 
         preferences = getSharedPreferences("credenziali", MODE_PRIVATE);
         editor = preferences.edit();
@@ -55,34 +75,29 @@ public class Login extends AppCompatActivity {
             et_password.setText(savedPassword);
         }
 
-        String email = et_email.getText().toString();
-        String password = et_password.getText().toString();
+        final String email = et_email.getText().toString();
+        final String password = et_password.getText().toString();
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //valido i campi
-                if("".equals(et_email.getText().toString())) {
+                if("".equals(email)) {
                     et_email.setError("Inserisci l'email accademica");
                     return;
                 }
-                if(!isValidEmail(et_email.getText().toString())) {
+                if(!isValidEmail(email)) {
                     et_email.setError("Inserisci l'email istituzionale");
                     return;
                 }
-                if("".equals(et_password.getText().toString())) {
+                if("".equals(password)) {
                     et_password.setError("Inserisci la password");
                     return;
                 }
 
-                //va messo se l'utente riesce a fare la login
-                Log.d(getClass().getName().toString(), "dati inseriti: " + et_email.getText().toString() + " & " + et_password.getText().toString());
-                if(credenziali.isChecked()) {
-                    editor.putString("email", et_email.getText().toString());
-                    editor.putString("password", et_password.getText().toString());
-                    editor.commit();
-                }
-                //chiamo il server sia intent che preferences
+                Log.d(getClass().getName().toString(), "dati inseriti: " + email + " & " + password);
+
+                doRequest("http://mydib2016.altervista.org/api/index.php/login", email, password);
             }
         });
     }
@@ -96,5 +111,61 @@ public class Login extends AppCompatActivity {
     private boolean isValidEmail(String email) {
         Pattern pattern = EMAIL_ADDRESS;
         return pattern.matcher(email).matches();
+    }
+
+    private void doRequest(String url, String email, String password) {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                //try {
+                    Log.d("RISULTATO", response.toString());
+                    /*int result = response.getInt("loggato");
+                    if(result == 1) {
+                        Toast.makeText(getApplicationContext(), "Login effettuato con successo!", Toast.LENGTH_SHORT).show();
+                        saveCredential(email, password);
+                        changeActivity();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Controlla le credenziali e riprova!", Toast.LENGTH_LONG).show();
+                        et_password.setText("");
+                    }*/
+                /*} catch (JSONException e) {
+                    Log.d("ERRORE CATCH", e.getMessage().toString());
+                }*/
+                progressDialog.dismiss();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("CLASSE LOGIN", "Errore connessione " + error.toString());
+                progressDialog.dismiss();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("email", et_email.getText().toString());
+                params.put("password", et_password.getText().toString());
+                Log.d("AHAHAHAHAH", params.toString());
+                return params;
+            }
+        };
+        Network.getInstance(getApplicationContext()).addToRequestQueue(jsonObjectRequest);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Attedere");
+        progressDialog.setMessage("Verifica dei dati");
+        progressDialog.show();
+    }
+
+    private void saveCredential(String email, String password) {
+        if(credenziali.isChecked()) {
+            editor.putString("email", email);
+            editor.putString("password", password);
+            editor.commit();
+        }
+    }
+
+    private void changeActivity() {
+        //Intent intent = new Intent(getApplicationContext(), ciccio.class);
+        //startActivity(intent);
     }
 }
