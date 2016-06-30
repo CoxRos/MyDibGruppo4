@@ -6,7 +6,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="gruppo4.dib.sms2016.mydib2016.homepage.not_logged.bus.Bus$PlaceholderFragment">
+    tools:context="gruppo4.dib.sms2016.mydib2016.homepage.not_logged.bus.RitornoBus">
+
     <include layout="@android:layout/list_content" />
     <ListView
         android:layout_width="match_parent"
@@ -14,11 +15,5 @@
         android:id="@+id/listBus"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="15dp" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Non sta niente"
-        android:id="@+id/provaId"
-        android:visibility="gone"/>
 
 </RelativeLayout>
