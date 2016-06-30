@@ -7,81 +7,84 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingStart="25dp"
+    android:paddingEnd="25dp"
     tools:context=".Login">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageLogin"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="77dp" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageLogin"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/description_app"
-        android:textSize="15dp"
-        android:textAlignment="center"
-        android:id="@+id/login_description"
-        android:paddingBottom="10dp"
-        android:layout_marginTop="45dp"
-        android:layout_below="@+id/imageLogin"
-        android:layout_centerHorizontal="true" />
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/login_description"
-        android:id="@+id/linearLayout">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/description_app"
+            android:textSize="15dp"
+            android:layout_gravity="center"
+            android:id="@+id/login_description"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_below="@+id/imageLogin"
+            android:layout_centerHorizontal="true" />
 
         <EditText
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/et_email_login"
             android:hint="@string/playsholder_email_login"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:imeOptions="actionDone"
+            android:singleLine="true"
+            android:layout_above="@+id/et_password_login"
+            android:layout_alignParentEnd="true"
+            android:layout_alignStart="@+id/check_memorizza_login" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/et_password_login"
+            android:inputType="textPassword"
             android:hint="@string/playsholder_password_login"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:imeOptions="actionDone"
+            android:singleLine="true"
+            android:layout_centerVertical="true"
+            android:layout_alignStart="@+id/et_email_login"
+            android:layout_alignEnd="@+id/et_email_login" />
 
         <CheckBox
             android:layout_width="211dp"
             android:layout_height="wrap_content"
             android:text="@string/check_login"
             android:id="@+id/check_memorizza_login"
-            android:layout_below="@+id/linearLayout"
-            android:layout_alignStart="@+id/login_description"
-            android:checked="false" />
-    </LinearLayout>
+            android:checked="false"
+            android:layout_below="@+id/et_password_login"
+            android:layout_alignParentStart="true" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/button_login"
-        android:id="@+id/button_login"
-        android:layout_marginTop="27dp"
-        android:layout_below="@+id/linearLayout"
-        android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/skip_login"
-        android:id="@+id/skip_login"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:onClick="skipAuthentication"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/button_login"
+            android:id="@+id/button_login"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="106dp" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:textStyle="italic|bold"
+            android:textColor="@color/background"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/skip_login"
+            android:id="@+id/skip_login"
+            android:onClick="skipAuthentication"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true" />
 </RelativeLayout>
