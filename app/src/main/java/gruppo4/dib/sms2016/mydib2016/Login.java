@@ -20,7 +20,6 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,7 +28,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-import gruppo4.dib.sms2016.mydib2016.network.CustomRequestArray;
 import gruppo4.dib.sms2016.mydib2016.network.CustomRequestObject;
 import gruppo4.dib.sms2016.mydib2016.network.Network;
 import gruppo4.dib.sms2016.mydib2016.homepage.NotLogged;
@@ -96,8 +94,6 @@ public class Login extends AppCompatActivity {
                     et_password.setError("Inserisci la password");
                     return;
                 }
-
-                Log.d(getClass().getName().toString(), "dati inseriti: " + email + " & " + password);
 
                 doRequest("http://mydib2016.altervista.org/api/index.php/login", email, password);
             }

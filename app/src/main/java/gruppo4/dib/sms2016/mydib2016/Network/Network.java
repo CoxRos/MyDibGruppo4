@@ -9,9 +9,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 
-/**
- * Created by sergiocorvino on 30/06/16.
- */
 public class Network {
 
     private static Network mInstance;

@@ -12,9 +12,6 @@ import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
-/**
- * Created by sergiocorvino on 01/07/16.
- */
 public class CustomRequestObject extends Request<JSONObject> {
 
     private Response.Listener<JSONObject> listener;

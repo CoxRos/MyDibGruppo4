@@ -13,9 +13,6 @@ import org.json.JSONException;
 import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
-/**
- * Created by sergiocorvino on 01/07/16.
- */
 public class CustomRequestArray extends Request<JSONArray> {
 
     Map<String, String> params;
