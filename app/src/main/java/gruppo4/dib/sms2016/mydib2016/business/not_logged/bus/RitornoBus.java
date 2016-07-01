@@ -1,4 +1,4 @@
-package gruppo4.dib.sms2016.mydib2016.homepage.not_logged.bus;
+package gruppo4.dib.sms2016.mydib2016.business.not_logged.bus;
 
 
 import android.app.ProgressDialog;
@@ -98,7 +98,9 @@ public class RitornoBus extends Fragment {
                         if(isEmpty) {
                             listaAutobus.setVisibility(View.GONE);
                             noItem.setVisibility(View.VISIBLE);
+                            noItem.setText("Non sono presenti orari");
                             noConnection.setVisibility(View.VISIBLE);
+                            noConnection.setImageResource(R.mipmap.ic_dispiaciuto);
                         } else {
                             listaAutobus.setVisibility(View.VISIBLE);
                             noItem.setVisibility(View.GONE);
@@ -109,6 +111,9 @@ public class RitornoBus extends Fragment {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        listaAutobus.setVisibility(View.GONE);
+                        noItem.setVisibility(View.VISIBLE);
+                        noConnection.setVisibility(View.VISIBLE);
                         System.out.println("ERR: " + error.getMessage());
                         Log.d("ATTENZIONE:", error.getCause().toString());
                         error.printStackTrace();

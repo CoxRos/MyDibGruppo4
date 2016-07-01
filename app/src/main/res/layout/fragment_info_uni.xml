@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".homepage.not_logged.InformazioniUni">
+    android:background="@color/backview"
+    tools:context=".business.not_logged.InformazioniUni">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

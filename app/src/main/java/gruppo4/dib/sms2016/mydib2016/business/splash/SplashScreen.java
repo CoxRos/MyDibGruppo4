@@ -1,4 +1,4 @@
-package gruppo4.dib.sms2016.mydib2016.splash;
+package gruppo4.dib.sms2016.mydib2016.business.splash;
 
 
 import android.app.Activity;
@@ -12,7 +12,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import gruppo4.dib.sms2016.mydib2016.Login;
+import gruppo4.dib.sms2016.mydib2016.business.Autenticazione.Login;
 import gruppo4.dib.sms2016.mydib2016.R;
 
 

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="gruppo4.dib.sms2016.mydib2016.homepage.not_logged.bus.Bus">
+    tools:context=".business.not_logged.bus.Bus">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"

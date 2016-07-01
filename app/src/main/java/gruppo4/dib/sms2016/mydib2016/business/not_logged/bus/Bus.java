@@ -1,4 +1,4 @@
-package gruppo4.dib.sms2016.mydib2016.homepage.not_logged.bus;
+package gruppo4.dib.sms2016.mydib2016.business.not_logged.bus;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -33,7 +33,7 @@ import org.json.JSONObject;
 import gruppo4.dib.sms2016.mydib2016.network.Network;
 import gruppo4.dib.sms2016.mydib2016.R;
 import gruppo4.dib.sms2016.mydib2016.entity.BusEntity;
-import gruppo4.dib.sms2016.mydib2016.homepage.not_logged.NotLogged;
+import gruppo4.dib.sms2016.mydib2016.business.homepage.HomePage;
 
 public class Bus extends AppCompatActivity {
 
@@ -67,7 +67,7 @@ public class Bus extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Bus.this, NotLogged.class);
+                Intent intent = new Intent(Bus.this, HomePage.class);
                 startActivity(intent);
             }
         });
@@ -199,7 +199,9 @@ public class Bus extends AppCompatActivity {
                             if(isEmpty) {
                                 listaAutobus.setVisibility(View.GONE);
                                 noItem.setVisibility(View.VISIBLE);
+                                noItem.setText("Non sono presenti orari");
                                 noConnection.setVisibility(View.VISIBLE);
+                                noConnection.setImageResource(R.mipmap.ic_dispiaciuto);
                             } else {
                                 listaAutobus.setVisibility(View.VISIBLE);
                                 noItem.setVisibility(View.GONE);
@@ -210,6 +212,9 @@ public class Bus extends AppCompatActivity {
                     }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
+                            listaAutobus.setVisibility(View.GONE);
+                            noItem.setVisibility(View.VISIBLE);
+                            noConnection.setVisibility(View.VISIBLE);
                             System.out.println("ERR: " + error.getMessage());
                             Log.d("ATTENZIONE:", error.getCause().toString());
                             error.printStackTrace();

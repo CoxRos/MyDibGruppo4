@@ -20,6 +20,6 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_not_logged"
-        app:menu="@menu/activity_not_logged_drawer" />
+        app:menu="@menu/activity_homepage_drawer" />
 
 </android.support.v4.widget.DrawerLayout>

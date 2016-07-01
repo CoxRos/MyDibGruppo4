@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="gruppo4.dib.sms2016.mydib2016.homepage.not_logged.bus.Bus">
+    tools:context=".business.not_logged.bus.Bus">
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"

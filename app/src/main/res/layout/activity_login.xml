@@ -9,7 +9,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingStart="25dp"
     android:paddingEnd="25dp"
-    tools:context=".Login">
+    tools:context=".business.Autenticazione.Login">
 
         <ImageView
             android:layout_width="wrap_content"

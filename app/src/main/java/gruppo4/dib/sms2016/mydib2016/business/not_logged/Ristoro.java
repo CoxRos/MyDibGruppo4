@@ -1,4 +1,4 @@
-package gruppo4.dib.sms2016.mydib2016.homepage.not_logged;
+package gruppo4.dib.sms2016.mydib2016.business.not_logged;
 
 
 import android.os.Bundle;

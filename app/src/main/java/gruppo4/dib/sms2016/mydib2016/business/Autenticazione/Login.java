@@ -1,10 +1,11 @@
-package gruppo4.dib.sms2016.mydib2016;
+package gruppo4.dib.sms2016.mydib2016.business.Autenticazione;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,7 +29,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-import gruppo4.dib.sms2016.mydib2016.homepage.not_logged.NotLogged;
+import gruppo4.dib.sms2016.mydib2016.R;
+import gruppo4.dib.sms2016.mydib2016.business.homepage.HomePage;
 import gruppo4.dib.sms2016.mydib2016.network.CustomRequestObject;
 import gruppo4.dib.sms2016.mydib2016.network.Network;
 
@@ -51,7 +53,7 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        
         queue = Network.getInstance(getApplicationContext()).getRequestQueue();
 
         preferences = getSharedPreferences("credenziali", MODE_PRIVATE);
@@ -69,40 +71,47 @@ public class Login extends AppCompatActivity {
 
         String savedEmail = preferences.getString("email", "");
         String savedPassword = preferences.getString("password", "");
+        boolean loggato = preferences.getBoolean("loggato", false);
 
-        if(!savedEmail.equals("") && !savedPassword.equals("")) {
-            et_email.setText(savedEmail);
-            et_password.setText(savedPassword);
-        }
-
-        final String email = et_email.getText().toString();
-        final String password = et_password.getText().toString();
-
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //valido i campi
-                if("".equals(email)) {
-                    et_email.setError("Inserisci l'email accademica");
-                    return;
-                }
-                if(!isValidEmail(email)) {
-                    et_email.setError("Inserisci l'email istituzionale");
-                    return;
-                }
-                if("".equals(password)) {
-                    et_password.setError("Inserisci la password");
-                    return;
-                }
-
-                doRequest("http://mydib2016.altervista.org/api/index.php/login", email, password);
+        if(!loggato) {
+            if(!savedEmail.equals("") && !savedPassword.equals("")) {
+                et_email.setText(savedEmail);
+                et_password.setText(savedPassword);
             }
-        });
+
+            final String email = et_email.getText().toString();
+            final String password = et_password.getText().toString();
+
+            login.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //valido i campi
+                    if("".equals(email)) {
+                        et_email.setError("Inserisci l'email accademica");
+                        return;
+                    }
+                    if(!isValidEmail(email)) {
+                        et_email.setError("Inserisci l'email istituzionale");
+                        return;
+                    }
+                    if("".equals(password)) {
+                        et_password.setError("Inserisci la password");
+                        return;
+                    }
+
+                    doRequest("http://mydib2016.altervista.org/api/index.php/login", email, password);
+                }
+            });
+        }
+        else {
+            //createAlert("Bentornato", savedEmail).show();
+            changeActivity();
+        }
     }
 
     public void skipAuthentication(View view) {
-        Intent intent = new Intent(getApplicationContext(), NotLogged.class);
-        intent.putExtra("login", "skip");
+        Intent intent = new Intent(getApplicationContext(), HomePage.class);
+        intent.putExtra("login", 0);
         startActivity(intent);
     }
 
@@ -112,6 +121,7 @@ public class Login extends AppCompatActivity {
     }
 
     private void doRequest(String url, final String email, final String password) {
+
         CustomRequestObject jsonObjectRequest = new CustomRequestObject(Request.Method.POST, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -120,6 +130,7 @@ public class Login extends AppCompatActivity {
                     if(result == 1) {
                         Toast.makeText(getApplicationContext(), "Login effettuato con successo!", Toast.LENGTH_SHORT).show();
                         saveCredential(email, password);
+                        saveLogged(true);
                         changeActivity();
                     } else {
                         Toast.makeText(getApplicationContext(), "Controlla le credenziali e riprova!", Toast.LENGTH_LONG).show();
@@ -150,6 +161,7 @@ public class Login extends AppCompatActivity {
         progressDialog.setTitle("Attedere");
         progressDialog.setMessage("Verifica dei dati");
         progressDialog.show();
+
     }
 
     private void saveCredential(String email, String password) {
@@ -161,8 +173,23 @@ public class Login extends AppCompatActivity {
     }
 
     private void changeActivity() {
-        //Intent intent = new Intent(getApplicationContext(), ciccio.class);
-        //intent.putExtra("login", "login");
-        //startActivity(intent);
+        Intent intent = new Intent(getApplicationContext(), HomePage.class);
+        intent.putExtra("login", 1);
+        startActivity(intent);
+    }
+
+    private AlertDialog createAlert(String title, String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.setPositiveButton("OK", null);
+
+        AlertDialog alertDialog = builder.create();
+        return alertDialog;
+    }
+
+    private void saveLogged(boolean logged) {
+        editor.putBoolean("loggato", logged);
+        editor.commit();
     }
 }
