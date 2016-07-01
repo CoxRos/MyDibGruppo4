@@ -1,24 +1,62 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="gruppo4.dib.sms2016.mydib2016.homepage.not_logged.bus.Bus$PlaceholderFragment">
-    <include layout="@android:layout/list_content" />
-    <ListView
+    android:orientation="vertical"
+    tools:context="gruppo4.dib.sms2016.mydib2016.homepage.not_logged.bus.RitornoBus">
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/listBus"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="15dp" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Non sta niente"
-        android:id="@+id/provaId"
-        android:visibility="gone"/>
+        android:background="@color/drawer"
+        android:orientation="vertical"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp">
 
-</RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Piazza Moro - Università"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:textStyle="italic" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ListView
+            android:id="@+id/listAutobusAndata"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp" />
+
+        <TextView
+            android:id="@+id/verificaConnAndata"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="Verificare la connessione"
+            android:textSize="20dp"
+            android:textStyle="italic"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/no_wifiAndata"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="171dp"
+            android:background="@mipmap/ic_no_wifi"
+            android:visibility="gone" />
+
+
+    </LinearLayout>
+</LinearLayout>

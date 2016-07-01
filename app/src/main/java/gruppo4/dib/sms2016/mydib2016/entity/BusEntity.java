@@ -4,14 +4,13 @@ package gruppo4.dib.sms2016.mydib2016.entity;
  * Created by Utente on 30/06/2016.
  */
 public class BusEntity {
-    public String numBus,orarioPartenza,orarioArrivo,partenza,destinazione;
+    public String numBus,orarioPartenza,orarioArrivo,partenza;
 
-    public BusEntity(String numBus, String orarioPartenza,String orarioArrivo, String partenza, String destinazione) {
+    public BusEntity(String numBus, String orarioPartenza,String orarioArrivo, String partenza) {
         this.numBus = numBus;
         this.orarioPartenza = orarioPartenza;
         this.orarioArrivo = orarioArrivo;
         this.partenza = partenza;
-        this.destinazione = destinazione;
     }
 
     public String getNumBus() {
@@ -46,11 +45,4 @@ public class BusEntity {
         this.partenza = partenza;
     }
 
-    public String getDestinazione() {
-        return destinazione;
-    }
-
-    public void setDestinazione(String destinazione) {
-        this.destinazione = destinazione;
-    }
 }

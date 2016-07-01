@@ -1,10 +1,8 @@
 package gruppo4.dib.sms2016.mydib2016.homepage.not_logged.bus;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.ListFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -13,19 +11,26 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import gruppo4.dib.sms2016.mydib2016.network.Network;
 import gruppo4.dib.sms2016.mydib2016.R;
 import gruppo4.dib.sms2016.mydib2016.entity.BusEntity;
 import gruppo4.dib.sms2016.mydib2016.homepage.not_logged.NotLogged;
@@ -47,6 +52,9 @@ public class Bus extends AppCompatActivity {
      */
     private ViewPager mViewPager;
 
+    RequestQueue queue;
+    ProgressDialog progressDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +72,10 @@ public class Bus extends AppCompatActivity {
             }
         });
 
+        queue = Network.getInstance(getApplicationContext()).
+                getRequestQueue();
+
+        progressDialog = new ProgressDialog(this);
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -76,9 +88,7 @@ public class Bus extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -105,15 +115,20 @@ public class Bus extends AppCompatActivity {
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends ListFragment {
+    public static class PlaceholderFragment extends Fragment {
 
-        ArrayList<HashMap<String,String>> listaBus = new ArrayList<HashMap<String, String>>();
-        SimpleAdapter simpleAdapter;
         /**
          * The fragment argument representing the section number for this
          * fragment.
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
+
+        RequestQueue queue;
+        ProgressDialog progressDialog;
+
+        ListView listaAutobus;
+        TextView noItem;
+        ImageView noConnection;
 
         public PlaceholderFragment() {
         }
@@ -135,34 +150,76 @@ public class Bus extends AppCompatActivity {
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_bus, container, false);
 
-            /*
-             * Deve essere fatta la chiamata al server, prendersi tutti i dati, salvarli in un
-             * array statico e poi ciclare prendendo solamente quelli dell'andata in questa view.
-             * Nell'altra view si accede a quello statico e anche li viene ciclato prendendo solamente il
-             * ritorno.
-             */
-
-            ListView listView = (ListView) rootView.findViewById(R.id.listBus);
-            listView.setVisibility(View.GONE);
-            TextView text = (TextView) rootView.findViewById(R.id.provaId);
-            text.setVisibility(View.VISIBLE);
-            /*
-            HashMap<String,String> map = new HashMap<String,String>();
-
-            String[] from = {"OrarioPartenza","OrarioArrivo"};
-            int[] to = {R.id.partenzaOrario,R.id.arrivoOrario};
-
-                map = new HashMap<String,String>();
-                map.put("OrarioPartenza","15:30");
-                map.put("OrarioArrivo","15:43");
-
-                listaBus.add(map);
-
-                simpleAdapter = new SimpleAdapter(getActivity(),listaBus,R.layout.layout_list_bus,from,to);
-                setListAdapter(simpleAdapter);
-            */
-
             return rootView;
+        }
+
+        @Override
+        public void onActivityCreated(Bundle savedInstanceState) {
+            super.onActivityCreated(savedInstanceState);
+
+            noItem = (TextView) getActivity().findViewById(R.id.verificaConnAndata);
+            listaAutobus = (ListView) getActivity().findViewById(R.id.listAutobusAndata);
+            noConnection = (ImageView) getActivity().findViewById(R.id.no_wifiAndata);
+
+            queue = Network.getInstance(getActivity()).
+                    getRequestQueue();
+
+            progressDialog = new ProgressDialog(getActivity());
+
+            setUI("http://mydib2016.altervista.org/api/index.php/bustime");
+        }
+
+        private void setUI(String url) {
+
+            final BusTimeAdapter listAdapter = new BusTimeAdapter(getActivity(),R.layout.layout_list_bus);
+            listaAutobus.setAdapter(listAdapter);
+
+            JsonArrayRequest request = new JsonArrayRequest
+                    (url, new Response.Listener<JSONArray>() {
+
+                        @Override
+                        public void onResponse(JSONArray response) {
+                            boolean isEmpty = true;
+                            String numero, partenza, orarioPartenza, orarioArrivo;
+                            for (int i = 0; i < response.length(); i++) {
+                                try {
+                                    JSONObject oggettoJson = response.getJSONObject(i);
+                                    if(oggettoJson.getString("partenza").equalsIgnoreCase("STAZIONE")) {
+                                        numero = oggettoJson.getString("numbus");
+                                        orarioPartenza = oggettoJson.getString("orarioPartenza");
+                                        orarioArrivo = oggettoJson.getString("orarioArrivo");
+                                        partenza = oggettoJson.getString("partenza");
+                                        isEmpty = false;
+                                        listAdapter.add(new BusEntity(numero, orarioPartenza, orarioArrivo, partenza));
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("catch: " + e);
+                                }
+                            }
+                            if(isEmpty) {
+                                listaAutobus.setVisibility(View.GONE);
+                                noItem.setVisibility(View.VISIBLE);
+                                noConnection.setVisibility(View.VISIBLE);
+                            } else {
+                                listaAutobus.setVisibility(View.VISIBLE);
+                                noItem.setVisibility(View.GONE);
+                                noConnection.setVisibility(View.GONE);
+                            }
+                            progressDialog.dismiss();
+                        }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            System.out.println("ERR: " + error.getMessage());
+                            Log.d("ATTENZIONE:", error.getCause().toString());
+                            error.printStackTrace();
+                            progressDialog.dismiss();
+                        }
+                    });
+            Network.getInstance(getActivity()).addToRequestQueue(request);
+            progressDialog.setTitle("Attendere");
+            progressDialog.setMessage("Caricamento richiesta");
+            progressDialog.show();
         }
     }
 
