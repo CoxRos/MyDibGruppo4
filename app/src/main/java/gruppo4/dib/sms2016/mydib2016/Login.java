@@ -29,6 +29,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+import gruppo4.dib.sms2016.mydib2016.network.CustomRequestArray;
+import gruppo4.dib.sms2016.mydib2016.network.CustomRequestObject;
 import gruppo4.dib.sms2016.mydib2016.network.Network;
 import gruppo4.dib.sms2016.mydib2016.homepage.NotLogged;
 
@@ -113,13 +115,12 @@ public class Login extends AppCompatActivity {
         return pattern.matcher(email).matches();
     }
 
-    private void doRequest(String url, String email, String password) {
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, null, new Response.Listener<JSONObject>() {
+    private void doRequest(String url, final String email, final String password) {
+        CustomRequestObject jsonObjectRequest = new CustomRequestObject(Request.Method.POST, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                //try {
-                    Log.d("RISULTATO", response.toString());
-                    /*int result = response.getInt("loggato");
+                try {
+                    int result = response.getInt("loggato");
                     if(result == 1) {
                         Toast.makeText(getApplicationContext(), "Login effettuato con successo!", Toast.LENGTH_SHORT).show();
                         saveCredential(email, password);
@@ -127,10 +128,10 @@ public class Login extends AppCompatActivity {
                     } else {
                         Toast.makeText(getApplicationContext(), "Controlla le credenziali e riprova!", Toast.LENGTH_LONG).show();
                         et_password.setText("");
-                    }*/
-                /*} catch (JSONException e) {
-                    Log.d("ERRORE CATCH", e.getMessage().toString());
-                }*/
+                    }
+                } catch (JSONException e) {
+                    Log.d("ERRORE CATCH RESPONSE", e.getMessage().toString());
+                }
                 progressDialog.dismiss();
             }
         }, new Response.ErrorListener() {
@@ -141,11 +142,10 @@ public class Login extends AppCompatActivity {
             }
         }) {
             @Override
-            protected Map<String, String> getParams() {
+            protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("email", et_email.getText().toString());
                 params.put("password", et_password.getText().toString());
-                Log.d("AHAHAHAHAH", params.toString());
                 return params;
             }
         };
@@ -166,6 +166,7 @@ public class Login extends AppCompatActivity {
 
     private void changeActivity() {
         //Intent intent = new Intent(getApplicationContext(), ciccio.class);
+        //intent.putExtra("login", "login");
         //startActivity(intent);
     }
 }
