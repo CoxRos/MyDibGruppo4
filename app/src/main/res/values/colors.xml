@@ -7,4 +7,6 @@
     <color name="backview">#f8e9ebff</color>
     <color name="black">#4b4b4b</color>
     <color name="white">#e6e6e6</color>
+    <color name="background">#5f92e1</color>
+    <color name="darkblack">#000</color>
 </resources>
