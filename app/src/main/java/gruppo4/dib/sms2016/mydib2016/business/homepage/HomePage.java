@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import gruppo4.dib.sms2016.mydib2016.R;
+import gruppo4.dib.sms2016.mydib2016.business.logged.Libretto;
 import gruppo4.dib.sms2016.mydib2016.business.not_logged.InformazioniUni;
 import gruppo4.dib.sms2016.mydib2016.business.not_logged.Ristoro;
 import gruppo4.dib.sms2016.mydib2016.business.not_logged.bus.Bus;
@@ -126,6 +127,18 @@ public class HomePage extends AppCompatActivity
         } else if (id == R.id.homepageL) { //Da fare
         } else if (id == R.id.librettoL) { //Da fare
 
+
+            Libretto fragment = new Libretto();
+            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, fragment);
+            fragmentTransaction.commit();
+
+            navigationView.getMenu().setGroupVisible(R.id.logged1,false);
+            navigationView.getMenu().setGroupVisible(R.id.logged2,false);
+            navigationView.getMenu().setGroupVisible(R.id.logged3,false);
+            navigationView.getMenu().setGroupVisible(R.id.librettoDR,true);
+
+
         } else if (id == R.id.profiloL) { //Da fare
 
         } else if (id == R.id.informazioniL) {
@@ -143,6 +156,22 @@ public class HomePage extends AppCompatActivity
         } else if (id == R.id.busL) {
             Intent intent = new Intent(this, Bus.class);
             startActivity(intent);
+        } else if (id == R.id.homepageLi) { //Da fare
+
+        } else if (id == R.id.librettoLi) {
+            Libretto fragment = new Libretto();
+            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, fragment);
+            fragmentTransaction.commit();
+
+            navigationView.getMenu().setGroupVisible(R.id.logged1,false);
+            navigationView.getMenu().setGroupVisible(R.id.logged2,false);
+            navigationView.getMenu().setGroupVisible(R.id.logged3,false);
+            navigationView.getMenu().setGroupVisible(R.id.librettoDR,true);
+        } else if (id == R.id.graficiLi) {
+
+        } else if (id == R.id.previsioniLi) {
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

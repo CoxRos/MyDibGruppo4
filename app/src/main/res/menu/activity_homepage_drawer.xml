@@ -63,4 +63,28 @@
             android:title="Bus" />
 
     </group>
+    <group
+        android:id="@+id/librettoDR"
+        android:checkableBehavior="none"
+        android:visible="false">
+
+        <item
+            android:id="@+id/homepageLi"
+            android:icon="@mipmap/ic_home"
+            android:title="Homepage" />
+        <item
+            android:id="@+id/librettoLi"
+            android:icon="@mipmap/ic_libretto"
+            android:title="Libretto" />
+        <item
+            android:id="@+id/graficiLi"
+            android:icon="@mipmap/ic_libretto"
+            android:title="Grafici" />
+        <item
+            android:id="@+id/previsioniLi"
+            android:icon="@mipmap/ic_libretto"
+            android:title="Previsioni" />
+
+    </group>
+
 </menu>
