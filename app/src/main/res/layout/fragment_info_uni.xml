@@ -45,7 +45,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Dove siamo text"
+                    android:text="Informazione non disponibile"
                     android:layout_marginTop="8dp"
                     android:id="@+id/textDoveSiamo" />
 
@@ -59,7 +59,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Testo del PEC"
+                    android:text="Informazione non disponibile"
                     android:layout_marginTop="8dp"
                     android:id="@+id/textPEC" />
 
@@ -73,14 +73,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nome direttore"
+                    android:text="Nome non disponibile"
                     android:layout_marginTop="8dp"
                     android:id="@+id/nomeDirettore" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="email direttore"
+                    android:text="Email non disponibile"
                     android:layout_marginTop="8dp"
                     android:id="@+id/emailDirettore" />
 
@@ -94,20 +94,20 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nome segretario"
+                    android:text="Nome non disponibile"
                     android:layout_marginTop="8dp"
                     android:id="@+id/nomeSegretario" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Email segretario"
+                    android:text="Email non disponibile"
                     android:layout_marginTop="8dp"
                     android:id="@+id/emailSegretario" />
             </LinearLayout>
-            
+
         </ScrollView>
-        
+
     </LinearLayout>
 
 
