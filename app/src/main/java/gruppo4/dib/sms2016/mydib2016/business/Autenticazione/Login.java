@@ -79,27 +79,24 @@ public class Login extends AppCompatActivity {
                 et_password.setText(savedPassword);
             }
 
-            final String email = et_email.getText().toString();
-            final String password = et_password.getText().toString();
-
             login.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     //valido i campi
-                    if("".equals(email)) {
-                        et_email.setError("Inserisci l'email accademica");
+                    if("".equals(et_email.getText().toString())) {
+                        et_email.setError("Inserisci l'email");
                         return;
                     }
-                    if(!isValidEmail(email)) {
+                    if(!isValidEmail(et_email.getText().toString())) {
                         et_email.setError("Inserisci l'email istituzionale");
                         return;
                     }
-                    if("".equals(password)) {
+                    if("".equals(et_password.getText().toString())) {
                         et_password.setError("Inserisci la password");
                         return;
                     }
 
-                    doRequest("http://mydib2016.altervista.org/api/index.php/login", email, password);
+                    doRequest("http://mydib2016.altervista.org/api/index.php/login", et_email.getText().toString(), et_password.getText().toString());
                 }
             });
         }
