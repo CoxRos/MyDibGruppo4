@@ -36,7 +36,12 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".business.logged.libretto.EsameActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:label="Utente ricercato"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:name=".business.logged.profilo.Profilo">
+
         </activity>
     </application>
 

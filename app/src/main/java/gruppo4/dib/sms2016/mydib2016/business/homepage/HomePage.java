@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -15,8 +14,9 @@ import android.view.MenuItem;
 import android.view.View;
 
 import gruppo4.dib.sms2016.mydib2016.R;
-import gruppo4.dib.sms2016.mydib2016.business.logged.Libretto;
+import gruppo4.dib.sms2016.mydib2016.business.logged.libretto.Libretto;
 import gruppo4.dib.sms2016.mydib2016.business.logged.libretto.EsameActivity;
+import gruppo4.dib.sms2016.mydib2016.business.logged.ricerca.RicercaUtente;
 import gruppo4.dib.sms2016.mydib2016.business.not_logged.InformazioniUni;
 import gruppo4.dib.sms2016.mydib2016.business.not_logged.Ristoro;
 import gruppo4.dib.sms2016.mydib2016.business.not_logged.bus.Bus;
@@ -97,6 +97,12 @@ public class HomePage extends AppCompatActivity
             navigationView.getMenu().setGroupVisible(R.id.logged3,false);
             navigationView.getMenu().setGroupVisible(R.id.librettoDR,true);
             fab.setVisibility(View.VISIBLE);
+        } else if(fromLogin == 3) {
+            fab.setVisibility(View.GONE);
+            RicercaUtente fragment = new RicercaUtente();
+            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, fragment);
+            fragmentTransaction.commit();
         }
 
     }
@@ -185,6 +191,10 @@ public class HomePage extends AppCompatActivity
             fragmentTransaction.commit();
         } else if (id == R.id.ricercaL) { //Da fare
             fab.setVisibility(View.GONE);
+            RicercaUtente fragment = new RicercaUtente();
+            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, fragment);
+            fragmentTransaction.commit();
 
         } else if (id == R.id.ristoroL) {
 

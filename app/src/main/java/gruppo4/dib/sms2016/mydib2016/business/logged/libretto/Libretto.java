@@ -1,4 +1,4 @@
-package gruppo4.dib.sms2016.mydib2016.business.logged;
+package gruppo4.dib.sms2016.mydib2016.business.logged.libretto;
 
 
 import android.app.ProgressDialog;

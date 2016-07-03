@@ -9,4 +9,5 @@
     <color name="white">#e6e6e6</color>
     <color name="background">#5f92e1</color>
     <color name="darkblack">#000</color>
+    <color name="search">#f1f1f1</color>
 </resources>
