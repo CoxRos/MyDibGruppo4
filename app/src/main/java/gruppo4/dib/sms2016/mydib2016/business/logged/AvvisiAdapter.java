@@ -90,44 +90,4 @@ public class AvvisiAdapter extends ArrayAdapter<Avvisi> {
     private static class ViewHolder {
         public TextView titolo, descrizione, data;
     }
-
-    /*ArrayList<Avvisi> news = new ArrayList<Avvisi>();
-
-    public AvvisiAdapter(ArrayList<Avvisi> news) {
-        this.news = news;
-    }
-
-    @Override
-    public NewsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view_news_layout, parent, false);
-        NewsViewHolder newsViewHolder = new NewsViewHolder(view);
-
-        return newsViewHolder;
-    }
-
-    @Override
-    public void onBindViewHolder(NewsViewHolder holder, int position) {
-
-        Avvisi newsItem = news.get(position);
-        holder.titolo.setText(newsItem.getTitolo());
-        holder.descrizione.setText(newsItem.getDescrizione());
-        holder.data.setText(newsItem.getData());
-    }
-
-    @Override
-    public int getItemCount() {
-        return news.size();
-    }
-
-    public static class NewsViewHolder extends RecyclerView.ViewHolder {
-
-        TextView titolo, descrizione, data;
-
-        public NewsViewHolder(View itemView) {
-            super(itemView);
-            titolo = (TextView)itemView.findViewById(R.id.text_cardnews_titolo);
-            descrizione = (TextView)itemView.findViewById(R.id.text_cardnews_descrizione);
-            data = (TextView)itemView.findViewById(R.id.text_cardnews_data);
-        }
-    }*/
 }
