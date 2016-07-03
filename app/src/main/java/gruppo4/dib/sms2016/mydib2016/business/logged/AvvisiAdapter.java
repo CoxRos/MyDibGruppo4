@@ -12,11 +12,11 @@ import gruppo4.dib.sms2016.mydib2016.R;
 /**
  * Created by sergiocorvino on 03/07/16.
  */
-public class NewsAdapter extends ArrayAdapter<News> {
+public class AvvisiAdapter extends ArrayAdapter<Avvisi> {
 
     private final int NEW_LAYOUT_RESOURCE;
 
-    public NewsAdapter(final Context context, final int NEW_LAYOUT_RESOURCE) {
+    public AvvisiAdapter(final Context context, final int NEW_LAYOUT_RESOURCE) {
         super(context, 0);
         this.NEW_LAYOUT_RESOURCE = NEW_LAYOUT_RESOURCE;
     }
@@ -28,7 +28,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
         // retrieve its corresponding ViewHolder, which optimizes lookup efficiency
         final View view = getWorkingView(convertView);
         final ViewHolder viewHolder = getViewHolder(view);
-        News newsItem = getItem(position);
+        Avvisi newsItem = getItem(position);
 
         viewHolder.titolo.setText(newsItem.getTitolo());
         viewHolder.descrizione.setText(newsItem.getDescrizione());
@@ -91,9 +91,9 @@ public class NewsAdapter extends ArrayAdapter<News> {
         public TextView titolo, descrizione, data;
     }
 
-    /*ArrayList<News> news = new ArrayList<News>();
+    /*ArrayList<Avvisi> news = new ArrayList<Avvisi>();
 
-    public NewsAdapter(ArrayList<News> news) {
+    public AvvisiAdapter(ArrayList<Avvisi> news) {
         this.news = news;
     }
 
@@ -108,7 +108,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
     @Override
     public void onBindViewHolder(NewsViewHolder holder, int position) {
 
-        News newsItem = news.get(position);
+        Avvisi newsItem = news.get(position);
         holder.titolo.setText(newsItem.getTitolo());
         holder.descrizione.setText(newsItem.getDescrizione());
         holder.data.setText(newsItem.getData());

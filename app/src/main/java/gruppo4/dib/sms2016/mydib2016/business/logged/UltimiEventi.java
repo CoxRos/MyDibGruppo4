@@ -35,7 +35,7 @@ public class UltimiEventi extends Fragment {
     ProgressDialog progressDialog;
     RequestQueue queue;
 
-    ListView listaNews;
+    ListView listaAvvisi;
     TextView noItem;
     ImageView noConnection;
 
@@ -51,7 +51,7 @@ public class UltimiEventi extends Fragment {
         progressBar = (ProgressBar)getActivity().findViewById(R.id.progressMedia);
         textViewMedia = (TextView)getActivity().findViewById((R.id.textProgressMedia));
 
-        listaNews = (ListView)getActivity().findViewById(R.id.listNewsHome);
+        listaAvvisi = (ListView)getActivity().findViewById(R.id.listNewsHome);
         noItem = (TextView) getActivity().findViewById(R.id.verificaConnNewsHome);
         noConnection = (ImageView)getActivity().findViewById(R.id.no_wifiNewsHome);
 
@@ -65,16 +65,6 @@ public class UltimiEventi extends Fragment {
         progressDialog = new ProgressDialog(getActivity());
 
         setUi("http://mydib2016.altervista.org/api/index.php/avvisi");
-        /*titolo = getResources().getStringArray(R.array.title);
-        descrizione = getResources().getStringArray(R.array.descrizioni);
-        data = getResources().getStringArray(R.array.data);
-
-        int count = 0;
-        for(String tit : titolo) {
-            News news = new News(tit, descrizione[count], data[count]);
-            count++;
-            newsAdapter.add(news);
-        }*/
     }
 
     private int getProgressMedia(int media) {
@@ -92,8 +82,8 @@ public class UltimiEventi extends Fragment {
     }
 
     private void setUi(String url) {
-        final NewsAdapter newsAdapter = new NewsAdapter(getActivity(), R.layout.card_view_news_layout);
-        listaNews.setAdapter(newsAdapter);
+        final AvvisiAdapter newsAdapter = new AvvisiAdapter(getActivity(), R.layout.card_view_news_layout);
+        listaAvvisi.setAdapter(newsAdapter);
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
             @Override
@@ -109,7 +99,7 @@ public class UltimiEventi extends Fragment {
                             descrione = jsonResponce.getString("descrizione");
                             data = jsonResponce.getString("data");
 
-                            newsAdapter.add(new News(titolo, descrione, data));
+                            newsAdapter.add(new Avvisi(titolo, descrione, data));
 
                             isEmpty = false;
                             count++;
@@ -119,13 +109,13 @@ public class UltimiEventi extends Fragment {
                     }
                 }
                 if(isEmpty) {
-                    listaNews.setVisibility(View.GONE);
+                    listaAvvisi.setVisibility(View.GONE);
                     noItem.setVisibility(View.VISIBLE);
                     noItem.setText("Non sono presenti avvisi");
                     noConnection.setVisibility(View.VISIBLE);
                     noConnection.setImageResource(R.mipmap.ic_dispiaciuto);
                 } else {
-                    listaNews.setVisibility(View.VISIBLE);
+                    listaAvvisi.setVisibility(View.VISIBLE);
                     noItem.setVisibility(View.GONE);
                     noConnection.setVisibility(View.GONE);
                 }
@@ -134,7 +124,7 @@ public class UltimiEventi extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                listaNews.setVisibility(View.GONE);
+                listaAvvisi.setVisibility(View.GONE);
                 noItem.setVisibility(View.VISIBLE);
                 noConnection.setVisibility(View.VISIBLE);
                 Log.d("ATTENZIONE:", volleyError.getCause().toString());
