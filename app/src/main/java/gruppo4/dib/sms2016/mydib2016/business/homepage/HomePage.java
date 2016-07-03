@@ -160,7 +160,7 @@ public class HomePage extends AppCompatActivity
         } else if (id == R.id.homepageL) { //Da fare
             fab.setVisibility(View.GONE);
 
-        } else if (id == R.id.librettoL) { //Da fare
+        } else if (id == R.id.librettoL) {
 
             Libretto fragment = new Libretto();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
