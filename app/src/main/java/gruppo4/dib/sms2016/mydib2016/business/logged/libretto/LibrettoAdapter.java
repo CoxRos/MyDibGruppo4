@@ -1,10 +1,13 @@
 package gruppo4.dib.sms2016.mydib2016.business.logged.libretto;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -30,7 +33,9 @@ public class LibrettoAdapter extends ArrayAdapter<EsameEntity> {
         final ViewHolder viewHolder = getViewHolder(view);
         final EsameEntity entry = getItem(position);
 
-        if (Integer.parseInt(entry.getVoto()) < 20) { //Pallino rosso
+        if(entry.getVoto().equalsIgnoreCase("IDO")) {
+            viewHolder.scalaVoto.setBackgroundResource(R.mipmap.greenline);
+        } else if (Integer.parseInt(entry.getVoto()) < 20) { //Pallino rosso
             viewHolder.scalaVoto.setBackgroundResource(R.mipmap.redline);
         } else if(Integer.parseInt(entry.getVoto()) < 24){ //Pallino arancione
             viewHolder.scalaVoto.setBackgroundResource(R.mipmap.orangeline);
@@ -44,6 +49,16 @@ public class LibrettoAdapter extends ArrayAdapter<EsameEntity> {
         viewHolder.data.setText(entry.getData());
         viewHolder.nome.setText(entry.getNome());
         viewHolder.voto.setText(entry.getVoto());
+
+        view.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(),EsameActivity.class);
+                intent.putExtra("esame",entry.getNome());
+                getContext().startActivity(intent);
+            }
+        });
 
         return view;
     }
@@ -83,6 +98,7 @@ public class LibrettoAdapter extends ArrayAdapter<EsameEntity> {
             viewHolder.data = (TextView) workingView.findViewById(R.id.dataEsame);
 
             workingView.setTag(viewHolder);
+
 
         } else {
             viewHolder = (ViewHolder) tag;

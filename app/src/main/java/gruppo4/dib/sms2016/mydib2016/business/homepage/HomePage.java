@@ -2,7 +2,9 @@ package gruppo4.dib.sms2016.mydib2016.business.homepage;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -10,9 +12,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import gruppo4.dib.sms2016.mydib2016.R;
 import gruppo4.dib.sms2016.mydib2016.business.logged.Libretto;
+import gruppo4.dib.sms2016.mydib2016.business.logged.libretto.EsameActivity;
 import gruppo4.dib.sms2016.mydib2016.business.not_logged.InformazioniUni;
 import gruppo4.dib.sms2016.mydib2016.business.not_logged.Ristoro;
 import gruppo4.dib.sms2016.mydib2016.business.not_logged.bus.Bus;
@@ -22,19 +26,30 @@ public class HomePage extends AppCompatActivity
 
     NavigationView navigationView = null;
     Toolbar toolbar = null;
-
+    FloatingActionButton fab;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_not_logged);
 
         //Setto il fragment iniziale
-        //0 proviene da skip, 1 da loggato.
+        //0 proviene da skip, 1 da loggato,2 da add esame e vuole andare a libretto.
         Intent intent = getIntent();
-        int fromLogin = intent.getIntExtra("login",0);
+        int fromLogin = intent.getIntExtra("goTo",0);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //Fab per l'aggiunta di esami in libretto
+        fab = (FloatingActionButton) findViewById(R.id.fabAddEsame);
+        fab.setVisibility(View.GONE);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), EsameActivity.class);
+                startActivity(intent);
+            }
+        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -58,8 +73,9 @@ public class HomePage extends AppCompatActivity
             navigationView.getMenu().setGroupVisible(R.id.logged1,false);
             navigationView.getMenu().setGroupVisible(R.id.logged2,false);
             navigationView.getMenu().setGroupVisible(R.id.logged3,false);
+            fab.setVisibility(View.GONE);
 
-        } else { //Login QUI DEVO METTERE LE ULTIME NEWS
+        } else if(fromLogin == 1)  { //Login QUI DEVO METTERE LE ULTIME NEWS
             Ristoro fragment = new Ristoro();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, fragment);
@@ -69,6 +85,18 @@ public class HomePage extends AppCompatActivity
             navigationView.getMenu().setGroupVisible(R.id.logged2,true);
             navigationView.getMenu().setGroupVisible(R.id.logged3,true);
             navigationView.getMenu().setGroupVisible(R.id.notlogged,false);
+            fab.setVisibility(View.GONE);
+        } else if(fromLogin == 2) {
+            Libretto fragment = new Libretto();
+            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, fragment);
+            fragmentTransaction.commit();
+
+            navigationView.getMenu().setGroupVisible(R.id.logged1,false);
+            navigationView.getMenu().setGroupVisible(R.id.logged2,false);
+            navigationView.getMenu().setGroupVisible(R.id.logged3,false);
+            navigationView.getMenu().setGroupVisible(R.id.librettoDR,true);
+            fab.setVisibility(View.VISIBLE);
         }
 
     }
@@ -112,21 +140,27 @@ public class HomePage extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.informazioniNL) {
+
+            fab.setVisibility(View.GONE);
             InformazioniUni fragment = new InformazioniUni();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, fragment);
             fragmentTransaction.commit();
+
         } else if (id == R.id.ristoroNL) {
+            fab.setVisibility(View.GONE);
             Ristoro fragment = new Ristoro();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, fragment);
             fragmentTransaction.commit();
         } else if (id == R.id.busNL) {
+            fab.setVisibility(View.GONE);
             Intent intent = new Intent(this, Bus.class);
             startActivity(intent);
         } else if (id == R.id.homepageL) { //Da fare
-        } else if (id == R.id.librettoL) { //Da fare
+            fab.setVisibility(View.GONE);
 
+        } else if (id == R.id.librettoL) { //Da fare
 
             Libretto fragment = new Libretto();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -137,26 +171,35 @@ public class HomePage extends AppCompatActivity
             navigationView.getMenu().setGroupVisible(R.id.logged2,false);
             navigationView.getMenu().setGroupVisible(R.id.logged3,false);
             navigationView.getMenu().setGroupVisible(R.id.librettoDR,true);
+            fab.setVisibility(View.VISIBLE);
 
 
         } else if (id == R.id.profiloL) { //Da fare
+            fab.setVisibility(View.GONE);
 
         } else if (id == R.id.informazioniL) {
+            fab.setVisibility(View.GONE);
             InformazioniUni fragment = new InformazioniUni();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, fragment);
             fragmentTransaction.commit();
         } else if (id == R.id.ricercaL) { //Da fare
+            fab.setVisibility(View.GONE);
 
         } else if (id == R.id.ristoroL) {
+
+            fab.setVisibility(View.GONE);
             Ristoro fragment = new Ristoro();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, fragment);
             fragmentTransaction.commit();
+
         } else if (id == R.id.busL) {
+            fab.setVisibility(View.GONE);
             Intent intent = new Intent(this, Bus.class);
             startActivity(intent);
         } else if (id == R.id.homepageLi) { //Da fare
+            fab.setVisibility(View.GONE);
 
         } else if (id == R.id.librettoLi) {
             Libretto fragment = new Libretto();
@@ -168,9 +211,13 @@ public class HomePage extends AppCompatActivity
             navigationView.getMenu().setGroupVisible(R.id.logged2,false);
             navigationView.getMenu().setGroupVisible(R.id.logged3,false);
             navigationView.getMenu().setGroupVisible(R.id.librettoDR,true);
+            fab.setVisibility(View.VISIBLE);
+
         } else if (id == R.id.graficiLi) {
+            fab.setVisibility(View.GONE);
 
         } else if (id == R.id.previsioniLi) {
+            fab.setVisibility(View.GONE);
 
         }
 

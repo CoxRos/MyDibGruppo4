@@ -2,12 +2,15 @@ package gruppo4.dib.sms2016.mydib2016.business.logged;
 
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -20,10 +23,14 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 import gruppo4.dib.sms2016.mydib2016.R;
+import gruppo4.dib.sms2016.mydib2016.business.logged.libretto.EsameActivity;
 import gruppo4.dib.sms2016.mydib2016.business.logged.libretto.LibrettoAdapter;
 import gruppo4.dib.sms2016.mydib2016.entity.EsameEntity;
 import gruppo4.dib.sms2016.mydib2016.network.Network;
+import gruppo4.dib.sms2016.mydib2016.utility.Utils;
 
 
 public class Libretto extends Fragment {
@@ -32,7 +39,7 @@ public class Libretto extends Fragment {
     ProgressDialog progressDialog;
 
     ListView listaEsami;
-    TextView noItem;
+    TextView noItem,librettoMedia;
     ImageView noEsami;
 
     public Libretto() {
@@ -45,6 +52,8 @@ public class Libretto extends Fragment {
                              Bundle savedInstanceState) {
         View rootview = inflater.inflate(R.layout.fragment_libretto, container, false);
 
+
+
         return rootview;
     }
 
@@ -55,6 +64,7 @@ public class Libretto extends Fragment {
         noItem = (TextView) getActivity().findViewById(R.id.messageNoExam);
         listaEsami = (ListView) getActivity().findViewById(R.id.listEsami);
         noEsami = (ImageView) getActivity().findViewById(R.id.no_esami);
+        librettoMedia = (TextView) getActivity().findViewById(R.id.librettoMedia);
 
         queue = Network.getInstance(getActivity()).
                 getRequestQueue();
@@ -65,8 +75,11 @@ public class Libretto extends Fragment {
     }
 
     private void setUI(String url) {
+        final ArrayList<EsameEntity> esamiDaCalcolare = new ArrayList<EsameEntity>();
+        final Utils utils = new Utils();
         final LibrettoAdapter listAdapter = new LibrettoAdapter(getActivity(), R.layout.layout_list_exams);
         listaEsami.setAdapter(listAdapter);
+
 
         JsonArrayRequest request = new JsonArrayRequest
                 (url, new Response.Listener<JSONArray>() {
@@ -75,6 +88,7 @@ public class Libretto extends Fragment {
                     public void onResponse(JSONArray response) {
                         boolean isEmpty = true;
                         String nome, cfu, voto, data;
+                        int countCfu = 0;
                         for (int i = 0; i < response.length(); i++) {
                             try {
                                 JSONObject oggettoJson = response.getJSONObject(i);
@@ -85,6 +99,10 @@ public class Libretto extends Fragment {
                                 data = oggettoJson.getString("dataEsame");
                                 isEmpty = false;
                                 listAdapter.add(new EsameEntity(nome, cfu, voto, data));
+                                if(!voto.equalsIgnoreCase("IDO")) {
+                                    esamiDaCalcolare.add(new EsameEntity(nome, cfu, voto, data));
+                                }
+                                countCfu = countCfu + Integer.parseInt(cfu);
 
                             } catch (Exception e) {
                                 System.out.println("catch: " + e);
@@ -94,6 +112,10 @@ public class Libretto extends Fragment {
                             listaEsami.setVisibility(View.GONE);
                             noItem.setVisibility(View.VISIBLE);
                             noEsami.setVisibility(View.VISIBLE);
+                            librettoMedia.setVisibility(View.GONE);
+                        } else {
+                            librettoMedia.setText("Media: " + utils.getMediaPonderata(esamiDaCalcolare) +
+                            " - CFU: " + countCfu + "/180" );
                         }
 
                         progressDialog.dismiss();

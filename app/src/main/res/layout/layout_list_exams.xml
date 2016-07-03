@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/backview">
 
     <ImageView
         android:layout_width="30dp"
@@ -17,7 +18,7 @@
         android:id="@+id/nomeEsame"
         android:textSize="20dp"
         android:drawableLeft="@mipmap/ic_exam"
-        android:textColor="@color/black"
+        android:textColor="@color/background"
         android:textStyle="bold"
         android:layout_alignParentTop="true"
         android:layout_marginTop="15dp"
@@ -29,8 +30,8 @@
         android:text="Voto:"
         android:textSize="20dp"
         android:drawableLeft="@mipmap/ic_mark"
-        android:textColor="@color/black"
-        android:textStyle="bold"
+        android:textColor="@color/darkblack"
+        android:textStyle="normal"
         android:id="@+id/textView3"
         android:layout_below="@+id/nomeEsame"
         android:layout_toEndOf="@+id/scalaVoto"
@@ -54,13 +55,13 @@
         android:textSize="20dp"
         android:drawableLeft="@mipmap/ic_credits"
         android:layout_marginLeft="30dp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
+        android:textColor="@color/darkblack"
+        android:textStyle="normal"
         android:id="@+id/textView5"
         android:layout_alignBaseline="@+id/votoEsame"
         android:layout_alignBottom="@+id/votoEsame"
-        android:layout_alignStart="@+id/dataEsame"
-        android:layout_marginStart="10dp" />
+        android:layout_alignEnd="@+id/dataEsame"
+        android:layout_marginEnd="78dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -69,19 +70,18 @@
         android:textSize="20dp"
         android:layout_marginLeft="15dp"
         android:id="@+id/cfuEsame"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="48dp"
         android:layout_alignBaseline="@+id/textView5"
         android:layout_alignBottom="@+id/textView5"
-        android:layout_toEndOf="@+id/textView5" />
+        android:layout_alignStart="@+id/dataEsame" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="16/02/2016"
-        android:textSize="20dp"
+        android:textSize="16dp"
         android:drawableLeft="@mipmap/ic_calendar"
-        android:textColor="@color/black"
-        android:textStyle="bold"
+        android:textColor="@color/bright_foreground_disabled_material_light"
         android:layout_marginTop="10dp"
         android:layout_marginRight="20dp"
         android:id="@+id/dataEsame"

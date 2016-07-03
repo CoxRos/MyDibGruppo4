@@ -108,7 +108,7 @@ public class Login extends AppCompatActivity {
 
     public void skipAuthentication(View view) {
         Intent intent = new Intent(getApplicationContext(), HomePage.class);
-        intent.putExtra("login", 0);
+        intent.putExtra("goTo", 0);
         startActivity(intent);
     }
 
@@ -171,7 +171,7 @@ public class Login extends AppCompatActivity {
 
     private void changeActivity() {
         Intent intent = new Intent(getApplicationContext(), HomePage.class);
-        intent.putExtra("login", 1);
+        intent.putExtra("goTo", 1);
         startActivity(intent);
     }
 
