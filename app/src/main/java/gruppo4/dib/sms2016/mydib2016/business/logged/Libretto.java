@@ -24,7 +24,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import gruppo4.dib.sms2016.mydib2016.DataAccessObject.DAOLibretto;
 import gruppo4.dib.sms2016.mydib2016.R;
 import gruppo4.dib.sms2016.mydib2016.business.logged.libretto.EsameActivity;
 import gruppo4.dib.sms2016.mydib2016.business.logged.libretto.LibrettoAdapter;
@@ -41,6 +43,8 @@ public class Libretto extends Fragment {
     ListView listaEsami;
     TextView noItem,librettoMedia;
     ImageView noEsami;
+
+    private DAOLibretto db;
 
     public Libretto() {
         // Required empty public constructor
@@ -61,17 +65,21 @@ public class Libretto extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        db = new DAOLibretto(getContext());
+
         noItem = (TextView) getActivity().findViewById(R.id.messageNoExam);
         listaEsami = (ListView) getActivity().findViewById(R.id.listEsami);
         noEsami = (ImageView) getActivity().findViewById(R.id.no_esami);
         librettoMedia = (TextView) getActivity().findViewById(R.id.librettoMedia);
 
-        queue = Network.getInstance(getActivity()).
-                getRequestQueue();
+        if(!getExamsDB()) {
+            queue = Network.getInstance(getActivity()).
+                    getRequestQueue();
 
-        progressDialog = new ProgressDialog(getActivity());
+            progressDialog = new ProgressDialog(getActivity());
 
-        setUI("http://mydib2016.altervista.org/api/index.php/libretto");
+            setUI("http://mydib2016.altervista.org/api/index.php/libretto");
+        }
     }
 
     private void setUI(String url) {
@@ -148,7 +156,27 @@ public class Libretto extends Fragment {
      * @return
      */
     private boolean getExamsDB() {
-        return false;
-    }
+        ArrayList<EsameEntity> esamiDaCalcolare = new ArrayList<EsameEntity>();
+        Utils utils = new Utils();
+        LibrettoAdapter listAdapter = new LibrettoAdapter(getActivity(), R.layout.layout_list_exams);
+        listaEsami.setAdapter(listAdapter);
+        List<EsameEntity> esami = db.getEsami();
 
+        if(esami.isEmpty()) {
+            return false;
+        }
+        else {
+            int countCfu = 0;
+            for(EsameEntity esam : esami) {
+                listAdapter.add(esam);
+                if(!esam.getVoto().equalsIgnoreCase("IDO")) {
+                    esamiDaCalcolare.add(esam);
+                }
+                countCfu = countCfu + Integer.parseInt(esam.getCfu());
+            }
+            librettoMedia.setText("Media: " + utils.getMediaPonderata(esamiDaCalcolare) +
+                    " - CFU: " + countCfu + "/180" );
+            return true;
+        }
+    }
 }

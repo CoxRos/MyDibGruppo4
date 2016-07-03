@@ -56,7 +56,20 @@ public class LibrettoAdapter extends ArrayAdapter<EsameEntity> {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(),EsameActivity.class);
                 intent.putExtra("esame",entry.getNome());
+                intent.putExtra("option", "visualizza");
                 getContext().startActivity(intent);
+            }
+        });
+
+        view.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                //si deve aprire il context menu per modificare o eliminare l'elemento
+                Intent intent = new Intent(getContext(), EsameActivity.class);
+                intent.putExtra("esame", entry.getNome());
+                intent.putExtra("option", "modifica");
+                getContext().startActivity(intent);
+                return true;
             }
         });
 
