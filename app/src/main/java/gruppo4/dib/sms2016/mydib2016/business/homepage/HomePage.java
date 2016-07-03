@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import gruppo4.dib.sms2016.mydib2016.R;
+import gruppo4.dib.sms2016.mydib2016.business.logged.UltimiEventi;
 import gruppo4.dib.sms2016.mydib2016.business.not_logged.InformazioniUni;
 import gruppo4.dib.sms2016.mydib2016.business.not_logged.Ristoro;
 import gruppo4.dib.sms2016.mydib2016.business.not_logged.bus.Bus;
@@ -59,7 +60,7 @@ public class HomePage extends AppCompatActivity
             navigationView.getMenu().setGroupVisible(R.id.logged3,false);
 
         } else { //Login QUI DEVO METTERE LE ULTIME NEWS
-            Ristoro fragment = new Ristoro();
+            UltimiEventi fragment = new UltimiEventi();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, fragment);
             fragmentTransaction.commit();

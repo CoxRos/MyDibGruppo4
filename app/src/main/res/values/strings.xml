@@ -22,4 +22,6 @@
     <string name="playsholder_email_login">n.cognome@studenti.uniba.it</string>
     <string name="playsholder_password_login">password</string>
 
+    <string name="button_avvisi">Vedi Altri</string>
+    
 </resources>
