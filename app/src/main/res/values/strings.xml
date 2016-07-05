@@ -27,4 +27,6 @@
     <string name="modificaEsame">Modifica i dati relativi a un esame che hai aggiunto al tuo libretto</string>
     <string name="visualizzaEsame">Sono visualizzati tutti i dati relativi all\'esame che hai al tuo libretto</string>
 
+    <string name="button_avvisi">Vedi Altri</string>
+
 </resources>

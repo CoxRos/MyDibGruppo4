@@ -179,16 +179,6 @@ public class Login extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private AlertDialog createAlert(String title, String message) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(title);
-        builder.setMessage(message);
-        builder.setPositiveButton("OK", null);
-
-        AlertDialog alertDialog = builder.create();
-        return alertDialog;
-    }
-
     private void saveLogged(boolean logged) {
         editor.putBoolean("loggato", logged);
         editor.commit();

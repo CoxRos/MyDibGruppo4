@@ -18,6 +18,7 @@ import gruppo4.dib.sms2016.mydib2016.business.logged.libretto.Libretto;
 import gruppo4.dib.sms2016.mydib2016.business.logged.libretto.EsameActivity;
 import gruppo4.dib.sms2016.mydib2016.business.logged.ricerca.RicercaUtente;
 import gruppo4.dib.sms2016.mydib2016.business.logged.sharing.Sharing;
+import gruppo4.dib.sms2016.mydib2016.business.logged.UltimiEventi;
 import gruppo4.dib.sms2016.mydib2016.business.not_logged.InformazioniUni;
 import gruppo4.dib.sms2016.mydib2016.business.not_logged.Ristoro;
 import gruppo4.dib.sms2016.mydib2016.business.not_logged.bus.Bus;
@@ -82,7 +83,8 @@ public class HomePage extends AppCompatActivity
             startActivity(intent5);
 
         } else if(fromLogin == 1)  { //Login QUI DEVO METTERE LE ULTIME NEWS
-            Ristoro fragment = new Ristoro();
+            UltimiEventi fragment = new UltimiEventi();
+
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, fragment);
             fragmentTransaction.commit();
