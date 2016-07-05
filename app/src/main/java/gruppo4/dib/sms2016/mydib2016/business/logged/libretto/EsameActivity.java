@@ -2,7 +2,9 @@ package gruppo4.dib.sms2016.mydib2016.business.logged.libretto;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -18,13 +20,23 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+
+import org.json.JSONObject;
+
 import java.util.Calendar;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import gruppo4.dib.sms2016.mydib2016.DataAccessObject.DAOLibretto;
 import gruppo4.dib.sms2016.mydib2016.R;
 import gruppo4.dib.sms2016.mydib2016.business.homepage.HomePage;
 import gruppo4.dib.sms2016.mydib2016.entity.EsameEntity;
+import gruppo4.dib.sms2016.mydib2016.network.CustomRequestObject;
+import gruppo4.dib.sms2016.mydib2016.network.Network;
 
 public class EsameActivity extends AppCompatActivity {
 
@@ -32,6 +44,11 @@ public class EsameActivity extends AppCompatActivity {
     private EditText edtData;
     private Button btnSalva;
     private TextView txtDescrizione;
+
+    private ProgressDialog progressDialog;
+
+    SharedPreferences preferences;
+    SharedPreferences.Editor edit;
 
     private final int DATE_DIALOG_ID = 0;
     private DAOLibretto db;
@@ -50,6 +67,9 @@ public class EsameActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        preferences = getSharedPreferences("esami", MODE_PRIVATE);
+        edit = preferences.edit();
 
         db = new DAOLibretto(this);
 
@@ -198,8 +218,9 @@ public class EsameActivity extends AppCompatActivity {
 
                     if (isInserted) {
                         Toast.makeText(getApplicationContext(), "Dati inseriti con successo", Toast.LENGTH_LONG).show();
+                        doRequest("http://mydib2016.altervista.org/api/index.php/insertEsame", "");
                     } else {
-                        Toast.makeText(getApplicationContext(), "Non è stato possibile inserire i dati", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Non è stato possibile inserire i dati... esame gia presente!", Toast.LENGTH_LONG).show();
                     }
                 }
                 else if(option.equals("modifica")) {
@@ -208,10 +229,12 @@ public class EsameActivity extends AppCompatActivity {
 
                     if(isUpdated) {
                         Toast.makeText(getApplicationContext(), "Dati aggiornati con successo", Toast.LENGTH_LONG).show();
+                        doRequest("http://mydib2016.altervista.org/api/index.php/updateEsame", holdMat);
                     } else {
-                        Toast.makeText(getApplicationContext(), "Non è stato possibile aggiornare i dati", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Non è stato possibile aggiornare i dati... esame gia presente!", Toast.LENGTH_LONG).show();
                     }
                 }
+                goToHome();
             }
         });
 
@@ -290,5 +313,59 @@ public class EsameActivity extends AppCompatActivity {
                 return new DatePickerDialog(this, dataListener, year, month, day);
         }
         return null;
+    }
+
+    /**
+     * chiamare per eliminare aggiungere e modificare i dati anche sul server
+     * @param url
+     * @param nomeEsame
+     */
+    private void doRequest(String url, final String nomeEsame) {
+        CustomRequestObject jsonRequest = new CustomRequestObject(Request.Method.POST, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject jsonObject) {
+                boolean status;
+                String message;
+                try {
+                    status = jsonObject.getBoolean("status");
+                    message = jsonObject.getString("message");
+                    Log.d("LOG DEL LIBRETTO", "STATO DELLA RICHIESTA " + status + " MESSAGE " + message);
+                }
+                catch (Exception e) {
+                    Log.d("ECCEZIONE LIBRETTO: ", e.getMessage().toString());
+                }
+                progressDialog.dismiss();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                edit.putInt("EXAMTOSEND", 1);//ESAME DA INVIARE PRESENTE
+                edit.commit();
+                Log.d("ERRORE LIBRETTO: ", volleyError.getMessage());
+                progressDialog.dismiss();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("materia", edtEsame.getText().toString());
+                params.put("cfu", edtCfu.getText().toString());
+                params.put("voto", edtVoto.getText().toString());
+                params.put("data", edtData.getText().toString());
+                params.put("holdMat", nomeEsame);
+                return params;
+            }
+        };
+        Network.getInstance(getApplicationContext()).addToRequestQueue(jsonRequest);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Attendere...");
+        progressDialog.setMessage("Aggiunta dei dati");
+        progressDialog.show();
+    }
+
+    private void goToHome() {
+        Intent intent = new Intent(EsameActivity.this, HomePage.class);
+        intent.putExtra("goTo",2);
+        startActivity(intent);
     }
 }

@@ -7,7 +7,10 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -15,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -31,6 +35,7 @@ import gruppo4.dib.sms2016.mydib2016.R;
 import gruppo4.dib.sms2016.mydib2016.business.logged.libretto.EsameActivity;
 import gruppo4.dib.sms2016.mydib2016.business.logged.libretto.LibrettoAdapter;
 import gruppo4.dib.sms2016.mydib2016.entity.EsameEntity;
+import gruppo4.dib.sms2016.mydib2016.network.CustomRequestArray;
 import gruppo4.dib.sms2016.mydib2016.network.Network;
 import gruppo4.dib.sms2016.mydib2016.utility.Utils;
 
@@ -78,7 +83,7 @@ public class Libretto extends Fragment {
 
             progressDialog = new ProgressDialog(getActivity());
 
-            setUI("http://mydib2016.altervista.org/api/index.php/libretto");
+            setUI("http://mydib2016.altervista.org/api/index.php/selectEsami");
         }
     }
 
@@ -89,11 +94,12 @@ public class Libretto extends Fragment {
         listaEsami.setAdapter(listAdapter);
 
 
-        JsonArrayRequest request = new JsonArrayRequest
-                (url, new Response.Listener<JSONArray>() {
+        CustomRequestArray request = new CustomRequestArray
+                (Request.Method.POST, url, null, new Response.Listener<JSONArray>() {
 
                     @Override
                     public void onResponse(JSONArray response) {
+                        Log.d("JSON ARRAY", response.toString());
                         boolean isEmpty = true;
                         String nome, cfu, voto, data;
                         int countCfu = 0;
@@ -101,16 +107,17 @@ public class Libretto extends Fragment {
                             try {
                                 JSONObject oggettoJson = response.getJSONObject(i);
 
-                                nome = oggettoJson.getString("nomeEsame");
-                                cfu = oggettoJson.getString("cfuEsame");
-                                voto = oggettoJson.getString("votoEsame");
-                                data = oggettoJson.getString("dataEsame");
+                                nome = oggettoJson.getString("materia");
+                                cfu = oggettoJson.getString("cfu");
+                                voto = oggettoJson.getString("voto");
+                                data = oggettoJson.getString("data");
                                 isEmpty = false;
                                 listAdapter.add(new EsameEntity(nome, cfu, voto, data));
                                 if(!voto.equalsIgnoreCase("IDO")) {
                                     esamiDaCalcolare.add(new EsameEntity(nome, cfu, voto, data));
                                 }
                                 countCfu = countCfu + Integer.parseInt(cfu);
+                                db.insertEsame(nome, cfu, voto, data);
 
                             } catch (Exception e) {
                                 System.out.println("catch: " + e);
@@ -134,8 +141,7 @@ public class Libretto extends Fragment {
                         listaEsami.setVisibility(View.GONE);
                         noItem.setVisibility(View.VISIBLE);
                         noEsami.setVisibility(View.VISIBLE);
-                        System.out.println("ERR: " + error.getMessage());
-                        Log.d("ATTENZIONE:", error.getCause().toString());
+                        Log.d("ATTENZIONE:", error.getMessage());
                         error.printStackTrace();
                         progressDialog.dismiss();
                     }
