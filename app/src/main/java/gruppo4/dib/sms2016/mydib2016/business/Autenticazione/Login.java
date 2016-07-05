@@ -46,8 +46,8 @@ public class Login extends AppCompatActivity {
 
     private static final Pattern EMAIL_ADDRESS = Pattern.compile("[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}\\@studenti.uniba.it");
 
-    public static SharedPreferences preferences;
-    private SharedPreferences.Editor editor;
+    public SharedPreferences preferences;
+    public SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +56,7 @@ public class Login extends AppCompatActivity {
         
         queue = Network.getInstance(getApplicationContext()).getRequestQueue();
 
-        preferences = getSharedPreferences("credenziali", MODE_PRIVATE);
+        preferences = getApplicationContext().getSharedPreferences("CREDENZIALI", MODE_PRIVATE);
         editor = preferences.edit();
 
         login = (Button) findViewById(R.id.button_login);
@@ -125,6 +125,9 @@ public class Login extends AppCompatActivity {
                 try {
                     int result = response.getInt("loggato");
                     if(result == 1) {
+                        //editor.putString("nome", response.getString("nome"));
+                        //editor.putString("cognome", response.getString("cognome"));
+                        //editor.commit();
                         Toast.makeText(getApplicationContext(), "Login effettuato con successo!", Toast.LENGTH_SHORT).show();
                         saveCredential(email, password);
                         saveLogged(true);
@@ -162,11 +165,11 @@ public class Login extends AppCompatActivity {
     }
 
     private void saveCredential(String email, String password) {
+        editor.putString("email", email);
         if(credenziali.isChecked()) {
-            editor.putString("email", email);
             editor.putString("password", password);
-            editor.commit();
         }
+        editor.commit();
     }
 
     private void changeActivity() {

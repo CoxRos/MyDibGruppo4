@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="gruppo4.dib.sms2016.mydib2016">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -36,13 +38,23 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".business.logged.libretto.EsameActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".business.logged.profilo.Profilo"
             android:label="Utente ricercato"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".business.logged.sharing.Sharing"
+            android:label="Condivisione materiale"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".business.logged.sharing.DownloadNotes"
+            android:label="Scarica Appunti"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:label="Carica Appunti"
             android:theme="@style/AppTheme.NoActionBar"
-            android:name=".business.logged.profilo.Profilo">
-
-        </activity>
+            android:name=".business.logged.sharing.UploadNotes"></activity>
     </application>
 
 </manifest>

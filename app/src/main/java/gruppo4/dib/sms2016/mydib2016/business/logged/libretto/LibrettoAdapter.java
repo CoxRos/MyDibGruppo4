@@ -2,12 +2,9 @@ package gruppo4.dib.sms2016.mydib2016.business.logged.libretto;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.Image;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -92,10 +89,10 @@ public class LibrettoAdapter extends ArrayAdapter<EsameEntity> {
             viewHolder = new ViewHolder();
 
             viewHolder.scalaVoto = (ImageView) workingView.findViewById(R.id.scalaVoto);
-            viewHolder.nome = (TextView) workingView.findViewById(R.id.nomeEsame);
+            viewHolder.nome = (TextView) workingView.findViewById(R.id.nomeAppunti);
             viewHolder.voto = (TextView) workingView.findViewById(R.id.votoEsame);
             viewHolder.cfu = (TextView) workingView.findViewById(R.id.cfuEsame);
-            viewHolder.data = (TextView) workingView.findViewById(R.id.dataEsame);
+            viewHolder.data = (TextView) workingView.findViewById(R.id.dataAppunti);
 
             workingView.setTag(viewHolder);
 

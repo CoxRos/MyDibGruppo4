@@ -17,6 +17,7 @@ import gruppo4.dib.sms2016.mydib2016.R;
 import gruppo4.dib.sms2016.mydib2016.business.logged.libretto.Libretto;
 import gruppo4.dib.sms2016.mydib2016.business.logged.libretto.EsameActivity;
 import gruppo4.dib.sms2016.mydib2016.business.logged.ricerca.RicercaUtente;
+import gruppo4.dib.sms2016.mydib2016.business.logged.sharing.Sharing;
 import gruppo4.dib.sms2016.mydib2016.business.not_logged.InformazioniUni;
 import gruppo4.dib.sms2016.mydib2016.business.not_logged.Ristoro;
 import gruppo4.dib.sms2016.mydib2016.business.not_logged.bus.Bus;
@@ -64,6 +65,7 @@ public class HomePage extends AppCompatActivity
          * Verifico se ha fatto la login oppure ha saltato la login
          */
         if(fromLogin == 0) { //Skip
+            /*
             InformazioniUni fragment = new InformazioniUni();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, fragment);
@@ -74,6 +76,9 @@ public class HomePage extends AppCompatActivity
             navigationView.getMenu().setGroupVisible(R.id.logged2,false);
             navigationView.getMenu().setGroupVisible(R.id.logged3,false);
             fab.setVisibility(View.GONE);
+            */
+            Intent intent5 = new Intent(HomePage.this, Sharing.class);
+            startActivity(intent5);
 
         } else if(fromLogin == 1)  { //Login QUI DEVO METTERE LE ULTIME NEWS
             Ristoro fragment = new Ristoro();
