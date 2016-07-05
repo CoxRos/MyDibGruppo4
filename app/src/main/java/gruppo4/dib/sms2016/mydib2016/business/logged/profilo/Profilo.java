@@ -64,8 +64,8 @@ public class Profilo extends AppCompatActivity {
         txtWebProfilo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(txtWebProfilo.getText().toString()));
+                Uri uriUrl = Uri.parse(txtWebProfilo.getText().toString());
+                Intent i = new Intent(Intent.ACTION_VIEW,uriUrl);
                 startActivity(i);
             }
         });
