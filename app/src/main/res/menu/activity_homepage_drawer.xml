@@ -38,7 +38,14 @@
     <group
         android:id="@+id/logged2"
         android:checkableBehavior="none">
-
+        <item
+            android:id="@+id/avvisiL"
+            android:icon="@mipmap/ic_avvisi"
+            android:title="Avvisi" />
+        <item
+            android:id="@+id/sharingL"
+            android:icon="@mipmap/ic_sharing"
+            android:title="Condivisione materiale" />
         <item
             android:id="@+id/informazioniL"
             android:icon="@mipmap/ic_info"

@@ -1,4 +1,4 @@
-package gruppo4.dib.sms2016.mydib2016.business.logged;
+package gruppo4.dib.sms2016.mydib2016.business.logged.homenews;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,11 +8,12 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import gruppo4.dib.sms2016.mydib2016.R;
+import gruppo4.dib.sms2016.mydib2016.entity.AvvisiEntity;
 
 /**
  * Created by sergiocorvino on 03/07/16.
  */
-public class AvvisiAdapter extends ArrayAdapter<Avvisi> {
+public class AvvisiAdapter extends ArrayAdapter<AvvisiEntity> {
 
     private final int NEW_LAYOUT_RESOURCE;
 
@@ -28,7 +29,7 @@ public class AvvisiAdapter extends ArrayAdapter<Avvisi> {
         // retrieve its corresponding ViewHolder, which optimizes lookup efficiency
         final View view = getWorkingView(convertView);
         final ViewHolder viewHolder = getViewHolder(view);
-        Avvisi newsItem = getItem(position);
+        AvvisiEntity newsItem = getItem(position);
 
         viewHolder.titolo.setText(newsItem.getTitolo());
         viewHolder.descrizione.setText(newsItem.getDescrizione());

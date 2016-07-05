@@ -2,6 +2,7 @@ package gruppo4.dib.sms2016.mydib2016.business.not_logged.bus;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -55,11 +56,17 @@ public class Bus extends AppCompatActivity {
     RequestQueue queue;
     ProgressDialog progressDialog;
 
+    public SharedPreferences preferences;
+    public SharedPreferences.Editor editor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bus);
+
+        preferences = getApplicationContext().getSharedPreferences("CREDENZIALI", MODE_PRIVATE);
+        editor = preferences.edit();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -68,6 +75,11 @@ public class Bus extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Bus.this, HomePage.class);
+                if(preferences.getBoolean("logged",false)) {
+                    intent.putExtra("goTo",1);
+                } else { //Non è loggato
+                    intent.putExtra("goTo",0);
+                }
                 startActivity(intent);
             }
         });

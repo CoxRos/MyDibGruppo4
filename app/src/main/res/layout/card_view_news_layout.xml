@@ -29,7 +29,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableLeft="@mipmap/ic_libretto"
+        android:drawableLeft="@mipmap/ic_calendar"
         android:drawablePadding="10dp"
         android:textSize="16dp"
         android:text="data"

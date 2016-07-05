@@ -1,4 +1,4 @@
-package gruppo4.dib.sms2016.mydib2016.business.logged;
+package gruppo4.dib.sms2016.mydib2016.business.logged.homenews;
 
 import android.app.ProgressDialog;
 import android.support.v4.app.Fragment;
@@ -23,11 +23,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import gruppo4.dib.sms2016.mydib2016.R;
+import gruppo4.dib.sms2016.mydib2016.entity.AvvisiEntity;
 import gruppo4.dib.sms2016.mydib2016.network.Network;
 
-/**
- * Created by sergiocorvino on 02/07/16.
- */
 public class UltimiEventi extends Fragment {
     ProgressBar progressBar;
     TextView textViewMedia;
@@ -99,7 +97,7 @@ public class UltimiEventi extends Fragment {
                             descrione = jsonResponce.getString("descrizione");
                             data = jsonResponce.getString("data");
 
-                            newsAdapter.add(new Avvisi(titolo, descrione, data));
+                            newsAdapter.add(new AvvisiEntity(titolo, descrione, data));
 
                             isEmpty = false;
                             count++;

@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/backview"
-    android:layout_marginTop="?attr/actionBarSize"
     tools:context=".business.not_logged.bus.RitornoBus">
 
     <LinearLayout

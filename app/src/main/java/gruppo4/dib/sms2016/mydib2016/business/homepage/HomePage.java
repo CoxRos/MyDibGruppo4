@@ -14,11 +14,12 @@ import android.view.MenuItem;
 import android.view.View;
 
 import gruppo4.dib.sms2016.mydib2016.R;
+import gruppo4.dib.sms2016.mydib2016.business.logged.homenews.Avvisi;
 import gruppo4.dib.sms2016.mydib2016.business.logged.libretto.Libretto;
 import gruppo4.dib.sms2016.mydib2016.business.logged.libretto.EsameActivity;
 import gruppo4.dib.sms2016.mydib2016.business.logged.ricerca.RicercaUtente;
 import gruppo4.dib.sms2016.mydib2016.business.logged.sharing.Sharing;
-import gruppo4.dib.sms2016.mydib2016.business.logged.UltimiEventi;
+import gruppo4.dib.sms2016.mydib2016.business.logged.homenews.UltimiEventi;
 import gruppo4.dib.sms2016.mydib2016.business.not_logged.InformazioniUni;
 import gruppo4.dib.sms2016.mydib2016.business.not_logged.Ristoro;
 import gruppo4.dib.sms2016.mydib2016.business.not_logged.bus.Bus;
@@ -237,6 +238,18 @@ public class HomePage extends AppCompatActivity
         } else if (id == R.id.previsioniLi) {
             fab.setVisibility(View.GONE);
 
+        } else if(id == R.id.avvisiL) {
+
+            fab.setVisibility(View.GONE);
+            Avvisi fragment = new Avvisi();
+            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, fragment);
+            fragmentTransaction.commit();
+        
+        } else if(id == R.id.sharingL) {
+            fab.setVisibility(View.GONE);
+            Intent intent = new Intent(this, Sharing.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

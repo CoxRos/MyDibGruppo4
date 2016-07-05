@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:background="@color/backview"
     android:orientation="vertical"
-    android:layout_marginTop="?attr/actionBarSize"
     tools:context="gruppo4.dib.sms2016.mydib2016.business.logged.ricerca.RicercaUtente">
 
 
