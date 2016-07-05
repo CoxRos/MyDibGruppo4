@@ -23,4 +23,8 @@
     <string name="playsholder_password_login">password</string>
     <string name="title_activity_prova">Prova</string>
 
+    <string name="insertEsame">Inserisci tutti i dati relativi al nuovo esame che vuoi aggiungere al tuo libretto</string>
+    <string name="modificaEsame">Modifica i dati relativi a un esame che hai aggiunto al tuo libretto</string>
+    <string name="visualizzaEsame">Sono visualizzati tutti i dati relativi all\'esame che hai al tuo libretto</string>
+
 </resources>

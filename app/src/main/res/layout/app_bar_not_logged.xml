@@ -33,6 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
             android:layout_margin="20dp"
+            android:elevation="1dp"
             android:src="@mipmap/ic_plus"
             app:backgroundTint="@color/drawer"/>
 
