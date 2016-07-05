@@ -67,11 +67,5 @@
             android:layout_marginTop="60dp"
             android:text="Scarica appunti dalla piattaforma" />
 
-        <ImageView
-            android:id="@+id/zozzona"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignStart="@+id/textView2" />
     </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>

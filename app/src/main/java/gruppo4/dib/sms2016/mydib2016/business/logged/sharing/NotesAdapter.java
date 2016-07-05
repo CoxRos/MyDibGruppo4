@@ -1,5 +1,6 @@
 package gruppo4.dib.sms2016.mydib2016.business.logged.sharing;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -23,6 +24,7 @@ import gruppo4.dib.sms2016.mydib2016.entity.NotaEntity;
 public class NotesAdapter extends ArrayAdapter<NotaEntity> {
 
     private final int NEW_LAYOUT_RESOURCE;
+    ProgressDialog progressDialog;
 
     public NotesAdapter(final Context context, final int NEW_LAYOUT_RESOURCE) {
         super(context, 0);
@@ -47,9 +49,8 @@ public class NotesAdapter extends ArrayAdapter<NotaEntity> {
 
             @Override
             public void onClick(View v) {
-                new DownloadImage().execute(entry.getUrl(),entry.getTitolo());
-                Toast.makeText(getContext(), "Nota salvata con successo",
-                        Toast.LENGTH_LONG).show();
+                new DownloadImage().execute(entry.getUrl(), entry.getTitolo());
+
             }
         });
 
@@ -118,11 +119,20 @@ public class NotesAdapter extends ArrayAdapter<NotaEntity> {
 
     private class DownloadImage extends AsyncTask<String, Void, Bitmap> {
 
-        String titolo;
+        String titolo, estensione;
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+            // Create a progressdialog
+            progressDialog = new ProgressDialog(getContext());
+            // Set progressdialog title
+            progressDialog.setTitle("Download appunti");
+            // Set progressdialog message
+            progressDialog.setMessage("Attendere...");
+            progressDialog.setIndeterminate(false);
+            // Show progressdialog
+            progressDialog.show();
         }
 
         @Override
@@ -130,6 +140,7 @@ public class NotesAdapter extends ArrayAdapter<NotaEntity> {
 
             String imageURL = params[0];
             titolo = params[1];
+            estensione = getEstensione(imageURL);
 
             Bitmap bitmap = null;
             try {
@@ -146,18 +157,21 @@ public class NotesAdapter extends ArrayAdapter<NotaEntity> {
         @Override
         protected void onPostExecute(Bitmap result) {
             // Set the bitmap into ImageView
-            saveImage(result,titolo);
+            saveImage(result, titolo, estensione);
+            progressDialog.dismiss();
+            Toast.makeText(getContext(), "Nota salvata con successo",
+                    Toast.LENGTH_LONG).show();
         }
 
-        private void saveImage(Bitmap finalBitmap, String titolo) {
+        private void saveImage(Bitmap finalBitmap, String titolo, String estensione) {
 
             String root = Environment.getExternalStorageDirectory().toString();
             File myDir = new File(root + "/saved_images");
             myDir.mkdirs();
 
-            String fname = titolo + ".jpg";
+            String fname = titolo + estensione;
             File file = new File(myDir, fname);
-            if (file.exists ()) file.delete ();
+            if (file.exists()) file.delete();
             try {
                 FileOutputStream out = new FileOutputStream(file);
                 finalBitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
@@ -169,5 +183,20 @@ public class NotesAdapter extends ArrayAdapter<NotaEntity> {
                 e.printStackTrace();
             }
         }
+
+        private String getEstensione(String percorso) {
+            String estensione = ".";
+
+            for (int i = percorso.length(); i >= 0; i--) {
+                char lettera = percorso.charAt(i - 1);
+                if (lettera == '.') {
+                    estensione = estensione + percorso.substring(i, percorso.length());
+                    break;
+                }
+            }
+
+            return estensione;
+        }
+
     }
 }

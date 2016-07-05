@@ -19,15 +19,9 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-
 import gruppo4.dib.sms2016.mydib2016.R;
-import gruppo4.dib.sms2016.mydib2016.business.homepage.HomePage;
-import gruppo4.dib.sms2016.mydib2016.business.logged.libretto.LibrettoAdapter;
-import gruppo4.dib.sms2016.mydib2016.entity.EsameEntity;
 import gruppo4.dib.sms2016.mydib2016.entity.NotaEntity;
 import gruppo4.dib.sms2016.mydib2016.network.Network;
-import gruppo4.dib.sms2016.mydib2016.utility.Utils;
 
 public class DownloadNotes extends AppCompatActivity {
 
@@ -63,7 +57,8 @@ public class DownloadNotes extends AppCompatActivity {
         no_appunti = (ImageView) findViewById(R.id.no_appunti);
         messageNoNotes = (TextView) findViewById(R.id.messageNoNotes);
 
-        setUI("http://mydib2016.altervista.org/api/index.php/note");
+        setUI("http://mydib2016.altervista.org/api/index.php/selectNote");
+
     }
 
     private void setUI(String url) {
