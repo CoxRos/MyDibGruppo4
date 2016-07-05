@@ -26,7 +26,7 @@ public class Utils {
         for(EsameEntity esame : esami) {
             result = result + Integer.parseInt(esame.getVoto());
         }
-        return result/esami.size();
+        return troncamento(result/esami.size());
     }
 
     public static double troncamento(double x){

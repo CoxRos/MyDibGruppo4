@@ -63,7 +63,7 @@ public class DownloadNotes extends AppCompatActivity {
         no_appunti = (ImageView) findViewById(R.id.no_appunti);
         messageNoNotes = (TextView) findViewById(R.id.messageNoNotes);
 
-        setUI("http://mydib2016.altervista.org/api/index.php/note");
+        setUI("http://mydib2016.altervista.org/api/index.php/selectNote");
     }
 
     private void setUI(String url) {

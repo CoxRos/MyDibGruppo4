@@ -125,9 +125,9 @@ public class Login extends AppCompatActivity {
                 try {
                     int result = response.getInt("loggato");
                     if(result == 1) {
-                        //editor.putString("nome", response.getString("nome"));
-                        //editor.putString("cognome", response.getString("cognome"));
-                        //editor.commit();
+                        editor.putString("nome", response.getString("nome"));
+                        editor.putString("cognome", response.getString("cognome"));
+                        editor.commit();
                         Toast.makeText(getApplicationContext(), "Login effettuato con successo!", Toast.LENGTH_SHORT).show();
                         saveCredential(email, password);
                         saveLogged(true);
