@@ -136,7 +136,6 @@ public class Login extends AppCompatActivity {
                             editor.putString("password", password);
                         }
                         editor.putString("matricola",response.getString("matricola"));
-                        System.out.println("Matricola: " + response.getString("matricola"));
                         editor.commit();
                         logged = true;
 

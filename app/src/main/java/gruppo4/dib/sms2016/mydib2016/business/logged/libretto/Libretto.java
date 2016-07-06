@@ -152,7 +152,8 @@ public class Libretto extends Fragment {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("matricola", preferences.getString("matricola", "") );
+                String matricola = preferences.getString("matricola", "");
+                params.put("matricola", matricola);
                 return params;
             }
         };
