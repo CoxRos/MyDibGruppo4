@@ -44,98 +44,99 @@ public class HomePage extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_not_logged);
 
+        if(savedInstanceState == null) {
+            credenziali.getLogged(this);
+            logged = credenziali.logged;
 
-        credenziali.getLogged(this);
-        logged = credenziali.logged;
+            //Setto il fragment iniziale
+            //0 proviene da skip, 1 da loggato,2 da add esame e vuole andare a libretto.
+            Intent intent = getIntent();
+            int fromLogin = intent.getIntExtra("goTo", 0);
 
-        //Setto il fragment iniziale
-        //0 proviene da skip, 1 da loggato,2 da add esame e vuole andare a libretto.
-        Intent intent = getIntent();
-        int fromLogin = intent.getIntExtra("goTo", 0);
+            toolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+            //Fab per l'aggiunta di esami in libretto
+            fab = (FloatingActionButton) findViewById(R.id.fabAddEsame);
+            fab.setVisibility(View.GONE);
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getApplicationContext(), EsameActivity.class);
+                    intent.putExtra("option", "add");
+                    startActivity(intent);
+                }
+            });
 
-        //Fab per l'aggiunta di esami in libretto
-        fab = (FloatingActionButton) findViewById(R.id.fabAddEsame);
-        fab.setVisibility(View.GONE);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), EsameActivity.class);
-                intent.putExtra("option", "add");
-                startActivity(intent);
-            }
-        });
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                    this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+            drawer.setDrawerListener(toggle);
+            toggle.syncState();
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
-
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+            navigationView = (NavigationView) findViewById(R.id.nav_view);
+            navigationView.setNavigationItemSelectedListener(this);
 
         /*
          * Verifico se ha fatto la login oppure ha saltato la login
          */
-        if (fromLogin == 0) { //Skip
-            fab.setVisibility(View.GONE);
-            InformazioniUni fragment = new InformazioniUni();
-            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, fragment);
-            fragmentTransaction.commit();
+            if (fromLogin == 0) { //Skip
+                fab.setVisibility(View.GONE);
+                InformazioniUni fragment = new InformazioniUni();
+                android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, fragment);
+                fragmentTransaction.commit();
 
-            if (fragment != null && fragment.isVisible()) {
-                isInHome = true;
+                if (fragment != null && fragment.isVisible()) {
+                    isInHome = true;
+                }
+
+                navigationView.getMenu().setGroupVisible(R.id.notlogged, true);
+                navigationView.getMenu().setGroupVisible(R.id.logged1, false);
+                navigationView.getMenu().setGroupVisible(R.id.logged2, false);
+                navigationView.getMenu().setGroupVisible(R.id.logged3, false);
+
+            } else if (fromLogin == 1) { //Login QUI DEVO METTERE LE ULTIME NEWS
+                setTitle(R.string.title_activity_homepage);
+                fab.setVisibility(View.GONE);
+                UltimiEventi fragment = new UltimiEventi();
+                android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, fragment, "HOMELOGGED");
+                fragmentTransaction.commit();
+
+                if (fragment != null && fragment.isVisible()) {
+                    isInHome = true;
+                }
+
+                navigationView.getMenu().setGroupVisible(R.id.logged1, true);
+                navigationView.getMenu().setGroupVisible(R.id.logged2, true);
+                navigationView.getMenu().setGroupVisible(R.id.logged3, true);
+                navigationView.getMenu().setGroupVisible(R.id.notlogged, false);
+
+            } else if (fromLogin == 2) { //vai a libretto
+
+                fab.setVisibility(View.VISIBLE);
+                Libretto fragment = new Libretto();
+                android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, fragment);
+                fragmentTransaction.commit();
+
+                isInHome = false;
+
+                navigationView.getMenu().setGroupVisible(R.id.logged1, false);
+                navigationView.getMenu().setGroupVisible(R.id.logged2, false);
+                navigationView.getMenu().setGroupVisible(R.id.logged3, false);
+                navigationView.getMenu().setGroupVisible(R.id.librettoDR, true);
+
+            } else if (fromLogin == 3) { //Da profilo voglio tornare a ricerca
+                fab.setVisibility(View.GONE);
+                RicercaUtente fragment = new RicercaUtente();
+                android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, fragment);
+                fragmentTransaction.commit();
+
+                isInHome = false;
             }
-
-            navigationView.getMenu().setGroupVisible(R.id.notlogged, true);
-            navigationView.getMenu().setGroupVisible(R.id.logged1, false);
-            navigationView.getMenu().setGroupVisible(R.id.logged2, false);
-            navigationView.getMenu().setGroupVisible(R.id.logged3, false);
-
-        } else if (fromLogin == 1) { //Login QUI DEVO METTERE LE ULTIME NEWS
-            setTitle(R.string.title_activity_homepage);
-            fab.setVisibility(View.GONE);
-            UltimiEventi fragment = new UltimiEventi();
-            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, fragment, "HOMELOGGED");
-            fragmentTransaction.commit();
-
-            if (fragment != null && fragment.isVisible()) {
-                isInHome = true;
-            }
-
-            navigationView.getMenu().setGroupVisible(R.id.logged1, true);
-            navigationView.getMenu().setGroupVisible(R.id.logged2, true);
-            navigationView.getMenu().setGroupVisible(R.id.logged3, true);
-            navigationView.getMenu().setGroupVisible(R.id.notlogged, false);
-
-        } else if (fromLogin == 2) { //vai a libretto
-
-            fab.setVisibility(View.VISIBLE);
-            Libretto fragment = new Libretto();
-            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, fragment);
-            fragmentTransaction.commit();
-
-            isInHome = false;
-
-            navigationView.getMenu().setGroupVisible(R.id.logged1, false);
-            navigationView.getMenu().setGroupVisible(R.id.logged2, false);
-            navigationView.getMenu().setGroupVisible(R.id.logged3, false);
-            navigationView.getMenu().setGroupVisible(R.id.librettoDR, true);
-
-        } else if (fromLogin == 3) { //Da profilo voglio tornare a ricerca
-            fab.setVisibility(View.GONE);
-            RicercaUtente fragment = new RicercaUtente();
-            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, fragment);
-            fragmentTransaction.commit();
-
-            isInHome = false;
         }
 
     }

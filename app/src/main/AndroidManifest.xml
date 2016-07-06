@@ -36,6 +36,7 @@
             android:name=".business.homepage.HomePage"
             android:label="@string/title_activity_homepage"
             android:noHistory="true"
+            android:configChanges="orientation|screenSize"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".business.not_logged.bus.Bus"
