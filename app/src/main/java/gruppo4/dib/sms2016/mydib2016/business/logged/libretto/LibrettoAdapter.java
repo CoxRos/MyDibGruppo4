@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
@@ -45,6 +46,7 @@ public class LibrettoAdapter extends ArrayAdapter<EsameEntity> {
     static String matricola;
 
     private ProgressDialog progressDialog;
+    RequestQueue queue;
 
     public LibrettoAdapter(final Context context, final int NEW_LAYOUT_RESOURCE) {
         super(context, 0);
@@ -55,6 +57,9 @@ public class LibrettoAdapter extends ArrayAdapter<EsameEntity> {
 
         credenziali.getMatricola(context);
         matricola = credenziali.matricola;
+
+        queue = Network.getInstance(context).getRequestQueue();
+
     }
 
     @Override

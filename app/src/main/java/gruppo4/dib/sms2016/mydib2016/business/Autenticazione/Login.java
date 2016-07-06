@@ -52,6 +52,7 @@ public class Login extends AppCompatActivity {
     public static boolean logged;
     public static String matricola,email;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,7 +105,6 @@ public class Login extends AppCompatActivity {
             });
         }
         else {
-            //createAlert("Bentornato", savedEmail).show();
             changeActivity();
         }
     }
@@ -182,6 +182,7 @@ public class Login extends AppCompatActivity {
         startActivity(intent);
     }
 
+
     public void getLogged(Context context) {
         SharedPreferences prefs = context.getSharedPreferences("CREDENZIALI", MODE_PRIVATE);
         logged = prefs.getBoolean("logged", false);
@@ -202,5 +203,6 @@ public class Login extends AppCompatActivity {
     public void getEmail(Context context) {
         SharedPreferences prefs = context.getSharedPreferences("CREDENZIALI", MODE_PRIVATE);
         email = prefs.getString("email", "");
+
     }
 }

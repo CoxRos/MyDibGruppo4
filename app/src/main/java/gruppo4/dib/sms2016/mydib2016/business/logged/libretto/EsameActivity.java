@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
@@ -47,6 +48,7 @@ public class EsameActivity extends AppCompatActivity {
     private TextView txtDescrizione;
 
     private ProgressDialog progressDialog;
+    RequestQueue queue;
 
     SharedPreferences preferences;
     SharedPreferences.Editor edit;
@@ -79,6 +81,8 @@ public class EsameActivity extends AppCompatActivity {
         matricola = credenziali.matricola;
 
         db = new DAOLibretto(this);
+
+        queue = Network.getInstance(getApplicationContext()).getRequestQueue();
 
         //prendo la data corrente
         final Calendar c = Calendar.getInstance();

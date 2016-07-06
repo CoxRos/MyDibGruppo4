@@ -22,9 +22,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
+import gruppo4.dib.sms2016.mydib2016.DataAccessObject.DAOLibretto;
 import gruppo4.dib.sms2016.mydib2016.R;
 import gruppo4.dib.sms2016.mydib2016.entity.AvvisiEntity;
+import gruppo4.dib.sms2016.mydib2016.entity.EsameEntity;
 import gruppo4.dib.sms2016.mydib2016.network.Network;
+import gruppo4.dib.sms2016.mydib2016.utility.Utils;
 
 public class UltimiEventi extends Fragment {
     ProgressBar progressBar;
@@ -37,6 +42,9 @@ public class UltimiEventi extends Fragment {
     TextView noItem;
     ImageView noConnection;
 
+    private DAOLibretto db;
+    private Utils util;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_ultimi_eventi, container, false);
@@ -46,6 +54,9 @@ public class UltimiEventi extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        db = new DAOLibretto(getContext());
+        util = new Utils();
+
         progressBar = (ProgressBar)getActivity().findViewById(R.id.progressMedia);
         textViewMedia = (TextView)getActivity().findViewById((R.id.textProgressMedia));
 
@@ -53,11 +64,11 @@ public class UltimiEventi extends Fragment {
         noItem = (TextView) getActivity().findViewById(R.id.verificaConnNewsHome);
         noConnection = (ImageView)getActivity().findViewById(R.id.no_wifiNewsHome);
 
-        progressBar.setProgress(getProgressMedia(22)); //qui metto la media intera
+        progressBar.setProgress(getProgressMedia((int) util.getMediaPonderata(getEsami())));
         progressBar.setMax(13);
         progressBar.setProgressDrawable(getActivity().getResources().getDrawable(R.drawable.progress_bar));
 
-        textViewMedia.setText("Media Ponderata: 22,50/30"); //qui ci va la reale media
+        textViewMedia.setText("Media Ponderata: " + util.getMediaPonderata(getEsami()) + "/30");
 
         queue = Network.getInstance(getActivity()).getRequestQueue();
         progressDialog = new ProgressDialog(getActivity());
@@ -80,7 +91,7 @@ public class UltimiEventi extends Fragment {
     }
 
     private void setUi(String url) {
-        final AvvisiAdapter newsAdapter = new AvvisiAdapter(getActivity(), R.layout.card_view_news_layout);
+        final AvvisiAdapter newsAdapter = new AvvisiAdapter(getActivity(), R.layout.layout_list_avvisi);
         listaAvvisi.setAdapter(newsAdapter);
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
@@ -125,7 +136,7 @@ public class UltimiEventi extends Fragment {
                 listaAvvisi.setVisibility(View.GONE);
                 noItem.setVisibility(View.VISIBLE);
                 noConnection.setVisibility(View.VISIBLE);
-                Log.d("ATTENZIONE:", volleyError.getCause().toString());
+                Log.d("ATTENZIONE:", volleyError.toString());
                 progressDialog.dismiss();
             }
         });
@@ -133,5 +144,11 @@ public class UltimiEventi extends Fragment {
         progressDialog.setTitle("Attendere");
         progressDialog.setMessage("Caricamento Avvisi");
         progressDialog.show();
+    }
+
+    private ArrayList<EsameEntity> getEsami() {
+        ArrayList<EsameEntity> esami = new ArrayList<EsameEntity>();
+
+        return esami = (ArrayList<EsameEntity>) db.getEsami();
     }
 }
