@@ -2,6 +2,8 @@ package gruppo4.dib.sms2016.mydib2016.business.logged.libretto;
 
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -13,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -22,7 +25,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import gruppo4.dib.sms2016.mydib2016.DataAccessObject.DAOLibretto;
 import gruppo4.dib.sms2016.mydib2016.R;
@@ -41,6 +46,8 @@ public class Libretto extends Fragment {
     TextView noItem,librettoMedia;
     ImageView noEsami;
     LinearLayout subBar;
+
+    public SharedPreferences preferences;
 
     private DAOLibretto db;
 
@@ -62,6 +69,8 @@ public class Libretto extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        preferences = getActivity().getSharedPreferences("CREDENZIALI", Context.MODE_PRIVATE);
 
         db = new DAOLibretto(getContext());
 
@@ -141,7 +150,14 @@ public class Libretto extends Fragment {
                         error.printStackTrace();
                         progressDialog.dismiss();
                     }
-                });
+                }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("matricola", preferences.getString("matricola", "") );
+                return params;
+            }
+        };
 
         Network.getInstance(getActivity()).addToRequestQueue(request);
         progressDialog.setTitle("Attendere");

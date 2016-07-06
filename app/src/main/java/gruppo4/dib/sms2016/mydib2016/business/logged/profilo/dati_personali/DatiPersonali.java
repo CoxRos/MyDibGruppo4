@@ -2,6 +2,7 @@ package gruppo4.dib.sms2016.mydib2016.business.logged.profilo.dati_personali;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -63,11 +64,11 @@ public class DatiPersonali extends Fragment {
         email.setText(preferences.getString("email", ""));
         txtMatricolaProfilo.setText(preferences.getString("matricola", "Dato non disponibile"));
 
-
         //Qui avvaloro la lista di esami
         ArrayList<EsameEntity> esami =(ArrayList<EsameEntity>) db.getEsami();
         ponderata.setText(Double.toString(utility.getMediaPonderata(esami)));
         aritmetica.setText(Double.toString(utility.getMediaAritmetica(esami)));
+        cfu.setText(Integer.toString(utility.getCFU(esami)));
     }
 
 }

@@ -50,6 +50,7 @@ public class Login extends AppCompatActivity {
     public SharedPreferences preferences;
     public SharedPreferences.Editor editor;
     public static boolean logged;
+    public static String matricola;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -185,6 +186,11 @@ public class Login extends AppCompatActivity {
     public void getLogged(Context context) {
         SharedPreferences prefs = context.getSharedPreferences("CREDENZIALI", MODE_PRIVATE);
         logged = prefs.getBoolean("logged", false);
+    }
+
+    public void getMatricola(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences("CREDENZIALI", MODE_PRIVATE);
+        matricola = prefs.getString("matricola", "");
     }
 
     public void setLogged(Context context, boolean valore) {

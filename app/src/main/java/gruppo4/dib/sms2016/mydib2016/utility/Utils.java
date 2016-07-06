@@ -29,6 +29,14 @@ public class Utils {
         return troncamento(result/esami.size());
     }
 
+    public int getCFU(ArrayList<EsameEntity> esami) {
+        int result = 0;
+        for(EsameEntity esame : esami) {
+            result = result + Integer.parseInt(esame.getCfu());
+        }
+        return result;
+    }
+
     public static double troncamento(double x){
         x = Math.floor(x*100);
         x = x/100;

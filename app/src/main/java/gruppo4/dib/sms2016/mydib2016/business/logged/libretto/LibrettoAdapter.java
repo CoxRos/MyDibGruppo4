@@ -27,6 +27,7 @@ import java.util.Map;
 
 import gruppo4.dib.sms2016.mydib2016.DataAccessObject.DAOLibretto;
 import gruppo4.dib.sms2016.mydib2016.R;
+import gruppo4.dib.sms2016.mydib2016.business.Autenticazione.Login;
 import gruppo4.dib.sms2016.mydib2016.business.homepage.HomePage;
 import gruppo4.dib.sms2016.mydib2016.entity.EsameEntity;
 import gruppo4.dib.sms2016.mydib2016.network.CustomRequestObject;
@@ -40,6 +41,9 @@ public class LibrettoAdapter extends ArrayAdapter<EsameEntity> {
     SharedPreferences preferences;
     SharedPreferences.Editor edit;
 
+    Login credenziali = new Login();
+    static String matricola;
+
     private ProgressDialog progressDialog;
 
     public LibrettoAdapter(final Context context, final int NEW_LAYOUT_RESOURCE) {
@@ -48,6 +52,9 @@ public class LibrettoAdapter extends ArrayAdapter<EsameEntity> {
         db = new DAOLibretto(context);
         preferences = context.getSharedPreferences("esami", Context.MODE_PRIVATE);
         edit = preferences.edit();
+
+        credenziali.getMatricola(context);
+        matricola = credenziali.matricola;
     }
 
     @Override
@@ -232,6 +239,7 @@ public class LibrettoAdapter extends ArrayAdapter<EsameEntity> {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("materia", nomeEsame);
+                params.put("matricola",matricola);
                 return params;
             }
         };

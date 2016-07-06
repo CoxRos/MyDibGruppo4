@@ -33,6 +33,7 @@ import java.util.Map;
 
 import gruppo4.dib.sms2016.mydib2016.DataAccessObject.DAOLibretto;
 import gruppo4.dib.sms2016.mydib2016.R;
+import gruppo4.dib.sms2016.mydib2016.business.Autenticazione.Login;
 import gruppo4.dib.sms2016.mydib2016.business.homepage.HomePage;
 import gruppo4.dib.sms2016.mydib2016.entity.EsameEntity;
 import gruppo4.dib.sms2016.mydib2016.network.CustomRequestObject;
@@ -49,6 +50,9 @@ public class EsameActivity extends AppCompatActivity {
 
     SharedPreferences preferences;
     SharedPreferences.Editor edit;
+
+    Login credenziali = new Login();
+    static String matricola;
 
     private final int DATE_DIALOG_ID = 0;
     private DAOLibretto db;
@@ -70,6 +74,9 @@ public class EsameActivity extends AppCompatActivity {
 
         preferences = getSharedPreferences("esami", MODE_PRIVATE);
         edit = preferences.edit();
+
+        credenziali.getMatricola(this);
+        matricola = credenziali.matricola;
 
         db = new DAOLibretto(this);
 
@@ -353,6 +360,7 @@ public class EsameActivity extends AppCompatActivity {
                 params.put("voto", edtVoto.getText().toString());
                 params.put("data", edtData.getText().toString());
                 params.put("holdMat", nomeEsame);
+                params.put("matricola",matricola);
                 return params;
             }
         };
