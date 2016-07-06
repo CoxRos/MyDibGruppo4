@@ -45,7 +45,6 @@ public class Libretto extends Fragment {
     ListView listaEsami;
     TextView noItem,librettoMedia;
     ImageView noEsami;
-    LinearLayout subBar;
 
     public SharedPreferences preferences;
 
@@ -74,7 +73,6 @@ public class Libretto extends Fragment {
 
         db = new DAOLibretto(getContext());
 
-        subBar = (LinearLayout) getActivity().findViewById(R.id.subBarLibretto);
         noItem = (TextView) getActivity().findViewById(R.id.messageNoExam);
         listaEsami = (ListView) getActivity().findViewById(R.id.listEsami);
         noEsami = (ImageView) getActivity().findViewById(R.id.no_esami);
@@ -127,7 +125,7 @@ public class Libretto extends Fragment {
                             }
                         }
                         if (isEmpty) {
-                            subBar.setVisibility(View.GONE);
+                            //subBar.setVisibility(View.GONE);
                             listaEsami.setVisibility(View.GONE);
                             noItem.setVisibility(View.VISIBLE);
                             noEsami.setVisibility(View.VISIBLE);
@@ -142,7 +140,7 @@ public class Libretto extends Fragment {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        subBar.setVisibility(View.GONE);
+                        //subBar.setVisibility(View.GONE);
                         listaEsami.setVisibility(View.GONE);
                         noItem.setVisibility(View.VISIBLE);
                         noEsami.setVisibility(View.VISIBLE);
