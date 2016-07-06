@@ -57,7 +57,7 @@ public class UploadNotes extends AppCompatActivity {
             }
         });
 
-        credenziali.getMatricola(getApplicationContext());
+        credenziali.getEmail(getApplicationContext());
         email = credenziali.email;
 
         titolaNota = (EditText) findViewById(R.id.titolaNota);
@@ -253,7 +253,6 @@ public class UploadNotes extends AppCompatActivity {
 
     private String changeName(String parola, String percorso) {
         String percorsoResult = percorso;
-        //"/storage/emulated/0/saved_images/BiondaTenera.jpg"
         String estensione = ".";
         for(int i= percorso.length(); i>= 0; i--) {
             char lettera = percorso.charAt(i-1);

@@ -16,6 +16,8 @@
     <string name="title_fragment_previsioni">Previsioni</string>
     <string name="title_fragment_libretto">Libretto</string>
     <string name="title_fragment_grafici">Grafici</string>
+    <string name="title_fragment_ristoro">Luoghi di interesse</string>
+    <string name="title_fragment_ricerca">Ricerca</string>
 
     <string name="title_activity_bus">Bus</string>
     <string name="section_format">Hello World from section: %1$d</string>

@@ -78,6 +78,10 @@ public class RicercaUtente extends Fragment {
             @Override
             public void onClick(View v) {
                 final String textToSearch = ricercato.getText().toString();
+                ricercaAdapter.clear();
+                listRicerca.setVisibility(View.VISIBLE);
+                messageNoRicerca.setVisibility(View.GONE);
+                no_utenti.setVisibility(View.GONE);
 
                 if(textToSearch.length() > 0) {
                     CustomRequestArray jsonObjectRequest = new CustomRequestArray(Request.Method.POST,
@@ -107,7 +111,6 @@ public class RicercaUtente extends Fragment {
                                     }
                                     isEmpty = false;
                                     ricercaAdapter.add(new UtenteEntity(nome,cognome,tipo,email,telefono,ricevimento,web));
-
 
                                 } catch (Exception e) {
                                     System.out.println("catch: " + e);

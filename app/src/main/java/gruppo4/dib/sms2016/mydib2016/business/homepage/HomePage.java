@@ -13,6 +13,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.LatLng;
+
 import gruppo4.dib.sms2016.mydib2016.R;
 import gruppo4.dib.sms2016.mydib2016.business.Autenticazione.Login;
 import gruppo4.dib.sms2016.mydib2016.business.logged.avvisi.Avvisi;
@@ -24,7 +27,7 @@ import gruppo4.dib.sms2016.mydib2016.business.logged.ricerca.RicercaUtente;
 import gruppo4.dib.sms2016.mydib2016.business.logged.sharing.Sharing;
 import gruppo4.dib.sms2016.mydib2016.business.logged.homenews.UltimiEventi;
 import gruppo4.dib.sms2016.mydib2016.business.not_logged.InformazioniUni;
-import gruppo4.dib.sms2016.mydib2016.business.not_logged.Ristoro;
+import gruppo4.dib.sms2016.mydib2016.business.not_logged.ristoro.Ristoro;
 import gruppo4.dib.sms2016.mydib2016.business.not_logged.bus.Bus;
 
 public class HomePage extends AppCompatActivity
@@ -38,6 +41,9 @@ public class HomePage extends AppCompatActivity
 
     Login credenziali = new Login();
     static boolean logged;
+
+    static final LatLng TutorialsPoint = new LatLng(21 , 57);
+    private GoogleMap googleMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,11 +135,14 @@ public class HomePage extends AppCompatActivity
             navigationView.getMenu().setGroupVisible(R.id.librettoDR, true);
 
         } else if (fromLogin == 3) { //Da profilo voglio tornare a ricerca
+            setTitle(R.string.title_fragment_ricerca);
             fab.setVisibility(View.GONE);
             RicercaUtente fragment = new RicercaUtente();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, fragment);
             fragmentTransaction.commit();
+
+            navigationView.getMenu().setGroupVisible(R.id.notlogged, false);
 
             isInHome = false;
         }
@@ -296,8 +305,8 @@ public class HomePage extends AppCompatActivity
             isInHome = false;
 
         } else if (id == R.id.ristoroL) {
-
             fab.setVisibility(View.GONE);
+            setTitle(R.string.title_fragment_ristoro);
             Ristoro fragment = new Ristoro();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, fragment);

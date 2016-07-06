@@ -1,8 +1,9 @@
-package gruppo4.dib.sms2016.mydib2016.business.not_logged;
+package gruppo4.dib.sms2016.mydib2016.business.not_logged.ristoro;
 
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,8 +24,13 @@ public class Ristoro extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_ristoro, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_ristoro, container, false);
+
+        CustomMapFragment mapFragment = new CustomMapFragment();
+        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+        transaction.add(R.id.map_container, mapFragment).commit();
+        return rootView;
+
     }
 
 }
