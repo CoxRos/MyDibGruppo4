@@ -39,6 +39,7 @@ public class Profilo extends AppCompatActivity {
         Bundle data = getIntent().getExtras();
         UtenteEntity utente = (UtenteEntity) data.getParcelable("utente");
 
+
         txtCognomeProfilo = (TextView) findViewById(R.id.txtCognomeProfilo);
         txtEmailProfilo = (TextView) findViewById(R.id.txtEmailProfilo);
         txtNomeProfilo = (TextView) findViewById(R.id.txtNomeProfilo);

@@ -21,7 +21,7 @@ import gruppo4.dib.sms2016.mydib2016.utility.Utils;
 
 public class DatiPersonali extends Fragment {
 
-    TextView nome,cognome,email,ponderata,aritmetica,cfu;
+    TextView nome,cognome,email,ponderata,aritmetica,cfu,txtMatricolaProfilo;
     public SharedPreferences preferences;
     public SharedPreferences.Editor editor;
     Utils utility;
@@ -50,6 +50,7 @@ public class DatiPersonali extends Fragment {
         preferences = getActivity().getSharedPreferences("CREDENZIALI", Context.MODE_PRIVATE);
         editor = preferences.edit();
 
+        txtMatricolaProfilo = (TextView) getActivity().findViewById(R.id.matricolaProfilo);
         nome = (TextView) getActivity().findViewById(R.id.editNomeProfilo);
         cognome = (TextView) getActivity().findViewById(R.id.editCognomeProfilo);
         email = (TextView) getActivity().findViewById(R.id.editEmailProfilo);
@@ -60,6 +61,8 @@ public class DatiPersonali extends Fragment {
         nome.setText(preferences.getString("nome", ""));
         cognome.setText(preferences.getString("cognome", ""));
         email.setText(preferences.getString("email", ""));
+        txtMatricolaProfilo.setText(preferences.getString("matricola", "Dato non disponibile"));
+
 
         //Qui avvaloro la lista di esami
         ArrayList<EsameEntity> esami =(ArrayList<EsameEntity>) db.getEsami();
