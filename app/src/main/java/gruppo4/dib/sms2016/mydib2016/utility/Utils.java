@@ -18,7 +18,13 @@ public class Utils {
             result = result + (Integer.parseInt(esame.getVoto())*Integer.parseInt(esame.getCfu()));
             sommCFU += Integer.parseInt(esame.getCfu());
         }
-        return troncamento(result/sommCFU);
+
+        if(result == 0) {
+            return 0;
+        }
+        else {
+            return troncamento(result / sommCFU);
+        }
     }
 
     public double getMediaAritmetica(ArrayList<EsameEntity> esami) {

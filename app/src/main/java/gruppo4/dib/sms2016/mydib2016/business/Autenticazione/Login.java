@@ -1,6 +1,7 @@
 package gruppo4.dib.sms2016.mydib2016.business.Autenticazione;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -48,6 +49,7 @@ public class Login extends AppCompatActivity {
 
     public SharedPreferences preferences;
     public SharedPreferences.Editor editor;
+    public static boolean logged;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,7 +103,6 @@ public class Login extends AppCompatActivity {
             });
         }
         else {
-            //createAlert("Bentornato", savedEmail).show();
             changeActivity();
         }
     }
@@ -127,10 +128,13 @@ public class Login extends AppCompatActivity {
                     if(result == 1) {
                         editor.putString("nome", response.getString("nome"));
                         editor.putString("cognome", response.getString("cognome"));
+                        editor.putBoolean("loggato", logged);
+                        editor.putString("email", email);
+                        if(credenziali.isChecked()) {
+                            editor.putString("password", password);
+                        }
                         editor.commit();
                         Toast.makeText(getApplicationContext(), "Login effettuato con successo!", Toast.LENGTH_SHORT).show();
-                        saveCredential(email, password);
-                        saveLogged(true);
                         changeActivity();
                     } else {
                         Toast.makeText(getApplicationContext(), "Controlla le credenziali e riprova!", Toast.LENGTH_LONG).show();
@@ -165,22 +169,14 @@ public class Login extends AppCompatActivity {
 
     }
 
-    private void saveCredential(String email, String password) {
-        editor.putString("email", email);
-        if(credenziali.isChecked()) {
-            editor.putString("password", password);
-        }
-        editor.commit();
-    }
-
     private void changeActivity() {
         Intent intent = new Intent(getApplicationContext(), HomePage.class);
         intent.putExtra("goTo", 1);
         startActivity(intent);
     }
 
-    private void saveLogged(boolean logged) {
-        editor.putBoolean("loggato", logged);
-        editor.commit();
+    public void executePref(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences("CREDENZIALI", MODE_PRIVATE);
+        logged = prefs.getBoolean("logged", false);
     }
 }

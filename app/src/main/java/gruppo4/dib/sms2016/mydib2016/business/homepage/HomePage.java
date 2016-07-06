@@ -14,7 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import gruppo4.dib.sms2016.mydib2016.R;
-import gruppo4.dib.sms2016.mydib2016.business.logged.homenews.Avvisi;
+import gruppo4.dib.sms2016.mydib2016.business.logged.avvisi.Avvisi;
 import gruppo4.dib.sms2016.mydib2016.business.logged.libretto.Libretto;
 import gruppo4.dib.sms2016.mydib2016.business.logged.libretto.EsameActivity;
 import gruppo4.dib.sms2016.mydib2016.business.logged.ricerca.RicercaUtente;
