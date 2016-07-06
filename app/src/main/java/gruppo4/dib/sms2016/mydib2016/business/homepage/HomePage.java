@@ -14,9 +14,11 @@ import android.view.MenuItem;
 import android.view.View;
 
 import gruppo4.dib.sms2016.mydib2016.R;
+import gruppo4.dib.sms2016.mydib2016.business.Autenticazione.Login;
 import gruppo4.dib.sms2016.mydib2016.business.logged.homenews.Avvisi;
 import gruppo4.dib.sms2016.mydib2016.business.logged.libretto.Libretto;
 import gruppo4.dib.sms2016.mydib2016.business.logged.libretto.EsameActivity;
+import gruppo4.dib.sms2016.mydib2016.business.logged.profilo.dati_personali.DatiPersonali;
 import gruppo4.dib.sms2016.mydib2016.business.logged.ricerca.RicercaUtente;
 import gruppo4.dib.sms2016.mydib2016.business.logged.sharing.Sharing;
 import gruppo4.dib.sms2016.mydib2016.business.logged.homenews.UltimiEventi;
@@ -30,15 +32,25 @@ public class HomePage extends AppCompatActivity
     NavigationView navigationView = null;
     Toolbar toolbar = null;
     FloatingActionButton fab;
+
+    boolean isInHome = true;
+
+    Login credenziali = new Login();
+    static boolean logged;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_not_logged);
 
+
+        credenziali.getLogged(this);
+        logged = credenziali.logged;
+
         //Setto il fragment iniziale
         //0 proviene da skip, 1 da loggato,2 da add esame e vuole andare a libretto.
         Intent intent = getIntent();
-        int fromLogin = intent.getIntExtra("goTo",0);
+        int fromLogin = intent.getIntExtra("goTo", 0);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -67,51 +79,62 @@ public class HomePage extends AppCompatActivity
         /*
          * Verifico se ha fatto la login oppure ha saltato la login
          */
-        if(fromLogin == 0) { //Skip
-            /*
+        if (fromLogin == 0) { //Skip
+            fab.setVisibility(View.GONE);
             InformazioniUni fragment = new InformazioniUni();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, fragment);
             fragmentTransaction.commit();
 
-            navigationView.getMenu().setGroupVisible(R.id.notlogged,true);
-            navigationView.getMenu().setGroupVisible(R.id.logged1,false);
-            navigationView.getMenu().setGroupVisible(R.id.logged2,false);
-            navigationView.getMenu().setGroupVisible(R.id.logged3,false);
+            if (fragment != null && fragment.isVisible()) {
+                isInHome = true;
+            }
+
+            navigationView.getMenu().setGroupVisible(R.id.notlogged, true);
+            navigationView.getMenu().setGroupVisible(R.id.logged1, false);
+            navigationView.getMenu().setGroupVisible(R.id.logged2, false);
+            navigationView.getMenu().setGroupVisible(R.id.logged3, false);
+
+        } else if (fromLogin == 1) { //Login QUI DEVO METTERE LE ULTIME NEWS
+            setTitle(R.string.title_activity_homepage);
             fab.setVisibility(View.GONE);
-            */
-            Intent intent5 = new Intent(HomePage.this, Sharing.class);
-            startActivity(intent5);
-
-        } else if(fromLogin == 1)  { //Login QUI DEVO METTERE LE ULTIME NEWS
             UltimiEventi fragment = new UltimiEventi();
-
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, fragment);
+            fragmentTransaction.replace(R.id.fragment_container, fragment, "HOMELOGGED");
             fragmentTransaction.commit();
 
-            navigationView.getMenu().setGroupVisible(R.id.logged1,true);
-            navigationView.getMenu().setGroupVisible(R.id.logged2,true);
-            navigationView.getMenu().setGroupVisible(R.id.logged3,true);
-            navigationView.getMenu().setGroupVisible(R.id.notlogged,false);
-            fab.setVisibility(View.GONE);
-        } else if(fromLogin == 2) {
+            if (fragment != null && fragment.isVisible()) {
+                isInHome = true;
+            }
+
+            navigationView.getMenu().setGroupVisible(R.id.logged1, true);
+            navigationView.getMenu().setGroupVisible(R.id.logged2, true);
+            navigationView.getMenu().setGroupVisible(R.id.logged3, true);
+            navigationView.getMenu().setGroupVisible(R.id.notlogged, false);
+
+        } else if (fromLogin == 2) { //vai a libretto
+
+            fab.setVisibility(View.VISIBLE);
             Libretto fragment = new Libretto();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, fragment);
             fragmentTransaction.commit();
 
-            navigationView.getMenu().setGroupVisible(R.id.logged1,false);
-            navigationView.getMenu().setGroupVisible(R.id.logged2,false);
-            navigationView.getMenu().setGroupVisible(R.id.logged3,false);
-            navigationView.getMenu().setGroupVisible(R.id.librettoDR,true);
-            fab.setVisibility(View.VISIBLE);
-        } else if(fromLogin == 3) {
+            isInHome = false;
+
+            navigationView.getMenu().setGroupVisible(R.id.logged1, false);
+            navigationView.getMenu().setGroupVisible(R.id.logged2, false);
+            navigationView.getMenu().setGroupVisible(R.id.logged3, false);
+            navigationView.getMenu().setGroupVisible(R.id.librettoDR, true);
+
+        } else if (fromLogin == 3) { //Da profilo voglio tornare a ricerca
             fab.setVisibility(View.GONE);
             RicercaUtente fragment = new RicercaUtente();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, fragment);
             fragmentTransaction.commit();
+
+            isInHome = false;
         }
 
     }
@@ -122,7 +145,36 @@ public class HomePage extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            //super.onBackPressed();
+            if (isInHome) {
+                super.onBackPressed();
+            } else {
+                if (logged) {
+                    fab.setVisibility(View.GONE);
+                    UltimiEventi fragment = new UltimiEventi();
+                    android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction.replace(R.id.fragment_container, fragment);
+                    fragmentTransaction.commit();
+
+                    isInHome = true;
+
+                    navigationView.getMenu().setGroupVisible(R.id.logged1, true);
+                    navigationView.getMenu().setGroupVisible(R.id.logged2, true);
+                    navigationView.getMenu().setGroupVisible(R.id.logged3, true);
+                    navigationView.getMenu().setGroupVisible(R.id.notlogged, false);
+                    navigationView.getMenu().setGroupVisible(R.id.librettoDR, false);
+                } else {
+                    fab.setVisibility(View.GONE);
+                    InformazioniUni fragment = new InformazioniUni();
+                    android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction.replace(R.id.fragment_container, fragment);
+                    fragmentTransaction.commit();
+
+                    isInHome = true;
+                }
+            }
+
+
         }
     }
 
@@ -155,55 +207,92 @@ public class HomePage extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.informazioniNL) {
-
+            setTitle(R.string.title_activity_homepage);
             fab.setVisibility(View.GONE);
             InformazioniUni fragment = new InformazioniUni();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, fragment);
             fragmentTransaction.commit();
 
+            isInHome = true;
+
         } else if (id == R.id.ristoroNL) {
+
             fab.setVisibility(View.GONE);
             Ristoro fragment = new Ristoro();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, fragment);
             fragmentTransaction.commit();
+
+            isInHome = false;
+
         } else if (id == R.id.busNL) {
             fab.setVisibility(View.GONE);
             Intent intent = new Intent(this, Bus.class);
             startActivity(intent);
-        } else if (id == R.id.homepageL) { //Da fare
+
+            isInHome = false;
+        } else if (id == R.id.homepageL) {
+            setTitle(R.string.title_activity_homepage);
             fab.setVisibility(View.GONE);
+            UltimiEventi fragment = new UltimiEventi();
+            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, fragment);
+            fragmentTransaction.commit();
+
+            isInHome = true;
+
+            navigationView.getMenu().setGroupVisible(R.id.logged1, true);
+            navigationView.getMenu().setGroupVisible(R.id.logged2, true);
+            navigationView.getMenu().setGroupVisible(R.id.logged3, true);
+            navigationView.getMenu().setGroupVisible(R.id.notlogged, false);
+            navigationView.getMenu().setGroupVisible(R.id.librettoDR, false);
 
         } else if (id == R.id.librettoL) {
-
+            setTitle(R.string.title_fragment_libretto);
             Libretto fragment = new Libretto();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, fragment);
             fragmentTransaction.commit();
 
-            navigationView.getMenu().setGroupVisible(R.id.logged1,false);
-            navigationView.getMenu().setGroupVisible(R.id.logged2,false);
-            navigationView.getMenu().setGroupVisible(R.id.logged3,false);
-            navigationView.getMenu().setGroupVisible(R.id.librettoDR,true);
+            isInHome = false;
+
+            navigationView.getMenu().setGroupVisible(R.id.logged1, false);
+            navigationView.getMenu().setGroupVisible(R.id.logged2, false);
+            navigationView.getMenu().setGroupVisible(R.id.logged3, false);
+            navigationView.getMenu().setGroupVisible(R.id.librettoDR, true);
             fab.setVisibility(View.VISIBLE);
 
 
-        } else if (id == R.id.profiloL) { //Da fare
+        } else if (id == R.id.profiloL) {
+
             fab.setVisibility(View.GONE);
+            DatiPersonali fragment = new DatiPersonali();
+            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, fragment);
+            fragmentTransaction.commit();
+
+            isInHome = false;
 
         } else if (id == R.id.informazioniL) {
+            setTitle(R.string.title_activity_homepage);
             fab.setVisibility(View.GONE);
             InformazioniUni fragment = new InformazioniUni();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, fragment);
             fragmentTransaction.commit();
-        } else if (id == R.id.ricercaL) { //Da fare
+
+            isInHome = false;
+
+        } else if (id == R.id.ricercaL) {
+
             fab.setVisibility(View.GONE);
             RicercaUtente fragment = new RicercaUtente();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, fragment);
             fragmentTransaction.commit();
+
+            isInHome = false;
 
         } else if (id == R.id.ristoroL) {
 
@@ -213,43 +302,71 @@ public class HomePage extends AppCompatActivity
             fragmentTransaction.replace(R.id.fragment_container, fragment);
             fragmentTransaction.commit();
 
+            isInHome = false;
+
         } else if (id == R.id.busL) {
             fab.setVisibility(View.GONE);
             Intent intent = new Intent(this, Bus.class);
             startActivity(intent);
-        } else if (id == R.id.homepageLi) { //Da fare
+
+            isInHome = false;
+        } else if (id == R.id.homepageLi) { //------------------------------------
+            setTitle(R.string.title_activity_homepage);
             fab.setVisibility(View.GONE);
+            UltimiEventi fragment = new UltimiEventi();
+            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, fragment);
+            fragmentTransaction.commit();
+
+            isInHome = true;
+
+            navigationView.getMenu().setGroupVisible(R.id.logged1, true);
+            navigationView.getMenu().setGroupVisible(R.id.logged2, true);
+            navigationView.getMenu().setGroupVisible(R.id.logged3, true);
+            navigationView.getMenu().setGroupVisible(R.id.notlogged, false);
+            navigationView.getMenu().setGroupVisible(R.id.librettoDR, false);
 
         } else if (id == R.id.librettoLi) {
+            setTitle(R.string.title_fragment_libretto);
             Libretto fragment = new Libretto();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, fragment);
             fragmentTransaction.commit();
 
-            navigationView.getMenu().setGroupVisible(R.id.logged1,false);
-            navigationView.getMenu().setGroupVisible(R.id.logged2,false);
-            navigationView.getMenu().setGroupVisible(R.id.logged3,false);
-            navigationView.getMenu().setGroupVisible(R.id.librettoDR,true);
+            isInHome = false;
+
+            navigationView.getMenu().setGroupVisible(R.id.logged1, false);
+            navigationView.getMenu().setGroupVisible(R.id.logged2, false);
+            navigationView.getMenu().setGroupVisible(R.id.logged3, false);
+            navigationView.getMenu().setGroupVisible(R.id.librettoDR, true);
             fab.setVisibility(View.VISIBLE);
 
         } else if (id == R.id.graficiLi) {
+            setTitle(R.string.title_fragment_grafici);
             fab.setVisibility(View.GONE);
+            isInHome = false;
 
         } else if (id == R.id.previsioniLi) {
+            setTitle(R.string.title_fragment_previsioni);
             fab.setVisibility(View.GONE);
+            isInHome = false;
 
-        } else if(id == R.id.avvisiL) {
-
+        } else if (id == R.id.avvisiL) {
+            setTitle(R.string.title_activity_avvisi);
             fab.setVisibility(View.GONE);
             Avvisi fragment = new Avvisi();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.fragment_container, fragment);
             fragmentTransaction.commit();
 
-        } else if(id == R.id.sharingL) {
+            isInHome = false;
+
+        } else if (id == R.id.sharingL) {
             fab.setVisibility(View.GONE);
             Intent intent = new Intent(this, Sharing.class);
             startActivity(intent);
+
+            isInHome = false;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

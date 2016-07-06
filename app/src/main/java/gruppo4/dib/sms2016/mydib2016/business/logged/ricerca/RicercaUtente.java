@@ -2,6 +2,7 @@ package gruppo4.dib.sms2016.mydib2016.business.logged.ricerca;
 
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -27,6 +28,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import gruppo4.dib.sms2016.mydib2016.R;
+import gruppo4.dib.sms2016.mydib2016.business.logged.sharing.Sharing;
 import gruppo4.dib.sms2016.mydib2016.entity.UtenteEntity;
 import gruppo4.dib.sms2016.mydib2016.network.CustomRequestArray;
 import gruppo4.dib.sms2016.mydib2016.network.Network;

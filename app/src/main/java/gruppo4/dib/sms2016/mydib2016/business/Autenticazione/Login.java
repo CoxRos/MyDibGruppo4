@@ -1,6 +1,7 @@
 package gruppo4.dib.sms2016.mydib2016.business.Autenticazione;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -48,6 +49,7 @@ public class Login extends AppCompatActivity {
 
     public SharedPreferences preferences;
     public SharedPreferences.Editor editor;
+    public static boolean logged;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,9 +73,9 @@ public class Login extends AppCompatActivity {
 
         String savedEmail = preferences.getString("email", "");
         String savedPassword = preferences.getString("password", "");
-        boolean loggato = preferences.getBoolean("loggato", false);
+        //boolean loggato = preferences.getBoolean("loggato", false);
 
-        if(!loggato) {
+        if(!logged) {
             if(!savedEmail.equals("") && !savedPassword.equals("")) {
                 et_email.setText(savedEmail);
                 et_password.setText(savedPassword);
@@ -127,11 +129,20 @@ public class Login extends AppCompatActivity {
                     if(result == 1) {
                         editor.putString("nome", response.getString("nome"));
                         editor.putString("cognome", response.getString("cognome"));
+                        editor.putBoolean("logged", true);
+                        editor.putString("email", email);
+                        if(credenziali.isChecked()) {
+                            editor.putString("password", password);
+                        }
+                        editor.putString("matricola",response.getString("matricola"));
+                        System.out.println("Matricola: " + response.getString("matricola"));
                         editor.commit();
+                        logged = true;
+
+
                         Toast.makeText(getApplicationContext(), "Login effettuato con successo!", Toast.LENGTH_SHORT).show();
-                        saveCredential(email, password);
-                        saveLogged(true);
                         changeActivity();
+
                     } else {
                         Toast.makeText(getApplicationContext(), "Controlla le credenziali e riprova!", Toast.LENGTH_LONG).show();
                         et_password.setText("");
@@ -165,22 +176,21 @@ public class Login extends AppCompatActivity {
 
     }
 
-    private void saveCredential(String email, String password) {
-        editor.putString("email", email);
-        if(credenziali.isChecked()) {
-            editor.putString("password", password);
-        }
-        editor.commit();
-    }
-
     private void changeActivity() {
         Intent intent = new Intent(getApplicationContext(), HomePage.class);
         intent.putExtra("goTo", 1);
         startActivity(intent);
     }
 
-    private void saveLogged(boolean logged) {
-        editor.putBoolean("loggato", logged);
-        editor.commit();
+    public void getLogged(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences("CREDENZIALI", MODE_PRIVATE);
+        logged = prefs.getBoolean("logged", false);
+    }
+
+    public void setLogged(Context context, boolean valore) {
+        SharedPreferences prefs = context.getSharedPreferences("CREDENZIALI", MODE_PRIVATE);
+        SharedPreferences.Editor edit = preferences.edit();
+        edit.putBoolean("logged",valore);
+        edit.commit();
     }
 }

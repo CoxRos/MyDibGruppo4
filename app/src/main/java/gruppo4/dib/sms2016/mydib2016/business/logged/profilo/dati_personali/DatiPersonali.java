@@ -11,7 +11,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import gruppo4.dib.sms2016.mydib2016.DataAccessObject.DAOLibretto;
 import gruppo4.dib.sms2016.mydib2016.R;
 import gruppo4.dib.sms2016.mydib2016.entity.EsameEntity;
 import gruppo4.dib.sms2016.mydib2016.utility.Utils;
@@ -23,6 +25,7 @@ public class DatiPersonali extends Fragment {
     public SharedPreferences preferences;
     public SharedPreferences.Editor editor;
     Utils utility;
+    private DAOLibretto db;
 
     public DatiPersonali() {
         // Required empty public constructor
@@ -36,7 +39,11 @@ public class DatiPersonali extends Fragment {
         return inflater.inflate(R.layout.fragment_dati_personali, container, false);
     }
 
+    @Override
     public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        db = new DAOLibretto(getContext());
 
         utility = new Utils();
 
@@ -55,7 +62,7 @@ public class DatiPersonali extends Fragment {
         email.setText(preferences.getString("email", ""));
 
         //Qui avvaloro la lista di esami
-        ArrayList<EsameEntity> esami = new ArrayList<EsameEntity>();
+        ArrayList<EsameEntity> esami =(ArrayList<EsameEntity>) db.getEsami();
         ponderata.setText(Double.toString(utility.getMediaPonderata(esami)));
         aritmetica.setText(Double.toString(utility.getMediaAritmetica(esami)));
     }

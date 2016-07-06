@@ -22,6 +22,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import gruppo4.dib.sms2016.mydib2016.R;
+import gruppo4.dib.sms2016.mydib2016.business.homepage.HomePage;
 
 public class UploadNotes extends AppCompatActivity {
 
@@ -45,7 +46,10 @@ public class UploadNotes extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(UploadNotes.this, Sharing.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
+
             }
         });
 
@@ -66,6 +70,14 @@ public class UploadNotes extends AppCompatActivity {
         });
 
         upLoadServerUri = "http://mydib2016.altervista.org/fileSharing.php";
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(UploadNotes.this, Sharing.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 
     @Override
@@ -189,6 +201,7 @@ public class UploadNotes extends AppCompatActivity {
                         public void run() {
                             String msg = "Appunti caricati con successo.";
                             Toast.makeText(UploadNotes.this, msg, Toast.LENGTH_LONG).show();
+
                         }
                     });
                 }

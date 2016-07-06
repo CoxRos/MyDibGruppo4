@@ -14,6 +14,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".business.splash.SplashScreen"
+            android:noHistory="true"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,7 +22,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".business.Autenticazione.Login">
+        <activity
+            android:label="@string/title_activity_login"
+            android:noHistory="true"
+            android:name=".business.Autenticazione.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,30 +34,37 @@
         </activity>
         <activity
             android:name=".business.homepage.HomePage"
-            android:label="@string/title_activity_not_logged"
+            android:label="@string/title_activity_homepage"
+            android:noHistory="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".business.not_logged.bus.Bus"
             android:label="@string/title_activity_bus"
+            android:noHistory="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".business.logged.libretto.EsameActivity"
+            android:noHistory="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".business.logged.profilo.Profilo"
             android:label="Utente ricercato"
+            android:noHistory="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".business.logged.sharing.Sharing"
             android:label="Condivisione materiale"
+            android:noHistory="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".business.logged.sharing.DownloadNotes"
             android:label="Scarica Appunti"
+            android:noHistory="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:label="Carica Appunti"
             android:theme="@style/AppTheme.NoActionBar"
+            android:noHistory="true"
             android:name=".business.logged.sharing.UploadNotes"></activity>
     </application>
 

@@ -2,7 +2,6 @@ package gruppo4.dib.sms2016.mydib2016.business.not_logged.bus;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -31,6 +30,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import gruppo4.dib.sms2016.mydib2016.business.Autenticazione.Login;
 import gruppo4.dib.sms2016.mydib2016.network.Network;
 import gruppo4.dib.sms2016.mydib2016.R;
 import gruppo4.dib.sms2016.mydib2016.entity.BusEntity;
@@ -56,17 +56,15 @@ public class Bus extends AppCompatActivity {
     RequestQueue queue;
     ProgressDialog progressDialog;
 
-    public SharedPreferences preferences;
-    public SharedPreferences.Editor editor;
-
-
+    Login credenziali = new Login();
+    static boolean logged;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bus);
 
-        preferences = getApplicationContext().getSharedPreferences("CREDENZIALI", MODE_PRIVATE);
-        editor = preferences.edit();
+        credenziali.getLogged(this);
+        logged = credenziali.logged;
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -74,8 +72,9 @@ public class Bus extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(Bus.this, HomePage.class);
-                if(preferences.getBoolean("logged",false)) {
+                if(logged== true) {
                     intent.putExtra("goTo",1);
                 } else { //Non è loggato
                     intent.putExtra("goTo",0);
@@ -100,6 +99,17 @@ public class Bus extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Bus.this, HomePage.class);
+        if(logged== true) {
+            intent.putExtra("goTo",1);
+        } else { //Non è loggato
+            intent.putExtra("goTo",0);
+        }
+        startActivity(intent);
     }
 
     @Override
