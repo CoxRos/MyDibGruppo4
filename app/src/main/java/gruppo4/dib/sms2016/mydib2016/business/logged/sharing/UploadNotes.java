@@ -22,6 +22,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import gruppo4.dib.sms2016.mydib2016.R;
+import gruppo4.dib.sms2016.mydib2016.business.Autenticazione.Login;
 import gruppo4.dib.sms2016.mydib2016.business.homepage.HomePage;
 
 public class UploadNotes extends AppCompatActivity {
@@ -33,6 +34,9 @@ public class UploadNotes extends AppCompatActivity {
     private ProgressDialog dialog = null;
     private String upLoadServerUri = null;
     private String imagepath = null;
+
+    Login credenziali = new Login();
+    static String email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +56,9 @@ public class UploadNotes extends AppCompatActivity {
 
             }
         });
+
+        credenziali.getMatricola(getApplicationContext());
+        email = credenziali.email;
 
         titolaNota = (EditText) findViewById(R.id.titolaNota);
         descriviNota = (EditText) findViewById(R.id.descriviNota);
@@ -90,9 +97,7 @@ public class UploadNotes extends AppCompatActivity {
             dialog = ProgressDialog.show(UploadNotes.this, "", "Caricamento sulla piattaforma...", true);
             new Thread(new Runnable() {
                 public void run() {
-
-                    uploadFile(imagepath,titolaNota.getText().toString(),descriviNota.getText().toString(), "ciotto@studenti.uniba.it");
-
+                    uploadFile(imagepath,titolaNota.getText().toString(),descriviNota.getText().toString(), email);
                 }
             }).start();
         }
@@ -106,7 +111,7 @@ public class UploadNotes extends AppCompatActivity {
         return cursor.getString(column_index);
     }
 
-    private int uploadFile(String sourceFileUri, String titoloNota,String descrizione, String email) {
+    private int uploadFile(String sourceFileUri, final String titoloNota, String descrizione, String email) {
         String fileName = sourceFileUri;
 
         HttpURLConnection conn = null;
@@ -152,7 +157,6 @@ public class UploadNotes extends AppCompatActivity {
                 conn.setRequestProperty("ENCTYPE", "multipart/form-data");
                 conn.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
                 conn.setRequestProperty("uploaded_file", fileName);
-                //conn.setRequestProperty("descr","blablabluuuuuu");
 
                 dos = new DataOutputStream(conn.getOutputStream());
 
@@ -201,9 +205,16 @@ public class UploadNotes extends AppCompatActivity {
                         public void run() {
                             String msg = "Appunti caricati con successo.";
                             Toast.makeText(UploadNotes.this, msg, Toast.LENGTH_LONG).show();
-
+                            System.out.println("Sto stampando");
+                            titolaNota.setText("");
+                            descriviNota.setText("");
                         }
                     });
+                    /*Intent intent = new Intent(UploadNotes.this, Sharing.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                */
                 }
 
                 //close the streams //

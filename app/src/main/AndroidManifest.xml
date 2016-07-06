@@ -64,7 +64,6 @@
         <activity
             android:label="Carica Appunti"
             android:theme="@style/AppTheme.NoActionBar"
-            android:noHistory="true"
             android:name=".business.logged.sharing.UploadNotes"></activity>
     </application>
 
