@@ -31,8 +31,6 @@ public class GraficoLineChart extends Fragment {
 
     private DAOLibretto db;
 
-    //float[] yData = {5,10,15,40};
-    //String[] xData = {"Uno","Due","Tre","Quattro"};
     float[] yData;
     String[] xData;
 

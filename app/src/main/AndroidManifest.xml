@@ -81,10 +81,16 @@
             android:label="Carica Appunti"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+
             android:name=".business.logged.libretto.Grafici"
             android:label="@string/title_activity_grafici"
             android:noHistory="true"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".business.settings.UserSetting"
+            android:label="Impostazioni"
+            android:theme="@style/AppTheme.NoActionBar1" />
+
 
         <service
             android:name=".service.RSSPullService"
