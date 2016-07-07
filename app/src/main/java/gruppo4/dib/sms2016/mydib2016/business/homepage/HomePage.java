@@ -136,6 +136,7 @@ public class HomePage extends AppCompatActivity
                 navigationView.getMenu().setGroupVisible(R.id.logged2, false);
                 navigationView.getMenu().setGroupVisible(R.id.logged3, false);
                 navigationView.getMenu().setGroupVisible(R.id.librettoDR, true);
+                navigationView.getMenu().setGroupVisible(R.id.notlogged, false);
 
             } else if (fromLogin == 3) { //Da profilo voglio tornare a ricerca
                 setTitle(R.string.title_fragment_ricerca);
@@ -302,7 +303,7 @@ public class HomePage extends AppCompatActivity
             isInHome = false;
 
         } else if (id == R.id.ricercaL) {
-
+            setTitle(R.string.title_fragment_ricerca);
             fab.setVisibility(View.GONE);
             RicercaUtente fragment = new RicercaUtente();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
