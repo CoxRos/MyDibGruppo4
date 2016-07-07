@@ -13,10 +13,12 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.BarData;
@@ -49,7 +51,7 @@ public class UltimiEventi extends Fragment {
     RequestQueue queue;
 
     ListView listaAvvisi;
-    TextView noItem;
+    TextView noItem,titleNews,messageNews,authorNews;
     ImageView noConnection;
 
     private DAOLibretto db;
@@ -81,6 +83,9 @@ public class UltimiEventi extends Fragment {
         listaAvvisi = (ListView)getActivity().findViewById(R.id.listNewsHome);
         noItem = (TextView) getActivity().findViewById(R.id.verificaConnNewsHome);
         noConnection = (ImageView)getActivity().findViewById(R.id.no_wifiNewsHome);
+        authorNews = (TextView) getActivity().findViewById(R.id.authorNews);
+        messageNews = (TextView) getActivity().findViewById(R.id.messageNews);
+        titleNews = (TextView) getActivity().findViewById(R.id.titleNews);
 
         progressBar.setProgress(getProgressMedia((int) util.getMediaPonderata(getEsami())));
         progressBar.setMax(13);
@@ -116,20 +121,30 @@ public class UltimiEventi extends Fragment {
             @Override
             public void onResponse(JSONArray responce) {
                 boolean isEmpty = true;
+                boolean isAvviso = false;
                 String titolo, descrione, data;
                 int count = 0;
                 for (int i = 0; i < responce.length(); i++) {
-                    if(count < 3) {
+                    if(count < 4) {
                         try {
                             JSONObject jsonResponce = responce.getJSONObject(i);
-                            titolo = jsonResponce.getString("titolo");
-                            descrione = jsonResponce.getString("descrizione");
-                            data = jsonResponce.getString("data");
+                            if(!jsonResponce.getString("avviso").equalsIgnoreCase("Y")) {
+                                titolo = jsonResponce.getString("titolo");
+                                descrione = jsonResponce.getString("descrizione");
+                                data = jsonResponce.getString("data");
 
-                            newsAdapter.add(new AvvisiEntity(titolo, descrione, data));
+                                newsAdapter.add(new AvvisiEntity(titolo, descrione, data));
 
-                            isEmpty = false;
-                            count++;
+                                isEmpty = false;
+                                count++;
+                            } else {
+                                System.out.println("Sono nell'else della card");
+                                titleNews.setText(jsonResponce.getString("titlenews"));
+                                messageNews.setText(jsonResponce.getString("messagenews"));
+                                authorNews.setText(jsonResponce.getString("authornews"));
+                                isAvviso = true;
+                            }
+
                         } catch (JSONException e) {
                             Log.d("CATCH NEWS: ", e.getMessage().toString());
                         }
@@ -146,6 +161,11 @@ public class UltimiEventi extends Fragment {
                     noItem.setVisibility(View.GONE);
                     noConnection.setVisibility(View.GONE);
                 }
+                if(!isAvviso) {
+                    messageNews.setVisibility(View.GONE);
+                    authorNews.setVisibility(View.GONE);
+                    titleNews.setVisibility(View.VISIBLE);
+                }
                 progressDialog.dismiss();
             }
         }, new Response.ErrorListener() {
@@ -154,6 +174,9 @@ public class UltimiEventi extends Fragment {
                 listaAvvisi.setVisibility(View.GONE);
                 noItem.setVisibility(View.VISIBLE);
                 noConnection.setVisibility(View.VISIBLE);
+                messageNews.setVisibility(View.GONE);
+                authorNews.setVisibility(View.GONE);
+                titleNews.setVisibility(View.VISIBLE);
                 Log.d("ATTENZIONE:", volleyError.toString());
                 progressDialog.dismiss();
             }

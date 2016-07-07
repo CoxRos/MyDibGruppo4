@@ -86,7 +86,7 @@ public class Grafici extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(Grafici.this, HomePage.class);
-        intent.putExtra("goTo",1);
+        intent.putExtra("goTo",2);
         startActivity(intent);
     }
 
