@@ -50,7 +50,8 @@ public class Login extends AppCompatActivity {
     public SharedPreferences preferences;
     public SharedPreferences.Editor editor;
     public static boolean logged;
-    public static String matricola,email;
+    public static String matricola, email;
+    public static boolean entry = false;
 
 
     @Override
@@ -75,12 +76,13 @@ public class Login extends AppCompatActivity {
 
         String savedEmail = preferences.getString("email", "");
         String savedPassword = preferences.getString("password", "");
-        //boolean loggato = preferences.getBoolean("loggato", false);
+        boolean loggato = preferences.getBoolean("loggato", false);
 
-        if(!logged) {
+        if(!loggato) {
             if(!savedEmail.equals("") && !savedPassword.equals("")) {
                 et_email.setText(savedEmail);
                 et_password.setText(savedPassword);
+                credenziali.setChecked(true);
             }
 
             login.setOnClickListener(new View.OnClickListener() {
@@ -105,6 +107,7 @@ public class Login extends AppCompatActivity {
             });
         }
         else {
+            entry = true;
             changeActivity();
         }
     }
@@ -130,15 +133,13 @@ public class Login extends AppCompatActivity {
                     if(result == 1) {
                         editor.putString("nome", response.getString("nome"));
                         editor.putString("cognome", response.getString("cognome"));
-                        editor.putBoolean("logged", true);
+                        editor.putBoolean("loggato", true);
                         editor.putString("email", email);
                         if(credenziali.isChecked()) {
                             editor.putString("password", password);
                         }
                         editor.putString("matricola",response.getString("matricola"));
                         editor.commit();
-                        logged = true;
-
 
                         Toast.makeText(getApplicationContext(), "Login effettuato con successo!", Toast.LENGTH_SHORT).show();
                         changeActivity();
@@ -185,7 +186,7 @@ public class Login extends AppCompatActivity {
 
     public void getLogged(Context context) {
         SharedPreferences prefs = context.getSharedPreferences("CREDENZIALI", MODE_PRIVATE);
-        logged = prefs.getBoolean("logged", false);
+        logged = prefs.getBoolean("loggato", false);
     }
 
     public void getMatricola(Context context) {
@@ -193,16 +194,16 @@ public class Login extends AppCompatActivity {
         matricola = prefs.getString("matricola", "");
     }
 
-    public void setLogged(Context context, boolean valore) {
-        SharedPreferences prefs = context.getSharedPreferences("CREDENZIALI", MODE_PRIVATE);
-        SharedPreferences.Editor edit = preferences.edit();
-        edit.putBoolean("logged",valore);
-        edit.commit();
+    public void removeCredential(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences("CREDENZIALI", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.remove("loggato");
+        editor.remove("matricola");
+        editor.commit();
     }
 
     public void getEmail(Context context) {
         SharedPreferences prefs = context.getSharedPreferences("CREDENZIALI", MODE_PRIVATE);
         email = prefs.getString("email", "");
-
     }
 }

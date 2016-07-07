@@ -35,4 +35,13 @@
 
     <string name="button_avvisi">Vedi Altri</string>
 
+    <string name="impostazioni_lingua">Lingua</string>
+    <string name="impostazioni_lingua_subtitle">Cambia la lingua della tua app</string>
+    <string name="impostazioni_app_title">App</string>
+    <string name="impostazioni_update">Impostazione di Update</string>
+    <string name="impostazioni_crash">Invia segnalazione crash</string>
+    <string name="impostazioni_crash_text">Invia segnalazione crash</string>
+    <string name="impostazioni_sincronizzazione">Frequenza di sincronizzazione</string>
+    <string name="impostazioni_sincronizzazione_text">Setta la frequenza di sincronizzazione</string>
+
 </resources>

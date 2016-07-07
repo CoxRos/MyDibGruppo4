@@ -111,7 +111,7 @@ public class Avvisi extends Fragment {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
                 listaAvvisi.setVisibility(View.GONE);
-                noItem.setVisibility(View.GONE);
+                noItem.setVisibility(View.VISIBLE);
                 noConnection.setVisibility(View.VISIBLE);
                 Log.d("ATTENZIONE:", volleyError.toString());
                 progressDialog.dismiss();

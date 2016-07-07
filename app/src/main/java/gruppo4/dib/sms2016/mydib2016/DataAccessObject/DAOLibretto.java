@@ -58,6 +58,10 @@ public class DAOLibretto {
         return db.deleteData(Costants.TABLE_LIBRETTO, Costants.CAMPO_MATERIA, materia);
     }
 
+    public boolean deleteAllExams() {
+        return db.deleteAllData(Costants.TABLE_LIBRETTO);
+    }
+
     public EsameEntity getEsame(String materia) {
         EsameEntity esame = null;
         Cursor resultSet = db.selectData(Costants.TABLE_LIBRETTO, materia);

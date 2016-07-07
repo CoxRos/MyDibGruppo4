@@ -1,5 +1,6 @@
 package gruppo4.dib.sms2016.mydib2016.business.homepage;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -7,12 +8,16 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
+import gruppo4.dib.sms2016.mydib2016.DataAccessObject.DAOLibretto;
 import gruppo4.dib.sms2016.mydib2016.R;
 import gruppo4.dib.sms2016.mydib2016.business.Autenticazione.Login;
 import gruppo4.dib.sms2016.mydib2016.business.logged.avvisi.Avvisi;
@@ -36,6 +41,7 @@ public class HomePage extends AppCompatActivity
 
     boolean isInHome = true;
 
+    DAOLibretto db;
     Login credenziali = new Login();
     static boolean logged;
 
@@ -44,6 +50,8 @@ public class HomePage extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_not_logged);
 
+        db = new DAOLibretto(this);
+
         if(savedInstanceState == null) {
             credenziali.getLogged(this);
             logged = credenziali.logged;
@@ -51,7 +59,7 @@ public class HomePage extends AppCompatActivity
             //Setto il fragment iniziale
             //0 proviene da skip, 1 da loggato,2 da add esame e vuole andare a libretto.
             Intent intent = getIntent();
-            int fromLogin = intent.getIntExtra("goTo", 0);
+            int fromLogin = intent.getIntExtra("goTo", -1);
 
             toolbar = (Toolbar) findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
@@ -195,11 +203,32 @@ public class HomePage extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id) {
+            case R.id.action_settings:
+                break;
+            case R.id.action_faq:
+                break;
+            case R.id.action_accesso:
+                goToLogin();
+                break;
+            case R.id.action_logout:
+                getAlertLogout().show();
+                break;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+        if(logged) {
+            menu.findItem(R.id.action_accesso).setVisible(false);
+        }
+        else {
+            menu.findItem(R.id.action_logout).setVisible(false);
+        }
+        return true;
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -374,5 +403,38 @@ public class HomePage extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private AlertDialog getAlertLogout() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Logout");
+        builder.setMessage("Sei sicuro di voler disconnerterti?");
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                credenziali.removeCredential(getApplicationContext());
+                db.deleteAllExams();
+                goToLogin();
+            }
+        });
+        builder.setNegativeButton("Annulla", null);
+
+        AlertDialog alertDialog = builder.create();
+        return alertDialog;
+    }
+
+    private void goToLogin() {
+        Intent intent = new Intent(getApplicationContext(), Login.class);
+        startActivity(intent);
+    }
+
+    private AlertDialog alertLoggato(String email) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Bentornato");
+        builder.setMessage(email);
+        builder.setPositiveButton("OK", null);
+
+        AlertDialog alertDialog = builder.create();
+        return alertDialog;
     }
 }

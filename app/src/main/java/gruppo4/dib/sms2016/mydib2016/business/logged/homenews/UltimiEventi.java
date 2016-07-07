@@ -26,6 +26,7 @@ import java.util.ArrayList;
 
 import gruppo4.dib.sms2016.mydib2016.DataAccessObject.DAOLibretto;
 import gruppo4.dib.sms2016.mydib2016.R;
+import gruppo4.dib.sms2016.mydib2016.business.Autenticazione.Login;
 import gruppo4.dib.sms2016.mydib2016.entity.AvvisiEntity;
 import gruppo4.dib.sms2016.mydib2016.entity.EsameEntity;
 import gruppo4.dib.sms2016.mydib2016.network.Network;
@@ -45,6 +46,8 @@ public class UltimiEventi extends Fragment {
     private DAOLibretto db;
     private Utils util;
 
+    Login credenziali = new Login();
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_ultimi_eventi, container, false);
@@ -53,6 +56,12 @@ public class UltimiEventi extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        if(Login.entry) {
+            credenziali.getEmail(getContext());
+            String emailUser = credenziali.email;
+            createAlert("Bentornato!", emailUser).show();
+            Login.entry = false;
+        }
 
         db = new DAOLibretto(getContext());
         util = new Utils();
