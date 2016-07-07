@@ -18,7 +18,7 @@
         android:text="Non sono presenti esami."
         android:textSize="25dp"
         android:textStyle="italic"
-        android:visibility="gone"
+        android:visibility="visible"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
@@ -28,8 +28,8 @@
         android:layout_height="50dp"
         android:layout_marginLeft="150dp"
         android:background="@mipmap/ic_info"
-        android:visibility="gone"
-        android:layout_above="@+id/verificaConnAndata"
+        android:visibility="visible"
+        android:layout_above="@+id/noEsamiChart"
         android:layout_centerHorizontal="true" />
 
 

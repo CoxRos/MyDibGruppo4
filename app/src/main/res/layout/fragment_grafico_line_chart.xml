@@ -6,4 +6,26 @@
     android:id="@+id/mainLayout"
     tools:context="gruppo4.dib.sms2016.mydib2016.business.logged.libretto.GraficoLineChart">
 
+    <TextView
+        android:id="@+id/noEsamiChart2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="65dp"
+        android:text="Non sono presenti esami."
+        android:textSize="25dp"
+        android:textStyle="italic"
+        android:visibility="gone"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:id="@+id/imageNoEsamiChart2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="150dp"
+        android:background="@mipmap/ic_info"
+        android:visibility="gone"
+        android:layout_above="@+id/noEsamiChart2"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
