@@ -21,6 +21,7 @@ import gruppo4.dib.sms2016.mydib2016.R;
 import gruppo4.dib.sms2016.mydib2016.business.Autenticazione.Login;
 import gruppo4.dib.sms2016.mydib2016.business.logged.avvisi.Avvisi;
 
+import gruppo4.dib.sms2016.mydib2016.business.logged.libretto.Grafici;
 import gruppo4.dib.sms2016.mydib2016.business.logged.libretto.Libretto;
 import gruppo4.dib.sms2016.mydib2016.business.logged.libretto.EsameActivity;
 import gruppo4.dib.sms2016.mydib2016.business.logged.profilo.dati_personali.DatiPersonali;
@@ -362,6 +363,9 @@ public class HomePage extends AppCompatActivity
         } else if (id == R.id.graficiLi) {
             setTitle(R.string.title_fragment_grafici);
             fab.setVisibility(View.GONE);
+            Intent intent = new Intent(this, Grafici.class);
+            startActivity(intent);
+
             isInHome = false;
 
         } else if (id == R.id.previsioniLi) {

@@ -11,6 +11,7 @@
     <permission
         android:name="com.example.googlemaps.permission.MAPS_RECEIVE"
         android:protectionLevel="signature" />
+
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
@@ -46,9 +47,9 @@
         </activity>
         <activity
             android:name=".business.homepage.HomePage"
+            android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_homepage"
             android:noHistory="true"
-            android:configChanges="orientation|screenSize"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".business.not_logged.bus.Bus"
@@ -79,13 +80,20 @@
             android:name=".business.logged.sharing.UploadNotes"
             android:label="Carica Appunti"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".business.logged.libretto.Grafici"
+            android:label="@string/title_activity_grafici"
+            android:noHistory="true"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
 
-        <service android:name=".service.RSSPullService"
-            android:exported="false"/>
+        <service
+            android:name=".service.RSSPullService"
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDF-9ABTm7W52BsBaOU_5MAA7Bx11u48xo" />
+
 
     </application>
 

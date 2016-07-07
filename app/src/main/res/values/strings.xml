@@ -48,5 +48,6 @@
     <string name="impostazioni_crash_text">Invia segnalazione crash</string>
     <string name="impostazioni_sincronizzazione">Frequenza di sincronizzazione</string>
     <string name="impostazioni_sincronizzazione_text">Setta la frequenza di sincronizzazione</string>
+    <string name="title_activity_grafici">Andamento</string>
 
 </resources>

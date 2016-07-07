@@ -17,6 +17,15 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.utils.ColorTemplate;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -82,7 +91,7 @@ public class UltimiEventi extends Fragment {
         queue = Network.getInstance(getActivity()).getRequestQueue();
         progressDialog = new ProgressDialog(getActivity());
 
-        setUi("http://mydib2016.altervista.org/api/index.php/avvisi");
+        setUiAvvisi("http://mydib2016.altervista.org/api/index.php/avvisi");
     }
 
     private int getProgressMedia(int media) {
@@ -99,7 +108,7 @@ public class UltimiEventi extends Fragment {
         return alertDialog;
     }
 
-    private void setUi(String url) {
+    private void setUiAvvisi(String url) {
         final AvvisiAdapter newsAdapter = new AvvisiAdapter(getActivity(), R.layout.layout_list_avvisi);
         listaAvvisi.setAdapter(newsAdapter);
 
