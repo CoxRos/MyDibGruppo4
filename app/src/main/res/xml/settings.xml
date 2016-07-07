@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/impostazioni_app_title" >
+        <EditTextPreference
+            android:title="@string/impostazioni_lingua"
+            android:summary="@string/impostazioni_lingua_subtitle"
+            android:key="prefUsername"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/impostazioni_update" >
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="prefSendReport"
+            android:summary="@string/impostazioni_crash"
+            android:title="@string/impostazioni_crash_text" >
+        </CheckBoxPreference>
+
+        <ListPreference
+            android:key="prefSyncFrequency"
+            android:summary="@string/impostazioni_sincronizzazione"
+            android:title="@string/impostazioni_sincronizzazione_text" />
+    </PreferenceCategory>
+</PreferenceScreen>

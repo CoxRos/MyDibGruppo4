@@ -1,5 +1,6 @@
 package gruppo4.dib.sms2016.mydib2016.business.homepage;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -7,14 +8,14 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.model.LatLng;
+import gruppo4.dib.sms2016.mydib2016.DataAccessObject.DAOLibretto;
 
 import gruppo4.dib.sms2016.mydib2016.R;
 import gruppo4.dib.sms2016.mydib2016.business.Autenticazione.Login;
@@ -25,11 +26,10 @@ import gruppo4.dib.sms2016.mydib2016.business.logged.libretto.EsameActivity;
 import gruppo4.dib.sms2016.mydib2016.business.logged.profilo.dati_personali.DatiPersonali;
 import gruppo4.dib.sms2016.mydib2016.business.logged.ricerca.RicercaUtente;
 import gruppo4.dib.sms2016.mydib2016.business.logged.sharing.Sharing;
-import gruppo4.dib.sms2016.mydib2016.business.logged.homenews.UltimiEventi;
+import gruppo4.dib.sms2016.mydib2016.business.logged.ultimi_dettagli.UltimiEventi;
 import gruppo4.dib.sms2016.mydib2016.business.not_logged.InformazioniUni;
 import gruppo4.dib.sms2016.mydib2016.business.not_logged.ristoro.Ristoro;
 import gruppo4.dib.sms2016.mydib2016.business.not_logged.bus.Bus;
-import gruppo4.dib.sms2016.mydib2016.service.RSSPullService;
 
 public class HomePage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -40,115 +40,116 @@ public class HomePage extends AppCompatActivity
 
     boolean isInHome = true;
 
+    DAOLibretto db;
     Login credenziali = new Login();
     static boolean logged;
-
-    static final LatLng TutorialsPoint = new LatLng(21 , 57);
-    private GoogleMap googleMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_not_logged);
 
+        db = new DAOLibretto(this);
 
-        credenziali.getLogged(this);
-        logged = credenziali.logged;
+        if (savedInstanceState == null) {
+            credenziali.getLogged(this);
+            logged = credenziali.logged;
 
-        //Setto il fragment iniziale
-        //0 proviene da skip, 1 da loggato,2 da add esame e vuole andare a libretto.
-        Intent intent = getIntent();
-        int fromLogin = intent.getIntExtra("goTo", 0);
+            //Setto il fragment iniziale
+            //0 proviene da skip, 1 da loggato,2 da add esame e vuole andare a libretto.
+            Intent intent = getIntent();
+            int fromLogin = intent.getIntExtra("goTo", -1);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+            toolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
 
-        //Fab per l'aggiunta di esami in libretto
-        fab = (FloatingActionButton) findViewById(R.id.fabAddEsame);
-        fab.setVisibility(View.GONE);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), EsameActivity.class);
-                intent.putExtra("option", "add");
-                startActivity(intent);
-            }
-        });
+            //Fab per l'aggiunta di esami in libretto
+            fab = (FloatingActionButton) findViewById(R.id.fabAddEsame);
+            fab.setVisibility(View.GONE);
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getApplicationContext(), EsameActivity.class);
+                    intent.putExtra("option", "add");
+                    startActivity(intent);
+                }
+            });
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                    this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+            drawer.setDrawerListener(toggle);
+            toggle.syncState();
 
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+            navigationView = (NavigationView) findViewById(R.id.nav_view);
+            navigationView.setNavigationItemSelectedListener(this);
 
         /*
          * Verifico se ha fatto la login oppure ha saltato la login
          */
-        if (fromLogin == 0) { //Skip
-            setTitle(R.string.title_fragment_informazioni);
-            fab.setVisibility(View.GONE);
-            InformazioniUni fragment = new InformazioniUni();
-            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, fragment);
-            fragmentTransaction.commit();
 
-            if (fragment != null && fragment.isVisible()) {
-                isInHome = true;
+            if (fromLogin == 0) { //Skip
+                setTitle(R.string.title_fragment_informazioni);
+                fab.setVisibility(View.GONE);
+                InformazioniUni fragment = new InformazioniUni();
+                android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, fragment);
+                fragmentTransaction.commit();
+
+                if (fragment != null && fragment.isVisible()) {
+                    isInHome = true;
+                }
+
+                navigationView.getMenu().setGroupVisible(R.id.notlogged, true);
+                navigationView.getMenu().setGroupVisible(R.id.logged1, false);
+                navigationView.getMenu().setGroupVisible(R.id.logged2, false);
+                navigationView.getMenu().setGroupVisible(R.id.logged3, false);
+
+            } else if (fromLogin == 1) { //Login QUI DEVO METTERE LE ULTIME NEWS
+                setTitle(R.string.title_activity_homepage);
+                fab.setVisibility(View.GONE);
+                UltimiEventi fragment = new UltimiEventi();
+                android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, fragment, "HOMELOGGED");
+                fragmentTransaction.commit();
+
+                if (fragment != null && fragment.isVisible()) {
+                    isInHome = true;
+                }
+
+                navigationView.getMenu().setGroupVisible(R.id.logged1, true);
+                navigationView.getMenu().setGroupVisible(R.id.logged2, true);
+                navigationView.getMenu().setGroupVisible(R.id.logged3, true);
+                navigationView.getMenu().setGroupVisible(R.id.notlogged, false);
+
+            } else if (fromLogin == 2) { //vai a libretto
+
+                fab.setVisibility(View.VISIBLE);
+                Libretto fragment = new Libretto();
+                android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, fragment);
+                fragmentTransaction.commit();
+
+                isInHome = false;
+
+                navigationView.getMenu().setGroupVisible(R.id.logged1, false);
+                navigationView.getMenu().setGroupVisible(R.id.logged2, false);
+                navigationView.getMenu().setGroupVisible(R.id.logged3, false);
+                navigationView.getMenu().setGroupVisible(R.id.librettoDR, true);
+
+            } else if (fromLogin == 3) { //Da profilo voglio tornare a ricerca
+                setTitle(R.string.title_fragment_ricerca);
+                fab.setVisibility(View.GONE);
+                RicercaUtente fragment = new RicercaUtente();
+                android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, fragment);
+                fragmentTransaction.commit();
+
+                navigationView.getMenu().setGroupVisible(R.id.notlogged, false);
+
+                isInHome = false;
             }
-
-            navigationView.getMenu().setGroupVisible(R.id.notlogged, true);
-            navigationView.getMenu().setGroupVisible(R.id.logged1, false);
-            navigationView.getMenu().setGroupVisible(R.id.logged2, false);
-            navigationView.getMenu().setGroupVisible(R.id.logged3, false);
-
-        } else if (fromLogin == 1) { //Login QUI DEVO METTERE LE ULTIME NEWS
-            setTitle(R.string.title_activity_homepage);
-            fab.setVisibility(View.GONE);
-            UltimiEventi fragment = new UltimiEventi();
-            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, fragment, "HOMELOGGED");
-            fragmentTransaction.commit();
-
-            if (fragment != null && fragment.isVisible()) {
-                isInHome = true;
-            }
-
-            navigationView.getMenu().setGroupVisible(R.id.logged1, true);
-            navigationView.getMenu().setGroupVisible(R.id.logged2, true);
-            navigationView.getMenu().setGroupVisible(R.id.logged3, true);
-            navigationView.getMenu().setGroupVisible(R.id.notlogged, false);
-
-        } else if (fromLogin == 2) { //vai a libretto
-
-            fab.setVisibility(View.VISIBLE);
-            Libretto fragment = new Libretto();
-            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, fragment);
-            fragmentTransaction.commit();
-
-            isInHome = false;
-
-            navigationView.getMenu().setGroupVisible(R.id.logged1, false);
-            navigationView.getMenu().setGroupVisible(R.id.logged2, false);
-            navigationView.getMenu().setGroupVisible(R.id.logged3, false);
-            navigationView.getMenu().setGroupVisible(R.id.librettoDR, true);
-
-        } else if (fromLogin == 3) { //Da profilo voglio tornare a ricerca
-            setTitle(R.string.title_fragment_ricerca);
-            fab.setVisibility(View.GONE);
-            RicercaUtente fragment = new RicercaUtente();
-            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, fragment);
-            fragmentTransaction.commit();
-
-            navigationView.getMenu().setGroupVisible(R.id.notlogged, false);
-
-            isInHome = false;
         }
-
     }
 
     @Override
@@ -157,7 +158,6 @@ public class HomePage extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            //super.onBackPressed();
             if (isInHome) {
                 super.onBackPressed();
             } else {
@@ -185,8 +185,6 @@ public class HomePage extends AppCompatActivity
                     isInHome = true;
                 }
             }
-
-
         }
     }
 
@@ -205,14 +203,22 @@ public class HomePage extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id) {
+            case R.id.action_settings:
+                break;
+            case R.id.action_faq:
+                break;
+            case R.id.action_accesso:
+                goToLogin();
+                break;
+            case R.id.action_logout:
+                getAlertLogout().show();
+                break;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
@@ -384,4 +390,40 @@ public class HomePage extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+        if (logged) {
+            menu.findItem(R.id.action_accesso).setVisible(false);
+        } else {
+            menu.findItem(R.id.action_logout).setVisible(false);
+        }
+        return true;
+    }
+
+    private AlertDialog getAlertLogout() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Logout");
+        builder.setMessage("Sei sicuro di volerti disconnettere?");
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                credenziali.removeCredential(getApplicationContext());
+                db.deleteAllExams();
+                goToLogin();
+            }
+        });
+        builder.setNegativeButton("Annulla", null);
+
+        AlertDialog alertDialog = builder.create();
+        return alertDialog;
+    }
+
+    private void goToLogin() {
+        Intent intent = new Intent(getApplicationContext(), Login.class);
+        startActivity(intent);
+    }
+
+
 }

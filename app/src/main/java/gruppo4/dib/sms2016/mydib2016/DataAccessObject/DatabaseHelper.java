@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.List;
 
@@ -86,6 +87,19 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         int rows = db.delete(table, clausolaWhere + " = ?", new String[] {argomento});
 
         if(rows > 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public boolean deleteAllData(String table) {
+        SQLiteDatabase db = getWritableDatabase();
+        int rows = db.delete(table, null, null);
+
+        if(rows > 0) {
+            Log.d("DATABASE ", String.valueOf(rows));
             return true;
         }
         else {

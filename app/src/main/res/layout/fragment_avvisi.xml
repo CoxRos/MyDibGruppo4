@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:text="Verificare la connessione"
             android:layout_marginTop="210dp"
-            android:layout_marginLeft="65dp"
+            android:layout_gravity="center"
             android:textSize="20dp"
             android:textStyle="italic"
             android:visibility="gone" />
@@ -32,7 +32,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="-80dp"
-            android:layout_marginLeft="150dp"
+            android:layout_gravity="center"
             android:background="@mipmap/ic_no_wifi"
             android:visibility="gone" />
 

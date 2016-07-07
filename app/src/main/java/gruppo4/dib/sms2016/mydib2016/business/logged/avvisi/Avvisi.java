@@ -2,7 +2,6 @@ package gruppo4.dib.sms2016.mydib2016.business.logged.avvisi;
 
 
 import android.app.ProgressDialog;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -25,8 +23,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import gruppo4.dib.sms2016.mydib2016.R;
-import gruppo4.dib.sms2016.mydib2016.business.Autenticazione.Login;
-import gruppo4.dib.sms2016.mydib2016.business.logged.homenews.AvvisiAdapter;
+import gruppo4.dib.sms2016.mydib2016.business.logged.ultimi_dettagli.AvvisiAdapter;
 import gruppo4.dib.sms2016.mydib2016.entity.AvvisiEntity;
 import gruppo4.dib.sms2016.mydib2016.network.Network;
 
@@ -111,7 +108,7 @@ public class Avvisi extends Fragment {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
                 listaAvvisi.setVisibility(View.GONE);
-                noItem.setVisibility(View.GONE);
+                noItem.setVisibility(View.VISIBLE);
                 noConnection.setVisibility(View.VISIBLE);
                 Log.d("ATTENZIONE:", volleyError.toString());
                 progressDialog.dismiss();

@@ -1,4 +1,4 @@
-package gruppo4.dib.sms2016.mydib2016.business.logged.homenews;
+package gruppo4.dib.sms2016.mydib2016.business.logged.ultimi_dettagli;
 
 import android.content.Context;
 import android.view.LayoutInflater;
