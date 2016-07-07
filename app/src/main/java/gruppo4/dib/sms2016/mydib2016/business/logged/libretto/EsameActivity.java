@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -39,6 +40,7 @@ import gruppo4.dib.sms2016.mydib2016.business.homepage.HomePage;
 import gruppo4.dib.sms2016.mydib2016.entity.EsameEntity;
 import gruppo4.dib.sms2016.mydib2016.network.CustomRequestObject;
 import gruppo4.dib.sms2016.mydib2016.network.Network;
+import gruppo4.dib.sms2016.mydib2016.service.RSSPullService;
 
 public class EsameActivity extends AppCompatActivity {
 
@@ -65,6 +67,9 @@ public class EsameActivity extends AppCompatActivity {
 
     private String option;
     private String esame;
+
+    Intent mServiceIntent;
+    final String urlIntent = "http://mydib2016.altervista.org/api/index.php/uploadDB";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,8 +115,6 @@ public class EsameActivity extends AppCompatActivity {
         Intent intent = getIntent();
         option = intent.getStringExtra("option");
         esame = intent.getStringExtra("esame");
-
-        Log.d("DATI PASSATI", option + " " + esame);
 
         edtEsame.addTextChangedListener(new TextWatcher() {
             @Override
@@ -252,6 +255,15 @@ public class EsameActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(EsameActivity.this, HomePage.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.putExtra("goTo",2);
+        startActivity(intent);
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_bus, menu);
@@ -350,8 +362,7 @@ public class EsameActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                edit.putInt("EXAMTOSEND", 1);//ESAME DA INVIARE PRESENTE
-                edit.commit();
+                startService(new Intent(getApplicationContext(), RSSPullService.class));
                 Log.d("ERRORE LIBRETTO: ", volleyError.getMessage());
                 progressDialog.dismiss();
             }

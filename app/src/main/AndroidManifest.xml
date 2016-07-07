@@ -79,6 +79,9 @@
             android:label="Carica Appunti"
             android:theme="@style/AppTheme.NoActionBar" />
 
+        <service android:name=".service.RSSPullService"
+            android:exported="false"/>
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDF-9ABTm7W52BsBaOU_5MAA7Bx11u48xo" />

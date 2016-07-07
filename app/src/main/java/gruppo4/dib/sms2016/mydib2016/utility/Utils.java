@@ -1,11 +1,18 @@
 package gruppo4.dib.sms2016.mydib2016.utility;
 
 
-import java.util.ArrayList;
+import android.content.Context;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import gruppo4.dib.sms2016.mydib2016.business.Autenticazione.Login;
 import gruppo4.dib.sms2016.mydib2016.entity.EsameEntity;
 
 public class Utils {
+
+    Login credenziali = new Login();
+    static String matricola;
 
     public double getBaseLaurea(double media) {
         return (media*11)/3;
@@ -47,5 +54,19 @@ public class Utils {
         x = Math.floor(x*100);
         x = x/100;
         return x;
+    }
+
+    public List<String> getQueries(List<EsameEntity> esami,Context context) {
+        List<String> queries = new ArrayList<String>();
+        credenziali.getMatricola(context);
+        matricola = credenziali.matricola;
+
+        for(EsameEntity esame : esami) {
+            queries.add("INSERT INTO libretto(materia, CFU, voto, data, matricola) VALUES('"
+                    + esame.getNome() +"','"+ esame.getCfu() +"','"+ esame.getVoto()+"','"+esame.getData() +"','" + matricola + "')");
+        }
+
+        return queries;
+
     }
 }

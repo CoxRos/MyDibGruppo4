@@ -11,6 +11,7 @@ import android.widget.TextView;
 import gruppo4.dib.sms2016.mydib2016.R;
 import gruppo4.dib.sms2016.mydib2016.business.homepage.HomePage;
 import gruppo4.dib.sms2016.mydib2016.business.logged.ricerca.RicercaUtente;
+import gruppo4.dib.sms2016.mydib2016.business.logged.sharing.Sharing;
 import gruppo4.dib.sms2016.mydib2016.entity.UtenteEntity;
 
 public class Profilo extends AppCompatActivity {
@@ -96,5 +97,14 @@ public class Profilo extends AppCompatActivity {
             txtTelProfilo.setText(utente.getTelefono());
         }
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Profilo.this, HomePage.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.putExtra("goTo", 3);
+        startActivity(intent);
     }
 }

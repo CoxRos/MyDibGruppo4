@@ -29,6 +29,7 @@ import gruppo4.dib.sms2016.mydib2016.business.logged.homenews.UltimiEventi;
 import gruppo4.dib.sms2016.mydib2016.business.not_logged.InformazioniUni;
 import gruppo4.dib.sms2016.mydib2016.business.not_logged.ristoro.Ristoro;
 import gruppo4.dib.sms2016.mydib2016.business.not_logged.bus.Bus;
+import gruppo4.dib.sms2016.mydib2016.service.RSSPullService;
 
 public class HomePage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -87,6 +88,7 @@ public class HomePage extends AppCompatActivity
          * Verifico se ha fatto la login oppure ha saltato la login
          */
         if (fromLogin == 0) { //Skip
+            setTitle(R.string.title_fragment_informazioni);
             fab.setVisibility(View.GONE);
             InformazioniUni fragment = new InformazioniUni();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -217,7 +219,7 @@ public class HomePage extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.informazioniNL) {
-            setTitle(R.string.title_activity_homepage);
+            setTitle(R.string.title_fragment_informazioni);
             fab.setVisibility(View.GONE);
             InformazioniUni fragment = new InformazioniUni();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -273,9 +275,8 @@ public class HomePage extends AppCompatActivity
             navigationView.getMenu().setGroupVisible(R.id.librettoDR, true);
             fab.setVisibility(View.VISIBLE);
 
-
         } else if (id == R.id.profiloL) {
-
+            setTitle(R.string.title_activity_profilo);
             fab.setVisibility(View.GONE);
             DatiPersonali fragment = new DatiPersonali();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -285,7 +286,7 @@ public class HomePage extends AppCompatActivity
             isInHome = false;
 
         } else if (id == R.id.informazioniL) {
-            setTitle(R.string.title_activity_homepage);
+            setTitle(R.string.title_fragment_informazioni);
             fab.setVisibility(View.GONE);
             InformazioniUni fragment = new InformazioniUni();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
