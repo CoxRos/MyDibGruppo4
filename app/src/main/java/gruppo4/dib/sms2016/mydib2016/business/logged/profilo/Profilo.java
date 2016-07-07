@@ -55,11 +55,10 @@ public class Profilo extends AppCompatActivity {
         txtEmailProfilo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                        "mailto",txtEmailProfilo.getText().toString(), null));
-                intent.setType("text/plain");
-
-                startActivity(Intent.createChooser(intent, "Send Email..."));
+                Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+                emailIntent.setType("plain/text");
+                emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{txtEmailProfilo.getText().toString()});
+                startActivity(Intent.createChooser(emailIntent, "Invio email al docente."));
             }
         });
 
@@ -67,7 +66,7 @@ public class Profilo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Uri uriUrl = Uri.parse(txtWebProfilo.getText().toString());
-                Intent i = new Intent(Intent.ACTION_VIEW,uriUrl);
+                Intent i = new Intent(Intent.ACTION_VIEW, uriUrl);
                 startActivity(i);
             }
         });
@@ -78,7 +77,7 @@ public class Profilo extends AppCompatActivity {
         txtTipo.setText(utente.getTipo());
 
 
-        if(!utente.getTipo().equalsIgnoreCase("Docente")) {
+        if (!utente.getTipo().equalsIgnoreCase("Docente")) {
             txtWebProfilo.setVisibility(View.GONE);
             txtTelProfilo.setVisibility(View.GONE);
             txtRicevimentoProfilo.setVisibility(View.GONE);

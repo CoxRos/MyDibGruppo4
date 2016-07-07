@@ -56,6 +56,26 @@ public class InformazioniUni extends Fragment {
 
         setUI("http://mydib2016.altervista.org/api/index.php/infouni");
 
+        emailDiretView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+                emailIntent.setType("plain/text");
+                emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{emailDiretView.getText().toString()});
+                startActivity(Intent.createChooser(emailIntent, "Invio email al direttore."));
+            }
+        });
+
+        emailSegretView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+                emailIntent.setType("plain/text");
+                emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{emailSegretView.getText().toString()});
+                startActivity(Intent.createChooser(emailIntent, "Invio email al segretario."));
+            }
+        });
+
 
 
     }
