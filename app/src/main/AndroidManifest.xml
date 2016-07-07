@@ -79,6 +79,10 @@
             android:name=".business.logged.sharing.UploadNotes"
             android:label="Carica Appunti"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".business.settings.UserSetting"
+            android:label="Impostazioni"
+            android:theme="@style/AppTheme.NoActionBar1"/>
 
         <service android:name=".service.RSSPullService"
             android:exported="false"/>

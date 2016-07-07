@@ -2,7 +2,9 @@ package gruppo4.dib.sms2016.mydib2016.business.homepage;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -11,6 +13,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,6 +33,8 @@ import gruppo4.dib.sms2016.mydib2016.business.logged.ultimi_dettagli.UltimiEvent
 import gruppo4.dib.sms2016.mydib2016.business.not_logged.InformazioniUni;
 import gruppo4.dib.sms2016.mydib2016.business.not_logged.ristoro.Ristoro;
 import gruppo4.dib.sms2016.mydib2016.business.not_logged.bus.Bus;
+import gruppo4.dib.sms2016.mydib2016.business.settings.UserSetting;
+import gruppo4.dib.sms2016.mydib2016.utility.LocaleHelper;
 
 public class HomePage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -44,6 +49,8 @@ public class HomePage extends AppCompatActivity
     Login credenziali = new Login();
     static boolean logged;
 
+    private static final int RESULT_SETTINGS = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +61,9 @@ public class HomePage extends AppCompatActivity
         if (savedInstanceState == null) {
             credenziali.getLogged(this);
             logged = credenziali.logged;
+
+            //controlle le impostazioni
+            getValueSettings();
 
             //Setto il fragment iniziale
             //0 proviene da skip, 1 da loggato,2 da add esame e vuole andare a libretto.
@@ -205,6 +215,8 @@ public class HomePage extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         switch (id) {
             case R.id.action_settings:
+                Intent intent = new Intent(this, UserSetting.class);
+                startActivity(intent);
                 break;
             case R.id.action_faq:
                 break;
@@ -425,5 +437,11 @@ public class HomePage extends AppCompatActivity
         startActivity(intent);
     }
 
+    private void getValueSettings() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
+        String value = sharedPreferences.getString("prefLingua", "it");
+
+        LocaleHelper.setLocale(this, value);
+    }
 }

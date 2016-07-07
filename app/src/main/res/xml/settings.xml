@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-
     <PreferenceCategory android:title="@string/impostazioni_app_title" >
-        <EditTextPreference
+        <ListPreference
             android:title="@string/impostazioni_lingua"
             android:summary="@string/impostazioni_lingua_subtitle"
-            android:key="prefUsername"/>
+            android:entries="@array/linguaValue"
+            android:entryValues="@array/lingua_entry"
+            android:key="prefLingua"/>
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/impostazioni_update" >
@@ -18,6 +19,8 @@
 
         <ListPreference
             android:key="prefSyncFrequency"
+            android:entries="@array/syncFrequency"
+            android:entryValues="@array/sync_value"
             android:summary="@string/impostazioni_sincronizzazione"
             android:title="@string/impostazioni_sincronizzazione_text" />
     </PreferenceCategory>

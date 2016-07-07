@@ -14,9 +14,11 @@ import android.widget.LinearLayout;
 
 import gruppo4.dib.sms2016.mydib2016.business.Autenticazione.Login;
 import gruppo4.dib.sms2016.mydib2016.R;
+import gruppo4.dib.sms2016.mydib2016.utility.LocaleHelper;
 
 
 public class SplashScreen extends Activity {
+
     public void onAttachedToWindow() {
         super.onAttachedToWindow();
         Window window = getWindow();
@@ -24,12 +26,15 @@ public class SplashScreen extends Activity {
     }
     /** Called when the activity is first created. */
     Thread splashTread;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splashscreen);
+        LocaleHelper.onCreate(this, "it");
         StartAnimations();
     }
+
     private void StartAnimations() {
         Animation anim = AnimationUtils.loadAnimation(this, R.anim.alpha);
         anim.reset();
