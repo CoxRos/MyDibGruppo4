@@ -227,7 +227,7 @@ public class Grafici extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "PROGRESS-TIME";
+                    return "PROGRESSO";
                 case 1:
                     return "TORTA";
             }

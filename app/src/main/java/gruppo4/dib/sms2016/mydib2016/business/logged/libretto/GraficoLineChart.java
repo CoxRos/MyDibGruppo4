@@ -14,6 +14,7 @@ import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.interfaces.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
@@ -35,6 +36,8 @@ public class GraficoLineChart extends Fragment {
 
     TextView noEsamiChart;
     ImageView imageNoEsamiChart;
+
+    ArrayList<Couple> voti;
 
     List<String> xDataPers;
     List<String> yDataPers;
@@ -81,8 +84,16 @@ public class GraficoLineChart extends Fragment {
         mainLayout.addView(pieChart);
         mainLayout.setBackgroundColor(Color.WHITE);
 
+        final TextView esame = new TextView(getContext());
+        mainLayout.addView(esame);
+        esame.setVisibility(View.GONE);
+        esame.setTextColor(Color.parseColor("#192370"));
+        esame.setPadding(20,20,0,0);
+        esame.setTextSize(22);
+
         pieChart.setUsePercentValues(true);
         pieChart.setDescription("Voti");
+        pieChart.setValueTextColor(Color.parseColor("#151515"));
 
         pieChart.setDrawHoleEnabled(true);
         pieChart.setHoleColor(Color.TRANSPARENT);
@@ -92,6 +103,20 @@ public class GraficoLineChart extends Fragment {
         pieChart.setRotationAngle(0);
         pieChart.setRotationEnabled(true);
 
+
+        pieChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
+            @Override
+            public void onValueSelected(Entry entry, int i) {
+                esame.setVisibility(View.VISIBLE);
+                esame.setText("Voto: " + xDataPers.get(entry.getXIndex()) + "\nRicorrenza: " + yDataPers.get(entry.getXIndex()));
+            }
+
+            @Override
+            public void onNothingSelected() {
+                esame.setVisibility(View.GONE);
+            }
+        });
+
         addData();
     }
 
@@ -99,7 +124,7 @@ public class GraficoLineChart extends Fragment {
         if(esami.size()>0) {
             noEsamiChart.setVisibility(View.GONE);
             imageNoEsamiChart.setVisibility(View.GONE);
-            ArrayList<Couple> voti = new ArrayList<Couple>();
+            voti = new ArrayList<Couple>();
             for (EsameEntity esame : esami) {
                 int esameVoto = Integer.parseInt(esame.getVoto());
                 boolean thereIs = false;
@@ -140,8 +165,8 @@ public class GraficoLineChart extends Fragment {
 
         //Crea la torta
         PieDataSet dataSet = new PieDataSet(yVals, "Carriera universitaria");
-        dataSet.setSliceSpace(3);
-        dataSet.setSelectionShift(5);
+        dataSet.setSliceSpace(0);
+        dataSet.setSelectionShift(10);
 
         //add many colors
         ArrayList<Integer> colors = new ArrayList<Integer>();
