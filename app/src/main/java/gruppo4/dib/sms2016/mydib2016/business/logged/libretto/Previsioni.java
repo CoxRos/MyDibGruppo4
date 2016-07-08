@@ -1,5 +1,6 @@
 package gruppo4.dib.sms2016.mydib2016.business.logged.libretto;
 
+import android.content.Context;
 import android.support.annotation.StringDef;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -96,6 +98,25 @@ public class Previsioni extends Fragment {
         calcolaPrevisione.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //nascondo la tastiera al click del bottone
+                InputMethodManager inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
+                //controllo l'input inserito
+                int votoIns = Integer.parseInt(voto.getText().toString());
+                int cfuIns = Integer.parseInt(cfu.getText().toString());
+
+                if(votoIns < 18 || votoIns > 30) {
+                    voto.setError("Inserisci un voto valido");
+                    return;
+                }
+
+                if(cfuIns > 15) {
+                    cfu.setError("Inserisci dei CFU validi");
+                    return;
+                }
+
                 ArrayList<EsameEntity> esami = new ArrayList<EsameEntity>();
                 EsameEntity prossimoEsame = new EsameEntity("", cfu.getText().toString(), voto.getText().toString(), "");
                 esami = (ArrayList<EsameEntity>) db.getEsami();

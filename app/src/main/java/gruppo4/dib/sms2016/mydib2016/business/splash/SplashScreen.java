@@ -3,8 +3,10 @@ package gruppo4.dib.sms2016.mydib2016.business.splash;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Window;
 import android.view.animation.Animation;
@@ -20,6 +22,9 @@ import gruppo4.dib.sms2016.mydib2016.utility.LocaleHelper;
 
 public class SplashScreen extends Activity {
 
+    Login credenziali = new Login();
+    static boolean logged;
+
     public void onAttachedToWindow() {
         super.onAttachedToWindow();
         Window window = getWindow();
@@ -32,8 +37,20 @@ public class SplashScreen extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splashscreen);
-        LocaleHelper.onCreate(this, "it");
-        StartAnimations();
+
+        credenziali.getLogged(this);
+        logged = credenziali.logged;
+
+        if(!logged)
+            StartAnimations();
+        else
+            changeActivity();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d("AAAAAAAAAAA", "DESTROY VIEW");
     }
 
     private void StartAnimations() {
@@ -66,10 +83,7 @@ public class SplashScreen extends Activity {
                         sleep(100);
                         waited += 100;
                     }
-                    Intent intent = new Intent(SplashScreen.this,
-                            Login.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                    startActivity(intent);
+                    changeActivity();
                     SplashScreen.this.finish();
                 } catch (InterruptedException e) {
                     Log.d("CATCH", "");
@@ -83,4 +97,9 @@ public class SplashScreen extends Activity {
 
     }
 
+    private void changeActivity() {
+        Intent intent = new Intent(SplashScreen.this, Login.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(intent);
+    }
 }

@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -41,6 +42,7 @@ import gruppo4.dib.sms2016.mydib2016.entity.EsameEntity;
 import gruppo4.dib.sms2016.mydib2016.network.CustomRequestObject;
 import gruppo4.dib.sms2016.mydib2016.network.Network;
 import gruppo4.dib.sms2016.mydib2016.service.RSSPullService;
+import gruppo4.dib.sms2016.mydib2016.utility.Costants;
 
 public class EsameActivity extends AppCompatActivity {
 
@@ -227,12 +229,26 @@ public class EsameActivity extends AppCompatActivity {
                 String voto = edtVoto.getText().toString();
                 String data = edtData.getText().toString();
 
+                //controllo gli input
+                int votoIns = Integer.parseInt(voto);
+                int cfuIns = Integer.parseInt(cfu);
+
+                if(votoIns < 18 || votoIns > 30) {
+                    edtVoto.setError("Inserisci un voto valido");
+                    return;
+                }
+
+                if(cfuIns > 15 || cfuIns == 0) {
+                    edtCfu.setError("Inserisci un numero di cfu validi");
+                    return;
+                }
+
                 if(option.equals("add")) {
                     boolean isInserted = db.insertEsame(materia, cfu, voto, data);
 
                     if (isInserted) {
                         Toast.makeText(getApplicationContext(), "Dati inseriti con successo", Toast.LENGTH_LONG).show();
-                        doRequest("http://mydib2016.altervista.org/api/index.php/insertEsame", "");
+                        doRequest(Costants.URL_INSERT_ESAME, "");
                     } else {
                         Toast.makeText(getApplicationContext(), "Non è stato possibile inserire i dati... esame gia presente!", Toast.LENGTH_LONG).show();
                     }
@@ -243,7 +259,7 @@ public class EsameActivity extends AppCompatActivity {
 
                     if(isUpdated) {
                         Toast.makeText(getApplicationContext(), "Dati aggiornati con successo", Toast.LENGTH_LONG).show();
-                        doRequest("http://mydib2016.altervista.org/api/index.php/updateEsame", holdMat);
+                        doRequest(Costants.URL_UPDATE_ESAME, holdMat);
                     } else {
                         Toast.makeText(getApplicationContext(), "Non è stato possibile aggiornare i dati... esame gia presente!", Toast.LENGTH_LONG).show();
                     }
@@ -261,28 +277,6 @@ public class EsameActivity extends AppCompatActivity {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.putExtra("goTo",2);
         startActivity(intent);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_bus, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     /**

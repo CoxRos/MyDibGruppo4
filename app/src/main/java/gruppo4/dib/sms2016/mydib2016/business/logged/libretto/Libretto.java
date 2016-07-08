@@ -36,6 +36,7 @@ import gruppo4.dib.sms2016.mydib2016.entity.EsameEntity;
 import gruppo4.dib.sms2016.mydib2016.network.CustomRequestArray;
 import gruppo4.dib.sms2016.mydib2016.network.Network;
 import gruppo4.dib.sms2016.mydib2016.service.RSSPullService;
+import gruppo4.dib.sms2016.mydib2016.utility.Costants;
 import gruppo4.dib.sms2016.mydib2016.utility.Utils;
 
 
@@ -71,7 +72,7 @@ public class Libretto extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        preferences = getActivity().getSharedPreferences("CREDENZIALI", Context.MODE_PRIVATE);
+        preferences = getActivity().getSharedPreferences(Costants.PREFERENCES_CREDENZIALI, Context.MODE_PRIVATE);
 
         db = new DAOLibretto(getContext());
 
@@ -86,7 +87,7 @@ public class Libretto extends Fragment {
 
             progressDialog = new ProgressDialog(getActivity());
 
-            setUI("http://mydib2016.altervista.org/api/index.php/selectEsami");
+            setUI(Costants.URL_SELECT_ESAMI);
         }
     }
 

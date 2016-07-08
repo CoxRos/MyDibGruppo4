@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -34,6 +33,7 @@ import gruppo4.dib.sms2016.mydib2016.R;
 import gruppo4.dib.sms2016.mydib2016.business.homepage.HomePage;
 import gruppo4.dib.sms2016.mydib2016.network.CustomRequestObject;
 import gruppo4.dib.sms2016.mydib2016.network.Network;
+import gruppo4.dib.sms2016.mydib2016.utility.Costants;
 
 public class Login extends AppCompatActivity {
 
@@ -61,7 +61,7 @@ public class Login extends AppCompatActivity {
         
         queue = Network.getInstance(getApplicationContext()).getRequestQueue();
 
-        preferences = getApplicationContext().getSharedPreferences("CREDENZIALI", MODE_PRIVATE);
+        preferences = getApplicationContext().getSharedPreferences(Costants.PREFERENCES_CREDENZIALI, MODE_PRIVATE);
         editor = preferences.edit();
 
         login = (Button) findViewById(R.id.button_login);
@@ -102,7 +102,7 @@ public class Login extends AppCompatActivity {
                         return;
                     }
 
-                    doRequest("http://mydib2016.altervista.org/api/index.php/login", et_email.getText().toString(), et_password.getText().toString());
+                    doRequest(Costants.URL_LOGIN, et_email.getText().toString(), et_password.getText().toString());
                 }
             });
         }
@@ -185,17 +185,17 @@ public class Login extends AppCompatActivity {
 
 
     public void getLogged(Context context) {
-        SharedPreferences prefs = context.getSharedPreferences("CREDENZIALI", MODE_PRIVATE);
+        SharedPreferences prefs = context.getSharedPreferences(Costants.PREFERENCES_CREDENZIALI, MODE_PRIVATE);
         logged = prefs.getBoolean("loggato", false);
     }
 
     public void getMatricola(Context context) {
-        SharedPreferences prefs = context.getSharedPreferences("CREDENZIALI", MODE_PRIVATE);
+        SharedPreferences prefs = context.getSharedPreferences(Costants.PREFERENCES_CREDENZIALI, MODE_PRIVATE);
         matricola = prefs.getString("matricola", "");
     }
 
     public void removeCredential(Context context) {
-        SharedPreferences preferences = context.getSharedPreferences("CREDENZIALI", MODE_PRIVATE);
+        SharedPreferences preferences = context.getSharedPreferences(Costants.PREFERENCES_CREDENZIALI, MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.remove("loggato");
         editor.remove("matricola");
@@ -203,7 +203,7 @@ public class Login extends AppCompatActivity {
     }
 
     public void getEmail(Context context) {
-        SharedPreferences prefs = context.getSharedPreferences("CREDENZIALI", MODE_PRIVATE);
+        SharedPreferences prefs = context.getSharedPreferences(Costants.PREFERENCES_CREDENZIALI, MODE_PRIVATE);
         email = prefs.getString("email", "");
     }
 }

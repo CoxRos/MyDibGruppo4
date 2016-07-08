@@ -52,8 +52,6 @@ public class HomePage extends AppCompatActivity
     Login credenziali = new Login();
     static boolean logged;
 
-    private static final int RESULT_SETTINGS = 1;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -444,8 +442,7 @@ public class HomePage extends AppCompatActivity
     private void getValueSettings() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-        String value = sharedPreferences.getString("prefLingua", "it");
-
+        String value = sharedPreferences.getString("prefLingua", "null");
         LocaleHelper.setLocale(this, value);
     }
 }

@@ -42,7 +42,7 @@ public class RicercaUtente extends Fragment {
     EditText ricercato;
     ListView listRicerca;
     TextView messageNoRicerca;
-    ImageView no_utenti;
+    ImageView no_utenti, no_connection;
 
     public RicercaUtente() {
         // Required empty public constructor
@@ -65,6 +65,7 @@ public class RicercaUtente extends Fragment {
         listRicerca = (ListView) getActivity().findViewById(R.id.listRicerca);
         messageNoRicerca = (TextView) getActivity().findViewById(R.id.messageNoRicerca);
         no_utenti = (ImageView) getActivity().findViewById(R.id.no_utenti);
+        no_connection = (ImageView)getActivity().findViewById(R.id.no_wifUtenti);
 
         queue = Network.getInstance(getActivity()).
                 getRequestQueue();
@@ -82,6 +83,11 @@ public class RicercaUtente extends Fragment {
                 listRicerca.setVisibility(View.VISIBLE);
                 messageNoRicerca.setVisibility(View.GONE);
                 no_utenti.setVisibility(View.GONE);
+
+                if("".equals(ricercato.getText().toString())) {
+                    ricercato.setError("Inserisci un nome o un cognome da ricercare!");
+                    return;
+                }
 
                 if(textToSearch.length() > 0) {
                     CustomRequestArray jsonObjectRequest = new CustomRequestArray(Request.Method.POST,
@@ -132,10 +138,9 @@ public class RicercaUtente extends Fragment {
                             listRicerca.setVisibility(View.GONE);
                             messageNoRicerca.setVisibility(View.VISIBLE);
                             messageNoRicerca.setText("Verificare la connessione");
-                            no_utenti.setVisibility(View.VISIBLE);
-                            System.out.println("ERR: " + error.getMessage());
-                            Log.d("ATTENZIONE:", error.getCause().toString());
-                            error.printStackTrace();
+                            no_utenti.setVisibility(View.GONE);
+                            no_connection.setVisibility(View.VISIBLE);
+                            Log.d("ATTENZIONE:", error.getMessage());
                             progressDialog.dismiss();
                         }
 
