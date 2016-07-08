@@ -6,7 +6,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.Entry;
@@ -31,8 +33,8 @@ public class GraficoLineChart extends Fragment {
 
     private DAOLibretto db;
 
-    float[] yData;
-    String[] xData;
+    TextView noEsamiChart;
+    ImageView imageNoEsamiChart;
 
     List<String> xDataPers;
     List<String> yDataPers;
@@ -59,16 +61,16 @@ public class GraficoLineChart extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        //noItem = (TextView) getActivity().findViewById(R.id.verificaConnRitorno);
-        //noItemImage = (ImageView) getActivity().findViewById(R.id.no_wifiRitorno);
+        noEsamiChart = (TextView) getActivity().findViewById(R.id.noEsamiChart2);
+        imageNoEsamiChart = (ImageView) getActivity().findViewById(R.id.imageNoEsamiChart2);
 
         db = new DAOLibretto(getContext());
 
         xDataPers = new ArrayList<String>();
         yDataPers = new ArrayList<String>();
 
-
-        setPercentual();
+        List<EsameEntity> esami = db.getEsami();
+        setPercentual(esami);
 
         setUI();
     }
@@ -93,27 +95,33 @@ public class GraficoLineChart extends Fragment {
         addData();
     }
 
-    private void setPercentual() {
-        List<EsameEntity> esami = db.getEsami();
-        ArrayList<Couple> voti = new ArrayList<Couple>();
-        for(EsameEntity esame : esami) {
-            int esameVoto = Integer.parseInt(esame.getVoto());
-            boolean thereIs = false;
-            for(Couple coppie : voti) {
-                if(coppie.getVoto() == esameVoto) {
-                    thereIs = true;
-                    coppie.setCount(coppie.getCount() +1);
-                    break;
+    private void setPercentual(List<EsameEntity> esami) {
+        if(esami.size()>0) {
+            noEsamiChart.setVisibility(View.GONE);
+            imageNoEsamiChart.setVisibility(View.GONE);
+            ArrayList<Couple> voti = new ArrayList<Couple>();
+            for (EsameEntity esame : esami) {
+                int esameVoto = Integer.parseInt(esame.getVoto());
+                boolean thereIs = false;
+                for (Couple coppie : voti) {
+                    if (coppie.getVoto() == esameVoto) {
+                        thereIs = true;
+                        coppie.setCount(coppie.getCount() + 1);
+                        break;
+                    }
+                }
+                if (!thereIs) {
+                    voti.add(new Couple(esameVoto, 1));
                 }
             }
-            if(!thereIs) {
-                voti.add(new Couple(esameVoto,1));
-            }
-        }
 
-        for(Couple v : voti) {
-            xDataPers.add(Integer.toString(v.getVoto()));
-            yDataPers.add(Integer.toString(v.getCount()));
+            for (Couple v : voti) {
+                xDataPers.add(Integer.toString(v.getVoto()));
+                yDataPers.add(Integer.toString(v.getCount()));
+            }
+        } else {
+            noEsamiChart.setVisibility(View.VISIBLE);
+            imageNoEsamiChart.setVisibility(View.VISIBLE);
         }
 
     }

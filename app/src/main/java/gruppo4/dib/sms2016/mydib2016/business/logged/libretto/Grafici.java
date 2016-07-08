@@ -164,28 +164,37 @@ public class Grafici extends AppCompatActivity {
 
         private void setUI() {
 
+            noEsamiChart.setVisibility(View.GONE);
+            imageNoEsamiChart.setVisibility(View.GONE);
             LineChart lineChart = (LineChart) getActivity().findViewById(R.id.chart);
+            lineChart.setVisibility(View.VISIBLE);
             lineChart.setDescription("Andamento esami");
 
             List<EsameEntity> esami = db.getEsami();
             ArrayList<Entry> entries = new ArrayList<>();
             ArrayList<String> labels = new ArrayList<String>();
 
-            int i= 0;
-            for(EsameEntity esame : esami) {
-                entries.add(new Entry(Float.parseFloat(esame.getVoto()),i++));
-                labels.add("");
+            if(esami.size() > 0) {
+                int i = 0;
+                for (EsameEntity esame : esami) {
+                    entries.add(new Entry(Float.parseFloat(esame.getVoto()), i++));
+                    labels.add("");
+                }
+
+                LineDataSet dataset = new LineDataSet(entries, "");
+
+                LineData data = new LineData(labels, dataset);
+                dataset.setColors(ColorTemplate.JOYFUL_COLORS);
+                dataset.setDrawCubic(true);
+                dataset.setDrawFilled(true);
+
+                lineChart.setData(data);
+                lineChart.animateY(6000);
+            } else {
+                noEsamiChart.setVisibility(View.VISIBLE);
+                imageNoEsamiChart.setVisibility(View.VISIBLE);
+                lineChart.setVisibility(View.GONE);
             }
-
-            LineDataSet dataset = new LineDataSet(entries, "");
-
-            LineData data = new LineData(labels, dataset);
-            dataset.setColors(ColorTemplate.JOYFUL_COLORS);
-            dataset.setDrawCubic(true);
-            dataset.setDrawFilled(true);
-
-            lineChart.setData(data);
-            lineChart.animateY(6000);
         }
     }
 
