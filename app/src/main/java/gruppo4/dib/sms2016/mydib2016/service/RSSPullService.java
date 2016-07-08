@@ -24,9 +24,6 @@ import gruppo4.dib.sms2016.mydib2016.network.CustomRequestObject;
 import gruppo4.dib.sms2016.mydib2016.network.Network;
 import gruppo4.dib.sms2016.mydib2016.utility.Utils;
 
-/**
- * Created by Utente on 07/07/2016.
- */
 public class RSSPullService extends Service {
 
     private boolean isRunning = false;

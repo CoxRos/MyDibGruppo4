@@ -10,9 +10,6 @@ import android.widget.TextView;
 import gruppo4.dib.sms2016.mydib2016.R;
 import gruppo4.dib.sms2016.mydib2016.entity.AvvisiEntity;
 
-/**
- * Created by sergiocorvino on 03/07/16.
- */
 public class AvvisiAdapter extends ArrayAdapter<AvvisiEntity> {
 
     private final int NEW_LAYOUT_RESOURCE;

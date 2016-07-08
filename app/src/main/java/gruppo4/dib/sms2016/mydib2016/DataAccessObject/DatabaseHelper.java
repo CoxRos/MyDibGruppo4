@@ -9,9 +9,6 @@ import android.util.Log;
 
 import java.util.List;
 
-/**
- * Created by sergiocorvino on 03/07/16.
- */
 public class DatabaseHelper extends SQLiteOpenHelper{
 
     private static String DATABASE_NAME = "MyDib.db";

@@ -10,9 +10,6 @@ import android.widget.TextView;
 import gruppo4.dib.sms2016.mydib2016.R;
 import gruppo4.dib.sms2016.mydib2016.entity.FAQEntity;
 
-/**
- * Created by Cosimo on 08/07/2016.
- */
 public class FAQAdapter extends ArrayAdapter<FAQEntity> {
 
     private final int NEW_LAYOUT_RESOURCE;

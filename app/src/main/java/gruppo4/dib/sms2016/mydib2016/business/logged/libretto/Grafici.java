@@ -38,7 +38,6 @@ import gruppo4.dib.sms2016.mydib2016.business.system.FAQ;
 import gruppo4.dib.sms2016.mydib2016.business.system.UserSetting;
 import gruppo4.dib.sms2016.mydib2016.entity.EsameEntity;
 
-
 public class Grafici extends AppCompatActivity {
 
     /**

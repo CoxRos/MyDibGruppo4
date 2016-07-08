@@ -1,8 +1,5 @@
 package gruppo4.dib.sms2016.mydib2016.entity;
 
-/**
- * Created by Utente on 30/06/2016.
- */
 public class BusEntity {
     public String numBus,orarioPartenza,orarioArrivo,partenza;
 

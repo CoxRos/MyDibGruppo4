@@ -3,9 +3,6 @@ package gruppo4.dib.sms2016.mydib2016.entity;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.LatLng;
 
-/**
- * Created by Utente on 07/07/2016.
- */
 public class LocationEntity {
 
     LatLng posizione;

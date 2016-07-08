@@ -24,9 +24,6 @@ import gruppo4.dib.sms2016.mydib2016.DataAccessObject.DAOLibretto;
 import gruppo4.dib.sms2016.mydib2016.R;
 import gruppo4.dib.sms2016.mydib2016.entity.EsameEntity;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class GraficoLineChart extends Fragment {
 
     RelativeLayout mainLayout;

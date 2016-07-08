@@ -1,8 +1,5 @@
 package gruppo4.dib.sms2016.mydib2016.entity;
 
-/**
- * Created by Utente on 04/07/2016.
- */
 public class NotaEntity {
 
     String titolo, descrizione, autore, data, url;

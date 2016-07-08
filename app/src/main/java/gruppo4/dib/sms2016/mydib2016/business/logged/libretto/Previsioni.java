@@ -23,9 +23,6 @@ import gruppo4.dib.sms2016.mydib2016.R;
 import gruppo4.dib.sms2016.mydib2016.entity.EsameEntity;
 import gruppo4.dib.sms2016.mydib2016.utility.Utils;
 
-/**
- * Created by sergiocorvino on 08/07/16.
- */
 public class Previsioni extends Fragment {
 
     private EditText voto, cfu;

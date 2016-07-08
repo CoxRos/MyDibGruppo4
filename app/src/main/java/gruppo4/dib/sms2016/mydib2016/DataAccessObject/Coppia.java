@@ -1,8 +1,5 @@
 package gruppo4.dib.sms2016.mydib2016.DataAccessObject;
 
-/**
- * Created by sergiocorvino on 03/07/16.
- */
 public class Coppia {
 
     private String key, value;

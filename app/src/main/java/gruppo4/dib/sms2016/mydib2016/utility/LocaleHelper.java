@@ -8,9 +8,6 @@ import android.preference.PreferenceManager;
 
 import java.util.Locale;
 
-/**
- * Created by sergiocorvino on 07/07/16.
- */
 public class LocaleHelper {
 
     private static final String SELECTED_LANGUAGE = "Locale.Helper.Selected.Language";

@@ -28,7 +28,6 @@ import gruppo4.dib.sms2016.mydib2016.entity.AvvisiEntity;
 import gruppo4.dib.sms2016.mydib2016.network.Network;
 import gruppo4.dib.sms2016.mydib2016.utility.Costants;
 
-
 public class Avvisi extends Fragment {
 
     ProgressDialog progressDialog;

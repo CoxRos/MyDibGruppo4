@@ -11,10 +11,6 @@ import android.widget.TextView;
 import gruppo4.dib.sms2016.mydib2016.R;
 import gruppo4.dib.sms2016.mydib2016.entity.BusEntity;
 
-
-/**
- * Created by Cosimo on 17/05/2016.
- */
 public class BusTimeAdapter extends ArrayAdapter<BusEntity> {
 
     private final int NEW_LAYOUT_RESOURCE;

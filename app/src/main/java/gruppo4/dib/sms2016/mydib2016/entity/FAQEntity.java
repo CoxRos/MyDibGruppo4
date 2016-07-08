@@ -1,8 +1,5 @@
 package gruppo4.dib.sms2016.mydib2016.entity;
 
-/**
- * Created by Utente on 08/07/2016.
- */
 public class FAQEntity {
 
     String titolo,descrizione;

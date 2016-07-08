@@ -39,7 +39,6 @@ import gruppo4.dib.sms2016.mydib2016.service.RSSPullService;
 import gruppo4.dib.sms2016.mydib2016.utility.Costants;
 import gruppo4.dib.sms2016.mydib2016.utility.Utils;
 
-
 public class Libretto extends Fragment {
 
     RequestQueue queue;

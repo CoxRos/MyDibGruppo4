@@ -9,9 +9,6 @@ import java.util.List;
 import gruppo4.dib.sms2016.mydib2016.entity.EsameEntity;
 import gruppo4.dib.sms2016.mydib2016.utility.Costants;
 
-/**
- * Created by sergiocorvino on 03/07/16.
- */
 public class DAOLibretto {
 
     private DatabaseHelper db;
