@@ -102,4 +102,13 @@
     <string name="profilo_cfu">CFU:</string>
     <string name="profilo_non_disp">Not available</string>
     <string name="profilo_matricola">SERIAL</string>
+
+    <string name="no_esami_grafic">There are no exams.</string>
+    <string name="info_non_dispoibile">Information not available</string>
+    <string name="nome_non_disponibile">Not available Name</string>
+    <string name="email_non_disponibile">Email not available</string>
+    <string name="segretario_info">ADMINISTRATIVE SECRETARY</string>
+    <string name="direttore_info">DIRECTOR:</string>
+    <string name="pec_info">PEC</string>
+        <string name="dove_siamo_info">WHERE WE ARE:</string>
 </resources>

@@ -95,11 +95,20 @@
     <string name="bus_andata">Piazza Moro - Université</string>
     <string name="bus_ritorno">Université - Piazza Moro</string>
 
-    <string name="profilo_titolo">Étudiant en informatique à l'Université de Bari</string>
+    <string name="profilo_titolo">Étudiant en informatique à l\'Université de Bari</string>
 
     <string name="profilo_media_pond">M.PONDEREE:</string>
     <string name="profilo_media_arit">M.ARITHMETIQUE:</string>
     <string name="profilo_cfu">CFU:</string>
     <string name="profilo_non_disp">indisponible</string>
     <string name="profilo_matricola">SERIAL</string>
+
+    <string name="no_esami_grafic">Il n\'y a pas d\'examens.</string>
+    <string name="info_non_dispoibile">Information non disponible</string>
+    <string name="nome_non_disponibile">Non disponible Nom</string>
+    <string name="email_non_disponibile">non disponible Email</string>
+    <string name="segretario_info">SECRETAIRE ADMINISTRATIVE</string>
+    <string name="direttore_info">DIRECTEUR:</string>
+    <string name="pec_info">PEC</string>
+    <string name="dove_siamo_info">OÙ NOUS SOMMES:</string>
 </resources>
