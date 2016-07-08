@@ -26,10 +26,9 @@ import gruppo4.dib.sms2016.mydib2016.R;
 import gruppo4.dib.sms2016.mydib2016.business.logged.ultimi_dettagli.AvvisiAdapter;
 import gruppo4.dib.sms2016.mydib2016.entity.AvvisiEntity;
 import gruppo4.dib.sms2016.mydib2016.network.Network;
+import gruppo4.dib.sms2016.mydib2016.utility.Costants;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class Avvisi extends Fragment {
 
     ProgressDialog progressDialog;
@@ -62,7 +61,7 @@ public class Avvisi extends Fragment {
         queue = Network.getInstance(getContext()).getRequestQueue();
         progressDialog = new ProgressDialog(getActivity());
 
-        setUi("http://mydib2016.altervista.org/api/index.php/avvisi");
+        setUi(Costants.URL_AVVSI_NEWS);
     }
 
     private void setUi(String url) {

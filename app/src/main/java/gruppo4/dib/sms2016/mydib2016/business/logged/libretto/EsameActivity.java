@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -41,6 +42,7 @@ import gruppo4.dib.sms2016.mydib2016.entity.EsameEntity;
 import gruppo4.dib.sms2016.mydib2016.network.CustomRequestObject;
 import gruppo4.dib.sms2016.mydib2016.network.Network;
 import gruppo4.dib.sms2016.mydib2016.service.RSSPullService;
+import gruppo4.dib.sms2016.mydib2016.utility.Costants;
 
 public class EsameActivity extends AppCompatActivity {
 
@@ -246,7 +248,7 @@ public class EsameActivity extends AppCompatActivity {
 
                     if (isInserted) {
                         Toast.makeText(getApplicationContext(), "Dati inseriti con successo", Toast.LENGTH_LONG).show();
-                        doRequest("http://mydib2016.altervista.org/api/index.php/insertEsame", "");
+                        doRequest(Costants.URL_INSERT_ESAME, "");
                     } else {
                         Toast.makeText(getApplicationContext(), "Non è stato possibile inserire i dati... esame gia presente!", Toast.LENGTH_LONG).show();
                     }
@@ -257,7 +259,7 @@ public class EsameActivity extends AppCompatActivity {
 
                     if(isUpdated) {
                         Toast.makeText(getApplicationContext(), "Dati aggiornati con successo", Toast.LENGTH_LONG).show();
-                        doRequest("http://mydib2016.altervista.org/api/index.php/updateEsame", holdMat);
+                        doRequest(Costants.URL_UPDATE_ESAME, holdMat);
                     } else {
                         Toast.makeText(getApplicationContext(), "Non è stato possibile aggiornare i dati... esame gia presente!", Toast.LENGTH_LONG).show();
                     }

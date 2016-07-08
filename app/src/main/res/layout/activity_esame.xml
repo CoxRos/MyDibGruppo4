@@ -68,6 +68,7 @@
                 android:hint="Voto"
                 android:id="@+id/edtVoto"
                 android:inputType="number"/>
+
             <EditText
                 android:layout_width="341dp"
                 android:layout_height="match_parent"

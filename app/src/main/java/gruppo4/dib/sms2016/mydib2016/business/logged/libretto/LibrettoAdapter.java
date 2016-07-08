@@ -33,6 +33,7 @@ import gruppo4.dib.sms2016.mydib2016.business.homepage.HomePage;
 import gruppo4.dib.sms2016.mydib2016.entity.EsameEntity;
 import gruppo4.dib.sms2016.mydib2016.network.CustomRequestObject;
 import gruppo4.dib.sms2016.mydib2016.network.Network;
+import gruppo4.dib.sms2016.mydib2016.utility.Costants;
 
 public class LibrettoAdapter extends ArrayAdapter<EsameEntity> {
 
@@ -202,7 +203,7 @@ public class LibrettoAdapter extends ArrayAdapter<EsameEntity> {
 
                 if(isDeleted) {
                     Toast.makeText(getContext(), "Esame eliminato con successo", Toast.LENGTH_LONG).show();
-                    doRequest("http://mydib2016.altervista.org/api/index.php/deleteEsame", nomeEsame);
+                    doRequest(Costants.URL_DELETE_ESAMI, nomeEsame);
                 } else {
                     Toast.makeText(getContext(), "Non è stato possibile eliminare l'esame, riprova", Toast.LENGTH_LONG);
                 }
