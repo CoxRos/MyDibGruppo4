@@ -11,6 +11,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import gruppo4.dib.sms2016.mydib2016.business.Autenticazione.Login;
 import gruppo4.dib.sms2016.mydib2016.R;
@@ -42,11 +43,18 @@ public class SplashScreen extends Activity {
         l.clearAnimation();
         l.startAnimation(anim);
 
+        TextView text1 = (TextView) findViewById(R.id.text1);
+        TextView text2 = (TextView) findViewById(R.id.text2);
+
         anim = AnimationUtils.loadAnimation(this, R.anim.translate);
         anim.reset();
         ImageView iv = (ImageView) findViewById(R.id.splash);
         iv.clearAnimation();
         iv.startAnimation(anim);
+        text1.clearAnimation();
+        text1.startAnimation(anim);
+        text2.clearAnimation();
+        text2.startAnimation(anim);
 
         splashTread = new Thread() {
             @Override
@@ -54,9 +62,8 @@ public class SplashScreen extends Activity {
                 try {
                     int waited = 0;
                     // Splash screen pause time
-                    while (waited < 1500) { //Tempo di splash
+                    while (waited < 3000) { //Tempo di splash
                         sleep(100);
-                        Log.d("Pre-caricamento", "waited: " + waited);
                         waited += 100;
                     }
                     Intent intent = new Intent(SplashScreen.this,
@@ -65,7 +72,7 @@ public class SplashScreen extends Activity {
                     startActivity(intent);
                     SplashScreen.this.finish();
                 } catch (InterruptedException e) {
-                    // do nothing
+                    Log.d("CATCH", "");
                 } finally {
                     SplashScreen.this.finish();
                 }
