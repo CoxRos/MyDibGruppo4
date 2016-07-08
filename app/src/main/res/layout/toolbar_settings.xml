@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:theme="@style/AppTheme.AppBarOverlay"
-    tools:context=".business.settings.UserSetting">
+    tools:context=".business.system.UserSetting">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"

@@ -7,13 +7,13 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,6 +27,7 @@ import gruppo4.dib.sms2016.mydib2016.business.logged.avvisi.Avvisi;
 import gruppo4.dib.sms2016.mydib2016.business.logged.libretto.Grafici;
 import gruppo4.dib.sms2016.mydib2016.business.logged.libretto.Libretto;
 import gruppo4.dib.sms2016.mydib2016.business.logged.libretto.EsameActivity;
+import gruppo4.dib.sms2016.mydib2016.business.logged.libretto.Previsioni;
 import gruppo4.dib.sms2016.mydib2016.business.logged.profilo.dati_personali.DatiPersonali;
 import gruppo4.dib.sms2016.mydib2016.business.logged.ricerca.RicercaUtente;
 import gruppo4.dib.sms2016.mydib2016.business.logged.sharing.Sharing;
@@ -34,7 +35,7 @@ import gruppo4.dib.sms2016.mydib2016.business.logged.ultimi_dettagli.UltimiEvent
 import gruppo4.dib.sms2016.mydib2016.business.not_logged.InformazioniUni;
 import gruppo4.dib.sms2016.mydib2016.business.not_logged.ristoro.Ristoro;
 import gruppo4.dib.sms2016.mydib2016.business.not_logged.bus.Bus;
-import gruppo4.dib.sms2016.mydib2016.business.settings.UserSetting;
+import gruppo4.dib.sms2016.mydib2016.business.system.UserSetting;
 import gruppo4.dib.sms2016.mydib2016.business.system.FAQ;
 import gruppo4.dib.sms2016.mydib2016.utility.LocaleHelper;
 
@@ -231,6 +232,9 @@ public class HomePage extends AppCompatActivity
             case R.id.action_logout:
                 getAlertLogout().show();
                 break;
+            case R.id.action_home:
+                goToHome();
+                break;
         }
 
         return super.onOptionsItemSelected(item);
@@ -267,21 +271,6 @@ public class HomePage extends AppCompatActivity
             startActivity(intent);
 
             isInHome = false;
-        } else if (id == R.id.homepageL) {
-            setTitle(R.string.title_activity_homepage);
-            fab.setVisibility(View.GONE);
-            UltimiEventi fragment = new UltimiEventi();
-            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, fragment);
-            fragmentTransaction.commit();
-
-            isInHome = true;
-
-            navigationView.getMenu().setGroupVisible(R.id.logged1, true);
-            navigationView.getMenu().setGroupVisible(R.id.logged2, true);
-            navigationView.getMenu().setGroupVisible(R.id.logged3, true);
-            navigationView.getMenu().setGroupVisible(R.id.notlogged, false);
-            navigationView.getMenu().setGroupVisible(R.id.librettoDR, false);
 
         } else if (id == R.id.librettoL) {
             setTitle(R.string.title_fragment_libretto);
@@ -344,21 +333,6 @@ public class HomePage extends AppCompatActivity
             startActivity(intent);
 
             isInHome = false;
-        } else if (id == R.id.homepageLi) { //------------------------------------
-            setTitle(R.string.title_activity_homepage);
-            fab.setVisibility(View.GONE);
-            UltimiEventi fragment = new UltimiEventi();
-            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_container, fragment);
-            fragmentTransaction.commit();
-
-            isInHome = true;
-
-            navigationView.getMenu().setGroupVisible(R.id.logged1, true);
-            navigationView.getMenu().setGroupVisible(R.id.logged2, true);
-            navigationView.getMenu().setGroupVisible(R.id.logged3, true);
-            navigationView.getMenu().setGroupVisible(R.id.notlogged, false);
-            navigationView.getMenu().setGroupVisible(R.id.librettoDR, false);
 
         } else if (id == R.id.librettoLi) {
             setTitle(R.string.title_fragment_libretto);
@@ -386,6 +360,10 @@ public class HomePage extends AppCompatActivity
         } else if (id == R.id.previsioniLi) {
             setTitle(R.string.title_fragment_previsioni);
             fab.setVisibility(View.GONE);
+            Previsioni fragment = new Previsioni();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container, fragment);
+            fragmentTransaction.commit();
             isInHome = false;
 
         } else if (id == R.id.avvisiL) {
@@ -443,6 +421,23 @@ public class HomePage extends AppCompatActivity
     private void goToLogin() {
         Intent intent = new Intent(getApplicationContext(), Login.class);
         startActivity(intent);
+    }
+
+    private void goToHome() {
+        setTitle(R.string.title_activity_homepage);
+        fab.setVisibility(View.GONE);
+        UltimiEventi fragment = new UltimiEventi();
+        android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, fragment);
+        fragmentTransaction.commit();
+
+        isInHome = true;
+
+        navigationView.getMenu().setGroupVisible(R.id.logged1, true);
+        navigationView.getMenu().setGroupVisible(R.id.logged2, true);
+        navigationView.getMenu().setGroupVisible(R.id.logged3, true);
+        navigationView.getMenu().setGroupVisible(R.id.notlogged, false);
+        navigationView.getMenu().setGroupVisible(R.id.librettoDR, false);
     }
 
     private void getValueSettings() {

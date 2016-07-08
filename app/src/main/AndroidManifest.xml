@@ -86,7 +86,7 @@
             android:noHistory="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".business.settings.UserSetting"
+            android:name=".business.system.UserSetting"
             android:label="Impostazioni"
             android:theme="@style/AppTheme.NoActionBar1" />
 

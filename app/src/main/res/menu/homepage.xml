@@ -13,6 +13,13 @@
         app:showAsAction="never" />
 
     <item
+        android:id="@+id/action_home"
+        android:orderInCategory="100"
+        android:title="@string/action_home"
+        android:icon="@mipmap/ic_home_white"
+        app:showAsAction="ifRoom" />
+
+    <item
         android:id="@+id/action_accesso"
         android:orderInCategory="100"
         android:title="@string/action_login"
