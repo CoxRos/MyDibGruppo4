@@ -6,10 +6,11 @@
     android:background="@color/backview">
 
     <ImageView
-        android:layout_width="30dp"
+        android:layout_width="50dp"
         android:layout_height="125dp"
         android:id="@+id/scalaVoto"
-        android:layout_marginLeft="-5dp"/>
+        android:background="@mipmap/greenline"
+        android:layout_marginLeft="-15dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -87,4 +88,13 @@
         android:id="@+id/dataAppunti"
         android:layout_below="@+id/cfuEsame"
         android:layout_alignParentEnd="true" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/background"
+        android:layout_below="@+id/dataAppunti"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

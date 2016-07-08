@@ -34,9 +34,9 @@ public class BusTimeAdapter extends ArrayAdapter<BusEntity> {
         final BusEntity entry = getItem(position);
 
         if (entry.getNumBus().equalsIgnoreCase("21")) {
-            viewHolder.numbus.setImageResource(R.mipmap.ic_bus21);
+            viewHolder.numbus.setImageResource(R.mipmap.ic_n21bus);
         } else {
-            viewHolder.numbus.setImageResource(R.mipmap.ic_bus22);
+            viewHolder.numbus.setImageResource(R.mipmap.ic_n22bus);
         }
 
         viewHolder.arrivoOrario.setText(entry.getOrarioArrivo());
