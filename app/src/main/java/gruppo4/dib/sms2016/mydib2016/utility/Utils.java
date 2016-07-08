@@ -15,7 +15,7 @@ public class Utils {
     static String matricola;
 
     public double getBaseLaurea(double media) {
-        return (media*11)/3;
+        return troncamento((media*11)/3);
     }
 
     public double getMediaPonderata(ArrayList<EsameEntity> esami) {

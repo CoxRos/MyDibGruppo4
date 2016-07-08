@@ -22,10 +22,6 @@
         android:checkableBehavior="single">
 
         <item
-            android:id="@+id/homepageL"
-            android:icon="@mipmap/ic_home"
-            android:title="Homepage" />
-        <item
             android:id="@+id/librettoL"
             android:icon="@mipmap/ic_libretto"
             android:title="Libretto" />
@@ -75,10 +71,6 @@
         android:checkableBehavior="none"
         android:visible="false">
 
-        <item
-            android:id="@+id/homepageLi"
-            android:icon="@mipmap/ic_home"
-            android:title="Homepage" />
         <item
             android:id="@+id/librettoLi"
             android:icon="@mipmap/ic_libretto"
