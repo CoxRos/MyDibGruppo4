@@ -1,25 +1,23 @@
-package gruppo4.dib.sms2016.mydib2016.business.not_logged.bus;
+package gruppo4.dib.sms2016.mydib2016.business.system;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import gruppo4.dib.sms2016.mydib2016.R;
-import gruppo4.dib.sms2016.mydib2016.entity.BusEntity;
-
+import gruppo4.dib.sms2016.mydib2016.entity.FAQEntity;
 
 /**
- * Created by Cosimo on 17/05/2016.
+ * Created by Cosimo on 08/07/2016.
  */
-public class BusTimeAdapter extends ArrayAdapter<BusEntity> {
+public class FAQAdapter extends ArrayAdapter<FAQEntity> {
 
     private final int NEW_LAYOUT_RESOURCE;
 
-    public BusTimeAdapter(final Context context, final int NEW_LAYOUT_RESOURCE) {
+    public FAQAdapter(final Context context, final int NEW_LAYOUT_RESOURCE) {
         super(context, 0);
         this.NEW_LAYOUT_RESOURCE = NEW_LAYOUT_RESOURCE;
     }
@@ -31,17 +29,13 @@ public class BusTimeAdapter extends ArrayAdapter<BusEntity> {
         // retrieve its corresponding ViewHolder, which optimizes lookup efficiency
         final View view = getWorkingView(convertView);
         final ViewHolder viewHolder = getViewHolder(view);
-        final BusEntity entry = getItem(position);
+        final FAQEntity entry = getItem(position);
 
-        if (entry.getNumBus().equalsIgnoreCase("21")) {
-            viewHolder.numbus.setImageResource(R.mipmap.ic_bus21);
-        } else {
-            viewHolder.numbus.setImageResource(R.mipmap.ic_bus22);
-        }
 
-        viewHolder.arrivoOrario.setText(entry.getOrarioArrivo());
 
-        viewHolder.partenzaOrario.setText(entry.getOrarioPartenza());
+        viewHolder.descrizione.setText(entry.getDescrizione());
+
+        viewHolder.titolo.setText(entry.getTitolo());
 
         return view;
     }
@@ -74,9 +68,8 @@ public class BusTimeAdapter extends ArrayAdapter<BusEntity> {
         if (null == tag || !(tag instanceof ViewHolder)) {
             viewHolder = new ViewHolder();
 
-            viewHolder.numbus = (ImageView) workingView.findViewById(R.id.numeroBus);
-            viewHolder.arrivoOrario = (TextView) workingView.findViewById(R.id.arrivoOrario);
-            viewHolder.partenzaOrario = (TextView) workingView.findViewById(R.id.partenzaOrario);
+            viewHolder.titolo= (TextView) workingView.findViewById(R.id.titoloFAQ);
+            viewHolder.descrizione = (TextView) workingView.findViewById(R.id.descrizioneFAQ);
 
             workingView.setTag(viewHolder);
 
@@ -97,8 +90,7 @@ public class BusTimeAdapter extends ArrayAdapter<BusEntity> {
      * Since views are recycled, these references will never change
      */
     private static class ViewHolder {
-        public ImageView numbus;
-        public TextView partenzaOrario;
-        public TextView arrivoOrario;
+        public TextView titolo;
+        public TextView descrizione;
     }
 }

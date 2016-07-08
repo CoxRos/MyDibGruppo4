@@ -35,6 +35,7 @@ import gruppo4.dib.sms2016.mydib2016.business.not_logged.InformazioniUni;
 import gruppo4.dib.sms2016.mydib2016.business.not_logged.ristoro.Ristoro;
 import gruppo4.dib.sms2016.mydib2016.business.not_logged.bus.Bus;
 import gruppo4.dib.sms2016.mydib2016.business.settings.UserSetting;
+import gruppo4.dib.sms2016.mydib2016.business.system.FAQ;
 import gruppo4.dib.sms2016.mydib2016.utility.LocaleHelper;
 
 public class HomePage extends AppCompatActivity
@@ -134,7 +135,7 @@ public class HomePage extends AppCompatActivity
                 navigationView.getMenu().setGroupVisible(R.id.notlogged, false);
 
             } else if (fromLogin == 2) { //vai a libretto
-
+                setTitle(R.string.title_fragment_libretto);
                 fab.setVisibility(View.VISIBLE);
                 Libretto fragment = new Libretto();
                 android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -213,14 +214,16 @@ public class HomePage extends AppCompatActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
+        Intent intent;
         //noinspection SimplifiableIfStatement
         switch (id) {
             case R.id.action_settings:
-                Intent intent = new Intent(this, UserSetting.class);
+                intent = new Intent(this, UserSetting.class);
                 startActivity(intent);
                 break;
             case R.id.action_faq:
+                intent = new Intent(this, FAQ.class);
+                startActivity(intent);
                 break;
             case R.id.action_accesso:
                 goToLogin();
