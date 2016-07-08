@@ -207,7 +207,6 @@ public class LibrettoAdapter extends ArrayAdapter<EsameEntity> {
                 } else {
                     Toast.makeText(getContext(), "Non è stato possibile eliminare l'esame, riprova", Toast.LENGTH_LONG);
                 }
-                goToHome();
             }
         });
         builder.setNegativeButton("Annulla", null);
@@ -231,6 +230,7 @@ public class LibrettoAdapter extends ArrayAdapter<EsameEntity> {
                     Log.d("ECCEZIONE LIBRETTO: ", e.getMessage().toString());
                 }
                 progressDialog.dismiss();
+                goToLibretto();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -239,6 +239,7 @@ public class LibrettoAdapter extends ArrayAdapter<EsameEntity> {
                 edit.commit();
                 Log.d("ERRORE LIBRETTO: ", volleyError.getMessage());
                 progressDialog.dismiss();
+                goToLibretto();
             }
         }) {
             @Override
@@ -256,7 +257,7 @@ public class LibrettoAdapter extends ArrayAdapter<EsameEntity> {
         progressDialog.show();
     }
 
-    private void goToHome() {
+    private void goToLibretto() {
         Intent intent = new Intent(getContext(), HomePage.class);
         intent.putExtra("goTo",2);
         getContext().startActivity(intent);

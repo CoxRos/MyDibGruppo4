@@ -255,16 +255,15 @@ public class EsameActivity extends AppCompatActivity {
                 }
                 else if(option.equals("modifica")) {
                     String holdMat = esame;
-                    boolean isUpdated = db.updateEsame(materia,cfu, voto, data, holdMat);
+                    boolean isUpdated = db.updateEsame(materia, cfu, voto, data, holdMat);
 
-                    if(isUpdated) {
+                    if (isUpdated) {
                         Toast.makeText(getApplicationContext(), "Dati aggiornati con successo", Toast.LENGTH_LONG).show();
                         doRequest(Costants.URL_UPDATE_ESAME, holdMat);
                     } else {
                         Toast.makeText(getApplicationContext(), "Non è stato possibile aggiornare i dati... esame gia presente!", Toast.LENGTH_LONG).show();
                     }
                 }
-                goToHome();
             }
         });
 
@@ -352,6 +351,7 @@ public class EsameActivity extends AppCompatActivity {
                     Log.d("ECCEZIONE LIBRETTO: ", e.getMessage().toString());
                 }
                 progressDialog.dismiss();
+                goToLibretto();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -359,6 +359,7 @@ public class EsameActivity extends AppCompatActivity {
                 startService(new Intent(getApplicationContext(), RSSPullService.class));
                 Log.d("ERRORE LIBRETTO: ", volleyError.getMessage());
                 progressDialog.dismiss();
+                goToLibretto();
             }
         }) {
             @Override
@@ -380,7 +381,7 @@ public class EsameActivity extends AppCompatActivity {
         progressDialog.show();
     }
 
-    private void goToHome() {
+    private void goToLibretto() {
         Intent intent = new Intent(EsameActivity.this, HomePage.class);
         intent.putExtra("goTo",2);
         startActivity(intent);
