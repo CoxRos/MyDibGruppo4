@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 import gruppo4.dib.sms2016.mydib2016.DataAccessObject.DAOLibretto;
+import gruppo4.dib.sms2016.mydib2016.business.Autenticazione.Login;
 import gruppo4.dib.sms2016.mydib2016.entity.EsameEntity;
 import gruppo4.dib.sms2016.mydib2016.network.CustomRequestObject;
 import gruppo4.dib.sms2016.mydib2016.network.Network;
@@ -39,6 +40,9 @@ public class RSSPullService extends Service {
     RequestQueue queue;
     final String URLREQUEST = "http://mydib2016.altervista.org/api/index.php/uploadDatabase";
 
+    Login credenziali = new Login();
+    static String matricola;
+
 
     @Override
     public void onCreate() {
@@ -50,6 +54,9 @@ public class RSSPullService extends Service {
         esami = db.getEsami();
         utility = new Utils();
         queries = utility.getQueries(esami, getApplicationContext());
+
+        credenziali.getMatricola(getApplicationContext());
+        matricola = credenziali.matricola;
 
         queue = Network.getInstance(getApplicationContext()).getRequestQueue();
     }
@@ -123,6 +130,7 @@ public class RSSPullService extends Service {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
+                params.put("matricola",matricola);
                 params.put("querylength", Integer.toString(esami.size()));
                 int i = 0;
                 for (String query : queries) {
