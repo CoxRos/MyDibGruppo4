@@ -396,6 +396,7 @@ public class HomePage extends AppCompatActivity
             menu.findItem(R.id.action_accesso).setVisible(false);
         } else {
             menu.findItem(R.id.action_logout).setVisible(false);
+            menu.findItem(R.id.action_home).setVisible(false);
         }
         return true;
     }

@@ -78,13 +78,14 @@ public class Avvisi extends Fragment {
                 for(int i = 0; i < jsonArray.length(); i++) {
                     try {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
-                        titolo = jsonObject.getString("titolo");
-                        descrione = jsonObject.getString("descrizione");
-                        data = jsonObject.getString("data");
-                        avvisiAdapter.add(new AvvisiEntity(titolo, descrione, data));
+                        if(!jsonObject.getString("avviso").equalsIgnoreCase("Y")) {
+                            titolo = jsonObject.getString("titolo");
+                            descrione = jsonObject.getString("descrizione");
+                            data = jsonObject.getString("data");
+                            avvisiAdapter.add(new AvvisiEntity(titolo, descrione, data));
 
-                        isEmpty = false;
-
+                            isEmpty = false;
+                        }
                     } catch (JSONException e) {
                         Log.d("CATCH NEWS: ", e.getMessage());
                     }

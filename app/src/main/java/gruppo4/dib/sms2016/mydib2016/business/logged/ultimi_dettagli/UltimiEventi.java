@@ -143,6 +143,7 @@ public class UltimiEventi extends Fragment {
                                 messageNews.setText(jsonResponce.getString("messagenews"));
                                 authorNews.setText(jsonResponce.getString("authornews"));
                                 isAvviso = true;
+                                count++;
                             }
 
                         } catch (JSONException e) {
