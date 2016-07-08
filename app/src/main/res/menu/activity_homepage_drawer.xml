@@ -77,11 +77,11 @@
             android:title="Libretto" />
         <item
             android:id="@+id/graficiLi"
-            android:icon="@mipmap/ic_libretto"
+            android:icon="@mipmap/ic_show_chart_black_24dp"
             android:title="Grafici" />
         <item
             android:id="@+id/previsioniLi"
-            android:icon="@mipmap/ic_libretto"
+            android:icon="@mipmap/ic_content_paste_black_24dp"
             android:title="Previsioni" />
 
     </group>
