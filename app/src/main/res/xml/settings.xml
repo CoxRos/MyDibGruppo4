@@ -6,6 +6,7 @@
             android:summary="@string/impostazioni_lingua_subtitle"
             android:entries="@array/linguaValue"
             android:entryValues="@array/lingua_entry"
+            android:defaultValue="@string/default_value"
             android:key="prefLingua"/>
     </PreferenceCategory>
 

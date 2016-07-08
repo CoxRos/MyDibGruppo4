@@ -14,6 +14,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -51,8 +52,6 @@ public class HomePage extends AppCompatActivity
     DAOLibretto db;
     Login credenziali = new Login();
     static boolean logged;
-
-    private static final int RESULT_SETTINGS = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -444,8 +443,7 @@ public class HomePage extends AppCompatActivity
     private void getValueSettings() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-        String value = sharedPreferences.getString("prefLingua", "it");
-
+        String value = sharedPreferences.getString("prefLingua", "null");
         LocaleHelper.setLocale(this, value);
     }
 }

@@ -1,8 +1,10 @@
 package gruppo4.dib.sms2016.mydib2016.business.not_logged.bus;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -30,7 +32,10 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import gruppo4.dib.sms2016.mydib2016.DataAccessObject.DAOLibretto;
 import gruppo4.dib.sms2016.mydib2016.business.Autenticazione.Login;
+import gruppo4.dib.sms2016.mydib2016.business.system.FAQ;
+import gruppo4.dib.sms2016.mydib2016.business.system.UserSetting;
 import gruppo4.dib.sms2016.mydib2016.network.Network;
 import gruppo4.dib.sms2016.mydib2016.R;
 import gruppo4.dib.sms2016.mydib2016.entity.BusEntity;
@@ -58,6 +63,8 @@ public class Bus extends AppCompatActivity {
 
     Login credenziali = new Login();
     static boolean logged;
+    DAOLibretto db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -115,7 +122,7 @@ public class Bus extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_bus, menu);
+        getMenuInflater().inflate(R.menu.homepage, menu);
         return true;
     }
 
@@ -125,13 +132,52 @@ public class Bus extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
+        Intent intent;
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id) {
+            case R.id.action_logout:
+                getAlertLogout().show();
+                break;
+            case R.id.action_faq:
+                intent = new Intent(this, FAQ.class);
+                startActivity(intent);
+                break;
+            case R.id.action_settings:
+                intent = new Intent(this, UserSetting.class);
+                startActivity(intent);
+                break;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+
+        menu.findItem(R.id.action_accesso).setVisible(false);
+        menu.findItem(R.id.action_home).setVisible(false);
+        return true;
+    }
+
+    private AlertDialog getAlertLogout() {
+        db = new DAOLibretto(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Logout");
+        builder.setMessage("Sei sicuro di volerti disconnettere?");
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                credenziali.removeCredential(getApplicationContext());
+                db.deleteAllExams();
+                Intent intent = new Intent(getApplicationContext(), Login.class);
+                startActivity(intent);
+            }
+        });
+        builder.setNegativeButton("Annulla", null);
+
+        AlertDialog alertDialog = builder.create();
+        return alertDialog;
     }
 
     /**
