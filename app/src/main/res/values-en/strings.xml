@@ -49,4 +49,57 @@
     <string name="impostazioni_crash_text">Send crash report</string>
     <string name="impostazioni_sincronizzazione">synchronization frequency</string>
     <string name="impostazioni_sincronizzazione_text">Set the synchronization frequency</string>
+    <string name="default_value">it</string>
+    <string name="title_activity_grafici">Tendance</string>
+
+    <string name="drawer_info">Information</string>
+        <string name="drawer_svago">Recreation and refreshment</string>
+    <string name="drawer_bus">BUS</string>
+    <string name="drawer_libretto">Booklet</string>
+    <string name="drawer_profilo">Profile</string>
+    <string name="drawer_avvisi">Advise</string>
+    <string name="drawer_condivisione">Notes Sharing</string>
+    <string name="drawer_ricerca">Search</string>
+    <string name="drawer_grafici">Charts</string>
+    <string name="drawer_previsioni">Forecasts</string>
+
+    <string name="no_esami">There are no notes on the platform</string>
+
+    <string name="hint_esame">Exam</string>
+    <string name="hint_voto">Mark</string>
+    <string name="hint_cfu">CFU</string>
+    <string name="hint_data">Date</string>
+    <string name="button_salva">SAVE</string>
+
+    <string name="profilo_nome">Name:</string>
+    <string name="profilo_cognome">Surname:</string>
+    <string name="profilo_ruolo">Role:</string>
+    <string name="profilo_email">Email:</string>
+    <string name="profilo_telefono">Phone:</string>
+        <string name="profilo_ricevimento">Receipt</string>
+    <string name="profilo_web">Web Site:</string>
+
+    <string name="sharing_upload">Send your notes to the platform</string>
+    <string name="sharing_download">Download notes from the platform</string>
+
+    <string name="splash_titolo">University of Bari</string>
+    <string name="splash_sottotitolo">Aldo Moro</string>
+
+    <string name="condivisione_titolo">Save the file indicating a significant and adequate description title.</string>
+    <string name="condivisione_txt">Title...</string>
+    <string name="condivisione_desc">Description...</string>
+    <string name="condivisione_button">LOAD</string>
+
+    <string name="no_connection">Test your connection</string>
+
+    <string name="bus_andata">Piazza Moro - University</string>
+    <string name="bus_ritorno">University - Piazza Moro</string>
+
+    <string name="profilo_titolo">Student of Computer Science at the University of Bari</string>
+
+    <string name="profilo_media_pond">M.WEIGHTED:</string>
+    <string name="profilo_media_arit">M.ARITHMETIC:</string>
+    <string name="profilo_cfu">CFU:</string>
+    <string name="profilo_non_disp">Not available</string>
+    <string name="profilo_matricola">SERIAL</string>
 </resources>

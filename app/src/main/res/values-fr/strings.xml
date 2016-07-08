@@ -6,21 +6,21 @@
     <string name="navigation_drawer_open">Ouvrez le tiroir de navigation</string>
     <string name="navigation_drawer_close">Fermer la navigation tiroir</string>
 
-    <string name="action_settings">paramètres</string>
+    <string name="action_settings">Paramètres</string>
     <string name="action_faq">FAQ</string>
     <string name="action_login"></string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_homepage">Page d'accueil</string>
     <string name="title_activity_login">Accès</string>
-    <string name="title_activity_avvisi">avertissement</string>
+    <string name="title_activity_avvisi">Avertissement</string>
     <string name="title_fragment_previsioni">Prévisions</string>
     <string name="title_fragment_libretto">Livret universitaire</string>
-    <string name="title_fragment_grafici">graphique</string>
+    <string name="title_fragment_grafici">Graphique</string>
     <string name="title_fragment_ristoro">Sites d'intérêt</string>
     <string name="title_fragment_ricerca">Recherche</string>
     <string name="title_activity_profilo">Profil</string>
-    <string name="title_fragment_informazioni">information</string>
+    <string name="title_fragment_informazioni">Information</string>
 
 
     <string name="title_activity_bus">Bus</string>
@@ -47,6 +47,59 @@
     <string name="impostazioni_update">réglage de la mise à jour</string>
     <string name="impostazioni_crash">Envoyer le rapport d'accident</string>
     <string name="impostazioni_crash_text">Envoyer le rapport d'accident</string>
-    <string name="impostazioni_sincronizzazione">fréquence de synchronisation</string>
+    <string name="impostazioni_sincronizzazione">Fréquence de synchronisation</string>
     <string name="impostazioni_sincronizzazione_text">Réglez la fréquence de synchronisation</string>
+    <string name="default_value">it</string>
+    <string name="title_activity_grafici">Tendance</string>
+
+    <string name="drawer_info">information</string>
+        <string name="drawer_svago">Loisir et rafraîchissement</string>
+    <string name="drawer_bus">BUS</string>
+    <string name="drawer_libretto">Livret</string>
+    <string name="drawer_profilo">Profil</string>
+    <string name="drawer_avvisi">Avertissement</string>
+    <string name="drawer_condivisione">Partage de matériel</string>
+    <string name="drawer_ricerca">Recherche</string>
+    <string name="drawer_grafici">Graphique</string>
+        <string name="drawer_previsioni">Prévisions</string>
+
+    <string name="no_esami">Il n'y a pas de notes\n non Platform</string>
+
+    <string name="hint_esame">Examen</string>
+    <string name="hint_voto">Vote</string>
+    <string name="hint_cfu">CFU</string>
+    <string name="hint_data">Date</string>
+    <string name="button_salva">SAUVEGARDER</string>
+
+    <string name="profilo_nome">Nom:</string>
+    <string name="profilo_cognome">Nom de famille:</string>
+    <string name="profilo_ruolo">rôle:</string>
+    <string name="profilo_email">Email:</string>
+    <string name="profilo_telefono">Téléphone:</string>
+    <string name="profilo_ricevimento">Réception</string>
+    <string name="profilo_web">Web Site:</string>
+
+    <string name="sharing_upload">Envoyez vos notes à la plate-forme</string>
+    <string name="sharing_download">Télécharger les notes de la plate-forme</string>
+
+    <string name="splash_titolo">Université de Bari</string>
+    <string name="splash_sottotitolo">Aldo Moro</string>
+
+    <string name="condivisione_titolo">Enregistrez le fichier indiquant une description titre significatif et adéquat.</string>
+    <string name="condivisione_txt">Titre...</string>
+    <string name="condivisione_desc">Description...</string>
+    <string name="condivisione_button">CHARGE</string>
+
+    <string name="no_connection">Testez votre connexion</string>
+
+    <string name="bus_andata">Piazza Moro - Université</string>
+    <string name="bus_ritorno">Université - Piazza Moro</string>
+
+    <string name="profilo_titolo">Étudiant en informatique à l'Université de Bari</string>
+
+    <string name="profilo_media_pond">M.PONDEREE:</string>
+    <string name="profilo_media_arit">M.ARITHMETIQUE:</string>
+    <string name="profilo_cfu">CFU:</string>
+    <string name="profilo_non_disp">indisponible</string>
+    <string name="profilo_matricola">SERIAL</string>
 </resources>
