@@ -40,12 +40,12 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:layout_marginTop="10dp"
-                    android:text="DOVE SIAMO:" />
+                    android:text="@string/dove_siamo_info" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Informazione non disponibile"
+                    android:text="@string/info_non_dispoibile"
                     android:layout_marginTop="8dp"
                     android:id="@+id/textDoveSiamo" />
 
@@ -54,12 +54,12 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:layout_marginTop="10dp"
-                    android:text="PEC" />
+                    android:text="@string/pec_info" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Informazione non disponibile"
+                    android:text="@string/info_non_dispoibile"
                     android:layout_marginTop="8dp"
                     android:id="@+id/textPEC" />
 
@@ -68,12 +68,12 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:layout_marginTop="10dp"
-                    android:text="DIRETTORE:" />
+                    android:text="@string/direttore_info" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nome non disponibile"
+                    android:text="@string/nome_non_disponibile"
                     android:layout_marginTop="8dp"
                     android:id="@+id/nomeDirettore" />
 
@@ -89,19 +89,19 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:layout_marginTop="10dp"
-                    android:text="SEGRETARIO AMMINISTRATIVO" />
+                    android:text="@string/segretario_info" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nome non disponibile"
+                    android:text="@string/nome_non_disponibile"
                     android:layout_marginTop="8dp"
                     android:id="@+id/nomeSegretario" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Email non disponibile"
+                    android:text="@string/email_non_disponibile"
                     android:layout_marginTop="8dp"
                     android:id="@+id/emailSegretario" />
             </LinearLayout>

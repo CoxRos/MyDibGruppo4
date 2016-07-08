@@ -105,6 +105,15 @@
     <string name="profilo_non_disp">Non disponibile</string>
     <string name="profilo_matricola">MATRICOLA</string>
 
+    <string name="no_esami_grafic">Non sono presenti esami.</string>
+    <string name="info_non_dispoibile">Informazione non disponibile</string>
+    <string name="nome_non_disponibile">Nome non disponibile</string>
+    <string name="email_non_disponibile">Email non disponibile</string>
+    <string name="segretario_info">SEGRETARIO AMMINISTRATIVO</string>
+    <string name="direttore_info">DIRETTORE:</string>
+    <string name="pec_info">PEC</string>
+    <string name="dove_siamo_info">DOVE SIAMO:</string>
+
 
 
 
