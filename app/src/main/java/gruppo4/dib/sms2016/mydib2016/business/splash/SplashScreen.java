@@ -47,12 +47,6 @@ public class SplashScreen extends Activity {
             changeActivity();
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d("AAAAAAAAAAA", "DESTROY VIEW");
-    }
-
     private void StartAnimations() {
         Animation anim = AnimationUtils.loadAnimation(this, R.anim.alpha);
         anim.reset();

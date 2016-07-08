@@ -13,21 +13,10 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.LineData;
-import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.utils.ColorTemplate;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -41,6 +30,7 @@ import gruppo4.dib.sms2016.mydib2016.business.Autenticazione.Login;
 import gruppo4.dib.sms2016.mydib2016.entity.AvvisiEntity;
 import gruppo4.dib.sms2016.mydib2016.entity.EsameEntity;
 import gruppo4.dib.sms2016.mydib2016.network.Network;
+import gruppo4.dib.sms2016.mydib2016.utility.Costants;
 import gruppo4.dib.sms2016.mydib2016.utility.Utils;
 
 public class UltimiEventi extends Fragment {
@@ -96,7 +86,7 @@ public class UltimiEventi extends Fragment {
         queue = Network.getInstance(getActivity()).getRequestQueue();
         progressDialog = new ProgressDialog(getActivity());
 
-        setUiAvvisi("http://mydib2016.altervista.org/api/index.php/avvisi");
+        setUiAvvisi(Costants.URL_AVVSI_NEWS);
     }
 
     private int getProgressMedia(int media) {

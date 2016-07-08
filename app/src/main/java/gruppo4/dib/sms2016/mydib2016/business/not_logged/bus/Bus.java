@@ -40,17 +40,10 @@ import gruppo4.dib.sms2016.mydib2016.network.Network;
 import gruppo4.dib.sms2016.mydib2016.R;
 import gruppo4.dib.sms2016.mydib2016.entity.BusEntity;
 import gruppo4.dib.sms2016.mydib2016.business.homepage.HomePage;
+import gruppo4.dib.sms2016.mydib2016.utility.Costants;
 
 public class Bus extends AppCompatActivity {
 
-    /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
-     */
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
     /**
@@ -146,6 +139,10 @@ public class Bus extends AppCompatActivity {
                 intent = new Intent(this, UserSetting.class);
                 startActivity(intent);
                 break;
+            case R.id.action_accesso:
+                intent = new Intent(this, Login.class);
+                startActivity(intent);
+                break;
         }
 
         return super.onOptionsItemSelected(item);
@@ -157,6 +154,11 @@ public class Bus extends AppCompatActivity {
 
         menu.findItem(R.id.action_accesso).setVisible(false);
         menu.findItem(R.id.action_home).setVisible(false);
+
+        if(!logged) {
+            menu.findItem(R.id.action_accesso).setVisible(true);
+            menu.findItem(R.id.action_logout).setVisible(false);
+        }
         return true;
     }
 
@@ -234,7 +236,7 @@ public class Bus extends AppCompatActivity {
 
             progressDialog = new ProgressDialog(getActivity());
 
-            setUI("http://mydib2016.altervista.org/api/index.php/bustime");
+            setUI(Costants.URL_BUS);
         }
 
         private void setUI(String url) {

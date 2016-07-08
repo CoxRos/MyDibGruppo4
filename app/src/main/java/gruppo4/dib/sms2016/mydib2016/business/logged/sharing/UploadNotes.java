@@ -23,7 +23,6 @@ import java.net.URL;
 
 import gruppo4.dib.sms2016.mydib2016.R;
 import gruppo4.dib.sms2016.mydib2016.business.Autenticazione.Login;
-import gruppo4.dib.sms2016.mydib2016.business.homepage.HomePage;
 
 public class UploadNotes extends AppCompatActivity {
 

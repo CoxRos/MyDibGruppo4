@@ -3,7 +3,6 @@ package gruppo4.dib.sms2016.mydib2016.business.logged.libretto;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -35,7 +33,6 @@ import gruppo4.dib.sms2016.mydib2016.R;
 import gruppo4.dib.sms2016.mydib2016.entity.EsameEntity;
 import gruppo4.dib.sms2016.mydib2016.network.CustomRequestArray;
 import gruppo4.dib.sms2016.mydib2016.network.Network;
-import gruppo4.dib.sms2016.mydib2016.service.RSSPullService;
 import gruppo4.dib.sms2016.mydib2016.utility.Costants;
 import gruppo4.dib.sms2016.mydib2016.utility.Utils;
 

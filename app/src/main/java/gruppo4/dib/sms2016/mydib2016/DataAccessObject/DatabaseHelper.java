@@ -9,25 +9,23 @@ import android.util.Log;
 
 import java.util.List;
 
+import gruppo4.dib.sms2016.mydib2016.utility.Costants;
+
 public class DatabaseHelper extends SQLiteOpenHelper{
 
-    private static String DATABASE_NAME = "MyDib.db";
-    private static String TABLE_LIBRETTO = "libretto";
-    private static String TABLE_STUDENTE = "studente"; //creare la tabella
-
     public DatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, 1);
+        super(context, Costants.DATABASE_NAME, null, 1);
         SQLiteDatabase db = this.getWritableDatabase();
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_LIBRETTO + " (idEsame INTEGER PRIMARY KEY AUTOINCREMENT, materia TEXT UNIQUE, CFU TEXT, voto TEXT, data TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + Costants.TABLE_LIBRETTO + " (idEsame INTEGER PRIMARY KEY AUTOINCREMENT, materia TEXT UNIQUE, CFU TEXT, voto TEXT, data TEXT)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_LIBRETTO);
+        db.execSQL("DROP TABLE IF EXISTS " + Costants.TABLE_LIBRETTO);
         onCreate(db);
     }
 
@@ -96,7 +94,6 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         int rows = db.delete(table, null, null);
 
         if(rows > 0) {
-            Log.d("DATABASE ", String.valueOf(rows));
             return true;
         }
         else {

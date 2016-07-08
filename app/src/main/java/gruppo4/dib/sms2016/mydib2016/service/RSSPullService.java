@@ -22,6 +22,7 @@ import gruppo4.dib.sms2016.mydib2016.business.Autenticazione.Login;
 import gruppo4.dib.sms2016.mydib2016.entity.EsameEntity;
 import gruppo4.dib.sms2016.mydib2016.network.CustomRequestObject;
 import gruppo4.dib.sms2016.mydib2016.network.Network;
+import gruppo4.dib.sms2016.mydib2016.utility.Costants;
 import gruppo4.dib.sms2016.mydib2016.utility.Utils;
 
 public class RSSPullService extends Service {
@@ -35,7 +36,7 @@ public class RSSPullService extends Service {
     List<String> queries;
 
     RequestQueue queue;
-    final String URLREQUEST = "http://mydib2016.altervista.org/api/index.php/uploadDatabase";
+    final String URLREQUEST = Costants.URL_UPLOAD_DB;
 
     Login credenziali = new Login();
     static String matricola;

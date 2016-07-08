@@ -2,6 +2,7 @@ package gruppo4.dib.sms2016.mydib2016.business.logged.ricerca;
 
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -32,6 +34,7 @@ import gruppo4.dib.sms2016.mydib2016.business.logged.sharing.Sharing;
 import gruppo4.dib.sms2016.mydib2016.entity.UtenteEntity;
 import gruppo4.dib.sms2016.mydib2016.network.CustomRequestArray;
 import gruppo4.dib.sms2016.mydib2016.network.Network;
+import gruppo4.dib.sms2016.mydib2016.utility.Costants;
 
 public class RicercaUtente extends Fragment {
 
@@ -78,6 +81,11 @@ public class RicercaUtente extends Fragment {
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //nascondo la tastiera al click del bottone
+                InputMethodManager inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
                 final String textToSearch = ricercato.getText().toString();
                 ricercaAdapter.clear();
                 listRicerca.setVisibility(View.VISIBLE);
@@ -91,7 +99,7 @@ public class RicercaUtente extends Fragment {
 
                 if(textToSearch.length() > 0) {
                     CustomRequestArray jsonObjectRequest = new CustomRequestArray(Request.Method.POST,
-                            "http://mydib2016.altervista.org/api/index.php/ricerca",null,new Response.Listener<JSONArray>() {
+                            Costants.URL_RICERCA_UTENTE ,null,new Response.Listener<JSONArray>() {
 
                         @Override
                         public void onResponse(JSONArray response) {
@@ -128,7 +136,6 @@ public class RicercaUtente extends Fragment {
                                 messageNoRicerca.setText("Non è stato trovato alcun utente con i dati inseriti");
                                 no_utenti.setVisibility(View.VISIBLE);
                             }
-
                             progressDialog.dismiss();
                         }
                     }, new Response.ErrorListener() {

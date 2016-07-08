@@ -10,8 +10,6 @@ import android.widget.TextView;
 
 import gruppo4.dib.sms2016.mydib2016.R;
 import gruppo4.dib.sms2016.mydib2016.business.homepage.HomePage;
-import gruppo4.dib.sms2016.mydib2016.business.logged.ricerca.RicercaUtente;
-import gruppo4.dib.sms2016.mydib2016.business.logged.sharing.Sharing;
 import gruppo4.dib.sms2016.mydib2016.entity.UtenteEntity;
 
 public class Profilo extends AppCompatActivity {

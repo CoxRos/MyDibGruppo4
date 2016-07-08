@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import gruppo4.dib.sms2016.mydib2016.R;
-import gruppo4.dib.sms2016.mydib2016.business.logged.libretto.EsameActivity;
 import gruppo4.dib.sms2016.mydib2016.business.logged.profilo.Profilo;
 import gruppo4.dib.sms2016.mydib2016.entity.UtenteEntity;
 

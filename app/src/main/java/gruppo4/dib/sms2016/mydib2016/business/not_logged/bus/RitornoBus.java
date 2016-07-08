@@ -23,6 +23,7 @@ import org.json.JSONObject;
 import gruppo4.dib.sms2016.mydib2016.network.Network;
 import gruppo4.dib.sms2016.mydib2016.R;
 import gruppo4.dib.sms2016.mydib2016.entity.BusEntity;
+import gruppo4.dib.sms2016.mydib2016.utility.Costants;
 
 
 public class RitornoBus extends Fragment {
@@ -65,7 +66,7 @@ public class RitornoBus extends Fragment {
 
         progressDialog = new ProgressDialog(getActivity());
 
-        setUI("http://mydib2016.altervista.org/api/index.php/bustime");
+        setUI(Costants.URL_BUS);
     }
 
     private void setUI(String url) {

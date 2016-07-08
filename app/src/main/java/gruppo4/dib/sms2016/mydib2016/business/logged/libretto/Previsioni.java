@@ -1,13 +1,11 @@
 package gruppo4.dib.sms2016.mydib2016.business.logged.libretto;
 
 import android.content.Context;
-import android.support.annotation.StringDef;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
