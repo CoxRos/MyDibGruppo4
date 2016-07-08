@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="210dp"
         android:layout_marginLeft="65dp"
-        android:text="Non sono presenti appunti\nsulla piattaforma"
+        android:text="@string/no_esami"
         android:textSize="20dp"
         android:textStyle="italic"
         android:visibility="gone" />

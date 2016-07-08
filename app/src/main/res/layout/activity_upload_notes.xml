@@ -41,7 +41,7 @@
             android:id="@+id/textView11"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Salvare il file indicando un titolo significativo e una descrizione adeguata."
+            android:text="@string/condivisione_titolo"
             android:textColor="@color/background"
             android:textSize="25dp"
             android:textStyle="bold" />
@@ -54,7 +54,7 @@
             android:layout_below="@+id/textView11"
             android:layout_marginRight="120dp"
             android:layout_marginTop="20dp"
-            android:hint="Titolo..."
+            android:hint="@string/condivisione_txt"
             android:maxLength="45"
             android:textSize="25dp" />
 
@@ -66,7 +66,7 @@
             android:layout_below="@+id/titolaNota"
             android:layout_marginTop="53dp"
             android:ems="10"
-            android:hint="Descrizione..."
+            android:hint="@string/condivisione_desc"
             android:inputType="textMultiLine"
             android:maxLength="100"
             android:textSize="20dp" />
@@ -80,7 +80,7 @@
             android:layout_marginLeft="100dp"
             android:layout_marginRight="100dp"
             android:layout_marginTop="67dp"
-            android:text="CARICA" />
+            android:text="@string/condivisione_button" />
 
     </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>

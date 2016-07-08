@@ -60,25 +60,25 @@
             <EditText
                 android:layout_width="341dp"
                 android:layout_height="match_parent"
-                android:hint="Esame"
+                android:hint="@string/hint_esame"
                 android:id="@+id/edtEsame"/>
             <EditText
                 android:layout_width="341dp"
                 android:layout_height="match_parent"
-                android:hint="Voto"
+                android:hint="@string/hint_voto"
                 android:id="@+id/edtVoto"
                 android:inputType="number"/>
 
             <EditText
                 android:layout_width="341dp"
                 android:layout_height="match_parent"
-                android:hint="CFU"
+                android:hint="@string/hint_cfu"
                 android:id="@+id/edtCFU"
                 android:inputType="number"/>
             <EditText
                 android:layout_width="341dp"
                 android:layout_height="wrap_content"
-                android:hint="Data"
+                android:hint="@string/hint_data"
                 android:id="@+id/edtData"
                 android:clickable="false"
                 android:cursorVisible="false"
@@ -90,7 +90,7 @@
             android:layout_width="302dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="SALVA"
+            android:text="@string/button_salva"
             android:enabled="false"
             android:id="@+id/buttonAggiungi"/>
     </LinearLayout>

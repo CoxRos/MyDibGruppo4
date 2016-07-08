@@ -42,7 +42,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginBottom="10dp"
             android:paddingTop="10dp"
-            android:text="Nome:"
+            android:text="@string/profilo_nome"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
@@ -54,7 +54,7 @@
             android:layout_below="@+id/textView18"
             android:layout_marginBottom="10dp"
             android:paddingTop="10dp"
-            android:text="Cognome:"
+            android:text="@string/profilo_cognome"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
@@ -66,7 +66,7 @@
             android:layout_below="@+id/textView19"
             android:layout_marginBottom="10dp"
             android:paddingTop="10dp"
-            android:text="Email:"
+            android:text="@string/profilo_email"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
@@ -78,7 +78,7 @@
             android:layout_below="@+id/textView20"
             android:layout_marginBottom="10dp"
             android:paddingTop="10dp"
-            android:text="Ruolo:"
+            android:text="@string/profilo_ruolo"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
 
@@ -91,7 +91,7 @@
             android:layout_below="@+id/textView21"
             android:layout_marginBottom="10dp"
             android:paddingTop="10dp"
-            android:text="Telefono:"
+            android:text="@string/profilo_telefono"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:visibility="visible" />
 
@@ -105,7 +105,7 @@
             android:layout_marginBottom="10dp"
             android:paddingTop="10dp"
             android:layout_marginTop="15dp"
-            android:text="Ricevimento:"
+            android:text="@string/profilo_ricevimento"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:visibility="visible" />
 
@@ -118,7 +118,7 @@
             android:layout_below="@+id/textView23"
             android:paddingTop="10dp"
             android:layout_marginTop="20dp"
-            android:text="Web site:"
+            android:text="@string/profilo_web"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:visibility="visible" />
 
@@ -128,8 +128,6 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/textView18"
             android:layout_toEndOf="@+id/textView18"
-            android:paddingLeft="10dp"
-            android:text="Pinco"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/black" />
 
@@ -141,7 +139,6 @@
             android:layout_toEndOf="@+id/textView19"
             android:layout_toRightOf="@+id/textView19"
             android:paddingLeft="10dp"
-            android:text="Pallino"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/black" />
 
@@ -153,7 +150,6 @@
             android:layout_toEndOf="@+id/textView20"
             android:layout_toRightOf="@+id/textView20"
             android:paddingLeft="10dp"
-            android:text="pinco@gmail.com"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/drawer" />
 
@@ -164,7 +160,6 @@
             android:layout_alignBottom="@+id/textView21"
             android:layout_toEndOf="@+id/textView21"
             android:paddingLeft="10dp"
-            android:text="Dirigente"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/black" />
 
@@ -176,7 +171,6 @@
             android:layout_toEndOf="@+id/labelTel"
             android:layout_toRightOf="@+id/labelTel"
             android:paddingLeft="10dp"
-            android:text="0805621459"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/black"
             android:visibility="visible" />
@@ -189,7 +183,6 @@
             android:layout_toEndOf="@+id/textView23"
             android:layout_toRightOf="@+id/textView23"
             android:paddingLeft="10dp"
-            android:text="VEN 15-16"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/black"
             android:visibility="visible" />
@@ -203,7 +196,6 @@
             android:layout_toRightOf="@+id/textView24"
             android:paddingLeft="10dp"
             android:textSize="20dp"
-            android:text="www.pinco.uniba.it"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/drawer"
             android:visibility="visible" />

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MyDib2016</string>
     <string name="title_activity_home_not_logged">HomeNotLogged</string>
@@ -9,6 +8,7 @@
     <string name="action_settings">Impostazioni</string>
     <string name="action_faq">FAQ</string>
     <string name="action_login"></string>
+    <string name="action_home"></string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_homepage">Homepage</string>
@@ -23,7 +23,9 @@
     <string name="title_fragment_informazioni">Informazioni</string>
 
 
+
     <string name="title_activity_bus">Bus</string>
+    <string name="title_faq">Domande frequenti</string>
     <string name="section_format">Hello World from section: %1$d</string>
 
 
@@ -49,4 +51,64 @@
     <string name="impostazioni_crash_text">Invia segnalazione crash</string>
     <string name="impostazioni_sincronizzazione">Frequenza di sincronizzazione</string>
     <string name="impostazioni_sincronizzazione_text">Setta la frequenza di sincronizzazione</string>
+    <string name="default_value">it</string>
+    <string name="title_activity_grafici">Andamento</string>
+
+    <string name="drawer_info">Informazioni</string>
+    <string name="drawer_svago">Svago e Ristoro</string>
+    <string name="drawer_bus">BUS</string>
+    <string name="drawer_libretto">Libretto</string>
+    <string name="drawer_profilo">Profilo</string>
+    <string name="drawer_avvisi">Avvisi</string>
+    <string name="drawer_condivisione">Condivisione Materiale</string>
+    <string name="drawer_ricerca">Ricerca</string>
+    <string name="drawer_grafici">Grafici</string>
+    <string name="drawer_previsioni">Previsioni</string>
+
+    <string name="no_esami">Non sono presenti appunti\nsulla piattaforma</string>
+
+    <string name="hint_esame">Esame</string>
+    <string name="hint_voto">Voto</string>
+    <string name="hint_cfu">CFU</string>
+    <string name="hint_data">Data</string>
+    <string name="button_salva">SALVA</string>
+
+    <string name="profilo_nome">Nome:</string>
+    <string name="profilo_cognome">Cognome:</string>
+    <string name="profilo_ruolo">Ruolo:</string>
+    <string name="profilo_email">Email:</string>
+    <string name="profilo_telefono">Telefono:</string>
+    <string name="profilo_ricevimento">Ricevimento</string>
+    <string name="profilo_web">Web Site:</string>
+
+    <string name="sharing_upload">Invia i tuoi appunti alla piattaforma</string>
+    <string name="sharing_download">Scarica appunti dalla piattaforma</string>
+
+    <string name="splash_titolo">Università degli studi di Bari</string>
+    <string name="splash_sottotitolo">Aldo Moro</string>
+
+    <string name="condivisione_titolo">Salvare il file indicando un titolo significativo e una descrizione adeguata.</string>
+    <string name="condivisione_txt">Titolo...</string>
+    <string name="condivisione_desc">Descrizione...</string>
+    <string name="condivisione_button">CARICA</string>
+
+    <string name="no_connection">Verificare la connessione</string>
+
+    <string name="bus_andata">Piazza Moro - Università</string>
+    <string name="bus_ritorno">Università - Piazza Moro</string>
+
+    <string name="profilo_titolo">Studente dell&apos;Università di Bari di Informatica</string>
+
+    <string name="profilo_media_pond">M.PONDERATA:</string>
+    <string name="profilo_media_arit">M.ARITMETICA:</string>
+    <string name="profilo_cfu">CFU:</string>
+    <string name="profilo_non_disp">Non disponibile</string>
+    <string name="profilo_matricola">MATRICOLA</string>
+
+
+
+
+
+
+
 </resources>

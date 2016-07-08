@@ -45,7 +45,7 @@
             android:layout_below="@+id/btnupload"
             android:layout_centerHorizontal="true"
             android:textSize="20dp"
-            android:text="Invia i tuoi appunti alla piattaforma" />
+            android:text="@string/sharing_upload" />
 
         <ImageButton
             android:id="@+id/btndownload"
@@ -65,7 +65,7 @@
             android:layout_centerHorizontal="true"
             android:textSize="20dp"
             android:layout_marginTop="60dp"
-            android:text="Scarica appunti dalla piattaforma" />
+            android:text="@string/sharing_download" />
 
     </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>
