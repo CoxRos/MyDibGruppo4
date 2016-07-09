@@ -132,14 +132,14 @@
 
     <string name="faq_log_titolo">Impossibile loggarsi</string>
     <string name="faq_log">Verificare la connessione ed inserire le credenziali di Esse3. Se il problema persiste contattare il numero verde: 0805405631</string>
-    <string name="faq_dati_titolo">Cancellato per sbaglio i dati dell'applicazione</string>
-    <string name="faq_dati">Se i dati inseriti precedentemente alla eliminazione sono salvati sul server, l'applicazione recupererà tutti i dati.</string>
+    <string name="faq_dati_titolo">Cancellato per sbaglio i dati dell\'applicazione</string>
+    <string name="faq_dati">Se i dati inseriti precedentemente alla eliminazione sono salvati sul server, l\'applicazione recupererà tutti i dati.</string>
     <string name="faq_laurea_titolo">La base di laurea è effettiva?</string>
     <string name="faq_laurea">Alla base di laurea, sulla base della politica uniba, sono da aggiungere 2 punti bonus se lo studente è in corso</string>
     <string name="faq_ristoro_titolo">Impossibile caricare i luoghi di ristoro</string>
     <string name="faq_ristoro">Verificare che i Google Play Services siano correttamente installati e aggiornati</string>
     <string name="faq_ricerca_titolo">Non riesco a ricercare un utente</string>
-    <string name="faq_ricerca">Se la ricerca dell'utente fallisce l'utente non si è registrato alla piattaforma o non ha concesso l'autorizzazione ai propri dati</string>
+    <string name="faq_ricerca">Se la ricerca dell\'utente fallisce l\'utente non si è registrato alla piattaforma o non ha concesso l\'autorizzazione ai propri dati</string>
 
     <string name="error_voto">Inserisci un voto valido</string>
     <string name="error_cfu">Inserisci un numero di cfu validi</string>
@@ -162,13 +162,13 @@
     <string name="modifica_dati">Dati modificati con successo</string>
     <string name="modifica_dati_errore">Non è stato possibile modificare i dati... esame gia presente!</string>
     <string name="elimina_dati">Esame eliminaro con successo</string>
-    <string name="elimina_dati_errore">Non è stato possibile non è stato possibile eliminare l'esame, riprova</string>
+    <string name="elimina_dati_errore">Non è stato possibile non è stato possibile eliminare l\'esame, riprova</string>
 
     <string name="modifica">Modifica</string>
     <string name="elimina">Elimina</string>
     <string name="azione">Scegli un azione...</string>
     <string name="conferma_titolo">Attenzione!</string>
-    <string name="conferma_testo">Sei sicurro di voler eliminare l'esame di </string>
+    <string name="conferma_testo">Sei sicurro di voler eliminare l\'esame di </string>
 
     <string name="nota">Nota salvata con successo</string>
     <string name="nota_errore">Errore nel caricamento del file.</string>

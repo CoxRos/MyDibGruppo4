@@ -111,4 +111,69 @@
     <string name="direttore_info">DIRECTEUR:</string>
     <string name="pec_info">PEC</string>
     <string name="dove_siamo_info">OÙ NOUS SOMMES:</string>
+
+    <string name="faq_titolo">Titre  FAQ</string>
+    <string name="faq_descrizione">Description</string>
+
+    <string name="libretto_voto">Vote:</string>
+    <string name="libretto_cfu">CFU:</string>
+    <string name="informazione_non_disponibile">Informations disponibles actuellement</string>
+
+    <string name="ricerca">Recherche...</string>
+
+    <string name="previsioni_titolo">Entrez le CFU et le grade pour le prochain examen pour voir les changements dans vos médias</string>
+    <string name="button_previsione">calcul</string>
+    <string name="media_arit_previsione">MOYENNE ARITHMETIQUE:</string>
+    <string name="media_pond_previsione">MOYENNE PONDEREE:</string>
+    <string name="base_laure_previsioni">DEGRÉ DE BASE:</string>
+    <string name="no_exam">Il n\'y a pas d\'examens\nAjouter avec le bouton (+)</string>
+
+    <string name="faq_log_titolo">Impossible de se connecter</string>
+    <string name="faq_log">Vérifiez la connexion à entrer les informations d\'identification Esse3. Si le problème persiste, contacter le numéro sans frais: 0805405631</string>
+    <string name="faq_dati_titolo">Application de données Accidentellement supprimé</string>
+    <string name="faq_dati">Si les données saisies avant la suppression est enregistré sur le serveur, l\'application permet de récupérer toutes les données.</string>
+    <string name="faq_laurea_titolo">La base d\'études supérieures est efficace?</string>
+    <string name="faq_laurea">A la base de mesure, sur la base de la politique de uniba, ils doivent être ajoutés 2 points de bonus si l\'étudiant est en cours</string>
+    <string name="faq_ristoro_titolo">Impossible de charger restaurants</string>
+    <string name="faq_ristoro">Vérifiez que le jeu des services Google sont correctement installés et mis à jour</string>
+    <string name="faq_ricerca_titolo">Je ne peux pas rechercher un utilisateur</string>
+    <string name="faq_ricerca">Si la recherche de l\'utilisateur échoue l\'utilisateur n\'a pas enregistré sur la plate-forme ou n\'a pas accordé son consentement à vos données</string>
+
+    <string name="error_voto">Entrez un vote valide</string>
+    <string name="error_cfu">Entrez un numéro valide de ufc</string>
+
+    <string name="progress_titolo">Attendre...</string>
+    <string name="progress_message">Le traitement des données</string>
+
+    <string name="no_avvisi">Il n\'y a pas d\'avertissement</string>
+    <string name="no_utenti">Il n\'a pas été trouvé tout utilisateur avec les données saisies</string>
+
+    <string name="error_ricerca">Entrez un nom ou le nom à rechercher!</string>
+
+    <string name="benvenuto">Bienvenue à nouveau!</string>
+
+    <string name="login_successo">Connexion réussie!</string>
+    <string name="login_errato">Vérifiez vos informations d\'identification et d\'essayer à nouveau!</string>
+    <string name="login_connessione">Échec de la connexion! Vérifiez la connexion et essayez à nouveau.</string>
+    <string name="aggiunta_dati">données insérées avec succès</string>
+    <string name="aggiunta_dati_errore">Il n\'a pas été possible d\'entrer les données ... Examen déjà présent!</string>
+    <string name="modifica_dati">changé avec succès les données</string>
+    <string name="modifica_dati_errore">Nous ne pouvions pas changer les données déjà présent examen ...!</string>
+    <string name="elimina_dati">Examen réussi à éliminer</string>
+    <string name="elimina_dati_errore">Il n\'a pas été possible, il n\'a pas été possible de supprimer l\'examen, essayer à nouveau</string>
+
+    <string name="modifica">Modification</string>
+    <string name="elimina">Effacer</string>
+    <string name="azione">Agir...</string>
+    <string name="conferma_titolo">Prudence!</string>
+    <string name="conferma_testo">Sei sicurro di voler eliminare l\'esame di </string>
+
+    <string name="nota">Remarque enregistré avec succès</string>
+    <string name="nota_errore">Fichier de chargement d\'erreur.</string>
+    <string name="nota_successo">Remarques chargé avec succès</string>
+
+    <string name="logout">Logout</string>
+    <string name="disconnessione">Etes-vous sûr que vous voulez déconnecter?</string>
+
+    <string name="no_orari">Il n\'y a pas d\'horaires</string>
 </resources>

@@ -53,7 +53,7 @@
     <string name="title_activity_grafici">Tendance</string>
 
     <string name="drawer_info">Information</string>
-        <string name="drawer_svago">Recreation and refreshment</string>
+    <string name="drawer_svago">Recreation and refreshment</string>
     <string name="drawer_bus">BUS</string>
     <string name="drawer_libretto">Booklet</string>
     <string name="drawer_profilo">Profile</string>
@@ -76,7 +76,7 @@
     <string name="profilo_ruolo">Role:</string>
     <string name="profilo_email">Email:</string>
     <string name="profilo_telefono">Phone:</string>
-        <string name="profilo_ricevimento">Receipt</string>
+    <string name="profilo_ricevimento">Receipt</string>
     <string name="profilo_web">Web Site:</string>
 
     <string name="sharing_upload">Send your notes to the platform</string>
@@ -110,5 +110,70 @@
     <string name="segretario_info">ADMINISTRATIVE SECRETARY</string>
     <string name="direttore_info">DIRECTOR:</string>
     <string name="pec_info">PEC</string>
-        <string name="dove_siamo_info">WHERE WE ARE:</string>
+    <string name="dove_siamo_info">WHERE WE ARE:</string>
+
+    <string name="faq_titolo">Title  FAQ</string>
+    <string name="faq_descrizione">Description</string>
+
+    <string name="libretto_voto">Mark:</string>
+    <string name="libretto_cfu">CFU:</string>
+    <string name="informazione_non_disponibile">Information currently not available</string>
+
+    <string name="ricerca">Searching...</string>
+
+    <string name="previsioni_titolo">Enter the CFU and the grade for the next exam to see the changes in your media</string>
+    <string name="button_previsione">Compute</string>
+    <string name="media_arit_previsione">ARITHMETIC AVERAGE:</string>
+    <string name="media_pond_previsione">WEIGHTED AVERAGE:</string>
+    <string name="base_laure_previsioni">DEGREE BASE:</string>
+    <string name="no_exam">There are no exams\nAdd them with the button (+)</string>
+
+    <string name="faq_log_titolo">Unable to login</string>
+    <string name="faq_log">Check the connection to enter Esse3 credentials. If the problem persists, contact the toll free number: 0805405631</string>
+    <string name="faq_dati_titolo">Accidentally deleted data application</string>
+    <string name="faq_dati">If the information prior to the deletion is saved on the server, the application will retrieve all data.</string>
+    <string name="faq_laurea_titolo">The graduate base is effective?</string>
+    <string name="faq_laurea">At the basis of degree, on the basis of uniba policy, they are to be added 2 bonus points if the student is in progress</string>
+    <string name="faq_ristoro_titolo">Unable to load eateries</string>
+    <string name="faq_ristoro">Verify that the Google Play Services are properly installed and updated</string>
+    <string name="faq_ricerca_titolo">I can not search for a user</string>
+    <string name="faq_ricerca">If the user search fails the user has not registered to the platform or has not granted consent to your data</string>
+
+    <string name="error_voto">Enter a valid vote</string>
+    <string name="error_cfu">Enter a valid number of cfu</string>
+
+    <string name="progress_titolo">Wait...</string>
+    <string name="progress_message">Processing data...</string>
+
+    <string name="no_avvisi">There are no warnings</string>
+    <string name="no_utenti">It was not found any user with the entered data</string>
+
+    <string name="error_ricerca">Enter a name or surname to be searched!</string>
+
+    <string name="benvenuto">Welcome back!</string>
+
+    <string name="login_successo">Login successful!</string>
+    <string name="login_errato">Check your credentials and try again!</string>
+    <string name="login_connessione">Login failed! Check the connection and try again.</string>
+    <string name="aggiunta_dati">Successfully inserted data</string>
+    <string name="aggiunta_dati_errore">It was not possible to enter the data ... examination already present!</string>
+    <string name="modifica_dati">Successfully changed data</string>
+    <string name="modifica_dati_errore">It was not possible to change the data ... examination already present!</string>
+    <string name="elimina_dati">successfully eliminated examination</string>
+    <string name="elimina_dati_errore">It was not possible it was not possible to delete the exam, try again</string>
+
+    <string name="modifica">Edit</string>
+    <string name="elimina">Delete</string>
+    <string name="azione">Take action...</string>
+    <string name="conferma_titolo">Attention!!</string>
+        <string name="conferma_testo">Are you sure you want to delete the exam </string>
+
+    <string name="nota">Note saved successfully</string>
+    <string name="nota_errore">Note saved successfully.</string>
+    <string name="nota_successo">Notes successfully loaded</string>
+
+    <string name="logout">Logout</string>
+    <string name="disconnessione">Are you sure you want to logout?</string>
+
+    <string name="no_orari">There are no timetables</string>
 </resources>
