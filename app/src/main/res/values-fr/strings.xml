@@ -24,6 +24,7 @@
 
 
     <string name="title_activity_bus">Bus</string>
+    <string name="title_faq">Foire aux Questions</string>
     <string name="section_format">Hello World from section: %1$d</string>
 
 
