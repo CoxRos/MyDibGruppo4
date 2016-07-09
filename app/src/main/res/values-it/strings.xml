@@ -18,9 +18,9 @@
     <string name="title_fragment_libretto">Libretto</string>
     <string name="title_fragment_grafici">Grafici</string>
     <string name="title_fragment_ristoro">Luoghi di interesse</string>
-    <string name="title_fragment_ricerca">Ricerca</string>
+    <string name="title_fragment_ricerca">Ricerca utenti</string>
     <string name="title_activity_profilo">Profilo</string>
-    <string name="title_fragment_informazioni">Informazioni</string>
+    <string name="title_fragment_informazioni">Informazioni uniba</string>
 
 
 
@@ -54,14 +54,14 @@
     <string name="default_value">it</string>
     <string name="title_activity_grafici">Andamento</string>
 
-    <string name="drawer_info">Informazioni</string>
+    <string name="drawer_info">Informazioni uniba</string>
     <string name="drawer_svago">Svago e Ristoro</string>
     <string name="drawer_bus">BUS</string>
     <string name="drawer_libretto">Libretto</string>
     <string name="drawer_profilo">Profilo</string>
-    <string name="drawer_avvisi">Avvisi</string>
+    <string name="drawer_avvisi">Avvisi uniba</string>
     <string name="drawer_condivisione">Condivisione Materiale</string>
-    <string name="drawer_ricerca">Ricerca</string>
+    <string name="drawer_ricerca">Ricerca utenti</string>
     <string name="drawer_grafici">Grafici</string>
     <string name="drawer_previsioni">Previsioni</string>
 
@@ -123,7 +123,7 @@
 
     <string name="ricerca">Ricerca...</string>
 
-    <string name="previsioni_titolo">Inserisci i CFU e il voto previsto per il prossimo esame per visualizzare le variazioni della tua media</string>
+    <string name="previsioni_titolo">Inserisci i CFU e il voto previsto per il prossimo esame per visualizzare le variazioni della tua media.</string>
     <string name="button_previsione">Calcola</string>
     <string name="media_arit_previsione">MEDIA ARITMENTICA:</string>
     <string name="media_pond_previsione">MEDIA PONDERATA:</string>
@@ -161,14 +161,14 @@
     <string name="aggiunta_dati_errore">Non è stato possibile inserire i dati... esame gia presente!</string>
     <string name="modifica_dati">Dati modificati con successo</string>
     <string name="modifica_dati_errore">Non è stato possibile modificare i dati... esame gia presente!</string>
-    <string name="elimina_dati">Esame eliminaro con successo</string>
-    <string name="elimina_dati_errore">Non è stato possibile non è stato possibile eliminare l\'esame, riprova</string>
+    <string name="elimina_dati">Esame eliminato con successo</string>
+    <string name="elimina_dati_errore">Non è stato possibile eliminare l\'esame, riprova</string>
 
     <string name="modifica">Modifica</string>
     <string name="elimina">Elimina</string>
-    <string name="azione">Scegli un azione...</string>
+    <string name="azione">Scegli un\'azione...</string>
     <string name="conferma_titolo">Attenzione!</string>
-    <string name="conferma_testo">Sei sicurro di voler eliminare l\'esame di </string>
+    <string name="conferma_testo">Sei sicurro di voler eliminare l\'esame  </string>
 
     <string name="nota">Nota salvata con successo</string>
     <string name="nota_errore">Errore nel caricamento del file.</string>
