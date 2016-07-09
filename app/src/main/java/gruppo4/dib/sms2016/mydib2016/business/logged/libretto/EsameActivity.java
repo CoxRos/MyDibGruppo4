@@ -13,6 +13,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -46,6 +47,7 @@ public class EsameActivity extends AppCompatActivity {
     private EditText edtData;
     private Button btnSalva;
     private TextView txtDescrizione;
+    private CheckBox checkIdo;
 
     private ProgressDialog progressDialog;
     RequestQueue queue;
@@ -97,6 +99,7 @@ public class EsameActivity extends AppCompatActivity {
         edtData = (EditText) findViewById(R.id.edtData);
         btnSalva = (Button) findViewById(R.id.buttonAggiungi);
         txtDescrizione = (TextView) findViewById(R.id.descrione_libretto_esame);
+        checkIdo = (CheckBox)findViewById(R.id.check_idonieta);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -213,6 +216,8 @@ public class EsameActivity extends AppCompatActivity {
             edtEsame.setKeyListener(null);
             edtVoto.setKeyListener(null);
             edtCfu.setKeyListener(null);
+
+            checkIdo.setVisibility(View.INVISIBLE);
         }
 
         btnSalva.setOnClickListener(new View.OnClickListener() {
@@ -224,17 +229,22 @@ public class EsameActivity extends AppCompatActivity {
                 String data = edtData.getText().toString();
 
                 //controllo gli input
-                int votoIns = Integer.parseInt(voto);
-                int cfuIns = Integer.parseInt(cfu);
-
-                if(votoIns < 18 || votoIns > 30) {
-                    edtVoto.setError(getResources().getString(R.string.error_voto));
-                    return;
+                if(!voto.equals("IDO")) {
+                    int votoIns = Integer.parseInt(voto);
+                    if(votoIns < 18 || votoIns > 30) {
+                        edtVoto.setError(getResources().getString(R.string.error_voto));
+                        return;
+                    }
                 }
+                int cfuIns = Integer.parseInt(cfu);
 
                 if(cfuIns > 15 || cfuIns == 0) {
                     edtCfu.setError(getResources().getString(R.string.error_cfu));
                     return;
+                }
+
+                if(checkIdo.isChecked()) {
+                    voto = "IDO";
                 }
 
                 if(option.equals("add")) {
@@ -266,8 +276,6 @@ public class EsameActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(EsameActivity.this, HomePage.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.putExtra("goTo",2);
         startActivity(intent);
     }

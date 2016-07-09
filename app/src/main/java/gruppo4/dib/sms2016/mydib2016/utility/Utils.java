@@ -22,8 +22,10 @@ public class Utils {
         double result = 0;
         int sommCFU = 0;
         for(EsameEntity esame : esami) {
-            result = result + (Integer.parseInt(esame.getVoto())*Integer.parseInt(esame.getCfu()));
-            sommCFU += Integer.parseInt(esame.getCfu());
+            if(!esame.getVoto().equals("IDO")) {
+                result = result + (Integer.parseInt(esame.getVoto()) * Integer.parseInt(esame.getCfu()));
+                sommCFU += Integer.parseInt(esame.getCfu());
+            }
         }
 
         if(result == 0) {
@@ -37,7 +39,9 @@ public class Utils {
     public double getMediaAritmetica(ArrayList<EsameEntity> esami) {
         double result = 0;
         for(EsameEntity esame : esami) {
-            result = result + Integer.parseInt(esame.getVoto());
+            if(!esame.getVoto().equals("IDO")) {
+                result = result + Integer.parseInt(esame.getVoto());
+            }
         }
 
         if(result == 0) {
