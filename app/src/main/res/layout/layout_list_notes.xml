@@ -24,7 +24,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="In questi appunti puoi trovare di tutto, sono bellissimi ma fanno schifo al tempo stesso"
+        android:text="In questi appunti puoi trovare di tutto"
         android:textSize="20dp"
         android:textColor="@color/darkblack"
         android:textStyle="normal"

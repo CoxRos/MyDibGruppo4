@@ -401,8 +401,8 @@ public class HomePage extends AppCompatActivity
 
     private AlertDialog getAlertLogout() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Logout");
-        builder.setMessage("Sei sicuro di volerti disconnettere?");
+        builder.setTitle(getResources().getString(R.string.logout));
+        builder.setMessage(getResources().getString(R.string.disconnessione));
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

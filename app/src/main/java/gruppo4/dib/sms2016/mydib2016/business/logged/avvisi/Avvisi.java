@@ -92,7 +92,7 @@ public class Avvisi extends Fragment {
                 if(isEmpty) {
                     listaAvvisi.setVisibility(View.GONE);
                     noItem.setVisibility(View.VISIBLE);
-                    noItem.setText("Non sono presenti avvisi");
+                    noItem.setText(getResources().getString(R.string.no_avvisi));
                     noConnection.setVisibility(View.VISIBLE);
                     noConnection.setImageResource(R.mipmap.ic_dispiaciuto);
                 }
@@ -114,8 +114,8 @@ public class Avvisi extends Fragment {
             }
         });
         Network.getInstance(getContext()).addToRequestQueue(jsonRequest);
-        progressDialog.setTitle("Attendere");
-        progressDialog.setMessage("Caricamento degli avvisi...");
+        progressDialog.setTitle(getResources().getString(R.string.progress_titolo));
+        progressDialog.setMessage(getResources().getString(R.string.progress_message));
         progressDialog.show();
     }
 }

@@ -23,6 +23,7 @@ import java.net.URL;
 
 import gruppo4.dib.sms2016.mydib2016.R;
 import gruppo4.dib.sms2016.mydib2016.business.Autenticazione.Login;
+import gruppo4.dib.sms2016.mydib2016.utility.Costants;
 
 public class UploadNotes extends AppCompatActivity {
 
@@ -75,7 +76,7 @@ public class UploadNotes extends AppCompatActivity {
             }
         });
 
-        upLoadServerUri = "http://mydib2016.altervista.org/fileSharing.php";
+        upLoadServerUri = Costants.URL_UPLOAD_FILE;
     }
 
     @Override
@@ -131,7 +132,7 @@ public class UploadNotes extends AppCompatActivity {
 
             runOnUiThread(new Runnable() {
                 public void run() {
-                    Toast.makeText(UploadNotes.this, "Errore nel caricamento del file.",
+                    Toast.makeText(UploadNotes.this, getResources().getString(R.string.nota_errore),
                             Toast.LENGTH_LONG).show();
                 }
             });

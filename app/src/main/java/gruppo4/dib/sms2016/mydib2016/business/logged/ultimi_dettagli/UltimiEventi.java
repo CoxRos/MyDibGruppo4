@@ -60,7 +60,7 @@ public class UltimiEventi extends Fragment {
         if(Login.entry) {
             credenziali.getEmail(getContext());
             String emailUser = credenziali.email;
-            createAlert("Bentornato!", emailUser).show();
+            createAlert(getResources().getString(R.string.benvenuto), emailUser).show();
             Login.entry = false;
         }
 
@@ -144,7 +144,7 @@ public class UltimiEventi extends Fragment {
                 if(isEmpty) {
                     listaAvvisi.setVisibility(View.GONE);
                     noItem.setVisibility(View.VISIBLE);
-                    noItem.setText("Non sono presenti avvisi");
+                    noItem.setText(getResources().getString(R.string.no_avvisi));
                     noConnection.setVisibility(View.VISIBLE);
                     noConnection.setImageResource(R.mipmap.ic_dispiaciuto);
                 } else {
@@ -173,8 +173,8 @@ public class UltimiEventi extends Fragment {
             }
         });
         Network.getInstance(getActivity()).addToRequestQueue(jsonArrayRequest);
-        progressDialog.setTitle("Attendere");
-        progressDialog.setMessage("Caricamento Avvisi");
+        progressDialog.setTitle(getResources().getString(R.string.progress_titolo));
+        progressDialog.setMessage(getResources().getString(R.string.progress_message));
         progressDialog.show();
     }
 

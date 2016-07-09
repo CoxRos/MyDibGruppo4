@@ -99,7 +99,7 @@ public class RitornoBus extends Fragment {
                         if(isEmpty) {
                             listaAutobus.setVisibility(View.GONE);
                             noItem.setVisibility(View.VISIBLE);
-                            noItem.setText("Non sono presenti orari");
+                            noItem.setText(getResources().getString(R.string.no_orari));
                             noConnection.setVisibility(View.VISIBLE);
                             noConnection.setImageResource(R.mipmap.ic_dispiaciuto);
                         } else {
@@ -123,8 +123,8 @@ public class RitornoBus extends Fragment {
                 });
 
         Network.getInstance(getActivity()).addToRequestQueue(request);
-        progressDialog.setTitle("Attendere");
-        progressDialog.setMessage("Caricamento richiesta");
+        progressDialog.setTitle(getResources().getString(R.string.progress_titolo));
+        progressDialog.setMessage(getResources().getString(R.string.progress_message));
         progressDialog.show();
     }
 }

@@ -93,7 +93,7 @@ public class RicercaUtente extends Fragment {
                 no_utenti.setVisibility(View.GONE);
 
                 if("".equals(ricercato.getText().toString())) {
-                    ricercato.setError("Inserisci un nome o un cognome da ricercare!");
+                    ricercato.setError(getResources().getString(R.string.error_ricerca));
                     return;
                 }
 
@@ -133,7 +133,7 @@ public class RicercaUtente extends Fragment {
                             if (isEmpty) {
                                 listRicerca.setVisibility(View.GONE);
                                 messageNoRicerca.setVisibility(View.VISIBLE);
-                                messageNoRicerca.setText("Non è stato trovato alcun utente con i dati inseriti");
+                                messageNoRicerca.setText(getResources().getString(R.string.no_utenti));
                                 no_utenti.setVisibility(View.VISIBLE);
                             }
                             progressDialog.dismiss();
@@ -144,7 +144,7 @@ public class RicercaUtente extends Fragment {
                             Log.d("CLASSE RICERCA", "Errore connessione " + error.toString());
                             listRicerca.setVisibility(View.GONE);
                             messageNoRicerca.setVisibility(View.VISIBLE);
-                            messageNoRicerca.setText("Verificare la connessione");
+                            messageNoRicerca.setText(getResources().getString(R.string.no_connection));
                             no_utenti.setVisibility(View.GONE);
                             no_connection.setVisibility(View.VISIBLE);
                             Log.d("ATTENZIONE:", error.getMessage());
@@ -161,8 +161,8 @@ public class RicercaUtente extends Fragment {
                     };
                     Network.getInstance(getContext()).addToRequestQueue(jsonObjectRequest);
                     progressDialog = new ProgressDialog(getContext());
-                    progressDialog.setTitle("Attedere");
-                    progressDialog.setMessage("Ricerca in corso...");
+                    progressDialog.setTitle(getResources().getString(R.string.progress_titolo));
+                    progressDialog.setMessage(getResources().getString(R.string.progress_message));
                     progressDialog.show();
                 }
             }

@@ -161,9 +161,9 @@ public class LibrettoAdapter extends ArrayAdapter<EsameEntity> {
     }
 
     private AlertDialog getAlertDialog(final String nomeEsame) {
-        CharSequence[] items = {"Modifica", "Elimina"};
+        CharSequence[] items = {getContext().getResources().getString(R.string.modifica), getContext().getResources().getString(R.string.elimina)};
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle("Segli un azione...");
+        builder.setTitle(getContext().getResources().getString(R.string.azione));
         builder.setItems(items, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -187,7 +187,7 @@ public class LibrettoAdapter extends ArrayAdapter<EsameEntity> {
             getContext().startActivity(intent);
         }
         else {
-            getDialogElimina("Attenzione!", "Sei sicurro di voler eliminare l'esame di " + nomeEsame + "?", nomeEsame).show();
+            getDialogElimina(getContext().getResources().getString(R.string.conferma_titolo), getContext().getResources().getString(R.string.conferma_testo) + nomeEsame + "?", nomeEsame).show();
         }
 
     }
@@ -202,10 +202,10 @@ public class LibrettoAdapter extends ArrayAdapter<EsameEntity> {
                 boolean isDeleted = db.deleteEsame(nomeEsame);
 
                 if(isDeleted) {
-                    Toast.makeText(getContext(), "Esame eliminato con successo", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), getContext().getResources().getString(R.string.elimina_dati), Toast.LENGTH_LONG).show();
                     doRequest(Costants.URL_DELETE_ESAMI, nomeEsame);
                 } else {
-                    Toast.makeText(getContext(), "Non è stato possibile eliminare l'esame, riprova", Toast.LENGTH_LONG);
+                    Toast.makeText(getContext(), getContext().getResources().getString(R.string.elimina_dati_errore), Toast.LENGTH_LONG);
                 }
             }
         });
@@ -252,8 +252,8 @@ public class LibrettoAdapter extends ArrayAdapter<EsameEntity> {
         };
         Network.getInstance(getContext()).addToRequestQueue(requestObject);
         progressDialog = new ProgressDialog(getContext());
-        progressDialog.setTitle("Attendere...");
-        progressDialog.setMessage("Eliminazione in corso");
+        progressDialog.setTitle(getContext().getResources().getString(R.string.progress_titolo));
+        progressDialog.setMessage(getContext().getResources().getString(R.string.progress_message));
         progressDialog.show();
     }
 

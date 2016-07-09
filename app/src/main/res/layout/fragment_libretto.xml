@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="210dp"
             android:layout_marginLeft="65dp"
-            android:text="Non sono presenti esami\nAggiungerli con il pulsante (+)"
+            android:text="@string/no_exam"
             android:textSize="20dp"
             android:textStyle="italic"
             android:visibility="gone" />
