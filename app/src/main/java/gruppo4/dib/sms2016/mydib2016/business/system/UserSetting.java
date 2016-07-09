@@ -10,13 +10,20 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import gruppo4.dib.sms2016.mydib2016.R;
+import gruppo4.dib.sms2016.mydib2016.business.Autenticazione.Login;
 import gruppo4.dib.sms2016.mydib2016.business.homepage.HomePage;
 
 public class UserSetting extends PreferenceActivity {
 
+    Login credenziali = new Login();
+    static boolean logged;
+
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
+
+        credenziali.getLogged(this);
+        logged = credenziali.logged;
 
         AppBarLayout bar;
 
@@ -30,9 +37,14 @@ public class UserSetting extends PreferenceActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(UserSetting.this, HomePage.class);
-                intent.putExtra("goTo",1);
+
+                if(logged) {
+                    intent.putExtra("goTo",1);
+                }
+                else {
+                    intent.putExtra("goTo", 0);
+                }
                 startActivity(intent);
-                finish();
             }
         });
     }
@@ -47,7 +59,13 @@ public class UserSetting extends PreferenceActivity {
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(UserSetting.this, HomePage.class);
-        intent.putExtra("goTo",1);
+
+        if(logged) {
+            intent.putExtra("goTo",1);
+        }
+        else {
+            intent.putExtra("goTo", 0);
+        }
         startActivity(intent);
     }
 }

@@ -1,5 +1,6 @@
 package gruppo4.dib.sms2016.mydib2016.business.homepage;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,6 +15,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.AttributeSet;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -444,5 +446,12 @@ public class HomePage extends AppCompatActivity
 
         String value = sharedPreferences.getString("prefLingua", "null");
         LocaleHelper.setLocale(this, value);
+    }
+
+    @Override
+    public View onCreateView(String name, Context context, AttributeSet attrs) {
+        //setta la lingua nel drawer
+        getValueSettings();
+        return super.onCreateView(name, context, attrs);
     }
 }
