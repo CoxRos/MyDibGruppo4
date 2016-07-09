@@ -158,8 +158,8 @@ public class Libretto extends Fragment {
         };
 
         Network.getInstance(getActivity()).addToRequestQueue(request);
-        progressDialog.setTitle("Attendere");
-        progressDialog.setMessage("Caricamento richiesta");
+        progressDialog.setTitle(getResources().getString(R.string.progress_titolo));
+        progressDialog.setMessage(getResources().getString(R.string.progress_message));
         progressDialog.show();
     }
 

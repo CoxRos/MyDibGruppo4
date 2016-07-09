@@ -103,12 +103,12 @@ public class Previsioni extends Fragment {
                 int cfuIns = Integer.parseInt(cfu.getText().toString());
 
                 if(votoIns < 18 || votoIns > 30) {
-                    voto.setError("Inserisci un voto valido");
+                    voto.setError(getResources().getString(R.string.error_voto));
                     return;
                 }
 
                 if(cfuIns > 15) {
-                    cfu.setError("Inserisci dei CFU validi");
+                    cfu.setError(getResources().getString(R.string.error_cfu));
                     return;
                 }
 
