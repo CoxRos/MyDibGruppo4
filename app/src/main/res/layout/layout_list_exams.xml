@@ -29,7 +29,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Voto:"
+        android:text="@string/libretto_voto"
         android:textSize="20dp"
         android:drawableLeft="@mipmap/ic_mark"
         android:drawablePadding="10dp"
@@ -54,7 +54,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CFU:"
+        android:text="@string/libretto_cfu"
         android:textSize="20dp"
         android:drawableLeft="@mipmap/ic_credits"
         android:drawablePadding="10dp"

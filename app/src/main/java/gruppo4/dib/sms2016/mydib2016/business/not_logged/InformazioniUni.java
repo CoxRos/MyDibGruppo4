@@ -22,6 +22,7 @@ import org.json.JSONObject;
 
 import gruppo4.dib.sms2016.mydib2016.R;
 import gruppo4.dib.sms2016.mydib2016.network.Network;
+import gruppo4.dib.sms2016.mydib2016.utility.Costants;
 
 
 public class InformazioniUni extends Fragment {
@@ -54,7 +55,7 @@ public class InformazioniUni extends Fragment {
         nomeSegretView = (TextView) getActivity().findViewById(R.id.nomeSegretario);
         emailSegretView = (TextView) getActivity().findViewById(R.id.emailSegretario);
 
-        setUI("http://mydib2016.altervista.org/api/index.php/infouni");
+        setUI(Costants.URL_INFO_UNI);
 
         emailDiretView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,8 +117,8 @@ public class InformazioniUni extends Fragment {
                     }
                 });
         Network.getInstance(getActivity()).addToRequestQueue(jsObjRequest);
-        progressDialog.setTitle("Attendere");
-        progressDialog.setMessage("Caricamento info");
+        progressDialog.setTitle(getResources().getString(R.string.progress_titolo));
+        progressDialog.setMessage(getResources().getString(R.string.progress_message));
         progressDialog.show();
     }
 

@@ -141,11 +141,11 @@ public class Login extends AppCompatActivity {
                         editor.putString("matricola",response.getString("matricola"));
                         editor.commit();
 
-                        Toast.makeText(getApplicationContext(), "Login effettuato con successo!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.login_successo), Toast.LENGTH_SHORT).show();
                         changeActivity();
 
                     } else {
-                        Toast.makeText(getApplicationContext(), "Controlla le credenziali e riprova!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.login_errato), Toast.LENGTH_LONG).show();
                         et_password.setText("");
                     }
                 } catch (JSONException e) {
@@ -157,7 +157,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.d("CLASSE LOGIN", "Errore connessione " + error.toString());
-                Toast.makeText(getApplicationContext(), "Accesso non riuscito! Controlla la connessione e riprova.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.login_connessione), Toast.LENGTH_LONG).show();
                 progressDialog.dismiss();
             }
         }) {
@@ -171,8 +171,8 @@ public class Login extends AppCompatActivity {
         };
         Network.getInstance(getApplicationContext()).addToRequestQueue(jsonObjectRequest);
         progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("Attedere");
-        progressDialog.setMessage("Verifica dei dati");
+        progressDialog.setTitle(getResources().getString(R.string.progress_titolo));
+        progressDialog.setMessage(getResources().getString(R.string.progress_message));
         progressDialog.show();
 
     }

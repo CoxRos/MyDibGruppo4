@@ -127,9 +127,9 @@ public class NotesAdapter extends ArrayAdapter<NotaEntity> {
             // Create a progressdialog
             progressDialog = new ProgressDialog(getContext());
             // Set progressdialog title
-            progressDialog.setTitle("Download appunti");
+            progressDialog.setTitle("Download...");
             // Set progressdialog message
-            progressDialog.setMessage("Attendere...");
+            progressDialog.setMessage(getContext().getResources().getString(R.string.progress_titolo));
             progressDialog.setIndeterminate(false);
             // Show progressdialog
             progressDialog.show();
@@ -159,7 +159,7 @@ public class NotesAdapter extends ArrayAdapter<NotaEntity> {
             // Set the bitmap into ImageView
             saveImage(result, titolo, estensione);
             progressDialog.dismiss();
-            Toast.makeText(getContext(), "Nota salvata con successo",
+            Toast.makeText(getContext(), getContext().getResources().getString(R.string.nota),
                     Toast.LENGTH_LONG).show();
         }
 

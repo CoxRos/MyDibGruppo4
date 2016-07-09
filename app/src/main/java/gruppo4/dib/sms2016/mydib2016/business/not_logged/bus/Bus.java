@@ -165,8 +165,8 @@ public class Bus extends AppCompatActivity {
     private AlertDialog getAlertLogout() {
         db = new DAOLibretto(this);
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Logout");
-        builder.setMessage("Sei sicuro di volerti disconnettere?");
+        builder.setTitle(getResources().getString(R.string.logout));
+        builder.setMessage(getResources().getString(R.string.disconnessione));
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -269,7 +269,7 @@ public class Bus extends AppCompatActivity {
                             if(isEmpty) {
                                 listaAutobus.setVisibility(View.GONE);
                                 noItem.setVisibility(View.VISIBLE);
-                                noItem.setText("Non sono presenti orari");
+                                noItem.setText(getResources().getString(R.string.no_orari));
                                 noConnection.setVisibility(View.VISIBLE);
                                 noConnection.setImageResource(R.mipmap.ic_dispiaciuto);
                             } else {
@@ -292,8 +292,8 @@ public class Bus extends AppCompatActivity {
                         }
                     });
             Network.getInstance(getActivity()).addToRequestQueue(request);
-            progressDialog.setTitle("Attendere");
-            progressDialog.setMessage("Caricamento richiesta");
+            progressDialog.setTitle(getResources().getString(R.string.progress_titolo));
+            progressDialog.setMessage(getResources().getString(R.string.progress_message));
             progressDialog.show();
         }
     }

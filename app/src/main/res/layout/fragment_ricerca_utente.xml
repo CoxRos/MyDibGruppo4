@@ -30,7 +30,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="5dp"
                     android:layout_weight="0.51"
-                    android:hint="Ricerca..." />
+                    android:hint="@string/ricerca" />
 
                 <ImageButton
                     android:layout_width="30dp"

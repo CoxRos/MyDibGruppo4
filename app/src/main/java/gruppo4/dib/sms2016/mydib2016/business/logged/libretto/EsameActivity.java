@@ -66,8 +66,6 @@ public class EsameActivity extends AppCompatActivity {
     private String option;
     private String esame;
 
-    Intent mServiceIntent;
-    final String urlIntent = "http://mydib2016.altervista.org/api/index.php/uploadDB";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -230,12 +228,12 @@ public class EsameActivity extends AppCompatActivity {
                 int cfuIns = Integer.parseInt(cfu);
 
                 if(votoIns < 18 || votoIns > 30) {
-                    edtVoto.setError("Inserisci un voto valido");
+                    edtVoto.setError(getResources().getString(R.string.error_voto));
                     return;
                 }
 
                 if(cfuIns > 15 || cfuIns == 0) {
-                    edtCfu.setError("Inserisci un numero di cfu validi");
+                    edtCfu.setError(getResources().getString(R.string.error_cfu));
                     return;
                 }
 
@@ -243,10 +241,10 @@ public class EsameActivity extends AppCompatActivity {
                     boolean isInserted = db.insertEsame(materia, cfu, voto, data);
 
                     if (isInserted) {
-                        Toast.makeText(getApplicationContext(), "Dati inseriti con successo", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.aggiunta_dati), Toast.LENGTH_LONG).show();
                         doRequest(Costants.URL_INSERT_ESAME, "");
                     } else {
-                        Toast.makeText(getApplicationContext(), "Non è stato possibile inserire i dati... esame gia presente!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.aggiunta_dati_errore), Toast.LENGTH_LONG).show();
                     }
                 }
                 else if(option.equals("modifica")) {
@@ -254,10 +252,10 @@ public class EsameActivity extends AppCompatActivity {
                     boolean isUpdated = db.updateEsame(materia, cfu, voto, data, holdMat);
 
                     if (isUpdated) {
-                        Toast.makeText(getApplicationContext(), "Dati aggiornati con successo", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.modifica_dati), Toast.LENGTH_LONG).show();
                         doRequest(Costants.URL_UPDATE_ESAME, holdMat);
                     } else {
-                        Toast.makeText(getApplicationContext(), "Non è stato possibile aggiornare i dati... esame gia presente!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.modifica_dati_errore), Toast.LENGTH_LONG).show();
                     }
                 }
             }
@@ -372,8 +370,8 @@ public class EsameActivity extends AppCompatActivity {
         };
         Network.getInstance(getApplicationContext()).addToRequestQueue(jsonRequest);
         progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("Attendere...");
-        progressDialog.setMessage("Aggiunta dei dati");
+        progressDialog.setTitle(getResources().getString(R.string.progress_titolo));
+        progressDialog.setMessage(getResources().getString(R.string.progress_message));
         progressDialog.show();
     }
 

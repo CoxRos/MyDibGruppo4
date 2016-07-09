@@ -18,6 +18,8 @@ public class Costants {
     public static final String URL_DOWNLOAD_NOTE = "http://mydib2016.altervista.org/api/index.php/selectNote";
     public static final String URL_BUS = "http://mydib2016.altervista.org/api/index.php/bustime";
     public static final String URL_UPLOAD_DB = "http://mydib2016.altervista.org/api/index.php/uploadDatabase";
+    public static final String URL_INFO_UNI = "http://mydib2016.altervista.org/api/index.php/infouni";
+    public static final String URL_UPLOAD_FILE = "http://mydib2016.altervista.org/fileSharing.php";
 
     public static final String SELECTED_LANGUAGE = "Locale.Helper.Selected.Language";
 }

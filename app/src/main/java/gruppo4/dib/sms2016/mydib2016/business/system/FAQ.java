@@ -52,11 +52,12 @@ public class FAQ extends AppCompatActivity {
         FAQAdapter faqAdapter= new FAQAdapter(this,R.layout.list_layout_faq);
         listFAQ.setAdapter(faqAdapter);
 
-        faqAdapter.add(new FAQEntity("Impossibile loggarsi","Verificare la connessione ed inserire le credenziali di Esse3. Se il problema persiste contattare il numero verde: 0805405631"));
-        faqAdapter.add(new FAQEntity("Cancellato per sbaglio i dati dell'applicazione","Se i dati inseriti precedentemente alla eliminazione sono salvati sul server, l'applicazione recupererà tutti i dati."));
-        faqAdapter.add(new FAQEntity("La base di laurea è effettiva?","Alla base di laurea, sulla base della politica uniba, sono da aggiungere 2 punti bonus se lo studente è in corso"));
-        faqAdapter.add(new FAQEntity("Impossibile caricare i luoghi di ristoro","Verificare che i Google Play Services siano correttamente installati e aggiornati"));
-        faqAdapter.add(new FAQEntity("Non riesco a ricercare un utente","Se la ricerca dell'utente fallisce l'utente non si è registrato alla piattaforma o non ha concesso l'autorizzazione ai propri dati"));
+
+        faqAdapter.add(new FAQEntity(getResources().getString(R.string.faq_log_titolo), getResources().getString(R.string.faq_log)));
+        faqAdapter.add(new FAQEntity(getResources().getString(R.string.faq_dati_titolo),getResources().getString(R.string.faq_dati)));
+        faqAdapter.add(new FAQEntity(getResources().getString(R.string.faq_laurea_titolo),getResources().getString(R.string.faq_laurea)));
+        faqAdapter.add(new FAQEntity(getResources().getString(R.string.faq_ristoro_titolo),getResources().getString(R.string.faq_ristoro)));
+        faqAdapter.add(new FAQEntity(getResources().getString(R.string.faq_ricerca_titolo),getResources().getString(R.string.faq_ricerca)));
     }
 
     @Override

@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Università - Piazza Moro"
+            android:text="@string/bus_ritorno"
             android:textColor="@color/white"
             android:textSize="25dp"
             android:textStyle="italic" />
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="210dp"
             android:layout_marginLeft="65dp"
-            android:text="Verificare la connessione"
+            android:text="@string/no_connection"
             android:textSize="20dp"
             android:textStyle="italic"
             android:visibility="gone" />
