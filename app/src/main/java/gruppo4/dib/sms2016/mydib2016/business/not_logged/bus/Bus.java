@@ -273,6 +273,7 @@ public class Bus extends AppCompatActivity {
                                 noConnection.setVisibility(View.VISIBLE);
                                 noConnection.setImageResource(R.mipmap.ic_dispiaciuto);
                             } else {
+                                listAdapter.add(new BusEntity("","","",""));
                                 listaAutobus.setVisibility(View.VISIBLE);
                                 noItem.setVisibility(View.GONE);
                                 noConnection.setVisibility(View.GONE);

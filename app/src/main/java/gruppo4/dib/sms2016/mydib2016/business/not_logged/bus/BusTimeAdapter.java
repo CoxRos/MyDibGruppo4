@@ -29,16 +29,24 @@ public class BusTimeAdapter extends ArrayAdapter<BusEntity> {
         final ViewHolder viewHolder = getViewHolder(view);
         final BusEntity entry = getItem(position);
 
-        if (entry.getNumBus().equalsIgnoreCase("21")) {
-            viewHolder.numbus.setImageResource(R.mipmap.ic_bus21);
+        if(!entry.getNumBus().equals("")) {
+
+            if (entry.getNumBus().equalsIgnoreCase("21")) {
+                viewHolder.numbus.setImageResource(R.mipmap.ic_bus21);
+            } else {
+                viewHolder.numbus.setImageResource(R.mipmap.ic_bus22);
+            }
+
+            viewHolder.arrivoOrario.setText(entry.getOrarioArrivo());
+
+            viewHolder.partenzaOrario.setText(entry.getOrarioPartenza());
         } else {
-            viewHolder.numbus.setImageResource(R.mipmap.ic_bus22);
+            viewHolder.separatorBus.setVisibility(View.GONE);
+            viewHolder.trattinoBus.setVisibility(View.GONE);
+            viewHolder.partenzaOrario.setVisibility(View.GONE);
+            viewHolder.arrivoOrario.setVisibility(View.GONE);
+            viewHolder.numbus.setVisibility(View.GONE);
         }
-
-        viewHolder.arrivoOrario.setText(entry.getOrarioArrivo());
-
-        viewHolder.partenzaOrario.setText(entry.getOrarioPartenza());
-
         return view;
     }
 
@@ -73,6 +81,9 @@ public class BusTimeAdapter extends ArrayAdapter<BusEntity> {
             viewHolder.numbus = (ImageView) workingView.findViewById(R.id.numeroBus);
             viewHolder.arrivoOrario = (TextView) workingView.findViewById(R.id.arrivoOrario);
             viewHolder.partenzaOrario = (TextView) workingView.findViewById(R.id.partenzaOrario);
+            viewHolder.separatorBus = (View) workingView.findViewById(R.id.separatorBus);
+            viewHolder.trattinoBus = (TextView) workingView.findViewById(R.id.trattinoBus);
+
 
             workingView.setTag(viewHolder);
 
@@ -96,5 +107,7 @@ public class BusTimeAdapter extends ArrayAdapter<BusEntity> {
         public ImageView numbus;
         public TextView partenzaOrario;
         public TextView arrivoOrario;
+        public View separatorBus;
+        public TextView trattinoBus;
     }
 }
