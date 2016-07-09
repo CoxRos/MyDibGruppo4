@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -198,9 +199,15 @@ public class EsameActivity extends AppCompatActivity {
             txtDescrizione.setText(getResources().getString(R.string.modificaEsame));
 
             edtEsame.setText(esam.getNome());
-            edtVoto.setText(esam.getVoto());
             edtCfu.setText(esam.getCfu());
             edtData.setText(esam.getData());
+
+            if(esam.getVoto().equals("IDO")) {
+                edtVoto.setText("");
+            }
+            else {
+                edtVoto.setText(esam.getVoto());
+            }
         }
         else if(option.equals("visualizza")) {
             EsameEntity esam = db.getEsame(esame);
