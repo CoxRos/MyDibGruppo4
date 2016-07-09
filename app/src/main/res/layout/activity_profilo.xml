@@ -20,184 +20,193 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize"
-        android:paddingTop="25dp"
-        android:paddingLeft="10dp">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textView18"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginBottom="10dp"
-            android:paddingTop="10dp"
-            android:text="@string/profilo_nome"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="?attr/actionBarSize"
+                android:paddingTop="25dp"
+                android:paddingLeft="10dp">
 
-        <TextView
-            android:id="@+id/textView19"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/textView18"
-            android:layout_marginBottom="10dp"
-            android:paddingTop="10dp"
-            android:text="@string/profilo_cognome"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+                <TextView
+                    android:id="@+id/textView18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:text="@string/profilo_nome"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
 
-        <TextView
-            android:id="@+id/textView20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/textView19"
-            android:layout_marginBottom="10dp"
-            android:paddingTop="10dp"
-            android:text="@string/profilo_email"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/textView18"
+                    android:layout_marginBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:text="@string/profilo_cognome"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
 
-        <TextView
-            android:id="@+id/textView21"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/textView20"
-            android:layout_marginBottom="10dp"
-            android:paddingTop="10dp"
-            android:text="@string/profilo_ruolo"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+                <TextView
+                    android:id="@+id/textView20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/textView19"
+                    android:layout_marginBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:text="@string/profilo_email"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <TextView
+                    android:id="@+id/textView21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/textView20"
+                    android:layout_marginBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:text="@string/profilo_ruolo"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
 
 
-        <TextView
-            android:id="@+id/labelTel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/textView21"
-            android:layout_marginBottom="10dp"
-            android:paddingTop="10dp"
-            android:text="@string/profilo_telefono"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:visibility="visible" />
+                <TextView
+                    android:id="@+id/labelTel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/textView21"
+                    android:layout_marginBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:text="@string/profilo_telefono"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:visibility="visible" />
 
-        <TextView
-            android:id="@+id/textView23"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/labelTel"
-            android:layout_marginBottom="10dp"
-            android:paddingTop="10dp"
-            android:layout_marginTop="15dp"
-            android:text="@string/profilo_ricevimento"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:visibility="visible" />
+                <TextView
+                    android:id="@+id/textView23"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/labelTel"
+                    android:layout_marginBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/profilo_ricevimento"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:visibility="visible" />
 
-        <TextView
-            android:id="@+id/textView24"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/textView23"
-            android:paddingTop="10dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/profilo_web"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:visibility="visible" />
+                <TextView
+                    android:id="@+id/textView24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/textView23"
+                    android:paddingTop="10dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/profilo_web"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:visibility="visible" />
 
-        <TextView
-            android:id="@+id/txtNomeProfilo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/textView18"
-            android:layout_toEndOf="@+id/textView18"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/black" />
+                <TextView
+                    android:id="@+id/txtNomeProfilo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:layout_alignBottom="@+id/textView18"
+                    android:layout_toEndOf="@+id/textView18"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/black" />
 
-        <TextView
-            android:id="@+id/txtCognomeProfilo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/textView19"
-            android:layout_toEndOf="@+id/textView19"
-            android:layout_toRightOf="@+id/textView19"
-            android:paddingLeft="10dp"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/black" />
+                <TextView
+                    android:id="@+id/txtCognomeProfilo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/textView19"
+                    android:layout_toEndOf="@+id/textView19"
+                    android:layout_toRightOf="@+id/textView19"
+                    android:paddingLeft="10dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/black" />
 
-        <TextView
-            android:id="@+id/txtEmailProfilo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/textView20"
-            android:layout_toEndOf="@+id/textView20"
-            android:layout_toRightOf="@+id/textView20"
-            android:paddingLeft="10dp"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/drawer" />
+                <TextView
+                    android:id="@+id/txtEmailProfilo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/textView20"
+                    android:layout_toEndOf="@+id/textView20"
+                    android:layout_toRightOf="@+id/textView20"
+                    android:paddingLeft="10dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/drawer" />
 
-        <TextView
-            android:id="@+id/txtRuoloProfilo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/textView21"
-            android:layout_toEndOf="@+id/textView21"
-            android:paddingLeft="10dp"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/black" />
+                <TextView
+                    android:id="@+id/txtRuoloProfilo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/textView21"
+                    android:layout_toEndOf="@+id/textView21"
+                    android:paddingLeft="10dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/black" />
 
-        <TextView
-            android:id="@+id/txtTelProfilo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/labelTel"
-            android:layout_toEndOf="@+id/labelTel"
-            android:layout_toRightOf="@+id/labelTel"
-            android:paddingLeft="10dp"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/black"
-            android:visibility="visible" />
+                <TextView
+                    android:id="@+id/txtTelProfilo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/labelTel"
+                    android:layout_toEndOf="@+id/labelTel"
+                    android:layout_toRightOf="@+id/labelTel"
+                    android:paddingLeft="10dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/black"
+                    android:visibility="visible" />
 
-        <TextView
-            android:id="@+id/txtRicevimentoProfilo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/textView23"
-            android:layout_toEndOf="@+id/textView23"
-            android:layout_toRightOf="@+id/textView23"
-            android:paddingLeft="10dp"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/black"
-            android:visibility="visible" />
+                <TextView
+                    android:id="@+id/txtRicevimentoProfilo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/textView23"
+                    android:layout_toEndOf="@+id/textView23"
+                    android:layout_toRightOf="@+id/textView23"
+                    android:paddingLeft="10dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/black"
+                    android:visibility="visible" />
 
-        <TextView
-            android:id="@+id/txtWebProfilo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/textView24"
-            android:layout_toEndOf="@+id/textView24"
-            android:layout_toRightOf="@+id/textView24"
-            android:paddingLeft="10dp"
-            android:textSize="20dp"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/drawer"
-            android:visibility="visible" />
-    </RelativeLayout>
+                <TextView
+                    android:id="@+id/txtWebProfilo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/textView24"
+                    android:layout_toEndOf="@+id/textView24"
+                    android:layout_toRightOf="@+id/textView24"
+                    android:paddingLeft="10dp"
+                    android:textSize="20dp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/drawer"
+                    android:visibility="visible" />
+            </RelativeLayout>
+        </ScrollView>
+    </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

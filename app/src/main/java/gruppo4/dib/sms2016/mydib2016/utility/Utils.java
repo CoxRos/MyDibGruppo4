@@ -39,7 +39,13 @@ public class Utils {
         for(EsameEntity esame : esami) {
             result = result + Integer.parseInt(esame.getVoto());
         }
-        return troncamento(result/esami.size());
+
+        if(result == 0) {
+            return 0;
+        }
+        else {
+            return troncamento(result / esami.size());
+        }
     }
 
     public int getCFU(ArrayList<EsameEntity> esami) {

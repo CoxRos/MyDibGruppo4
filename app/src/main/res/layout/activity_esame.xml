@@ -19,7 +19,6 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
         </android.support.v7.widget.Toolbar>
@@ -30,78 +29,80 @@
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:paddingTop="20dp"
-            android:paddingBottom="40dp">
+            android:layout_height="match_parent">
 
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/ic_libretto"/>
-            <TextView
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/descrione_libretto_esame"
-                android:text="@string/insertEsame"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:paddingBottom="40dp"
-            android:weightSum="1">
-
-            <EditText
-                android:layout_width="341dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="@string/hint_esame"
-                android:id="@+id/edtEsame"/>
-            <EditText
-                android:layout_width="341dp"
-                android:layout_height="match_parent"
-                android:hint="@string/hint_voto"
-                android:id="@+id/edtVoto"
-                android:inputType="number"/>
+                android:orientation="vertical">
 
-            <EditText
-                android:layout_width="341dp"
-                android:layout_height="match_parent"
-                android:hint="@string/hint_cfu"
-                android:id="@+id/edtCFU"
-                android:inputType="number"/>
-            <EditText
-                android:layout_width="341dp"
-                android:layout_height="wrap_content"
-                android:hint="@string/hint_data"
-                android:id="@+id/edtData"
-                android:clickable="false"
-                android:cursorVisible="false"
-                android:focusable="false"
-                android:focusableInTouchMode="false"/>
-        </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="40dp">
 
-        <Button
-            android:layout_width="302dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/button_salva"
-            android:enabled="false"
-            android:id="@+id/buttonAggiungi"/>
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/ic_libretto"/>
+                    <TextView
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/descrione_libretto_esame"
+                        android:text="@string/insertEsame"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:paddingBottom="40dp"
+                    android:weightSum="1">
+
+                    <EditText
+                        android:layout_width="341dp"
+                        android:layout_height="match_parent"
+                        android:hint="@string/hint_esame"
+                        android:id="@+id/edtEsame"/>
+                    <EditText
+                        android:layout_width="341dp"
+                        android:layout_height="match_parent"
+                        android:hint="@string/hint_voto"
+                        android:id="@+id/edtVoto"
+                        android:inputType="number"/>
+
+                    <EditText
+                        android:layout_width="341dp"
+                        android:layout_height="match_parent"
+                        android:hint="@string/hint_cfu"
+                        android:id="@+id/edtCFU"
+                        android:inputType="number"/>
+                    <EditText
+                        android:layout_width="341dp"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hint_data"
+                        android:id="@+id/edtData"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"/>
+                </LinearLayout>
+
+                <Button
+                    android:layout_width="302dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/button_salva"
+                    android:enabled="false"
+                    android:id="@+id/buttonAggiungi"/>
+            </LinearLayout>
+        </ScrollView>
     </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>
-
-<!--
-
-android:clickable="false"
-android:cursorVisible="false"
-android:focusable="false"
-android:focusableInTouchMode="false"
-
--->

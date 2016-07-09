@@ -20,52 +20,63 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <ImageButton
-            android:id="@+id/btnupload"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="138dp"
-            android:background="@mipmap/ic_upload"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/btnupload"
-            android:layout_centerHorizontal="true"
-            android:textSize="20dp"
-            android:text="@string/sharing_upload" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <ImageButton
+                android:id="@+id/btnupload"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="138dp"
+                android:background="@mipmap/ic_upload"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal" />
 
-        <ImageButton
-            android:id="@+id/btndownload"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="117dp"
-            android:background="@mipmap/ic_download"
-            android:layout_below="@+id/textView2"
-            android:layout_alignStart="@+id/btnupload" />
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:layout_below="@+id/btnupload"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:textSize="20dp"
+                android:text="@string/sharing_upload" />
+
+            <ImageButton
+                android:id="@+id/btndownload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="117dp"
+                android:background="@mipmap/ic_download"
+                android:layout_below="@+id/textView2"
+                android:layout_alignStart="@+id/btnupload"
+                android:layout_gravity="center_horizontal" />
 
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/btndownload"
-            android:layout_centerHorizontal="true"
-            android:textSize="20dp"
-            android:layout_marginTop="60dp"
-            android:text="@string/sharing_download" />
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="399dp"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/btndownload"
+                android:layout_centerHorizontal="true"
+                android:textAlignment="center"
+                android:textSize="20dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/sharing_download"
+                android:layout_gravity="center_horizontal" />
 
-    </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
 </android.support.design.widget.CoordinatorLayout>

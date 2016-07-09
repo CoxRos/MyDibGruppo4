@@ -147,7 +147,7 @@ public class RicercaUtente extends Fragment {
                             messageNoRicerca.setText(getResources().getString(R.string.no_connection));
                             no_utenti.setVisibility(View.GONE);
                             no_connection.setVisibility(View.VISIBLE);
-                            Log.d("ATTENZIONE:", error.getMessage());
+                            Log.d("ATTENZIONE:", error.toString());
                             progressDialog.dismiss();
                         }
 

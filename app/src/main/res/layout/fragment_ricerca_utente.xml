@@ -45,22 +45,17 @@
 
         </LinearLayout>
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:orientation="vertical">
+
         <ListView
             android:id="@+id/listRicerca"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="center_horizontal" />
 
-            android:divider="#FFCC00"
-            android:dividerHeight="4px"/>
-        <!--android:layout_marginTop="10dp"
-        android:layout_marginTop="5dp" -->
         <TextView
             android:id="@+id/messageNoRicerca"
             android:layout_width="wrap_content"
@@ -92,5 +87,4 @@
             android:background="@mipmap/ic_no_wifi"
             android:visibility="gone" />
     </LinearLayout>
-
 </LinearLayout>
