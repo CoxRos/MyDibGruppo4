@@ -97,13 +97,13 @@
     <string name="bus_andata">Piazza Moro - Università</string>
     <string name="bus_ritorno">Università - Piazza Moro</string>
 
-    <string name="profilo_titolo">Studente dell&apos;Università di Bari di Informatica</string>
+    <string name="profilo_titolo">Studente dell\'Università di Bari di Informatica</string>
 
     <string name="profilo_media_pond">M.PONDERATA:</string>
     <string name="profilo_media_arit">M.ARITMETICA:</string>
     <string name="profilo_cfu">CFU:</string>
     <string name="profilo_non_disp">Non disponibile</string>
-    <string name="profilo_matricola">MATRICOLA</string>
+    <string name="profilo_matricola">Matricola</string>
 
     <string name="no_esami_grafic">Non sono presenti esami.</string>
     <string name="info_non_dispoibile">Informazione non disponibile</string>

@@ -20,7 +20,7 @@ import gruppo4.dib.sms2016.mydib2016.utility.Utils;
 
 public class DatiPersonali extends Fragment {
 
-    TextView nome,cognome,email,ponderata,aritmetica,cfu,txtMatricolaProfilo;
+    TextView nome,cognome,email,ponderata,aritmetica,cfu,txtMatricolaProfilo,baselaurea;
     public SharedPreferences preferences;
     public SharedPreferences.Editor editor;
     Utils utility;
@@ -56,6 +56,7 @@ public class DatiPersonali extends Fragment {
         ponderata = (TextView) getActivity().findViewById(R.id.mediaPondProfilo);
         aritmetica = (TextView) getActivity().findViewById(R.id.mediaAritmProfilo);
         cfu = (TextView) getActivity().findViewById(R.id.cfuProfilo);
+        baselaurea = (TextView) getActivity().findViewById(R.id.baseLaureaProfilo);
 
         nome.setText(preferences.getString("nome", ""));
         cognome.setText(preferences.getString("cognome", ""));
@@ -64,9 +65,11 @@ public class DatiPersonali extends Fragment {
 
         //Qui avvaloro la lista di esami
         ArrayList<EsameEntity> esami =(ArrayList<EsameEntity>) db.getEsami();
-        ponderata.setText(Double.toString(utility.getMediaPonderata(esami)));
+        double media = utility.getMediaPonderata(esami);
+        ponderata.setText(Double.toString(media));
         aritmetica.setText(Double.toString(utility.getMediaAritmetica(esami)));
         cfu.setText(Integer.toString(utility.getCFU(esami)));
+        baselaurea.setText(Double.toString(utility.getBaseLaurea(media)));
     }
 
 }

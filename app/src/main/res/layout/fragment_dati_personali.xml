@@ -54,7 +54,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/profilo_email"
         android:textSize="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="18dp"
         android:id="@+id/textView7"
         android:layout_below="@+id/txtmatr"
         android:layout_alignStart="@+id/textView6" />
@@ -116,7 +116,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/editEmailProfilo"
         android:layout_marginLeft="15dp"
-        android:textSize="15dp"
+        android:textSize="14dp"
         android:layout_alignBottom="@+id/textView7"
         android:layout_toEndOf="@+id/textView9" />
     <TextView
@@ -168,5 +168,27 @@
         android:id="@+id/matricolaProfilo"
         android:layout_alignBottom="@+id/txtmatr"
         android:layout_toEndOf="@+id/textView8" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="BASE LAUREA:"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/darkblack"
+        android:id="@+id/textView13"
+        android:textSize="16dp"
+        android:layout_below="@+id/textView10"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Non disponibile"
+        android:layout_marginTop="10dp"
+        android:id="@+id/baseLaureaProfilo"
+        android:layout_below="@+id/cfuProfilo"
+        android:layout_alignStart="@+id/cfuProfilo" />
 
 </RelativeLayout>

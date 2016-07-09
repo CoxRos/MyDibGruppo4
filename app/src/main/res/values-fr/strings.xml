@@ -11,13 +11,13 @@
     <string name="action_login"></string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_homepage">Page d'accueil</string>
+    <string name="title_activity_homepage">Page d\'accueil</string>
     <string name="title_activity_login">Accès</string>
     <string name="title_activity_avvisi">Avertissement</string>
     <string name="title_fragment_previsioni">Prévisions</string>
     <string name="title_fragment_libretto">Livret universitaire</string>
     <string name="title_fragment_grafici">Graphique</string>
-    <string name="title_fragment_ristoro">Sites d'intérêt</string>
+    <string name="title_fragment_ristoro">Sites d\'intérêt</string>
     <string name="title_fragment_ricerca">Recherche</string>
     <string name="title_activity_profilo">Profil</string>
     <string name="title_fragment_informazioni">Information</string>
@@ -27,9 +27,9 @@
     <string name="section_format">Hello World from section: %1$d</string>
 
 
-    <string name="description_app">Connectez-vous en utilisant vos informations d'identification ESSE3.</string>
+    <string name="description_app">Connectez-vous en utilisant vos informations d\'identification ESSE3.</string>
     <string name="button_login">Connectez-vous</string>
-    <string name="check_login">Stocke les informations d'identification</string>
+    <string name="check_login">Stocke les informations d\'identification</string>
     <string name="skip_login">Passer l\'authentification</string>
     <string name="playsholder_email_login">n.nom_de_famille@studenti.uniba.it</string>
     <string name="playsholder_password_login">password</string>
@@ -39,14 +39,14 @@
     <string name="modificaEsame">Modifier les données pour un test que vous avez ajouté à votre livret</string>
     <string name="visualizzaEsame">Affiche toutes les données sur tous les examen que vous avez à votre livret</string>
 
-    <string name="button_avvisi">Voir d'autres</string>
+    <string name="button_avvisi">Voir d\'autres</string>
 
     <string name="impostazioni_lingua">Langue</string>
     <string name="impostazioni_lingua_subtitle">Changer la langue de votre application</string>
     <string name="impostazioni_app_title">App</string>
     <string name="impostazioni_update">réglage de la mise à jour</string>
-    <string name="impostazioni_crash">Envoyer le rapport d'accident</string>
-    <string name="impostazioni_crash_text">Envoyer le rapport d'accident</string>
+    <string name="impostazioni_crash">Envoyer le rapport d\'accident</string>
+    <string name="impostazioni_crash_text">Envoyer le rapport d\'accident</string>
     <string name="impostazioni_sincronizzazione">Fréquence de synchronisation</string>
     <string name="impostazioni_sincronizzazione_text">Réglez la fréquence de synchronisation</string>
     <string name="default_value">it</string>
@@ -63,7 +63,7 @@
     <string name="drawer_grafici">Graphique</string>
         <string name="drawer_previsioni">Prévisions</string>
 
-    <string name="no_esami">Il n'y a pas de notes\n non Platform</string>
+    <string name="no_esami">Il n\'y a pas de notes\n non Platform</string>
 
     <string name="hint_esame">Examen</string>
     <string name="hint_voto">Vote</string>
@@ -101,7 +101,7 @@
     <string name="profilo_media_arit">M.ARITHMETIQUE:</string>
     <string name="profilo_cfu">CFU:</string>
     <string name="profilo_non_disp">indisponible</string>
-    <string name="profilo_matricola">SERIAL</string>
+    <string name="profilo_matricola">Serial</string>
 
     <string name="no_esami_grafic">Il n\'y a pas d\'examens.</string>
     <string name="info_non_dispoibile">Information non disponible</string>

@@ -101,7 +101,7 @@
     <string name="profilo_media_arit">M.ARITHMETIC:</string>
     <string name="profilo_cfu">CFU:</string>
     <string name="profilo_non_disp">Not available</string>
-    <string name="profilo_matricola">SERIAL</string>
+    <string name="profilo_matricola">Serial</string>
 
     <string name="no_esami_grafic">There are no exams.</string>
     <string name="info_non_dispoibile">Information not available</string>
