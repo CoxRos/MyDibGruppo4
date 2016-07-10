@@ -123,17 +123,19 @@ public class GraficoLineChart extends Fragment {
             imageNoEsamiChart.setVisibility(View.GONE);
             voti = new ArrayList<Couple>();
             for (EsameEntity esame : esami) {
-                int esameVoto = Integer.parseInt(esame.getVoto());
-                boolean thereIs = false;
-                for (Couple coppie : voti) {
-                    if (coppie.getVoto() == esameVoto) {
-                        thereIs = true;
-                        coppie.setCount(coppie.getCount() + 1);
-                        break;
+                if(!esame.getVoto().equals("IDO")) {
+                    int esameVoto = Integer.parseInt(esame.getVoto());
+                    boolean thereIs = false;
+                    for (Couple coppie : voti) {
+                        if (coppie.getVoto() == esameVoto) {
+                            thereIs = true;
+                            coppie.setCount(coppie.getCount() + 1);
+                            break;
+                        }
                     }
-                }
-                if (!thereIs) {
-                    voti.add(new Couple(esameVoto, 1));
+                    if (!thereIs) {
+                        voti.add(new Couple(esameVoto, 1));
+                    }
                 }
             }
 

@@ -45,8 +45,6 @@ public class DownloadNotes extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DownloadNotes.this, Sharing.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
             }
         });
@@ -67,8 +65,6 @@ public class DownloadNotes extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(DownloadNotes.this, Sharing.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 

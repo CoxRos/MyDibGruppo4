@@ -45,6 +45,8 @@ public class FAQ extends AppCompatActivity {
                 } else { //Non è loggato
                     intent.putExtra("goTo",0);
                 }
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
             }
         });
@@ -68,6 +70,8 @@ public class FAQ extends AppCompatActivity {
         } else { //Non è loggato
             intent.putExtra("goTo",0);
         }
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 }

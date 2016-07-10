@@ -376,7 +376,12 @@ public class EsameActivity extends AppCompatActivity {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("materia", edtEsame.getText().toString());
                 params.put("cfu", edtCfu.getText().toString());
-                params.put("voto", edtVoto.getText().toString());
+                if(checkIdo.isChecked()) {
+                    params.put("voto", "IDO");
+                }
+                else {
+                    params.put("voto", edtVoto.getText().toString());
+                }
                 params.put("data", edtData.getText().toString());
                 params.put("holdMat", nomeEsame);
                 params.put("matricola",matricola);

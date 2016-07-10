@@ -211,8 +211,10 @@ public class Grafici extends AppCompatActivity {
             if(esami.size() > 0) {
                 int i = 0;
                 for (EsameEntity esame : esami) {
-                    entries.add(new Entry(Float.parseFloat(esame.getVoto()), i++));
-                    labels.add("");
+                    if(!esame.getVoto().equals("IDO")) {
+                        entries.add(new Entry(Float.parseFloat(esame.getVoto()), i++));
+                        labels.add("");
+                    }
                 }
 
                 LineDataSet dataset = new LineDataSet(entries, "");

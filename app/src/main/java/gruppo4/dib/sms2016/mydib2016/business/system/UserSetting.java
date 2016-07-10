@@ -44,6 +44,8 @@ public class UserSetting extends PreferenceActivity {
                 else {
                     intent.putExtra("goTo", 0);
                 }
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
             }
         });
@@ -66,6 +68,8 @@ public class UserSetting extends PreferenceActivity {
         else {
             intent.putExtra("goTo", 0);
         }
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 }
