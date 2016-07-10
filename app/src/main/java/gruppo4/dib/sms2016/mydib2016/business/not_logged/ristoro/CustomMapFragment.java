@@ -1,7 +1,6 @@
 package gruppo4.dib.sms2016.mydib2016.business.not_logged.ristoro;
 
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Icon;
+
 import android.os.Bundle;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -17,9 +16,7 @@ import java.util.List;
 import gruppo4.dib.sms2016.mydib2016.R;
 import gruppo4.dib.sms2016.mydib2016.entity.LocationEntity;
 
-/**
- * Created by Utente on 06/07/2016.
- */
+
 public class CustomMapFragment extends com.google.android.gms.maps.SupportMapFragment {
     private List<LocationEntity> locations;
 

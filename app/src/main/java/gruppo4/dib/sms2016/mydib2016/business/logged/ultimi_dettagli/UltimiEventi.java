@@ -128,7 +128,6 @@ public class UltimiEventi extends Fragment {
                                 isEmpty = false;
                                 count++;
                             } else {
-                                System.out.println("Sono nell'else della card");
                                 titleNews.setText(jsonResponce.getString("titlenews"));
                                 messageNews.setText(jsonResponce.getString("messagenews"));
                                 authorNews.setText(jsonResponce.getString("authornews"));
@@ -168,7 +167,6 @@ public class UltimiEventi extends Fragment {
                 messageNews.setVisibility(View.GONE);
                 authorNews.setVisibility(View.GONE);
                 titleNews.setVisibility(View.VISIBLE);
-                Log.d("ATTENZIONE:", volleyError.toString());
                 progressDialog.dismiss();
             }
         });

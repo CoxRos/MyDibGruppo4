@@ -133,7 +133,7 @@ public class Previsioni extends Fragment {
     }
 
     /**
-     * Rende cliccabile il bottone solo se non stati avvalorati tutti i campi
+     * Rende cliccabile il bottone solo se sono stati avvalorati tutti i campi
      */
     private void enableButton() {
         if(voto.getText().length() > 0 && cfu.getText().length() > 0) {

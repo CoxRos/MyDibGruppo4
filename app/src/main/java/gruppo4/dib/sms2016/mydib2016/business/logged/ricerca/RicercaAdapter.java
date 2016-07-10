@@ -25,8 +25,6 @@ public class RicercaAdapter extends ArrayAdapter<UtenteEntity> {
     @Override
     public View getView(final int position, final View convertView, final ViewGroup parent) {
 
-        // We need to get the best view (re-used if possible) and then
-        // retrieve its corresponding ViewHolder, which optimizes lookup efficiency
         final View view = getWorkingView(convertView);
         final ViewHolder viewHolder = getViewHolder(view);
         final UtenteEntity entry = getItem(position);
@@ -58,8 +56,7 @@ public class RicercaAdapter extends ArrayAdapter<UtenteEntity> {
     }
 
     private View getWorkingView(final View convertView) {
-        // The workingView is basically just the convertView re-used if possible
-        // or inflated new if not possible
+
         View workingView = null;
 
         if(null == convertView) {
@@ -76,8 +73,7 @@ public class RicercaAdapter extends ArrayAdapter<UtenteEntity> {
     }
 
     private ViewHolder getViewHolder(final View workingView) {
-        // The viewHolder allows us to avoid re-looking up view references
-        // Since views are recycled, these references will never change
+
         final Object tag = workingView.getTag();
         ViewHolder viewHolder = null;
 
@@ -103,10 +99,7 @@ public class RicercaAdapter extends ArrayAdapter<UtenteEntity> {
         return false;
     }
 
-    /**
-     * ViewHolder allows us to avoid re-looking up view references
-     * Since views are recycled, these references will never change
-     */
+
     private static class ViewHolder {
         public TextView nomeRicercatoList;
         public TextView cognomeRicercatoList;

@@ -1,6 +1,7 @@
 package gruppo4.dib.sms2016.mydib2016.entity;
 
 public class EsameEntity {
+
     String nome, cfu , voto , data;
 
     public EsameEntity(String nome, String cfu, String voto, String data) {

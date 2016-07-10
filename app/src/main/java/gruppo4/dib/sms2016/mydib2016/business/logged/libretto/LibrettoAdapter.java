@@ -66,8 +66,6 @@ public class LibrettoAdapter extends ArrayAdapter<EsameEntity> {
     @Override
     public View getView(final int position, final View convertView, final ViewGroup parent) {
 
-        // We need to get the best view (re-used if possible) and then
-        // retrieve its corresponding ViewHolder, which optimizes lookup efficiency
         final View view = getWorkingView(convertView);
         final ViewHolder viewHolder = getViewHolder(view);
         final EsameEntity entry = getItem(position);
@@ -112,8 +110,6 @@ public class LibrettoAdapter extends ArrayAdapter<EsameEntity> {
     }
 
     private View getWorkingView(final View convertView) {
-        // The workingView is basically just the convertView re-used if possible
-        // or inflated new if not possible
         View workingView = null;
 
         if (null == convertView) {
@@ -237,7 +233,6 @@ public class LibrettoAdapter extends ArrayAdapter<EsameEntity> {
             public void onErrorResponse(VolleyError volleyError) {
                 edit.putInt("EXAMTOSEND", 1);//ESAME DA INVIARE PRESENTE
                 edit.commit();
-                Log.d("ERRORE LIBRETTO: ", volleyError.getMessage());
                 progressDialog.dismiss();
                 goToLibretto();
             }
@@ -263,11 +258,6 @@ public class LibrettoAdapter extends ArrayAdapter<EsameEntity> {
         getContext().startActivity(intent);
     }
 
-
-    /**
-     * ViewHolder allows us to avoid re-looking up view references
-     * Since views are recycled, these references will never change
-     */
     private static class ViewHolder {
         public ImageView scalaVoto;
         public TextView nome;

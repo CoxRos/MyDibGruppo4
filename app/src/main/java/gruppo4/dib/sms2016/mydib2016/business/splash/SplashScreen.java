@@ -30,7 +30,7 @@ public class SplashScreen extends Activity {
         Window window = getWindow();
         window.setFormat(PixelFormat.RGBA_8888);
     }
-    /** Called when the activity is first created. */
+
     Thread splashTread;
 
     @Override
@@ -48,6 +48,7 @@ public class SplashScreen extends Activity {
     }
 
     private void StartAnimations() {
+
         Animation anim = AnimationUtils.loadAnimation(this, R.anim.alpha);
         anim.reset();
         LinearLayout l=(LinearLayout) findViewById(R.id.lin_lay);
@@ -72,7 +73,7 @@ public class SplashScreen extends Activity {
             public void run() {
                 try {
                     int waited = 0;
-                    // Splash screen pause time
+
                     while (waited < 3000) { //Tempo di splash
                         sleep(100);
                         waited += 100;

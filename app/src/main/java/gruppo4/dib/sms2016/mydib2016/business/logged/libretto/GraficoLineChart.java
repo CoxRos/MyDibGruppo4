@@ -44,7 +44,7 @@ public class GraficoLineChart extends Fragment {
         return fragment;
     }
     public GraficoLineChart() {
-        // Required empty public constructor
+
     }
 
 
@@ -53,7 +53,6 @@ public class GraficoLineChart extends Fragment {
                              Bundle savedInstanceState) {
         View rootview = inflater.inflate(R.layout.fragment_grafico_line_chart, container, false);
 
-        // Inflate the layout for this fragment
         return rootview;
     }
 
@@ -167,7 +166,6 @@ public class GraficoLineChart extends Fragment {
         dataSet.setSliceSpace(0);
         dataSet.setSelectionShift(10);
 
-        //add many colors
         ArrayList<Integer> colors = new ArrayList<Integer>();
 
         for(int c : ColorTemplate.VORDIPLOM_COLORS) {

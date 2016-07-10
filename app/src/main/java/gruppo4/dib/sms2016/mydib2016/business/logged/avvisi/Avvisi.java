@@ -38,14 +38,14 @@ public class Avvisi extends Fragment {
     ImageView noConnection;
 
     public Avvisi() {
-        // Required empty public constructor
+
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_avvisi, container, false);
     }
 
@@ -109,7 +109,6 @@ public class Avvisi extends Fragment {
                 listaAvvisi.setVisibility(View.GONE);
                 noItem.setVisibility(View.VISIBLE);
                 noConnection.setVisibility(View.VISIBLE);
-                Log.d("ATTENZIONE:", volleyError.toString());
                 progressDialog.dismiss();
             }
         });

@@ -3,10 +3,8 @@ package gruppo4.dib.sms2016.mydib2016.business.logged.ricerca;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +28,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import gruppo4.dib.sms2016.mydib2016.R;
-import gruppo4.dib.sms2016.mydib2016.business.logged.sharing.Sharing;
 import gruppo4.dib.sms2016.mydib2016.entity.UtenteEntity;
 import gruppo4.dib.sms2016.mydib2016.network.CustomRequestArray;
 import gruppo4.dib.sms2016.mydib2016.network.Network;
@@ -48,7 +45,7 @@ public class RicercaUtente extends Fragment {
     ImageView no_utenti, no_connection;
 
     public RicercaUtente() {
-        // Required empty public constructor
+
     }
 
 
@@ -110,7 +107,6 @@ public class RicercaUtente extends Fragment {
                                     JSONObject oggettoJson = response.getJSONObject(i);
 
                                     nome = oggettoJson.getString("nomeUtente");
-                                    System.out.println(nome);
                                     cognome = oggettoJson.getString("cognomeUtente");
                                     email = oggettoJson.getString("emailUtente");
                                     tipo = oggettoJson.getString("tipoUtente");
@@ -141,13 +137,11 @@ public class RicercaUtente extends Fragment {
                     }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            Log.d("CLASSE RICERCA", "Errore connessione " + error.toString());
                             listRicerca.setVisibility(View.GONE);
                             messageNoRicerca.setVisibility(View.VISIBLE);
                             messageNoRicerca.setText(getResources().getString(R.string.no_connection));
                             no_utenti.setVisibility(View.GONE);
                             no_connection.setVisibility(View.VISIBLE);
-                            Log.d("ATTENZIONE:", error.toString());
                             progressDialog.dismiss();
                         }
 

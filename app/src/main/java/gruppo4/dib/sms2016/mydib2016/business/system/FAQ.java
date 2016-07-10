@@ -6,14 +6,9 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ListView;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import gruppo4.dib.sms2016.mydib2016.R;
 import gruppo4.dib.sms2016.mydib2016.business.Autenticazione.Login;
 import gruppo4.dib.sms2016.mydib2016.business.homepage.HomePage;
-import gruppo4.dib.sms2016.mydib2016.business.logged.ricerca.RicercaAdapter;
 import gruppo4.dib.sms2016.mydib2016.entity.FAQEntity;
 
 public class FAQ extends AppCompatActivity {

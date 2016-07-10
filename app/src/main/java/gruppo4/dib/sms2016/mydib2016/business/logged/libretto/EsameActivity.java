@@ -288,7 +288,7 @@ public class EsameActivity extends AppCompatActivity {
     }
 
     /**
-     * Rende cliccabile il bottone solo se non stati avvalorati tutti i campi
+     * Rende cliccabile il bottone solo se sono stati avvalorati tutti i campi
      */
     private void enableButton() {
         if(edtEsame.getText().length() > 0 && edtVoto.getText().length() > 0
@@ -366,7 +366,6 @@ public class EsameActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
                 startService(new Intent(getApplicationContext(), RSSPullService.class));
-                Log.d("ERRORE LIBRETTO: ", volleyError.getMessage());
                 progressDialog.dismiss();
                 goToLibretto();
             }

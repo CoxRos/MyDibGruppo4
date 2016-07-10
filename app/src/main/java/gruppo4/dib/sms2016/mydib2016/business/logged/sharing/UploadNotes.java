@@ -8,7 +8,6 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -124,7 +123,6 @@ public class UploadNotes extends AppCompatActivity {
 
             dialog.dismiss();
 
-            Log.e("uploadFile", "Source File not exist :"+imagepath);
 
             runOnUiThread(new Runnable() {
                 public void run() {
@@ -139,15 +137,15 @@ public class UploadNotes extends AppCompatActivity {
         else
         {
             try {
-                // open a URL connection to the Servlet
+
                 FileInputStream fileInputStream = new FileInputStream(sourceFile);
                 URL url = new URL(upLoadServerUri);
 
-                // Open a HTTP  connection to  the URL
+
                 conn = (HttpURLConnection) url.openConnection();
-                conn.setDoInput(true); // Allow Inputs
-                conn.setDoOutput(true); // Allow Outputs
-                conn.setUseCaches(false); // Don't use a Cached Copy
+                conn.setDoInput(true);
+                conn.setDoOutput(true);
+                conn.setUseCaches(false);
                 conn.setRequestMethod("POST");
                 conn.setRequestProperty("Connection", "Keep-Alive");
                 conn.setRequestProperty("ENCTYPE", "multipart/form-data");
@@ -166,13 +164,11 @@ public class UploadNotes extends AppCompatActivity {
 
                 dos.writeBytes(lineEnd);
 
-                // create a buffer of  maximum size
                 bytesAvailable = fileInputStream.available();
 
                 bufferSize = Math.min(bytesAvailable, maxBufferSize);
                 buffer = new byte[bufferSize];
 
-                // read file and write it into form...
                 bytesRead = fileInputStream.read(buffer, 0, bufferSize);
 
                 while (bytesRead > 0) {
@@ -184,16 +180,12 @@ public class UploadNotes extends AppCompatActivity {
 
                 }
 
-                // send multipart form data necesssary after file data...
                 dos.writeBytes(lineEnd);
                 dos.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
 
-                // Responses from the server (code and message)
                 serverResponseCode = conn.getResponseCode();
                 String serverResponseMessage = conn.getResponseMessage();
 
-                Log.i("uploadFile", "HTTP Response is : "
-                        + serverResponseMessage + ": " + serverResponseCode);
 
                 if(serverResponseCode == 200){
 
@@ -201,19 +193,13 @@ public class UploadNotes extends AppCompatActivity {
                         public void run() {
                             String msg = "Appunti caricati con successo.";
                             Toast.makeText(UploadNotes.this, msg, Toast.LENGTH_LONG).show();
-                            System.out.println("Sto stampando");
                             titolaNota.setText("");
                             descriviNota.setText("");
                         }
                     });
-                    /*Intent intent = new Intent(UploadNotes.this, Sharing.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
-                */
+
                 }
 
-                //close the streams //
                 fileInputStream.close();
                 dos.flush();
                 dos.close();
@@ -229,7 +215,6 @@ public class UploadNotes extends AppCompatActivity {
                     }
                 });
 
-                Log.e("Upload file to server", "error: " + ex.getMessage(), ex);
             } catch (Exception e) {
 
                 dialog.dismiss();
@@ -240,7 +225,7 @@ public class UploadNotes extends AppCompatActivity {
                         Toast.makeText(UploadNotes.this, "Errore nel caricamento del file.", Toast.LENGTH_SHORT).show();
                     }
                 });
-                Log.e("Upload file to server", "Exception : "  + e.getMessage(), e);
+
             }
             dialog.dismiss();
             return serverResponseCode;

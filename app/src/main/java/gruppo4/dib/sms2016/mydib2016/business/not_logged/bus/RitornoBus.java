@@ -40,7 +40,7 @@ public class RitornoBus extends Fragment {
         return fragment;
     }
     public RitornoBus() {
-        // Required empty public constructor
+
     }
 
 
@@ -49,7 +49,6 @@ public class RitornoBus extends Fragment {
                              Bundle savedInstanceState) {
         View rootview = inflater.inflate(R.layout.fragment_ritorno_bus, container, false);
 
-        // Inflate the layout for this fragment
         return rootview;
     }
 
@@ -115,9 +114,6 @@ public class RitornoBus extends Fragment {
                         listaAutobus.setVisibility(View.GONE);
                         noItem.setVisibility(View.VISIBLE);
                         noConnection.setVisibility(View.VISIBLE);
-                        System.out.println("ERR: " + error.getMessage());
-                        Log.d("ATTENZIONE:", error.getCause().toString());
-                        error.printStackTrace();
                         progressDialog.dismiss();
                     }
                 });

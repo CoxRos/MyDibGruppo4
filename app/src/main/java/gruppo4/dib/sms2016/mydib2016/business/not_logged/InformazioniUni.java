@@ -8,8 +8,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -35,7 +33,7 @@ public class InformazioniUni extends Fragment {
 
 
     public InformazioniUni() {
-        // Required empty public constructor
+
     }
 
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -112,7 +110,6 @@ public class InformazioniUni extends Fragment {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        System.out.println("JSON Errore connessione info: " + error.networkResponse);
                         progressDialog.dismiss();
                     }
                 });

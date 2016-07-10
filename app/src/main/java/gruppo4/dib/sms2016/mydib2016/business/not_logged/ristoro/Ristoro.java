@@ -10,14 +10,11 @@ import android.view.ViewGroup;
 
 import gruppo4.dib.sms2016.mydib2016.R;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class Ristoro extends Fragment {
 
 
     public Ristoro() {
-        // Required empty public constructor
+
     }
 
 

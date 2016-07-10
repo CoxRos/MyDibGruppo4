@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,7 +49,7 @@ public class Libretto extends Fragment {
     private DAOLibretto db;
 
     public Libretto() {
-        // Required empty public constructor
+
     }
 
 
@@ -99,7 +98,6 @@ public class Libretto extends Fragment {
 
                     @Override
                     public void onResponse(JSONArray response) {
-                        Log.d("JSON ARRAY", response.toString());
                         boolean isEmpty = true;
                         String nome, cfu, voto, data;
                         int countCfu = 0;
@@ -143,7 +141,6 @@ public class Libretto extends Fragment {
                         listaEsami.setVisibility(View.GONE);
                         noItem.setVisibility(View.VISIBLE);
                         noEsami.setVisibility(View.VISIBLE);
-                        Log.d("ATTENZIONE:", error.getMessage());
                         error.printStackTrace();
                         progressDialog.dismiss();
                     }

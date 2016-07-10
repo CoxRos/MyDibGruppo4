@@ -34,7 +34,7 @@ public class Profilo extends AppCompatActivity {
             }
         });
 
-        //Qui devo prendermi l'oggetto Utente con tutti i dati che mi vengono passati
+        //prendo l'oggetto Utente con tutti i dati che mi vengono passati
         Bundle data = getIntent().getExtras();
         UtenteEntity utente = (UtenteEntity) data.getParcelable("utente");
 

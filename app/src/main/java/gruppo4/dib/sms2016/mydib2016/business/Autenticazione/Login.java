@@ -156,7 +156,6 @@ public class Login extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("CLASSE LOGIN", "Errore connessione " + error.toString());
                 Toast.makeText(getApplicationContext(), getResources().getString(R.string.login_connessione), Toast.LENGTH_LONG).show();
                 progressDialog.dismiss();
             }

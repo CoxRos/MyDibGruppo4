@@ -44,7 +44,6 @@ public class RSSPullService extends Service {
 
     @Override
     public void onCreate() {
-        Log.i(TAG, "Service onCreate");
 
         isRunning = true;
 
@@ -61,17 +60,12 @@ public class RSSPullService extends Service {
 
     @Override
     public IBinder onBind(Intent arg0) {
-        Log.i(TAG, "Service onBind");
         return null;
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
-        Log.i(TAG, "Service onStartCommand");
-
-        //Creazione di un nuovo thread per il servizio del database
-        //Per evitare l' ANR, il servizio viene runnato in un thread separato
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -96,7 +90,6 @@ public class RSSPullService extends Service {
     public void onDestroy() {
         super.onDestroy();
         isRunning = false;
-        Log.i(TAG, "Service onDestroy");
     }
 
     private void requestDB(String url) {
@@ -108,10 +101,8 @@ public class RSSPullService extends Service {
                 try {
                     status = jsonObject.getBoolean("status");
                     message = jsonObject.getString("message");
-                    Log.d("LOG DEL SERVICE", "STATO DELLA RICHIESTA " + status + " MESSAGE " + message);
                     if (status && message.equalsIgnoreCase("OKDB")) {
 
-                        //Stop service once it finishes its task
                         stopSelf();
 
                     }
@@ -122,7 +113,7 @@ public class RSSPullService extends Service {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                Log.d("ERRORE SERVICE-DB: ", volleyError.getMessage());
+                Log.d("ERRORE SERVICE-DB", "servizio fallito");
             }
         }) {
             @Override

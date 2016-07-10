@@ -65,7 +65,7 @@ public class HomePage extends AppCompatActivity
             credenziali.getLogged(this);
             logged = credenziali.logged;
 
-            //controlle le impostazioni
+            //controlla le impostazioni
             getValueSettings();
 
             //Setto il fragment iniziale
@@ -97,11 +97,8 @@ public class HomePage extends AppCompatActivity
             navigationView = (NavigationView) findViewById(R.id.nav_view);
             navigationView.setNavigationItemSelectedListener(this);
 
-        /*
-         * Verifico se ha fatto la login oppure ha saltato la login
-         */
 
-            if (fromLogin == 0) { //Skip
+            if (fromLogin == 0) {
                 setTitle(R.string.title_fragment_informazioni);
                 fab.setVisibility(View.GONE);
                 InformazioniUni fragment = new InformazioniUni();
@@ -118,7 +115,7 @@ public class HomePage extends AppCompatActivity
                 navigationView.getMenu().setGroupVisible(R.id.logged2, false);
                 navigationView.getMenu().setGroupVisible(R.id.logged3, false);
 
-            } else if (fromLogin == 1) { //Login QUI DEVO METTERE LE ULTIME NEWS
+            } else if (fromLogin == 1) {
                 setTitle(R.string.title_activity_homepage);
                 fab.setVisibility(View.GONE);
                 UltimiEventi fragment = new UltimiEventi();
@@ -135,7 +132,7 @@ public class HomePage extends AppCompatActivity
                 navigationView.getMenu().setGroupVisible(R.id.logged3, true);
                 navigationView.getMenu().setGroupVisible(R.id.notlogged, false);
 
-            } else if (fromLogin == 2) { //vai a libretto
+            } else if (fromLogin == 2) {
                 setTitle(R.string.title_fragment_libretto);
                 fab.setVisibility(View.VISIBLE);
                 Libretto fragment = new Libretto();
@@ -151,7 +148,7 @@ public class HomePage extends AppCompatActivity
                 navigationView.getMenu().setGroupVisible(R.id.librettoDR, true);
                 navigationView.getMenu().setGroupVisible(R.id.notlogged, false);
 
-            } else if (fromLogin == 3) { //Da profilo voglio tornare a ricerca
+            } else if (fromLogin == 3) {
                 setTitle(R.string.title_fragment_ricerca);
                 fab.setVisibility(View.GONE);
                 RicercaUtente fragment = new RicercaUtente();
@@ -204,19 +201,17 @@ public class HomePage extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+
         getMenuInflater().inflate(R.menu.homepage, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
         Intent intent;
-        //noinspection SimplifiableIfStatement
+
         switch (id) {
             case R.id.action_settings:
                 intent = new Intent(this, UserSetting.class);
@@ -242,7 +237,7 @@ public class HomePage extends AppCompatActivity
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+
         int id = item.getItemId();
 
         if (id == R.id.informazioniNL) {

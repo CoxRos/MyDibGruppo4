@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -110,9 +109,6 @@ public class DownloadNotes extends AppCompatActivity {
                         listaNote.setVisibility(View.GONE);
                         no_appunti.setVisibility(View.VISIBLE);
                         messageNoNotes.setVisibility(View.VISIBLE);
-                        System.out.println("ERR: " + error.getMessage());
-                        Log.d("ATTENZIONE:", error.getCause().toString());
-                        error.printStackTrace();
                         progressDialog.dismiss();
                     }
                 });
