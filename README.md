@@ -1,9 +1,15 @@
 # MyDibGruppo4
 MyDib2016
-Progetto: Universitario\n
-Sviluppatori: Gruppo9\n
-Data: 13/07/2016\n
+Progetto: Universitario
 
-Project: Universitary\n
-Developers: Gruppo9\n
-Date: 13/07/2016\n
+Sviluppatori: Gruppo9
+
+Data: 13/07/2016
+
+////
+
+Project: Universitary
+
+Developers: Gruppo9
+
+Date: 13/07/2016
