@@ -2,22 +2,43 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="gruppo4.dib.sms2016.mydib2016">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+
+    <permission
+        android:name="com.example.googlemaps.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_uniba"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".splash.SplashScreen"
-            android:label="@string/app_name">
+            android:name=".business.splash.SplashScreen"
+            android:label="@string/app_name"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Login">
+        <activity
+            android:name=".business.Autenticazione.Login"
+            android:label="@string/title_activity_login"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,9 +46,64 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".homepage.NotLogged"
-            android:label="@string/title_activity_not_logged"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:name=".business.homepage.HomePage"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/title_activity_homepage"
+            android:noHistory="true"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".business.not_logged.bus.Bus"
+            android:label="@string/title_activity_bus"
+            android:noHistory="true"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".business.logged.libretto.EsameActivity"
+            android:label="Dettaglio esame"
+            android:noHistory="true"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".business.logged.profilo.Profilo"
+            android:label="Utente ricercato"
+            android:noHistory="true"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".business.logged.sharing.Sharing"
+            android:label="Condivisione materiale"
+            android:noHistory="true"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".business.logged.sharing.DownloadNotes"
+            android:label="Scarica Appunti"
+            android:noHistory="true"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".business.logged.sharing.UploadNotes"
+            android:label="Carica Appunti"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".business.logged.libretto.Grafici"
+            android:label="@string/title_activity_grafici"
+            android:noHistory="true"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".business.system.UserSetting"
+            android:label="Impostazioni"
+            android:theme="@style/AppTheme.NoActionBar1" />
+
+        <service
+            android:name=".service.RSSPullService"
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDF-9ABTm7W52BsBaOU_5MAA7Bx11u48xo" />
+
+        <activity
+            android:name=".business.system.FAQ"
+            android:label="@string/title_faq"
+            android:noHistory="true"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

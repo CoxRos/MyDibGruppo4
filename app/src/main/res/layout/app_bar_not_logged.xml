@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="gruppo4.dib.sms2016.mydib2016.homepage.NotLogged">
+    tools:context=".business.homepage.HomePage">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -24,8 +24,21 @@
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fabAddEsame"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_margin="20dp"
+            android:elevation="1dp"
+            android:src="@mipmap/ic_plus"
+            app:backgroundTint="@color/drawer"/>
 
     </FrameLayout>
+
 
 </android.support.design.widget.CoordinatorLayout>

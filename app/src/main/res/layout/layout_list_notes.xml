@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backview"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingTop="7dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="04.07.16 - Analisi"
+        android:id="@+id/nomeAppunti"
+        android:textSize="20dp"
+        android:drawablePadding="7dp"
+        android:drawableLeft="@mipmap/ic_exam"
+        android:textColor="@color/background"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="15dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="In questi appunti puoi trovare di tutto"
+        android:textSize="20dp"
+        android:textColor="@color/darkblack"
+        android:textStyle="normal"
+        android:id="@+id/descrAppunti"
+        android:layout_below="@+id/nomeAppunti"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="c.lorusso35@studenti.uniba.it"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@mipmap/ic_user"
+        android:drawablePadding="7dp"
+        android:textColor="@color/bright_foreground_disabled_material_light"
+        android:textStyle="normal"
+        android:id="@+id/autoreAppunti"
+        android:layout_below="@+id/descrAppunti"
+        android:layout_alignParentStart="true" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="16/02/2016"
+        android:textSize="16dp"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@mipmap/ic_calendar"
+        android:drawablePadding="7dp"
+        android:textColor="@color/bright_foreground_disabled_material_light"
+        android:layout_marginRight="20dp"
+        android:id="@+id/dataAppunti"
+        android:layout_below="@+id/autoreAppunti"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="23dp" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/background"
+        android:layout_below="@+id/dataAppunti"
+        android:layout_alignParentStart="true" />
+
+
+</RelativeLayout>

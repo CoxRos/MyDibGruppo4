@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/notlogged"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/informazioniNL"
+            android:icon="@mipmap/ic_info"
+            android:title="@string/drawer_info"/>
+        <item
+            android:id="@+id/ristoroNL"
+            android:icon="@mipmap/ic_breakfast"
+            android:title="@string/drawer_svago" />
+        <item
+            android:id="@+id/busNL"
+            android:icon="@mipmap/ic_bus"
+            android:title="@string/drawer_bus" />
+    </group>
+    <group
+        android:id="@+id/logged1"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/librettoL"
+            android:icon="@mipmap/ic_libretto"
+            android:title="@string/drawer_libretto" />
+        <item
+            android:id="@+id/profiloL"
+            android:icon="@mipmap/ic_profilo"
+            android:title="@string/drawer_profilo" />
+
+    </group>
+    <group
+        android:id="@+id/logged2"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/avvisiL"
+            android:icon="@mipmap/ic_avvisi"
+            android:title="@string/drawer_avvisi" />
+        <item
+            android:id="@+id/sharingL"
+            android:icon="@mipmap/ic_sharing"
+            android:title="@string/drawer_condivisione" />
+        <item
+            android:id="@+id/informazioniL"
+            android:icon="@mipmap/ic_info"
+            android:title="@string/drawer_info" />
+        <item
+            android:id="@+id/ricercaL"
+            android:icon="@mipmap/ic_search"
+            android:title="@string/drawer_ricerca" />
+
+    </group>
+    <group
+        android:id="@+id/logged3"
+        android:checkableBehavior="none">
+
+        <item
+            android:id="@+id/ristoroL"
+            android:icon="@mipmap/ic_breakfast"
+            android:title="@string/drawer_svago" />
+        <item
+            android:id="@+id/busL"
+            android:icon="@mipmap/ic_bus"
+            android:title="@string/drawer_bus" />
+
+    </group>
+    <group
+        android:id="@+id/librettoDR"
+        android:checkableBehavior="none"
+        android:visible="false">
+
+        <item
+            android:id="@+id/librettoLi"
+            android:icon="@mipmap/ic_libretto"
+            android:title="@string/drawer_libretto" />
+        <item
+            android:id="@+id/graficiLi"
+            android:icon="@mipmap/ic_show_chart_black_24dp"
+            android:title="@string/drawer_grafici" />
+        <item
+            android:id="@+id/previsioniLi"
+            android:icon="@mipmap/ic_content_paste_black_24dp"
+            android:title="@string/drawer_previsioni" />
+
+    </group>
+
+</menu>

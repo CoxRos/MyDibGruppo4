@@ -5,9 +5,177 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Impostazioni</string>
+    <string name="action_faq">FAQ</string>
+    <string name="action_login"></string>
+    <string name="action_home"></string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_not_logged">NotLogged</string>
+    <string name="title_activity_homepage">Homepage</string>
+    <string name="title_activity_login">Accesso</string>
+    <string name="title_activity_avvisi">Avvisi</string>
+    <string name="title_fragment_previsioni">Previsioni</string>
+    <string name="title_fragment_libretto">Libretto</string>
+    <string name="title_fragment_grafici">Grafici</string>
+    <string name="title_fragment_ristoro">Luoghi di interesse</string>
+    <string name="title_fragment_ricerca">Ricerca</string>
+    <string name="title_activity_profilo">Profilo</string>
+    <string name="title_fragment_informazioni">Informazioni</string>
+
+
+
+    <string name="title_activity_bus">Bus</string>
+    <string name="title_faq">Domande frequenti</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+
+    <string name="description_app">Accedi usando le tue credenziali di ESSE3.</string>
+    <string name="button_login">Login</string>
+    <string name="check_login">Memorizza le credenziali</string>
+    <string name="skip_login">Salta l\'autentificazione</string>
+    <string name="playsholder_email_login">n.cognome@studenti.uniba.it</string>
+    <string name="playsholder_password_login">password</string>
+
+
+    <string name="insertEsame">Inserisci tutti i dati relativi al nuovo esame che vuoi aggiungere al tuo libretto</string>
+    <string name="modificaEsame">Modifica i dati relativi a un esame che hai aggiunto al tuo libretto</string>
+    <string name="visualizzaEsame">Sono visualizzati tutti i dati relativi all\'esame che hai al tuo libretto</string>
+
+    <string name="button_avvisi">Vedi Altri</string>
+
+    <string name="impostazioni_lingua">Lingua</string>
+    <string name="impostazioni_lingua_subtitle">Cambia la lingua della tua app</string>
+    <string name="impostazioni_app_title">App</string>
+    <string name="impostazioni_update">Impostazione di Update</string>
+    <string name="impostazioni_crash">Invia segnalazione crash</string>
+    <string name="impostazioni_crash_text">Invia segnalazione crash</string>
+    <string name="impostazioni_sincronizzazione">Frequenza di sincronizzazione</string>
+    <string name="impostazioni_sincronizzazione_text">Setta la frequenza di sincronizzazione</string>
+    <string name="default_value">it</string>
+    <string name="title_activity_grafici">Andamento</string>
+
+    <string name="drawer_info">Informazioni</string>
+    <string name="drawer_svago">Svago e Ristoro</string>
+    <string name="drawer_bus">BUS</string>
+    <string name="drawer_libretto">Libretto</string>
+    <string name="drawer_profilo">Profilo</string>
+    <string name="drawer_avvisi">Avvisi</string>
+    <string name="drawer_condivisione">Condivisione Materiale</string>
+    <string name="drawer_ricerca">Ricerca</string>
+    <string name="drawer_grafici">Grafici</string>
+    <string name="drawer_previsioni">Previsioni</string>
+
+    <string name="no_esami">Non sono presenti appunti\nsulla piattaforma</string>
+
+    <string name="hint_esame">Esame</string>
+    <string name="hint_voto">Voto</string>
+    <string name="hint_cfu">CFU</string>
+    <string name="hint_data">Data</string>
+    <string name="button_salva">SALVA</string>
+
+    <string name="profilo_nome">Nome:</string>
+    <string name="profilo_cognome">Cognome:</string>
+    <string name="profilo_ruolo">Ruolo:</string>
+    <string name="profilo_email">Email:</string>
+    <string name="profilo_telefono">Telefono:</string>
+    <string name="profilo_ricevimento">Ricevimento</string>
+    <string name="profilo_web">Web Site:</string>
+
+    <string name="sharing_upload">Invia i tuoi appunti alla piattaforma</string>
+    <string name="sharing_download">Scarica appunti dalla piattaforma</string>
+
+    <string name="splash_titolo">Università degli studi di Bari</string>
+    <string name="splash_sottotitolo">Aldo Moro</string>
+
+    <string name="condivisione_titolo">Salvare il file indicando un titolo significativo e una descrizione adeguata.</string>
+    <string name="condivisione_txt">Titolo...</string>
+    <string name="condivisione_desc">Descrizione...</string>
+    <string name="condivisione_button">CARICA</string>
+
+    <string name="no_connection">Verificare la connessione</string>
+
+    <string name="bus_andata">Piazza Moro - Università</string>
+    <string name="bus_ritorno">Università - Piazza Moro</string>
+
+    <string name="profilo_titolo">Studente dell\'Università di Bari di Informatica</string>
+
+    <string name="profilo_media_pond">M.PONDERATA:</string>
+    <string name="profilo_media_arit">M.ARITMETICA:</string>
+    <string name="profilo_cfu">CFU:</string>
+    <string name="profilo_non_disp">Non disponibile</string>
+    <string name="profilo_matricola">Matricola</string>
+
+    <string name="no_esami_grafic">Non sono presenti esami.</string>
+    <string name="info_non_dispoibile">Informazione non disponibile</string>
+    <string name="nome_non_disponibile">Nome non disponibile</string>
+    <string name="email_non_disponibile">Email non disponibile</string>
+    <string name="segretario_info">SEGRETARIO AMMINISTRATIVO</string>
+    <string name="direttore_info">DIRETTORE:</string>
+    <string name="pec_info">PEC</string>
+    <string name="dove_siamo_info">DOVE SIAMO:</string>
+
+    <string name="faq_titolo">Titolo  FAQ</string>
+    <string name="faq_descrizione">Descrizione</string>
+
+    <string name="libretto_voto">Voto:</string>
+    <string name="libretto_cfu">CFU:</string>
+    <string name="informazione_non_disponibile">Informazione al momento non disponibile</string>
+
+    <string name="ricerca">Ricerca...</string>
+
+    <string name="previsioni_titolo">Inserisci i CFU e il voto previsto per il prossimo esame per visualizzare le variazioni della tua media</string>
+    <string name="button_previsione">Calcola</string>
+    <string name="media_arit_previsione">MEDIA ARITMENTICA:</string>
+    <string name="media_pond_previsione">MEDIA PONDERATA:</string>
+    <string name="base_laure_previsioni">BASE DI LAUREA:</string>
+    <string name="no_exam">Non sono presenti esami\nAggiungerli con il pulsante (+)</string>
+
+    <string name="faq_log_titolo">Impossibile loggarsi</string>
+    <string name="faq_log">Verificare la connessione ed inserire le credenziali di Esse3. Se il problema persiste contattare il numero verde: 0805405631</string>
+    <string name="faq_dati_titolo">Cancellato per sbaglio i dati dell\'applicazione</string>
+    <string name="faq_dati">Se i dati inseriti precedentemente alla eliminazione sono salvati sul server, l\'applicazione recupererà tutti i dati.</string>
+    <string name="faq_laurea_titolo">La base di laurea è effettiva?</string>
+    <string name="faq_laurea">Alla base di laurea, sulla base della politica uniba, sono da aggiungere 2 punti bonus se lo studente è in corso</string>
+    <string name="faq_ristoro_titolo">Impossibile caricare i luoghi di ristoro</string>
+    <string name="faq_ristoro">Verificare che i Google Play Services siano correttamente installati e aggiornati</string>
+    <string name="faq_ricerca_titolo">Non riesco a ricercare un utente</string>
+    <string name="faq_ricerca">Se la ricerca dell\'utente fallisce l\'utente non si è registrato alla piattaforma o non ha concesso l\'autorizzazione ai propri dati</string>
+
+    <string name="error_voto">Inserisci un voto valido</string>
+    <string name="error_cfu">Inserisci un numero di cfu validi</string>
+
+    <string name="progress_titolo">Attendere...</string>
+    <string name="progress_message">Elaborazione dei dati</string>
+
+    <string name="no_avvisi">Non sono presenti avvisi</string>
+    <string name="no_utenti">Non è stato trovato alcun utente con i dati inseriti</string>
+
+    <string name="error_ricerca">Inserisci un nome o un cognome da ricercare!</string>
+
+    <string name="benvenuto">Bentornato!</string>
+
+    <string name="login_successo">Login effettuato con successo!</string>
+    <string name="login_errato">Controlla le credenziali e riprova!</string>
+    <string name="login_connessione">Accesso non riuscito! Controlla la connessione e riprova.</string>
+    <string name="aggiunta_dati">Dati inseriti con successo</string>
+    <string name="aggiunta_dati_errore">Non è stato possibile inserire i dati... esame gia presente!</string>
+    <string name="modifica_dati">Dati modificati con successo</string>
+    <string name="modifica_dati_errore">Non è stato possibile modificare i dati... esame gia presente!</string>
+    <string name="elimina_dati">Esame eliminaro con successo</string>
+    <string name="elimina_dati_errore">Non è stato possibile non è stato possibile eliminare l\'esame, riprova</string>
+
+    <string name="modifica">Modifica</string>
+    <string name="elimina">Elimina</string>
+    <string name="azione">Scegli un azione...</string>
+    <string name="conferma_titolo">Attenzione!</string>
+    <string name="conferma_testo">Sei sicurro di voler eliminare l\'esame di </string>
+
+    <string name="nota">Nota salvata con successo</string>
+    <string name="nota_errore">Errore nel caricamento del file.</string>
+    <string name="nota_successo">Appunti caricati con successo</string>
+
+    <string name="logout">Logout</string>
+    <string name="disconnessione">Sei sicuro di volerti disconnettere?</string>
+
+    <string name="no_orari">Non sono presenti orari</string>
 </resources>

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="20dp"
+    android:background="@color/backview"
+    tools:context=".business.logged.libretto.Previsioni">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/previsioni_titolo"
+        android:id="@+id/textView3"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/background"
+        android:layout_below="@+id/textView3"
+        android:layout_alignStart="@+id/textView3"
+        android:id="@+id/view" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/textView3">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_below="@+id/view">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/view"
+                android:layout_centerHorizontal="true"
+                android:weightSum="1"
+                android:id="@+id/linearLayout">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/libretto_voto"
+                    android:textSize="20dp"
+                    android:drawableLeft="@mipmap/ic_mark"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/darkblack"
+                    android:textStyle="normal" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/votoEsamePrevisto"
+                    android:textSize="20dp"
+                    android:inputType="number"
+                    android:layout_marginLeft="15dp"
+                    android:layout_weight="0.30" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/libretto_cfu"
+                    android:textSize="20dp"
+                    android:drawableLeft="@mipmap/ic_credits"
+                    android:drawablePadding="10dp"
+                    android:layout_marginLeft="30dp"
+                    android:textColor="@color/darkblack"
+                    android:textStyle="normal"/>
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:layout_marginLeft="15dp"
+                    android:inputType="number"
+                    android:id="@+id/cfuEsamePrevisto"
+                    android:layout_weight="0.37" />
+            </LinearLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/button_previsione"
+                android:enabled="false"
+                android:id="@+id/button_calcola_previsione"
+                android:layout_below="@+id/linearLayout"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="36dp"
+                android:layout_gravity="center_horizontal" />
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/backview"
+                android:elevation="1dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/button_calcola_previsione"
+                android:layout_centerHorizontal="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:paddingTop="20dp"
+                            android:paddingLeft="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/media_pon_txt"
+                            android:text="@string/media_arit_previsione"
+                            android:textStyle="italic|bold"
+                            android:textSize="20dp"
+                            android:textColor="@color/black"
+                            android:visibility="gone"/>
+
+                        <TextView
+                            android:paddingTop="20dp"
+                            android:paddingLeft="40dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/media_pon"
+                            android:textSize="20dp"
+                            android:textColor="@color/black"
+                            android:visibility="gone"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:paddingTop="20dp"
+                            android:paddingLeft="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/media_arit_txt"
+                            android:text="@string/media_pond_previsione"
+                            android:textStyle="italic|bold"
+                            android:textSize="20dp"
+                            android:textColor="@color/black"
+                            android:visibility="gone"/>
+
+                        <TextView
+                            android:paddingTop="20dp"
+                            android:paddingLeft="40dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/media_arit"
+                            android:textSize="20dp"
+                            android:textColor="@color/black"
+                            android:visibility="gone"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:paddingTop="20dp"
+                            android:paddingLeft="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/base_laurea_txt"
+                            android:text="@string/base_laure_previsioni"
+                            android:textStyle="italic|bold"
+                            android:textSize="20dp"
+                            android:textColor="@color/black"
+                            android:paddingBottom="20dp"
+                            android:visibility="gone"/>
+
+                        <TextView
+                            android:paddingTop="20dp"
+                            android:paddingLeft="65dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/base_laurea"
+                            android:textSize="20dp"
+                            android:textColor="@color/black"
+                            android:visibility="gone"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

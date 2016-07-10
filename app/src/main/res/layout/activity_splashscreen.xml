@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#efe633"
+    android:background="#E3FBFF"
     android:layout_gravity="center"
     android:id="@+id/lin_lay"
     android:gravity="center"
@@ -12,7 +12,23 @@
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:id="@+id/splash"
-         />
-
+        android:background="@drawable/uniba_img"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:id="@+id/text1"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold"
+        android:textSize="23dp"
+        android:text="@string/splash_titolo"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:id="@+id/text2"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20dp"
+        android:text="@string/splash_sottotitolo"/>
 </LinearLayout>
-<!-- android:background="@drawable/splash_img" -->

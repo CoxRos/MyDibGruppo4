@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backview">
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="125dp"
+        android:id="@+id/scalaVoto"
+        android:background="@mipmap/greenline"
+        android:layout_marginLeft="-15dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Programmazione"
+        android:id="@+id/nomeAppunti"
+        android:textSize="20dp"
+        android:drawableLeft="@mipmap/ic_exam"
+        android:drawablePadding="10dp"
+        android:textColor="@color/background"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="15dp"
+        android:layout_toEndOf="@+id/scalaVoto" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/libretto_voto"
+        android:textSize="20dp"
+        android:drawableLeft="@mipmap/ic_mark"
+        android:drawablePadding="10dp"
+        android:textColor="@color/darkblack"
+        android:textStyle="normal"
+        android:id="@+id/descrAppunti"
+        android:layout_below="@+id/nomeAppunti"
+        android:layout_toEndOf="@+id/scalaVoto"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="18"
+        android:id="@+id/votoEsame"
+        android:textSize="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_alignBaseline="@+id/descrAppunti"
+        android:layout_alignBottom="@+id/descrAppunti"
+        android:layout_toEndOf="@+id/descrAppunti" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/libretto_cfu"
+        android:textSize="20dp"
+        android:drawableLeft="@mipmap/ic_credits"
+        android:drawablePadding="10dp"
+        android:layout_marginLeft="30dp"
+        android:textColor="@color/darkblack"
+        android:textStyle="normal"
+        android:id="@+id/autoreAppunti"
+        android:layout_alignBaseline="@+id/votoEsame"
+        android:layout_alignBottom="@+id/votoEsame"
+        android:layout_alignEnd="@+id/dataAppunti"
+        android:layout_marginEnd="78dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="9"
+        android:textSize="20dp"
+        android:layout_marginLeft="15dp"
+        android:id="@+id/cfuEsame"
+        android:layout_marginStart="48dp"
+        android:layout_alignBaseline="@+id/autoreAppunti"
+        android:layout_alignBottom="@+id/autoreAppunti"
+        android:layout_alignStart="@+id/dataAppunti" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="16/02/2016"
+        android:textSize="16dp"
+        android:drawableLeft="@mipmap/ic_calendar"
+        android:drawablePadding="10dp"
+        android:textColor="@color/bright_foreground_disabled_material_light"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:id="@+id/dataAppunti"
+        android:layout_below="@+id/cfuEsame"
+        android:layout_alignParentEnd="true" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/background"
+        android:layout_below="@+id/dataAppunti"
+        android:layout_alignParentStart="true" />
+</RelativeLayout>

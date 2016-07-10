@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MyDib2016</string>
+    <string name="title_activity_home_not_logged">HomeNotLogged</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="action_faq">FAQ</string>
+    <string name="action_login"></string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_homepage">Homepage</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_avvisi">Advice</string>
+    <string name="title_fragment_previsioni">Previsions</string>
+    <string name="title_fragment_libretto">My Exams</string>
+    <string name="title_fragment_grafici">Charts</string>
+    <string name="title_fragment_ristoro">Landmarks</string>
+    <string name="title_fragment_ricerca">Searching</string>
+    <string name="title_activity_profilo">Profile</string>
+    <string name="title_fragment_informazioni">Information</string>
+
+
+    <string name="title_activity_bus">Bus</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+
+    <string name="description_app">Sign in using your ESSE3 credentials</string>
+    <string name="button_login">Login</string>
+    <string name="check_login">Store credentials</string>
+    <string name="skip_login">Skip sign in</string>
+    <string name="playsholder_email_login">n.surname@studenti.uniba.it</string>
+    <string name="playsholder_password_login">password</string>
+
+
+    <string name="insertEsame">Enter all the data for the new exam that you want to add to your booklet</string>
+    <string name="modificaEsame">Edit the data for a test that you added to your booklet</string>
+    <string name="visualizzaEsame">Displays all of the data on all exam that you have to your booklet</string>
+
+    <string name="button_avvisi">See more</string>
+
+    <string name="impostazioni_lingua">Language</string>
+    <string name="impostazioni_lingua_subtitle">Change the language of your app</string>
+    <string name="impostazioni_app_title">App</string>
+    <string name="impostazioni_update">Update settings</string>
+    <string name="impostazioni_crash">Send crash report</string>
+    <string name="impostazioni_crash_text">Send crash report</string>
+    <string name="impostazioni_sincronizzazione">synchronization frequency</string>
+    <string name="impostazioni_sincronizzazione_text">Set the synchronization frequency</string>
+    <string name="default_value">it</string>
+    <string name="title_activity_grafici">Tendance</string>
+
+    <string name="drawer_info">Information</string>
+    <string name="drawer_svago">Recreation and refreshment</string>
+    <string name="drawer_bus">BUS</string>
+    <string name="drawer_libretto">Booklet</string>
+    <string name="drawer_profilo">Profile</string>
+    <string name="drawer_avvisi">Advise</string>
+    <string name="drawer_condivisione">Notes Sharing</string>
+    <string name="drawer_ricerca">Search</string>
+    <string name="drawer_grafici">Charts</string>
+    <string name="drawer_previsioni">Forecasts</string>
+
+    <string name="no_esami">There are no notes on the platform</string>
+
+    <string name="hint_esame">Exam</string>
+    <string name="hint_voto">Mark</string>
+    <string name="hint_cfu">CFU</string>
+    <string name="hint_data">Date</string>
+    <string name="button_salva">SAVE</string>
+
+    <string name="profilo_nome">Name:</string>
+    <string name="profilo_cognome">Surname:</string>
+    <string name="profilo_ruolo">Role:</string>
+    <string name="profilo_email">Email:</string>
+    <string name="profilo_telefono">Phone:</string>
+    <string name="profilo_ricevimento">Receipt</string>
+    <string name="profilo_web">Web Site:</string>
+
+    <string name="sharing_upload">Send your notes to the platform</string>
+    <string name="sharing_download">Download notes from the platform</string>
+
+    <string name="splash_titolo">University of Bari</string>
+    <string name="splash_sottotitolo">Aldo Moro</string>
+
+    <string name="condivisione_titolo">Save the file indicating a significant and adequate description title.</string>
+    <string name="condivisione_txt">Title...</string>
+    <string name="condivisione_desc">Description...</string>
+    <string name="condivisione_button">LOAD</string>
+
+    <string name="no_connection">Test your connection</string>
+
+    <string name="bus_andata">Piazza Moro - University</string>
+    <string name="bus_ritorno">University - Piazza Moro</string>
+
+    <string name="profilo_titolo">Student of Computer Science at the University of Bari</string>
+
+    <string name="profilo_media_pond">M.WEIGHTED:</string>
+    <string name="profilo_media_arit">M.ARITHMETIC:</string>
+    <string name="profilo_cfu">CFU:</string>
+    <string name="profilo_non_disp">Not available</string>
+    <string name="profilo_matricola">Serial</string>
+
+    <string name="no_esami_grafic">There are no exams.</string>
+    <string name="info_non_dispoibile">Information not available</string>
+    <string name="nome_non_disponibile">Not available Name</string>
+    <string name="email_non_disponibile">Email not available</string>
+    <string name="segretario_info">ADMINISTRATIVE SECRETARY</string>
+    <string name="direttore_info">DIRECTOR:</string>
+    <string name="pec_info">PEC</string>
+    <string name="dove_siamo_info">WHERE WE ARE:</string>
+
+    <string name="faq_titolo">Title  FAQ</string>
+    <string name="faq_descrizione">Description</string>
+
+    <string name="libretto_voto">Mark:</string>
+    <string name="libretto_cfu">CFU:</string>
+    <string name="informazione_non_disponibile">Information currently not available</string>
+
+    <string name="ricerca">Searching...</string>
+
+    <string name="previsioni_titolo">Enter the CFU and the grade for the next exam to see the changes in your media</string>
+    <string name="button_previsione">Compute</string>
+    <string name="media_arit_previsione">ARITHMETIC AVERAGE:</string>
+    <string name="media_pond_previsione">WEIGHTED AVERAGE:</string>
+    <string name="base_laure_previsioni">DEGREE BASE:</string>
+    <string name="no_exam">There are no exams\nAdd them with the button (+)</string>
+
+    <string name="faq_log_titolo">Unable to login</string>
+    <string name="faq_log">Check the connection to enter Esse3 credentials. If the problem persists, contact the toll free number: 0805405631</string>
+    <string name="faq_dati_titolo">Accidentally deleted data application</string>
+    <string name="faq_dati">If the information prior to the deletion is saved on the server, the application will retrieve all data.</string>
+    <string name="faq_laurea_titolo">The graduate base is effective?</string>
+    <string name="faq_laurea">At the basis of degree, on the basis of uniba policy, they are to be added 2 bonus points if the student is in progress</string>
+    <string name="faq_ristoro_titolo">Unable to load eateries</string>
+    <string name="faq_ristoro">Verify that the Google Play Services are properly installed and updated</string>
+    <string name="faq_ricerca_titolo">I can not search for a user</string>
+    <string name="faq_ricerca">If the user search fails the user has not registered to the platform or has not granted consent to your data</string>
+
+    <string name="error_voto">Enter a valid vote</string>
+    <string name="error_cfu">Enter a valid number of cfu</string>
+
+    <string name="progress_titolo">Wait...</string>
+    <string name="progress_message">Processing data...</string>
+
+    <string name="no_avvisi">There are no warnings</string>
+    <string name="no_utenti">It was not found any user with the entered data</string>
+
+    <string name="error_ricerca">Enter a name or surname to be searched!</string>
+
+    <string name="benvenuto">Welcome back!</string>
+
+    <string name="login_successo">Login successful!</string>
+    <string name="login_errato">Check your credentials and try again!</string>
+    <string name="login_connessione">Login failed! Check the connection and try again.</string>
+    <string name="aggiunta_dati">Successfully inserted data</string>
+    <string name="aggiunta_dati_errore">It was not possible to enter the data ... examination already present!</string>
+    <string name="modifica_dati">Successfully changed data</string>
+    <string name="modifica_dati_errore">It was not possible to change the data ... examination already present!</string>
+    <string name="elimina_dati">successfully eliminated examination</string>
+    <string name="elimina_dati_errore">It was not possible it was not possible to delete the exam, try again</string>
+
+    <string name="modifica">Edit</string>
+    <string name="elimina">Delete</string>
+    <string name="azione">Take action...</string>
+    <string name="conferma_titolo">Attention!!</string>
+        <string name="conferma_testo">Are you sure you want to delete the exam </string>
+
+    <string name="nota">Note saved successfully</string>
+    <string name="nota_errore">Note saved successfully.</string>
+    <string name="nota_successo">Notes successfully loaded</string>
+
+    <string name="logout">Logout</string>
+    <string name="disconnessione">Are you sure you want to logout?</string>
+
+    <string name="no_orari">There are no timetables</string>
+</resources>

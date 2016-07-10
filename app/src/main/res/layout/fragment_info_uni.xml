@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".homepage.InformazioniUni">
+    android:background="@color/backview"
+    tools:context=".business.not_logged.InformazioniUni">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -31,19 +32,20 @@
                 android:layout_height="fill_parent"
                 android:orientation="vertical"
                 android:paddingLeft="20dp"
-                android:paddingTop="10dp">
+                android:paddingTop="10dp"
+                android:background="@color/backview">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:layout_marginTop="10dp"
-                    android:text="DOVE SIAMO:" />
+                    android:text="@string/dove_siamo_info" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Dove siamo text"
+                    android:text="@string/info_non_dispoibile"
                     android:layout_marginTop="8dp"
                     android:id="@+id/textDoveSiamo" />
 
@@ -52,12 +54,12 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:layout_marginTop="10dp"
-                    android:text="PEC" />
+                    android:text="@string/pec_info" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Testo del PEC"
+                    android:text="@string/info_non_dispoibile"
                     android:layout_marginTop="8dp"
                     android:id="@+id/textPEC" />
 
@@ -66,46 +68,46 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:layout_marginTop="10dp"
-                    android:text="DIRETTORE:" />
+                    android:text="@string/direttore_info" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nome direttore"
+                    android:text="@string/nome_non_disponibile"
                     android:layout_marginTop="8dp"
                     android:id="@+id/nomeDirettore" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="email direttore"
-                    android:layout_marginTop="28dp"
+                    android:text="Email non disponibile"
+                    android:layout_marginTop="8dp"
                     android:id="@+id/emailDirettore" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:layout_marginTop="20dp"
-                    android:text="SEGRETARIO AMMINISTRATIVO" />
+                    android:layout_marginTop="10dp"
+                    android:text="@string/segretario_info" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nome segretario"
-                    android:layout_marginTop="28dp"
+                    android:text="@string/nome_non_disponibile"
+                    android:layout_marginTop="8dp"
                     android:id="@+id/nomeSegretario" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Email segretario"
-                    android:layout_marginTop="28dp"
+                    android:text="@string/email_non_disponibile"
+                    android:layout_marginTop="8dp"
                     android:id="@+id/emailSegretario" />
             </LinearLayout>
-            
+
         </ScrollView>
-        
+
     </LinearLayout>
 
 
